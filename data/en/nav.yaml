@@ -1,0 +1,13 @@
+items:
+- title: 'Заказать'
+  url: '/plan'
+
+- title: 'Карта'
+  url: '/map'
+
+- title: 'Попутчик'
+  url: '/extra'
+
+- title: 'Спросить'
+  url: '/ask'
+
