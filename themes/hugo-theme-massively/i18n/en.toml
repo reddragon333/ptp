@@ -1,0 +1,32 @@
+[CONTACT_ADDRESS]
+  other = "Address"
+[CONTACT_EMAIL]
+  other = "Почта"
+[CONTACT_FORM_FIELD_EMAIL]
+  other = "Ваша почта"
+[CONTACT_FORM_FIELD_MESSAGE]
+  other = "Ваше сообщение"
+[CONTACT_FORM_FIELD_NAME]
+  other = "Ваше имя"
+[CONTACT_FORM_SUBMIT_SEND_MESSAGE]
+  other = "Отправить"
+[CONTACT_PHONE]
+  other = "Телефон"
+[CONTACT_SOCIAL]
+  other = "Соц сети"
+[COPYRIGHT_MESSAGE_1]
+  other = "Made by: [krll](https://krll.nl)"
+[INTRO_CONTINUE]
+  other = "Продолжить"
+[NAV_MENU]
+  other = "Меню"
+[NAV_CONTACT]
+  other = "Контакты"
+[PAGINATION_NEXT]
+  other = "Следующая"
+[PAGINATION_PREVIOUS]
+  other = "Предыдущая"
+[PAGINATION_FIRST]
+  other = "First"
+[PAGINATION_LAST]
+  other = "Last"
