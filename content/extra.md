@@ -6,6 +6,24 @@ image = 'images/pic02.jpg'
 disableComments = false
 +++
 
+{{< rawhtml >}}
+<details>
+<summary>Выпадающий список</summary>
+
+какой-то текст
++ <details>
+    <summary>Еще список</summary>
+
+    еще немного текста
+    + <details>
+        <summary>И заключительный список</summary>
+        еще текст
+        текст
+      </details>
+   </details>
+</details>
+{{< /rawhtml >}}
+
 форма для заполнения - дата поездки, город (вся важная инфа коротко с ссылкой на подробное описание трипа)
 
 Выберите из календаря ниже поездки
