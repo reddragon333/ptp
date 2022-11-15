@@ -1,7 +1,7 @@
 +++
 title = 'Суздаль'
 slug = 'post2'
-image = 'images/pic04.jpg'
+image = 'images/suzdal.jpg'
 date = "2019-04-18T00:00:00"
 description = 'Сказочный город Суздаль'
 disableComments = true
