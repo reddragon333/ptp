@@ -1,11 +1,11 @@
 items:
-- title: 'Заказать'
+- title: 'Хочу поехать'
   url: '/plan'
 
-- title: 'Карта'
+- title: 'Маршруты'
   url: '/map'
 
-- title: 'Попутчик'
+- title: 'Ишу тебя'
   url: '/extra'
 
 - title: 'Спросить'
