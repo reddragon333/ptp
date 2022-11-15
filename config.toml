@@ -1,6 +1,6 @@
 languageCode = "en-us"
-title = "Пока ты спал"
-baseURL = "http://localhost:1313/"
+title = "Линия жизни"
+baseURL = "https://nimble-alpaca-0efb9a.netlify.app/"
 theme = "hugo-theme-massively"
 googleanalytics = ""
 disqusShortname = ""
@@ -11,7 +11,7 @@ disableKinds = ["taxonomy", "taxonomyTerm", "section"]
    favicon = "favicon.ico"
   # set to change date format
   # dateFormat = "2.1.2006"
- backgroundPath = "images/1.jpg"
+ backgroundPath = "images/winter.jpg"
 
 # Below parameters can be set to override default post settings
 # [params.posts]
