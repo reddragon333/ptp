@@ -3,7 +3,7 @@ title = 'Кострома'
 slug = 'post4'
 image = 'images/kostroma.jpg'
 date = "2019-04-11T00:00:00"
-description = 'Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.'
+description = 'старинный русский город, имеющий длинную историю, уходящую корнями далеко вглубь веков'
 disableComments = true
 +++
 
