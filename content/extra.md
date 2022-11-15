@@ -14,7 +14,7 @@ disableComments = false
 + <details>
     <summary>Еще список</summary>
 
-    еще немного текста
+    еще текста
     + <details>
         <summary>И заключительный список</summary>
         еще текст
