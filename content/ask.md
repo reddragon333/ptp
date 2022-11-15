@@ -1,5 +1,5 @@
 +++
-title = 'Вопрос - Ответ'
+title = 'Спросить'
 slug = 'ask'
 disableComments = true
 +++
