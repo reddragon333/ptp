@@ -1,7 +1,7 @@
 +++
 title = 'Владимир'
 slug = 'lorem-ipsum'
-image = 'images/pic04.jpg'
+image = 'images/vladimir.jpg'
 # date = "2022-03-01T00:00:00"
 description = 'Милый город Владимир'
 disqus_identifier = '10'
