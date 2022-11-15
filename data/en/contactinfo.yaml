@@ -1,9 +1,8 @@
-contactformaction: 'post-action'
+#contactformaction: 'post-action'
 
 #address:
-#- line: '1234 Somewhere Road #87257'
-#- line: 'Nashville, TN 00000-0000'
+#- line: 'Moscow, Tverskay 77'
 
-phone: '+7-926-444-44-44'
+#phone: '+7-926-444-44-44'
 
 email: 'info@sleeptrip.ru'
