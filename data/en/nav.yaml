@@ -10,4 +10,7 @@ items:
 
 - title: 'Спросить'
   url: '/ask'
+  
+  - title: 'Галерея'
+  url: '/gallery'
 
