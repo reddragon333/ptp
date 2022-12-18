@@ -11,6 +11,6 @@ items:
 - title: 'Спросить'
   url: '/ask'
   
-  - title: 'Галерея'
+- title: 'Галерея'
   url: '/gallery'
 
