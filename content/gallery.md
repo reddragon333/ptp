@@ -33,7 +33,6 @@ disableComments = false
 [![Image name](gallery.png)](https://nimble-alpaca-0efb9a.netlify.app/gallery)
 
 {{< rawhtml >}}
-<h1>MOON</h1>
 <div style="height: 700px;"><small>scroll down</small></div>
 <a href="#">Вернутся в начало страницы</a>
 {{< /rawhtml >}}
