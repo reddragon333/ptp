@@ -41,22 +41,22 @@
             <p><a href="tel:{{ . }}">{{ . }}</a></p>
         </section>
         {{ end }}
-        {{ with $data.contactinfo.email }}
-        <section>
-            <h3>{{ i18n "CONTACT_EMAIL" . }}</h3>
-            <p><a href="mailto:{{ . }}">{{ . }}</a></p>
-        </section>
-        {{ end }}
         {{ with $data.social }}
         <section>
-            <h3>{{ i18n "CONTACT_SOCIAL" . }}</h3>
+            <h3>{{ i18n "MENU_FOOTER" . }}</h3>
             <ul class="icons alt">
-                {{ with .telegram}}
-                <li><a href="{{ . }}" class="icon alt fa-telegram"><span class="label">Telegram</span></a></li>
-                {{ end }}
-                {{ with .youtube}}
-                <li><a href="{{ . }}" class="icon alt fa-youtube"><span class="label">Youtube</span></a></li>
-                {{ end }}
+              {{ with .gallery}}
+              <li><a href="{{ . }}" class="icon alt fa-flickr"><span class="label">Telegram</span></a></li>
+              {{ end }}
+              {{ with .gallery}}
+              <li><a href="{{ . }}" class="icon alt fa-flickr"><span class="label">Youtube</span></a></li>
+              {{ end }}
+              {{ with .gallery}}
+              <li><a href="{{ . }}" class="icon alt fa-flickr"><span class="label">Gallery</span></a></li>
+              {{ end }}
+              {{ with .gallery}}
+              <li><a href="{{ . }}" class="icon alt fa-flickr"><span class="label">Facebook</span></a></li>
+              {{ end }}
             </ul>
         </section>
         {{ end }}
