@@ -28,5 +28,7 @@
   other = "Предыдущая"
 [PAGINATION_FIRST]
   other = "First"
+[MENU_FOOTER]
+  other = "Меню"
 [PAGINATION_LAST]
   other = "Last"
