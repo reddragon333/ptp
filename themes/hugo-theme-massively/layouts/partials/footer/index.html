@@ -45,17 +45,23 @@
         <section>
             <h3>{{ i18n "MENU_FOOTER" . }}</h3>
             <ul class="icons alt">
-              {{ with .gallery}}
-              <li><a href="{{ . }}" class="icon alt fa-flickr"><span class="label">Telegram</span></a></li>
+              {{ with .home}}
+              <li><a href="{{ . }}" class="icon alt fab fa-home"><span class="label">Домой</span></a></li>
+              {{ end }}
+              {{ with .plan}}
+              <li><a href="{{ . }}" class="icon alt fab fa-calendar"><span class="label">Хочу поехать</span></a></li>
+              {{ end }}
+              {{ with .map}}
+              <li><a href="{{ . }}" class="icon alt fab fa-map"><span class="label">Маршруты</span></a></li>
+              {{ end }}
+              {{ with .extra}}
+              <li><a href="{{ . }}" class="icon alt fab fa-user-plus"><span class="label">Ищу тебя</span></a></li>
+              {{ end }}
+              {{ with .ask}}
+              <li><a href="{{ . }}" class="icon alt fab fa-question"><span class="label">Спросить</span></a></li>
               {{ end }}
               {{ with .gallery}}
-              <li><a href="{{ . }}" class="icon alt fa-flickr"><span class="label">Youtube</span></a></li>
-              {{ end }}
-              {{ with .gallery}}
-              <li><a href="{{ . }}" class="icon alt fa-flickr"><span class="label">Gallery</span></a></li>
-              {{ end }}
-              {{ with .gallery}}
-              <li><a href="{{ . }}" class="icon alt fa-flickr"><span class="label">Facebook</span></a></li>
+              <li><a href="{{ . }}" class="icon alt fab fa-image"><span class="label">Галерея</span></a></li>
               {{ end }}
             </ul>
         </section>
