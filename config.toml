@@ -1,6 +1,6 @@
 languageCode = "en-us"
 title = "Линия жизни"
-baseURL = "https://nimble-alpaca-0efb9a.netlify.app/"
+baseURL = "https://tiny-clafoutis-d77d29.netlify.app/"
 theme = "hugo-theme-massively"
 googleanalytics = ""
 disqusShortname = ""
