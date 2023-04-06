@@ -3,9 +3,7 @@ slug = 'plan'
 description = 'Выберите поездку из календаря'
 disableComments = true
 +++
-{{< rawhtml >}}
-<details>
-<summary>Выпадающий список</summary>
+
 
 
 
