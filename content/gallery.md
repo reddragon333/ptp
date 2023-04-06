@@ -9,7 +9,7 @@ disableComments = false
 1 галерея
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
-  {{< figure src="/images/suzdal.jpg" caption="<a href="tel:+79150000000">Позвоните нам!</a>" caption-position="bottom">}}
+  {{< figure src="/images/suzdal.jpg" caption="Суз" caption-position="bottom">}}
   {{< figure src="images/kostroma.jpg" caption="Кострома" >}}
   {{< figure src="images/vladimir.jpg" caption="Владимир" >}}
   {{< figure src="/images/suzdal.jpg" caption="Суздаль" caption-position="bottom">}}
