@@ -7,8 +7,10 @@ disableComments = false
 +++
 
 
+{{< rawhtml >}}
+<script src="https://yastatic.net/s3/frontend/forms/_/embed.js"></script><iframe src="https://forms.yandex.ru/cloud/6432870af47e7316f74a425d/?iframe=1" frameborder="0" name="ya-form-6432870af47e7316f74a425d" width="650"></iframe>
+{{< /rawhtml >}}
 
-форма для заполнения - дата поездки, город (вся важная инфа коротко с ссылкой на подробное описание трипа)
 
 Выберите из календаря ниже поездки
 
