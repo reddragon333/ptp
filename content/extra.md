@@ -6,11 +6,7 @@ slug = 'extra'
 disableComments = false
 +++
 
-t
 
-{{< rawhtml >}}
-<iframe width="100%" height="600" src="https://okso.app" title="Draw online with okso.app" frameborder="0"></iframe>
-{{< /rawhtml >}}
 
 форма для заполнения - дата поездки, город (вся важная инфа коротко с ссылкой на подробное описание трипа)
 
