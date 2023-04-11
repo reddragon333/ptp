@@ -27,5 +27,5 @@ disableComments = false
 
 
 {{< rawhtml >}}
-<a href="#">Вернутся в начало страницы</a>
+<a href="#">Вернуться в начало страницы</a>
 {{< /rawhtml >}}
