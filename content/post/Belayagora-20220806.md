@@ -17,13 +17,13 @@ disqus_identifier = '58'
 
 ![Belayagora](/images/Belayagora-20220806-4.jpg)
 
+![Belayagora](/images/Belayagora-20220806-5.jpg)
+
 ![Belayagora](/images/Belayagora-20220806-6.jpg)
 
 ![Belayagora](/images/Belayagora-20220806-7.jpg)
 
 ![Belayagora](/images/Belayagora-20220806-8.jpg)
-
-![Belayagora](/images/Belayagora-20220806-9.jpg)
 
 Локация
 {{< rawhtml >}}
