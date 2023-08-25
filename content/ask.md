@@ -61,21 +61,52 @@ disableComments = true
 <p></p>
 <p>Если у вас есть эксклюзивный вопрос, напишите его ниже и нажмите Отправить. Мы вам с радостью ответим!</p>
 {{< /rawhtml >}}
-<style>
-form{
-background-color:#ffffff;
-width:70%;
-margin:0 auto;
-padding:15px;
-}
-</style>
-<form action="/" method="post">
-<fieldset>
-<legend>Если у вас есть эксклюзивный вопрос, напишите его ниже и нажмите Отправить. Мы вам с радостью ответим!</legend>
-<label> Ваше имя: <input type="text" placeholder="Имя"></input></label>
-<label> Ваш email: <input type="email" placeholder="Email"></input></label>
-<label>Текст сообщения:</label>
-<label><textarea placeholder="Введите ваше сообщение"></textarea><label>
-<label><button type="submit">Отправить</button> <button type="reset">Очистить</button></label>
-</fieldset>
-</form>
+
+{{< rawhtml >}}
+<script type="text/javascript" async="async">
+    (function () {
+      function init() {
+        const scr = document.createElement("script");
+        scr.type = "text/javascript";
+        scr.async = "async";
+        scr.src =
+          "//cdn.qform.io/forms.js?v=" + new Date().getTime() / 1000;
+        const scrInsert = document.getElementsByTagName("script")[0];
+        scrInsert.parentNode.insertBefore(scr, scrInsert);
+      }
+      const d = document;
+      const w = window;
+      if (d.readyState === "interactive") {
+        init();
+      } else {
+        if (w.attachEvent) {
+          w.attachEvent("onload", init);
+        } else {
+          w.addEventListener("DOMContentLoaded", init, false);
+        }
+      }
+    })();
+<link rel="stylesheet" href="https://cdn.qform.io/preloader.css">
+
+<div data-formid="form_ESorlf6b8RtcNQw9tJSih-5LmOVkeXW4" data-preloader="2" style="min-height: 576px; margin: 0 auto">
+  <div class="qform-preloader__root" id="form_ESorlf6b8RtcNQw9tJSih-5LmOVkeXW4_loader_root">
+    <div class="qform-preloader__row">
+      <div class="qform-preloader__element">
+      </div>
+    </div>
+    <div class="qform-preloader__row">
+      <div class="qform-preloader__element">
+      </div>
+    </div>
+    <div class="qform-preloader__row">
+      <div class="qform-preloader__element">
+      </div>
+    </div>
+    <div class="qform-preloader__row">
+      <div class="qform-preloader__element qform-preloader__button">
+      </div>
+    </div>
+  </div>
+</div>
+    {{< /rawhtml >}}
+  </script>
