@@ -86,9 +86,8 @@ disableComments = true
         }
       }
     })();
-<link rel="stylesheet" href="https://cdn.qform.io/preloader.css">
   </script>
-  
+  <link rel="stylesheet" href="https://cdn.qform.io/preloader.css">
 <div data-formid="form_ESorlf6b8RtcNQw9tJSih-5LmOVkeXW4" data-preloader="2" style="min-height: 576px; margin: 0 auto">
   <div class="qform-preloader__root" id="form_ESorlf6b8RtcNQw9tJSih-5LmOVkeXW4_loader_root">
     <div class="qform-preloader__row">
