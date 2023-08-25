@@ -17,7 +17,7 @@ disableComments = false
 
 
 Заполните, пожалуйста, форму ниже
-
+{{< rawhtml >}}
 <script src="https://yastatic.net/s3/frontend/forms/_/embed.js"></script><iframe src="https://forms.yandex.ru/cloud/64e8a30e5056901d07fb5f32/?iframe=1" frameborder="0" name="ya-form-64e8a30e5056901d07fb5f32" width="650"></iframe>
-
+{{< /rawhtml >}}
 
