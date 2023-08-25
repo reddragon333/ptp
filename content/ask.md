@@ -59,7 +59,7 @@ disableComments = true
 
 {{< rawhtml >}}
 <p></p>
-<p>Если у вас есть эксклюзивный вопрос, напишите его ниже и нажмите Отправить. Мы вам с радостью ответим!</p>
+<p>Если у вас есть эксклюзивный вопрос, напишите его в форме ниже. Мы вам с радостью ответим!</p>
 {{< /rawhtml >}}
 
 {{< rawhtml >}}
@@ -87,7 +87,8 @@ disableComments = true
       }
     })();
 <link rel="stylesheet" href="https://cdn.qform.io/preloader.css">
-
+  </script>
+  
 <div data-formid="form_ESorlf6b8RtcNQw9tJSih-5LmOVkeXW4" data-preloader="2" style="min-height: 576px; margin: 0 auto">
   <div class="qform-preloader__root" id="form_ESorlf6b8RtcNQw9tJSih-5LmOVkeXW4_loader_root">
     <div class="qform-preloader__row">
@@ -109,4 +110,4 @@ disableComments = true
   </div>
 </div>
     {{< /rawhtml >}}
-  </script>
+
