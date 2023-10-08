@@ -1,6 +1,6 @@
 languageCode = "en-us"
 title = "Линия жизни"
-baseURL = "https://tiny-clafoutis-d77d29.netlify.app/"
+baseURL = "https://sleeptrip.ru/"
 theme = "hugo-theme-massively"
 googleanalytics = ""
 disqusShortname = ""
