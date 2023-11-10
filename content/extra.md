@@ -21,7 +21,7 @@ disableComments = false
 {{< /rawhtml >}}
 
 Заполните, пожалуйста, форму ниже
-{{< rawhtml >}}
+
 {{< rawhtml >}}
 <script type="text/javascript" async="async">
     (function () {
