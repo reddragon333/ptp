@@ -15,9 +15,13 @@ disableComments = false
 <script data-cfasync="false" data-tockify-script="embed" src="https://public.tockify.com/browser/embed.js">
 </script>
 {{< /rawhtml >}}
-
+    
+{{< rawhtml >}}
+&thinsp;
+{{< /rawhtml >}}
 
 Заполните, пожалуйста, форму ниже
+{{< rawhtml >}}
 {{< rawhtml >}}
 <script type="text/javascript" async="async">
     (function () {
@@ -43,54 +47,26 @@ disableComments = false
       }
     })();
   </script>
-<link rel="stylesheet" href="https://cdn.qform.io/preloader.css">
-
-<div data-formid="form_tMB15_ZIWrnmP0T-B9dRbnGjZjwzTdPD" data-preloader="2" style="min-height: 521px; margin: 0 auto">
-
+  <link rel="stylesheet" href="https://cdn.qform.io/preloader.css">
+<div data-formid="form_tMB15_ZIWrnmP0T-B9dRbnGjZjwzTdPD" data-preloader="2" style="min-height: 576px; margin: 0 auto">
   <div class="qform-preloader__root" id="form_tMB15_ZIWrnmP0T-B9dRbnGjZjwzTdPD_loader_root">
-
     <div class="qform-preloader__row">
-
       <div class="qform-preloader__element">
-
       </div>
-
     </div>
-
     <div class="qform-preloader__row">
-
       <div class="qform-preloader__element">
-
       </div>
-
     </div>
-
     <div class="qform-preloader__row">
-
       <div class="qform-preloader__element">
-
       </div>
-
     </div>
-
     <div class="qform-preloader__row">
-
-      <div class="qform-preloader__element">
-
-      </div>
-
-    </div>
-
-    <div class="qform-preloader__row">
-
       <div class="qform-preloader__element qform-preloader__button">
-
       </div>
-
     </div>
-
   </div>
-
 </div>
 {{< /rawhtml >}}
 
