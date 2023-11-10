@@ -3,7 +3,7 @@ title = 'Найти попутчика'
 slug = 'extra'
 # image = 'images/pic02.jpg'
 # description = 'здесь можно добавить подпись'
-disableComments = false
+disableComments = true
 +++
 
 Предстоящие поездки
