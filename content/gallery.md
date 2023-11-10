@@ -3,9 +3,13 @@ title = 'Галерея'
 slug = 'gallery'
 +++
 
-image = 'images/Aleksin-20210515-1.jpg
-image = 'images/Aleksin-20210515-2.jpg
-image = 'images/Aleksin-20210515-3.jpg
+{{< load-photoswipe >}}
+{{< gallery caption-effect="fade" >}}
+{{< figure src="images/Aleksin-20210515-1.jpg" >}}
+{{< figure src="images/Aleksin-20210515-2.jpg"  >}}
+{{< figure src="images/Aleksin-20210515-3.jpg" >}}
+{{< /gallery >}}
+
 image = 'images/Aleksin-20210515-4.jpg
 image = 'images/Aleksin-20210515-5.jpg
 image = 'images/Aleksin-20210515-6.jpg
