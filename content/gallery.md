@@ -1,6 +1,8 @@
 +++
 title = 'Галерея'
 slug = 'gallery'
++++
+
 image = 'images/Aleksin-20210515-1.jpg
 image = 'images/Aleksin-20210515-2.jpg
 image = 'images/Aleksin-20210515-3.jpg
@@ -685,7 +687,7 @@ image = 'images/Zimni-20211204-5.jpg
 image = 'images/Zimni-20211204-6.jpg
 image = 'images/Zimni-20211204-7.jpg
 image = 'images/Zimni-20211204-8.jpg
-+++
+
 {{< rawhtml >}}
 <a href="#">Вернуться в начало страницы</a>
 {{< /rawhtml >}}
