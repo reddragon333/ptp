@@ -1,13 +1,13 @@
 +++
-title = 'Найти попутчика'
+# title = 'Найти попутчика'
 slug = 'extra'
 # image = 'images/pic02.jpg'
 # description = 'здесь можно добавить подпись'
 disableComments = true
 +++
-
-Предстоящие поездки
-
+{{< rawhtml >}}
+<h3 align="center">Предстоящие поездки</h3>
+{{< /rawhtml >}}
 
 
 {{< rawhtml >}}
