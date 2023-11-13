@@ -1,7 +1,10 @@
 +++
-title = 'Галерея'
+# title = 'Галерея'
 slug = 'gallery'
 +++
+{{< rawhtml >}}
+<h3 align="center">Галерея</h3>
+{{< /rawhtml >}}
 
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
