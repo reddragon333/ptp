@@ -4,7 +4,7 @@ slug = 'map'
 disableComments = true
 +++
 {{< rawhtml >}}
-<h3 align="center">Карта поездоки</h3>
+<h3 align="center">Карта поездок</h3>
 {{< /rawhtml >}}
   
 {{< rawhtml >}}
