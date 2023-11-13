@@ -1,8 +1,11 @@
 +++
-title = 'Спросить'
+# title = 'Спросить'
 slug = 'ask'
 disableComments = true
 +++
+{{< rawhtml >}}
+<h3 align="center">Задать вопрос</h3>
+{{< /rawhtml >}}
 
 {{< rawhtml >}}
 <p></p>
