@@ -1,9 +1,11 @@
 +++
 slug = 'plan'
-description = 'Выберите поездку из календаря'
+# description = 'Выберите поездку из календаря'
 disableComments = true
 +++
-
+{{< rawhtml >}}
+<h3 align="center">Выберите поездку из календаря</h3>
+{{< /rawhtml >}}
 
 {{< rawhtml >}}
 <div data-tockify-component="calendar" data-tockify-calendar="sleeptrip.calendar">
