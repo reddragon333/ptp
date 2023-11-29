@@ -8,6 +8,12 @@ slug = 'gallery'
 
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
+{{< figure src="images/Bezdon-20231119-1.jpg" >}}
+{{< figure src="images/Bezdon-20231119-3.jpg" >}}
+{{< figure src="images/Bezdon-20231119-5.jpg" >}}
+{{< figure src="images/Dubna-20231118-1.jpg" >}}
+{{< figure src="images/Dubna-20231118-2.jpg" >}}
+{{< figure src="images/Dubna-20231118-6.jpg" >}}
 {{< figure src="images/Aleksin-20210515-1.jpg" >}}
 {{< figure src="images/Aleksin-20210515-2.jpg" >}}
 {{< figure src="images/Aleksin-20210515-3.jpg" >}}
