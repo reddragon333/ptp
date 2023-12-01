@@ -4,7 +4,7 @@ slug = 'plan'
 disableComments = true
 +++
 {{< rawhtml >}}
-<h3 align="center">Выберите поездку из календаря</h3>
+<h3 align="center">Выберите поездку</h3>
 {{< /rawhtml >}}
 
 {{< rawhtml >}}
