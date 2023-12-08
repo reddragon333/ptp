@@ -1,6 +1,6 @@
 items:
 - title: 'Хочу поехать'
-  url: '/plantrip'
+  url: '/PlanATrip'
 
 - title: 'Маршруты'
   url: '/map'
