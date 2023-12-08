@@ -1,6 +1,6 @@
 +++
 # title = 'Найти попутчика'
-slug = 'PlanATrip'
+slug = 'planatrip'
 # image = 'images/pic02.jpg'
 # description = 'здесь можно добавить подпись'
 disableComments = true
