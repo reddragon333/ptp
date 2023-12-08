@@ -1,12 +1,9 @@
 items:
 - title: 'Хочу поехать'
-  url: '/plan'
+  url: '/extra'
 
 - title: 'Маршруты'
   url: '/map'
-
-- title: 'Ищу тебя'
-  url: '/extra'
 
 - title: 'Спросить'
   url: '/ask'
