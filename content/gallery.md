@@ -8,6 +8,9 @@ slug = 'gallery'
 
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
+{{< figure src="images/Elki-palki_20231216_1.jpg" >}}
+{{< figure src="images/Elki-palki_20231216_2.jpg" >}}
+{{< figure src="images/Elki-palki_20231216_10.jpg" >}}
 {{< figure src="images/Bezdon-20231119-1.jpg" >}}
 {{< figure src="images/Bezdon-20231119-3.jpg" >}}
 {{< figure src="images/Bezdon-20231119-5.jpg" >}}
