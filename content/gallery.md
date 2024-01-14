@@ -8,6 +8,9 @@ slug = 'gallery'
 
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
+{{< figure src="images/Moroz rassvet_20231202_1.jpg" >}}
+{{< figure src="images/Moroz rassvet_20231202_2.jpg" >}}
+{{< figure src="images/Moroz rassvet_20231202_8.jpg" >}}
 {{< figure src="images/Elki-palki_20231216_1.jpg" >}}
 {{< figure src="images/Elki-palki_20231216_2.jpg" >}}
 {{< figure src="images/Elki-palki_20231216_10.jpg" >}}
