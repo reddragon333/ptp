@@ -8,6 +8,7 @@ slug = 'gallery'
 
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
+{{< figure src="images/Lager-20240113-1.jpg" >}}
 {{< figure src="images/Serdce-20240120-1.jpg" >}}
 {{< figure src="images/Snegorassvet_20240107_5.jpg" >}}
 {{< figure src="images/HappyNew_20231230_1.jpg" >}}
