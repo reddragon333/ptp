@@ -20,10 +20,10 @@ disableComments = true
 {{< rawhtml >}}
 &thinsp;
 {{< /rawhtml >}}
-
+</p>
 Желаете отправиться в путешествие?
 Просто заполните форму ниже, и предложите в комментариях свой вариант поездки (направление, даты, профиль попутчиков).
-Календарь поездок можно посмотреть <a href="https://sleeptrip.ru/plan/">--тут--</a>
+Календарь поездок можно посмотреть <a href="https://sleeptrip.ru/plan/">--тут--</a></p>
 
 {{< rawhtml >}}
 <script type="text/javascript" async="async">
