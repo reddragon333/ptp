@@ -10,7 +10,7 @@ disableComments = true
 {{< rawhtml >}}
 <p></p>
 <p>Если у вас есть эксклюзивный вопрос, напишите его в форме ниже. Мы вам с радостью ответим!
-Календарь поездок можно посмотреть <a href="https://sleeptrip.ru/plan/">тут</a></p>
+Календарь поездок можно посмотреть <a href="https://sleeptrip.ru/plan/">--тут--</a></p>
 {{< /rawhtml >}}
 
 {{< rawhtml >}}
