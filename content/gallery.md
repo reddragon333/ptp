@@ -8,6 +8,14 @@ slug = 'gallery'
 
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
+{{< figure src="images/Yaropol_20240714_10.jpg" >}}
+{{< figure src="images/Zelen_20240628_3.jpg" >}}
+{{< figure src="images/Dronoslet_20240705_4.jpg" >}}
+{{< figure src="images/Fedor_20240623_4.jpg" >}}
+{{< figure src="images/Msk-Pet_20240606_3.jpg" >}}
+{{< figure src="images/Slet_20240526_2.jpg" >}}
+{{< figure src="images/Kavkaz_20240429_13.jpg" >}}
+{{< figure src="images/Kalyazin-20240603-1.jpg" >}}
 {{< figure src="images/Kalyazin-20240330-1.jpg" >}}
 {{< figure src="images/Breeze-20240316-1.jpg" >}}
 {{< figure src="images/Otkryt-20240309-1.jpg" >}}
