@@ -14,7 +14,7 @@ disableComments = true
 </script>
 {{< /rawhtml >}}
 
-Заказать поездку
+Выбрать поездку
 
 {{< rawhtml >}}
 <script type="text/javascript" async="async">
