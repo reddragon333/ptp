@@ -14,7 +14,7 @@ disableComments = true
 </script>
 {{< /rawhtml >}}
 
-Выбрать поездку
+Заполните заявку ниже или напишите сюда для связи https://t.me/sleeptrip_ru
 
 {{< rawhtml >}}
 <script type="text/javascript" async="async">
