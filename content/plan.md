@@ -13,8 +13,10 @@ disableComments = true
 <script data-cfasync="false" data-tockify-script="embed" src="https://public.tockify.com/browser/embed.js">
 </script>
 {{< /rawhtml >}}
-
-Заполните заявку ниже или напишите в Телеграм для связи: https://t.me/polet_bvs (для путешествий с дронами) или https://t.me/sleeptrip_rec (для путешествий без дронов) 
+    
+{{< rawhtml >}}
+Заполните заявку ниже или напишите в Телеграм для связи: https://t.me/polet_bvs (для путешествий с дронами, заявку необходимо направить за 7 дней до полётов) или https://t.me/sleeptrip_rec (для путешествий без дронов)
+{{< /rawhtml >}}
 
 {{< rawhtml >}}
 <script type="text/javascript" async="async">
