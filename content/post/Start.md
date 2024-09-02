@@ -2,7 +2,7 @@
 title = 'Пока ты спал'
 slug = 'Start'
 image = 'images/Kavkaz-20220505-1.jpg'
-date = "2111-11-11T00:00:00"
+date = "2024-09-01T00:00:00"
 description = 'о чём вообще речь'
 disqus_identifier = '0'
 +++
