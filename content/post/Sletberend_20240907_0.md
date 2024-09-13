@@ -8,7 +8,7 @@ disqus_identifier = '111'
 +++
 Здесь был несколько раз, но в этот раз летом и в формате дронослёта.
 {{< rawhtml >}}
-Видео-статус поездки тут https://t.me/whilesleeping/802
+Видео-статус поездки <a href="https://t.me/whilesleeping/802">- -тут- -</a> 
 {{< /rawhtml >}}
 
 ![Sletberend](/images/Sletberend_20240907_2.jpg)
