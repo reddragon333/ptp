@@ -1,33 +1,26 @@
 +++
-# title = 'Найти попутчика'
-slug = 'planatrip'
-# image = 'images/pic02.jpg'
-# description = 'здесь можно добавить подпись'
+slug = 'plan'
+# description = 'Выберите поездку из календаря'
 disableComments = true
 +++
 {{< rawhtml >}}
-<h3 align="center">Предстоящие поездки</h3>
+<h3 align="center">Выберите поездку</h3>
 {{< /rawhtml >}}
 
-
 {{< rawhtml >}}
-<div data-tockify-component="mini" data-tockify-calendar="sleeptrip.calendar">
+<div data-tockify-component="calendar" data-tockify-calendar="sleeptrip.calendar">
 </div>
 <script data-cfasync="false" data-tockify-script="embed" src="https://public.tockify.com/browser/embed.js">
 </script>
 {{< /rawhtml >}}
     
-{{< rawhtml >}}
-&thinsp;
-{{< /rawhtml >}}
 
 Желаете отправиться в путешествие?
 Просто заполните форму ниже (для полётов - за 7 дней до поездки) и предложите в комментариях свой вариант (направление, даты, профиль попутчиков).
 Обсудить детали поездок можно в Телеграм:   https://t.me/polet_bvs (для путешествий с дронами) или https://t.me/sleeptrip_rec (для путешествий без дронов) 
 Проверьте папку "Нежелательные", так как ответное письмо на заявку может попасть туда в зависимости от почтового клиента.
-{{< rawhtml >}}
-Календарь поездок можно посмотреть <a href="https://sleeptrip.ru/plan/">- -тут- -</a>.
-{{< /rawhtml >}}
+
+
 {{< rawhtml >}}
 <script type="text/javascript" async="async">
     (function () {
@@ -75,4 +68,5 @@ disableComments = true
   </div>
 </div>
 {{< /rawhtml >}}
+
 
