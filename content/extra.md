@@ -23,9 +23,6 @@ disableComments = true
 
 Проверьте папку "Нежелательные", так как ответное письмо на заявку может попасть туда в зависимости от почтового клиента.
 {{< rawhtml >}}
-Календарь поездок можно посмотреть <a href="https://sleeptrip.ru/plan/">- -тут- -</a>.
-{{< /rawhtml >}}
-{{< rawhtml >}}
 <script type="text/javascript" async="async">
     (function () {
       function init() {
