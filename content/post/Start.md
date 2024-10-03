@@ -2,8 +2,8 @@
 title = 'Пока ты спал'
 slug = 'Start'
 image = 'images/Kavkaz-20220505-1.jpg'
-date = "2024-09-13T00:00:00"
-description = 'о чём вообще речь'
+date = "2024-10-03T00:00:00"
+description = 'о чём этот сайт'
 disqus_identifier = '0'
 +++
 Приветствую вас на стартовой странице сайта «Пока ты спал».
