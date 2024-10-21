@@ -8,6 +8,9 @@ slug = 'gallery'
 
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
+{{< figure src="images/Vetchi_20241012_1.jpg" >}}
+{{< figure src="images/Klin_20241005_5.jpg" >}}
+{{< figure src="images/Bogolub_20240914_1.jpg" >}}
 {{< figure src="images/Sletberend_20240907_1.jpg" >}}
 {{< figure src="images/Sletlubv_20240831_1.jpg" >}}
 {{< figure src="images/Sletkalyaz_20240810_1.jpg" >}}
