@@ -8,6 +8,13 @@ slug = 'gallery'
 
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
+{{< figure src="images/SletRjev_20250215_1.jpg" >}}
+{{< figure src="images/SletPokrov2_20250208_1.jpg" >}}
+{{< figure src="images/SletRaek_20250118_1.jpg" >}}
+{{< figure src="images/Bursol2_20250106_8.jpg" >}}
+{{< figure src="images/Bursol2_20250106_1.jpg" >}}
+{{< figure src="images/NG25_20241214_1.jpg" >}}
+{{< figure src="images/SletKalyaz_20241221_2.jpg" >}}
 {{< figure src="images/Bursol_20240923_1.jpg" >}}
 {{< figure src="images/Vetchi_20241012_1.jpg" >}}
 {{< figure src="images/Klin_20241005_5.jpg" >}}
