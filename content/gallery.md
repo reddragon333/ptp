@@ -8,6 +8,11 @@ slug = 'gallery'
 
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
+{{< figure src="images/Radiotele_20250406_1.jpg" >}}
+{{< figure src="images/PicVetchi_20250322_1.jpg" >}}
+{{< figure src="images/Proletar_20250223_1.jpg" >}}
+{{< figure src="images/Gorb_20250304_10.jpg" >}}
+{{< figure src="images/Voron_20250324_3.jpg" >}}
 {{< figure src="images/SletRjev_20250215_1.jpg" >}}
 {{< figure src="images/SletPokrov2_20250208_1.jpg" >}}
 {{< figure src="images/SletRaek_20250118_1.jpg" >}}
