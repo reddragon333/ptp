@@ -8,6 +8,7 @@ slug = 'gallery'
 
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
+{{< figure src="images/Bogolubovo_20250419_1.jpg" >}}
 {{< figure src="images/Radiotele_20250406_1.jpg" >}}
 {{< figure src="images/PicVetchi_20250322_1.jpg" >}}
 {{< figure src="images/Proletar_20250223_1.jpg" >}}
