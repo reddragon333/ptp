@@ -22,6 +22,7 @@ disqus_identifier = '47'
 
 ![Yaroslavl](/images/Yaroslavl-20220307-8.jpg)
 
+Видео: https://youtu.be/k1CG4jK8-p8
 {{< youtube id="k1CG4jK8-p8" >}}
 
 
