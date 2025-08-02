@@ -19,11 +19,15 @@ disqus_identifier = '128'
 
 ![Bogolubovo0425](/images/Bogolubovo_20250419_6.jpg)
 
-Локация
+---
+
+📍 Локация
 {{< rawhtml >}}
-<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A077367027456c82c23a26e1ea7b97af0f6394ebb07ac19ed9ac4de61eb5ecb8b&amp;width=500&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+<div class="yandex-map-container">
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A077367027456c82c23a26e1ea7b97af0f6394ebb07ac19ed9ac4de61eb5ecb8b&amp;width=800&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
 {{< /rawhtml >}}
 
 {{< rawhtml >}}
-<a href="#">Вернуться в начало страницы</a>
+{{< back-to-top >}}
 {{< /rawhtml >}}

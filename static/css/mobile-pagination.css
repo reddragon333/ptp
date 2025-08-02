@@ -39,13 +39,35 @@
         min-width: 80px !important;
         text-align: center !important;
         border-radius: 4px !important;
-        display: inline-block !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
     }
     
     /* Показываем только навигационные кнопки */
     .pagination li:has(.previous),
     .pagination li:has(.next) {
         display: block !important;
+    }
+    
+    /* Дополнительное выравнивание для li элементов */
+    .pagination li {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    /* Убираем возможные конфликты со стилями темы */
+    .pagination .previous a,
+    .pagination .next a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        height: 100% !important;
     }
 }
 
@@ -55,5 +77,10 @@
         padding: 0.7rem 1rem !important;
         font-size: 0.8rem !important;
         min-width: 70px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        line-height: 1.2 !important;
     }
 }
