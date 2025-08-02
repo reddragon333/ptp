@@ -21,7 +21,7 @@ disqus_identifier = '116'
 
 {{< youtube id="ObHYJMd3YIA" >}}
 
-Локация
+📍 Локация
 {{< rawhtml >}}
 <div class="yandex-map-container">
 <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A60f62f4b785cf9de8e412fa84320388941d5a156c2ecfe7235a7384c43fa1ff1&amp;width=800&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>

@@ -1,7 +1,7 @@
 .yandex-map-container {
     width: 100%;
     max-width: 100%;
-    margin: 2rem 0;
+    margin: 3rem 0 2rem 0; /* Увеличен верхний отступ для разделения от предыдущего контента */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -18,13 +18,23 @@
 /* Мобильная версия */
 @media (max-width: 768px) {
     .yandex-map-container {
-        margin: 1.5rem -1rem; /* Выходим за границы контейнера на мобильном */
-        border-radius: 0;
+        margin: 1.5rem 0; 
+        border-radius: 8px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        text-align: center; /* Принудительное центрирование */
+        position: relative;
+        width: 100%;
+        max-width: 100%;
     }
     
     .yandex-map-container iframe {
         height: 300px !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        display: block;
+        position: relative;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
 }
 

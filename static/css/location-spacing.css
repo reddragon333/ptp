@@ -1,0 +1,26 @@
+/* Отступы для секции Локация */
+
+/* Добавляем отступ перед любым параграфом, содержащим эмоджи pin */
+p {
+    /* Проверяем содержимое на наличие эмоджи pin */
+}
+
+/* Универсальное правило для любого элемента перед картой */
+.yandex-map-container {
+    margin-top: 3rem !important;
+}
+
+/* Дополнительный отступ для текста Локация если он находится прямо перед картой */
+*:has(+ .yandex-map-container),
+*:has(+ div[class*="yandex-map"]) {
+    margin-bottom: 1.5rem !important;
+}
+
+/* Отступ сверху для элементов, содержащих pin emoji */
+*[data-location],
+.location-header {
+    margin-top: 2.5rem !important;
+    margin-bottom: 1rem !important;
+    font-weight: 600;
+    font-size: 1.1em;
+}

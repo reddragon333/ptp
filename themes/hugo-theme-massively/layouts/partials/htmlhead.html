@@ -23,6 +23,7 @@
 		{{ $noscript := resources.Get "scss/noscript.scss" | resources.ExecuteAsTemplate "noscript.scss" . | toCSS (dict "targetPath" "assets/css/noscript.css" "enableSourceMap" false) }}
 		<noscript><link rel="stylesheet" href='{{ $noscript.RelPermalink }}' /></noscript>
 		<link rel="stylesheet" href="/css/yandex-maps.css">
+		<link rel="stylesheet" href="/css/location-spacing.css">
 		<link rel="stylesheet" href="/css/footer-nav.css">
 		<link rel="stylesheet" href="/css/mobile-pagination.css">
 		<link rel="stylesheet" href="/css/back-to-top.css">
