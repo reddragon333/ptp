@@ -38,12 +38,15 @@
         font-size: 0.9rem !important;
         min-width: 80px !important;
         text-align: center !important;
-        border-radius: 4px !important;
+        border: none !important;
+        border-radius: 0 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         line-height: 1.2 !important;
         white-space: nowrap !important;
+        box-shadow: none !important;
+        outline: none !important;
     }
     
     /* Показываем только навигационные кнопки */
@@ -68,6 +71,17 @@
         text-align: center !important;
         width: 100% !important;
         height: 100% !important;
+        border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+    
+    /* Скрываем информацию о страницах */
+    .pagination-info,
+    .pagination .info,
+    .pagination .page-info,
+    .pagination-status {
+        display: none !important;
     }
 }
 
@@ -82,5 +96,9 @@
         justify-content: center !important;
         text-align: center !important;
         line-height: 1.2 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        outline: none !important;
     }
 }

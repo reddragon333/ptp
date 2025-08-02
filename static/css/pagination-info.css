@@ -9,6 +9,18 @@
     gap: 1rem !important;
 }
 
+/* Убираем рамки со всех кнопок пагинации */
+.pagination a,
+.pagination .previous,
+.pagination .next,
+.pagination .first,
+.pagination .last {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
 /* Информация о страницах для десктопа */
 .pagination .page-info {
     display: inline-flex !important;
@@ -19,12 +31,15 @@
     color: #333 !important;
     background: none !important;
     border: none !important;
+    border-radius: 0 !important;
     text-align: center !important;
     font-weight: 300 !important;
     white-space: nowrap !important;
     min-width: 60px !important;
     box-sizing: border-box !important;
     flex-shrink: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 .pagination .page-info .current-page {
@@ -47,7 +62,10 @@
 
 /* Скрываем информацию о страницах на мобильных */
 @media (max-width: 768px) {
-    .pagination .page-info.desktop-only {
+    .pagination .page-info,
+    .pagination .page-info.desktop-only,
+    .pagination-info,
+    .pagination-status {
         display: none !important;
     }
 }
