@@ -1,6 +1,6 @@
 languageCode = "en-us"
 title = "Massively"
-baseURL = "https://your-cloudflare-domain.com/"
+baseURL = "https://cyberiya.site/"
 theme = "hugo-theme-massively"
 googleanalytics = ""
 disqusShortname = ""

@@ -2,7 +2,7 @@
 
 # Configuration
 BUCKET_NAME="your-r2-bucket-name"
-DISTRIBUTION_DOMAIN="your-cloudflare-domain.com"
+DISTRIBUTION_DOMAIN="cyberiya.site"
 R2_ENDPOINT="https://<account-id>.r2.cloudflarestorage.com"
 REGION="auto"
 
