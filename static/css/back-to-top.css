@@ -1,11 +1,14 @@
 /* Современная кнопка "Вернуться в начало" */
-.back-to-top-btn {
+.back-to-top-btn,
+button.back-to-top-btn,
+.back-to-top-btn.show {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: rgba(24, 191, 239, 0.9);
-    color: #ffffff;
-    border: none;
+    background: rgba(255, 255, 255, 0.15) !important;
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 50%;
     width: 56px;
     height: 56px;
@@ -18,8 +21,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(24, 191, 239, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
 }
 
 .back-to-top-btn.show {
@@ -27,10 +31,12 @@
     visibility: visible;
 }
 
-.back-to-top-btn:hover {
-    background: rgba(24, 191, 239, 1);
+.back-to-top-btn:hover,
+button.back-to-top-btn:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    background-color: rgba(255, 255, 255, 0.25) !important;
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(24, 191, 239, 0.4), 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
 .back-to-top-btn:active {

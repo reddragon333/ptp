@@ -1,7 +1,7 @@
 languageCode = "ru"
 defaultContentLanguage = "ru"
 title = "Пока ты спал"
-baseURL = "https://sleeptrip.ru/"
+baseURL = "http://localhost:1313/"
 theme = "hugo-theme-massively"
 googleanalytics = ""
 disqusShortname = ""

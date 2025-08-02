@@ -13,15 +13,15 @@ disqus_identifier = '0'
 <div class="about-site-content">
 <h2>Навигация по сайту</h2>
 
-<p><i class="icon fa-home"></i> <strong><a href="https://sleeptrip.ru/">Главная страница</a></strong> — если есть время просто посмотреть публикации, добро пожаловать на главную страницу, где в хронологическом порядке приведена история поездок с фотографиями.</p>
+<p><i class="icon fa-home"></i> <strong><a href="/">Главная страница</a></strong> — если есть время просто посмотреть публикации, добро пожаловать на главную страницу, где в хронологическом порядке приведена история поездок с фотографиями.</p>
 
-<p><i class="icon fa-calendar"></i> <strong><a href="https://sleeptrip.ru/plan/">Хочу поехать</a></strong> — расписание ближайших поездок или значок календаря внизу страницы, где при желании можно поделиться своими интересными локациями и подобрать попутчиков.</p>
+<p><i class="icon fa-calendar"></i> <strong><a href="/plan/">Хочу поехать</a></strong> — расписание ближайших поездок или значок календаря внизу страницы, где при желании можно поделиться своими интересными локациями и подобрать попутчиков.</p>
 
-<p><i class="icon fa-map"></i> <strong><a href="https://sleeptrip.ru/map/">Маршруты</a></strong> — картографическое отображение пройденных локаций.</p>
+<p><i class="icon fa-map"></i> <strong><a href="/map/">Маршруты</a></strong> — картографическое отображение пройденных локаций.</p>
 
-<p><i class="icon fa-question"></i> <strong><a href="https://sleeptrip.ru/ask/">Спросить</a></strong> — есть вопросы или пожелания?</p>
+<p><i class="icon fa-question"></i> <strong><a href="/ask/">Спросить</a></strong> — есть вопросы или пожелания?</p>
 
-<p><i class="icon fa-image"></i> <strong><a href="https://sleeptrip.ru/gallery/">Галерея</a></strong> — квинтэссенция фотографий из расчёта 1 локация-1 фотография.</p>
+<p><i class="icon fa-image"></i> <strong><a href="/gallery/">Галерея</a></strong> — квинтэссенция фотографий из расчёта 1 локация-1 фотография.</p>
 </div>
 {{< /rawhtml >}}
 

@@ -1,40 +1,44 @@
-<div id="back-to-top" class="back-to-top-btn" onclick="scrollToTop()">
+<div id="back-to-top" class="back-to-top-btn" onclick="scrollToTop()" 
+     style="position: fixed; bottom: 30px; right: 30px; background: rgba(255, 255, 255, 0.15); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 50%; width: 56px; height: 56px; cursor: pointer; font-size: 1.2rem; opacity: 0; visibility: hidden; z-index: 1000; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px); text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); transition: all 0.3s ease;">
     ↑
 </div>
 
 <style>
-.back-to-top-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: rgba(24, 191, 239, 0.9);
-    color: #ffffff;
-    border: none;
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-    visibility: hidden;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(24, 191, 239, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+#back-to-top.back-to-top-btn {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 50% !important;
+    width: 56px !important;
+    height: 56px !important;
+    cursor: pointer !important;
+    font-size: 1.2rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
 }
 
-.back-to-top-btn.show {
-    opacity: 1;
-    visibility: visible;
+#back-to-top.back-to-top-btn.show {
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
-.back-to-top-btn:hover {
-    background: rgba(24, 191, 239, 1);
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(24, 191, 239, 0.4), 0 4px 8px rgba(0, 0, 0, 0.2);
+#back-to-top.back-to-top-btn:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
 .back-to-top-btn:active {
