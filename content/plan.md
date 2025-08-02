@@ -1,5 +1,5 @@
 +++
-slug = 'plan-old'
+slug = 'plan'
 # description = 'Выберите поездку из календаря'
 disableComments = true
 +++
@@ -28,9 +28,6 @@ disableComments = true
 Важно! Поездки проходят рано утром (выезд из Москвы в 5-6 утра) с целью минимизировать время нахождения в пробках. Проверьте папку "Нежелательные", так как ответное письмо на заявку может попасть туда в зависимости от почтового клиента.
 
 {{< rawhtml >}}
-<div style="background: red; color: white; padding: 10px; text-align: center; margin: 10px 0;">
-    НОВАЯ ФОРМА ЗАГРУЖЕНА - ЕСЛИ ВЫ ВИДИТЕ ЭТО, ФОРМА ОБНОВИЛАСЬ
-</div>
 <div class="travel-form-container">
     <!-- Сообщения об успехе/ошибке -->
     <script>
@@ -53,6 +50,7 @@ disableComments = true
             document.querySelector('.travel-form-container').insertBefore(messageDiv, document.querySelector('.travel-form'));
         }
     });
+
     </script>
 
     <form class="travel-form" action="/send_plan.php" method="POST">
@@ -72,14 +70,14 @@ disableComments = true
         </div>
 
         <div class="form-group">
-            <label for="bvs_number">Учётный номер БВС (если уже направляли ранее) или предложите направление/даты поездки без БВС (необязательно)</label>
+            <label for="bvs_number"><strong>Учётный номер БВС</strong> (если уже направляли ранее) или предложите <strong>направление/даты поездки</strong> без БВС (необязательно)</label>
             <textarea id="bvs_number" name="bvs_number" placeholder="Свой вариант поездки или учётный номер дрона"></textarea>
         </div>
 
         <div class="form-group">
-            <label for="trip_period">Выпадающий список</label>
+            <label for="trip_period">Выберите поездку</label>
             <select id="trip_period" name="trip_period">
-                <option value="">Выберите период</option>
+                <option value=""></option>
                 <option value="Полёты в июне 2025 года">Полёты в июне 2025 года</option>
                 <option value="Полёты в июле 2025 года">Полёты в июле 2025 года</option>
                 <option value="Полёты в августе 2025 года">Полёты в августе 2025 года</option>
@@ -89,29 +87,33 @@ disableComments = true
         </div>
 
         <div class="form-group">
-            <label>Согласие на обработку персональных данных *</label>
-            <div style="margin-top: 0.5rem;">
-                <label style="display: flex; align-items: flex-start; font-weight: normal; margin-bottom: 0.5rem;">
-                    <input type="radio" name="consent" value="agree" required style="margin-right: 0.5rem; margin-top: 0.2rem; width: auto;">
-                    <span>Я согласен на обработку персональных данных для оформления заявки, гарантирую, что передаю свои персональные данные</span>
+            <label style="font-weight: 600; margin-bottom: 1rem; display: block;">Согласие на обработку персональных данных *<sup>1</sup></label>
+            <div style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; background: #fafafa;">
+                <label style="display: flex; align-items: flex-start; font-weight: normal; margin-bottom: 0.75rem; cursor: pointer;">
+                    <span style="font-size: 18px; margin-right: 0.5rem; margin-top: 0.1rem;">✅</span>
+                    <input type="radio" name="consent" value="agree" required style="margin-right: 0.75rem; margin-top: 0.3rem; width: 16px; height: 16px; accent-color: #28a745;">
+                    <span style="line-height: 1.5;">Я согласен на <strong>обработку персональных данных</strong> для оформления заявки и гарантирую, что передаю свои персональные данные</span>
                 </label>
-                <label style="display: flex; align-items: center; font-weight: normal;">
-                    <input type="radio" name="consent" value="disagree" style="margin-right: 0.5rem; width: auto;">
-                    <span>Не согласен на обработку персональных данных</span>
+                <label style="display: flex; align-items: center; font-weight: normal; cursor: pointer;">
+                    <span style="font-size: 18px; margin-right: 0.5rem;">❌</span>
+                    <input type="radio" name="consent" value="disagree" style="margin-right: 0.75rem; width: 16px; height: 16px; accent-color: #dc3545;">
+                    <span><strong>Не согласен</strong> на обработку персональных данных</span>
                 </label>
             </div>
         </div>
 
         <div class="form-group">
-            <label>Укажите свой возраст *</label>
-            <div style="margin-top: 0.5rem;">
-                <label style="display: flex; align-items: center; font-weight: normal; margin-bottom: 0.5rem;">
-                    <input type="radio" name="age" value="18+" required style="margin-right: 0.5rem; width: auto;">
-                    <span>Мне более 18 лет</span>
+            <label style="font-weight: 600; margin-bottom: 1rem; display: block;">Укажите свой возраст *<sup>2</sup></label>
+            <div style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; background: #fafafa;">
+                <label style="display: flex; align-items: center; font-weight: normal; margin-bottom: 0.75rem; cursor: pointer;">
+                    <span style="font-size: 18px; margin-right: 0.5rem;">✅</span>
+                    <input type="radio" name="age" value="18+" required style="margin-right: 0.75rem; width: 16px; height: 16px; accent-color: #28a745;">
+                    <span>Мне <strong>более 18 лет</strong></span>
                 </label>
-                <label style="display: flex; align-items: center; font-weight: normal;">
-                    <input type="radio" name="age" value="under18" style="margin-right: 0.5rem; width: auto;">
-                    <span>Мне менее 18 лет</span>
+                <label style="display: flex; align-items: center; font-weight: normal; cursor: pointer;">
+                    <span style="font-size: 18px; margin-right: 0.5rem;">❌</span>
+                    <input type="radio" name="age" value="under18" style="margin-right: 0.75rem; width: 16px; height: 16px; accent-color: #dc3545;">
+                    <span>Мне <strong>менее 18 лет</strong></span>
                 </label>
             </div>
         </div>
@@ -123,4 +125,15 @@ disableComments = true
 </div>
 {{< /rawhtml >}}
 
+---
+
+### Пояснения к форме:
+
+**<sup>1</sup> Согласие на обработку персональных данных:**
+
+Предоставленные персональные данные будут обрабатываться в соответствии с положениями № 152-ФЗ от 27.07.2006 «О персональных данных». Настоящее согласие предоставляется путем заполнения «чек-бокса» (проставления «галочки»/ «веб-метки» в графе «Я гарантирую, что передаю свои персональные данные, согласен на их обработку для оформления заявки» в форме обратной связи на сайте sleeptrip.ru) и нажатия соответствующей кнопки. Более подробная информация будет направлена на электронную почту.
+
+**<sup>2</sup> Подтверждение совершеннолетия:**
+
+Участие в поездках и мероприятиях разрешено только лицам, достигшим совершеннолетия (18 лет). В случае, если Вам менее 18 лет, для участия в поездке необходимо согласие и личное присутствие законных представителей (родителей, опекунов).
 

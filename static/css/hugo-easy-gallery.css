@@ -6,20 +6,20 @@ Simple Gallery CSS - Small thumbnails in rows
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 1.5%;
     padding: 10px;
     max-width: 1400px;
     margin: 0 auto;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 /* Контейнер изображения */
 .gallery .box {
-    width: 300px;
-    height: 300px;
+    width: 23%;
+    height: 250px;
     transition: transform 0.2s ease;
-    border: 3px solid white;
-    border-radius: 20px;
+    border: none;
+    border-radius: 15px;
 }
 
 /* Эффект наведения */
@@ -44,7 +44,7 @@ Simple Gallery CSS - Small thumbnails in rows
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 /* Скрываем обычные img теги */
@@ -67,25 +67,32 @@ Simple Gallery CSS - Small thumbnails in rows
 /* Адаптивность */
 @media (max-width: 768px) {
     .gallery .box {
-        width: 100px;
-        height: 100px;
+        width: 23%;
+        height: 180px;
     }
     
     .gallery {
-        gap: 6px;
+        gap: 1.5%;
     }
 }
 
 @media (max-width: 480px) {
-    .gallery .box {
-        width: 80px;
-        height: 80px;
-        border-radius: 6px;
+    .gallery {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        align-items: center;
     }
     
-    .gallery {
-        gap: 4px;
-        padding: 8px;
+    .gallery .box {
+        width: 95%;
+        max-width: 400px;
+        height: 250px;
+        border-radius: 12px;
+    }
+    
+    .gallery .img {
+        border-radius: 12px;
     }
 }
 

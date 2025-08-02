@@ -7,6 +7,11 @@ googleanalytics = ""
 disqusShortname = ""
 disableKinds = ["taxonomy", "term"]
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [params]
   # set below parameter to define a favicon
  favicon = "images/favicon.ico"
