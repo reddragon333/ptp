@@ -1,0 +1,62 @@
+/* ПОЛНОСТЬЮ НОВЫЙ ПОДХОД - очищаем все старое */
+
+/* Убираем все рамки и фоны у поста Start */
+.start-post {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Основные стили для изображения поста Start */
+.start-image img {
+    width: 100% !important;
+    height: 500px !important;
+    object-fit: cover !important;
+    display: block !important;
+    margin: 0 auto !important;
+    border-radius: 15px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Эффект при наведении */
+.start-image:hover img {
+    transform: scale(1.02) !important;
+    transition: transform 0.3s ease !important;
+}
+
+/* Стили для текста в посте "О чем этот сайт" */
+.about-site-content {
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: #333;
+}
+
+.about-site-content h3 {
+    font-size: 1.1em;
+    margin: 1em 0 0.5em 0;
+    color: #2c3e50;
+}
+
+.about-site-content p {
+    margin: 0.5em 0;
+}
+
+.about-site-content .nav-item {
+    margin: 0.8em 0;
+    padding: 0.5em 0;
+}
+
+.about-site-content .nav-item strong {
+    font-size: 1em;
+    color: #34495e;
+}
+
+/* Дополнительная страховка - если что-то не работает */
+article.post.featured.start-post .image.main img,
+section.post .image.main img[src*="Kavkaz-20220505-1.jpg"] {
+    width: 100% !important;
+    height: 500px !important;
+    object-fit: cover !important;
+    border-radius: 15px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+}

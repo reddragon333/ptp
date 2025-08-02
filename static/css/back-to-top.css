@@ -1,0 +1,65 @@
+/* Современная кнопка "Вернуться в начало" */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(24, 191, 239, 0.9);
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(24, 191, 239, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.back-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top-btn:hover {
+    background: rgba(24, 191, 239, 1);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(24, 191, 239, 0.4), 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top-btn:active {
+    transform: translateY(0) scale(0.95);
+    transition: all 0.1s ease;
+}
+
+@media (max-width: 768px) {
+    .back-to-top-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.back-to-top-btn.show {
+    animation: fadeInUp 0.3s ease-out;
+}

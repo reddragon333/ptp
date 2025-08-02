@@ -59,9 +59,11 @@ disqus_identifier = '25'
 
 Локация
 {{< rawhtml >}}
-<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ae793e02d31070bc1fe8832959306fb60efbf4f4953548e631c74e27ed587c121&amp;width=500&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+<div class="yandex-map-container">
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ae793e02d31070bc1fe8832959306fb60efbf4f4953548e631c74e27ed587c121&amp;width=800&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
 {{< /rawhtml >}}
 
 {{< rawhtml >}}
-<a href="#">Вернуться в начало страницы</a>
+{{< back-to-top >}}
 {{< /rawhtml >}}

@@ -1,0 +1,296 @@
+/* Стили для форм обратной связи */
+.travel-form-container, .contact-form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.travel-form, .contact-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    color: #2c3e50;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #e1e5e9;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    background: #fafbfc;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+    color: #2c3e50;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1rem;
+    border: 1px solid #e1e5e9;
+    border-radius: 12px;
+    font-size: 1rem;
+    background: white;
+    color: #333;
+    font-family: inherit;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    min-height: 3rem;
+    transition: all 0.3s ease;
+}
+
+.form-group select option {
+    background: white;
+    color: #333;
+    padding: 0.5rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    transform: translateY(-1px);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    background: transparent;
+    color: #2c3e50;
+    padding: 1.2rem 2.5rem;
+    border: 2px solid #2c3e50;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-transform: none;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background: #2c3e50;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.1);
+}
+
+.submit-btn i {
+    font-size: 1.1em;
+}
+
+/* Сообщения об успехе/ошибке */
+.form-message {
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.form-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .travel-form-container, .contact-form-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px; /* Предотвращает зум на iOS */
+    }
+    
+    .submit-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Стили для радиокнопок */
+.form-group input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.75rem;
+    margin-top: 0.2rem;
+    accent-color: #3498db;
+    cursor: pointer;
+}
+
+.form-group label input[type="radio"] + span {
+    cursor: pointer;
+    user-select: none;
+}
+
+.form-group label:has(input[type="radio"]) {
+    display: flex;
+    align-items: flex-start;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.form-group label:has(input[type="radio"]):hover {
+    background-color: rgba(52, 152, 219, 0.05);
+}
+
+.form-group label:has(input[type="radio"]:checked) {
+    background-color: rgba(52, 152, 219, 0.1);
+    color: #2980b9;
+}
+
+/* Стили для чекбоксов */
+.form-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.75rem;
+    margin-top: 0.2rem;
+    accent-color: #3498db;
+    cursor: pointer;
+}
+
+.form-group label input[type="checkbox"] + span {
+    cursor: pointer;
+    user-select: none;
+}
+
+.form-group label:has(input[type="checkbox"]) {
+    display: flex;
+    align-items: flex-start;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.form-group label:has(input[type="checkbox"]):hover {
+    background-color: rgba(52, 152, 219, 0.05);
+}
+
+.form-group label:has(input[type="checkbox"]:checked) {
+    background-color: rgba(39, 174, 96, 0.1);
+    border-color: rgba(39, 174, 96, 0.3);
+    color: #27ae60;
+}
+
+.form-group label:has(input[type="checkbox"]:checked)::after,
+.checkbox-label:has(input[type="checkbox"]:checked)::after {
+    content: "✓";
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #27ae60;
+    font-size: 1.4em;
+    font-weight: bold;
+    animation: checkmark-appear 0.3s ease;
+}
+
+@keyframes checkmark-appear {
+    0% {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+/* Специфичные стили для checkbox-label */
+.checkbox-label:has(input[type="checkbox"]):hover {
+    background-color: rgba(52, 152, 219, 0.05);
+}
+
+.checkbox-label:has(input[type="checkbox"]:checked) {
+    background-color: rgba(39, 174, 96, 0.1) !important;
+    border-color: rgba(39, 174, 96, 0.3) !important;
+    color: #27ae60 !important;
+}
+
+/* Плейсхолдеры */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #95a5a6;
+    opacity: 1;
+}
+
+/* Интеграция с темой сайта */
+@media (prefers-color-scheme: dark) {
+    .travel-form-container, .contact-form-container {
+        background: rgba(30, 30, 30, 0.95);
+    }
+    
+    .form-group label {
+        color: #e0e0e0;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        background: rgba(50, 50, 50, 0.8);
+        border-color: #555;
+        color: #e0e0e0;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: #4a9eff;
+    }
+}

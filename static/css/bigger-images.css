@@ -1,0 +1,6 @@
+/* Увеличиваем изображения в featured постах */
+.post.featured .image.main img {
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
+}

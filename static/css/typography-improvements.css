@@ -1,0 +1,139 @@
+/* Деликатные улучшения типографики только для контента постов */
+
+/* Улучшения только для основного контента статей */
+#main article p {
+    line-height: 1.7;
+    text-align: left;
+    margin-bottom: 1.25rem;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Заголовки только в статьях */
+#main article h1,
+#main article h2,
+#main article h3 {
+    text-transform: none;
+    font-weight: 700;
+    text-rendering: optimizeLegibility;
+}
+
+#main article h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+#main article h2 {
+    font-size: 2rem;
+    line-height: 1.25;
+    margin-bottom: 1.25rem;
+}
+
+#main article h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+/* Ссылки в статьях - только подсветка при наведении */
+#main article a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#main article a:hover {
+    color: #18bfef;
+}
+
+/* Списки в статьях */
+#main article ul,
+#main article ol {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+#main article li {
+    margin-bottom: 0.4rem;
+    line-height: 1.6;
+}
+
+/* Цитаты в статьях */
+#main article blockquote {
+    line-height: 1.6;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    background: rgba(24, 191, 239, 0.03);
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+}
+
+/* Код в статьях */
+#main article code {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+    font-size: 0.9em;
+}
+
+#main article pre {
+    background: #f8f9fa;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+    line-height: 1.4;
+}
+
+#main article pre code {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* Улучшения для контента страниц (не меню и карточки) */
+#main section > p {
+    line-height: 1.7;
+    text-align: left;
+    margin-bottom: 1.25rem;
+}
+
+/* Ограничиваем ширину только для статей */
+#main article {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* Улучшения контрастности только для контента */
+#main article {
+    color: #2c3e50;
+}
+
+#main article h1,
+#main article h2,
+#main article h3,
+#main article h4,
+#main article h5,
+#main article h6 {
+    color: #1a252f;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    #main article h1 {
+        font-size: 2rem;
+    }
+    
+    #main article h2 {
+        font-size: 1.7rem;
+    }
+    
+    #main article h3 {
+        font-size: 1.4rem;
+    }
+    
+    #main article {
+        max-width: 95%;
+        padding: 0 0.5rem;
+    }
+}

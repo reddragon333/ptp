@@ -1,0 +1,23 @@
+/* Уменьшение отступов между меню и заголовками страниц */
+#main > * {
+    padding-top: 2rem !important;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 736px) {
+    #main > * {
+        padding-top: 1.5rem !important;
+    }
+}
+
+/* Уменьшение размера заголовков на страницах */
+.post header.major h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.2 !important;
+}
+
+@media (max-width: 736px) {
+    .post header.major h1 {
+        font-size: 2rem !important;
+    }
+}

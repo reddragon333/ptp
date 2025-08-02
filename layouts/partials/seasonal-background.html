@@ -1,0 +1,43 @@
+{{/* 
+Определяем текущий сезон и возвращаем соответствующий фон
+Зима: 21 декабря - 20 марта
+Весна: 21 марта - 20 июня  
+Лето: 21 июня - 20 сентября
+Осень: 21 сентября - 20 декабря
+*/}}
+
+{{- $currentDate := now -}}
+{{- $month := $currentDate.Month -}}
+{{- $day := $currentDate.Day -}}
+
+{{/* Определяем номер дня в году для более точного определения сезона */}}
+{{- $dayOfYear := $currentDate.YearDay -}}
+
+{{/* Примерные границы сезонов по дням года */}}
+{{- $springStart := 80 -}}  {{/* ~21 марта */}}
+{{- $summerStart := 172 -}} {{/* ~21 июня */}}
+{{- $autumnStart := 264 -}} {{/* ~21 сентября */}}
+{{- $winterStart := 355 -}} {{/* ~21 декабря */}}
+
+{{- $season := "winter" -}}
+
+{{- if and (ge $dayOfYear $springStart) (lt $dayOfYear $summerStart) -}}
+    {{- $season = "spring" -}}
+{{- else if and (ge $dayOfYear $summerStart) (lt $dayOfYear $autumnStart) -}}
+    {{- $season = "summer" -}}
+{{- else if and (ge $dayOfYear $autumnStart) (lt $dayOfYear $winterStart) -}}
+    {{- $season = "autumn" -}}
+{{- end -}}
+
+{{/* Возвращаем путь к фоновому изображению в зависимости от сезона */}}
+{{- if eq $season "winter" -}}
+images/bg-winter.jpg
+{{- else if eq $season "spring" -}}
+images/bg-spring.jpg
+{{- else if eq $season "summer" -}}
+images/bg-summer.jpg
+{{- else if eq $season "autumn" -}}
+images/bg-autumn.jpg
+{{- else -}}
+images/DESKTOP_NEW_1.jpg
+{{- end -}}

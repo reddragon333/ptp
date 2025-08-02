@@ -7,57 +7,80 @@ disableComments = true
 <h3 align="center">Задать вопрос</h3>
 {{< /rawhtml >}}
 
-{{< rawhtml >}}
-<p></p>
-<p>Если у Вас есть вопрос или Вы хотите предложить свою локацию / тур для поездки, напишите в форме ниже. Мы вам с радостью ответим!
-Календарь поездок можно посмотреть <a href="https://sleeptrip.ru/plan/">--тут--</a></p>
-{{< /rawhtml >}}
+Если у Вас есть вопрос или Вы хотите предложить свою локацию / тур для поездки, напишите в форме ниже. Мы вам с радостью ответим!
+
+**Календарь поездок** можно посмотреть [здесь](/plan/)
 
 {{< rawhtml >}}
-<script type="text/javascript" async="async">
-    (function () {
-      function init() {
-        const scr = document.createElement("script");
-        scr.type = "text/javascript";
-        scr.async = "async";
-        scr.src =
-          "//cdn.qform.io/forms.js?v=" + new Date().getTime() / 1000;
-        const scrInsert = document.getElementsByTagName("script")[0];
-        scrInsert.parentNode.insertBefore(scr, scrInsert);
-      }
-      const d = document;
-      const w = window;
-      if (d.readyState === "interactive") {
-        init();
-      } else {
-        if (w.attachEvent) {
-          w.attachEvent("onload", init);
-        } else {
-          w.addEventListener("DOMContentLoaded", init, false);
+<div class="contact-form-container">
+    <!-- Сообщения об успехе/ошибке -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const success = urlParams.get('success');
+        const error = urlParams.get('error');
+        
+        if (success) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'form-message form-success';
+            messageDiv.textContent = success;
+            document.querySelector('.contact-form-container').insertBefore(messageDiv, document.querySelector('.contact-form'));
         }
-      }
-    })();
-  </script>
-  <link rel="stylesheet" href="https://cdn.qform.io/preloader.css">
-<div data-formid="form_WYWSzhwm_QUoWj5QUHmpsb1SeN405Kzc" data-preloader="2" style="min-height: 576px; margin: 0 auto">
-  <div class="qform-preloader__root" id="form_WYWSzhwm_QUoWj5QUHmpsb1SeN405Kzc_loader_root">
-    <div class="qform-preloader__row">
-      <div class="qform-preloader__element">
-      </div>
-    </div>
-    <div class="qform-preloader__row">
-      <div class="qform-preloader__element">
-      </div>
-    </div>
-    <div class="qform-preloader__row">
-      <div class="qform-preloader__element">
-      </div>
-    </div>
-    <div class="qform-preloader__row">
-      <div class="qform-preloader__element qform-preloader__button">
-      </div>
-    </div>
-  </div>
+        
+        if (error) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'form-message form-error';
+            messageDiv.textContent = error;
+            document.querySelector('.contact-form-container').insertBefore(messageDiv, document.querySelector('.contact-form'));
+        }
+
+        // Русские сообщения валидации
+        const inputs = document.querySelectorAll('input[required], select[required], textarea[required]');
+        inputs.forEach(function(input) {
+            input.addEventListener('invalid', function() {
+                if (input.type === 'checkbox') {
+                    input.setCustomValidity('Пожалуйста, отметьте этот пункт для продолжения');
+                } else if (input.type === 'email') {
+                    input.setCustomValidity('Пожалуйста, введите корректный email адрес');
+                } else if (input.tagName === 'SELECT') {
+                    input.setCustomValidity('Пожалуйста, выберите один из вариантов');
+                } else {
+                    input.setCustomValidity('Пожалуйста, заполните это поле');
+                }
+            });
+            
+            input.addEventListener('input', function() {
+                input.setCustomValidity('');
+            });
+        });
+    });
+    </script>
+
+    <form class="contact-form" action="/send_ask.php" method="POST">
+        <div class="form-group">
+            <label for="name">Ваше имя *</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="subject">Тема *</label>
+            <input type="text" id="subject" name="subject" placeholder="Например: Вопрос о поездке в Карелию" required>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Ваш вопрос *</label>
+            <textarea id="message" name="message" placeholder="Задайте ваш вопрос или предложите свою идею для поездки..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Отправить вопрос
+        </button>
+    </form>
 </div>
-    {{< /rawhtml >}}
+{{< /rawhtml >}}
 

@@ -1,0 +1,39 @@
+# Hugo default output directory
+/public/
+/resources/_gen/
+/assets/jsconfig.json
+hugo_stats.json
+hugo.exe
+hugo.darwin
+hugo.linux
+
+# Temporary files
+.temp
+.temp-*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+.idea
+.vscode
+*.sublime-workspace
+*.swp
+*.swo
+
+# Netlify
+.netlify
+.hugo_build.lock
+
+# Sensitive files - DO NOT COMMIT THESE
+.env
+.env.*
+*.env
+.aws/credentials
+.aws/config
+*_secret*
+*_key*
+*password*
+*apikey*
+*token*

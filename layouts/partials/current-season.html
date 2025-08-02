@@ -1,0 +1,24 @@
+{{/* Отображает текущий сезон для отладки */}}
+{{- $currentDate := now -}}
+{{- $dayOfYear := $currentDate.YearDay -}}
+
+{{- $springStart := 80 -}}  
+{{- $summerStart := 172 -}} 
+{{- $autumnStart := 264 -}} 
+{{- $winterStart := 355 -}} 
+
+{{- $season := "зима" -}}
+{{- $seasonEn := "winter" -}}
+
+{{- if and (ge $dayOfYear $springStart) (lt $dayOfYear $summerStart) -}}
+    {{- $season = "весна" -}}
+    {{- $seasonEn = "spring" -}}
+{{- else if and (ge $dayOfYear $summerStart) (lt $dayOfYear $autumnStart) -}}
+    {{- $season = "лето" -}}
+    {{- $seasonEn = "summer" -}}
+{{- else if and (ge $dayOfYear $autumnStart) (lt $dayOfYear $winterStart) -}}
+    {{- $season = "осень" -}}
+    {{- $seasonEn = "autumn" -}}
+{{- end -}}
+
+<!-- Сейчас {{ $season }} ({{ $seasonEn }}) - День года: {{ $dayOfYear }} -->

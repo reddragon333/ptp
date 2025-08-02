@@ -25,5 +25,5 @@ disqus_identifier = '91'
 {{< youtube id="CGJcvPO9c1o?si=xO2mWmoB_n7YduUZ" >}}
 
 {{< rawhtml >}}
-<a href="#">Вернуться в начало страницы</a>
+{{< back-to-top >}}
 {{< /rawhtml >}}

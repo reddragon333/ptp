@@ -1,0 +1,53 @@
+/* Фиксируем пагинацию */
+.pagination ul {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 1rem !important;
+}
+
+/* Информация о страницах для десктопа */
+.pagination .page-info {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.8rem !important;
+    color: #333 !important;
+    background: none !important;
+    border: none !important;
+    text-align: center !important;
+    font-weight: 300 !important;
+    white-space: nowrap !important;
+    min-width: 60px !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+}
+
+.pagination .page-info .current-page {
+    color: #333 !important;
+    font-weight: 400 !important;
+    font-size: 1em !important;
+}
+
+.pagination .page-info .separator {
+    margin: 0 0.3rem !important;
+    color: #666 !important;
+    font-size: 0.9em !important;
+    font-weight: 300 !important;
+}
+
+.pagination .page-info .total-pages {
+    color: #333 !important;
+    font-weight: 300 !important;
+}
+
+/* Скрываем информацию о страницах на мобильных */
+@media (max-width: 768px) {
+    .pagination .page-info.desktop-only {
+        display: none !important;
+    }
+}

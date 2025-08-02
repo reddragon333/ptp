@@ -1,16 +1,17 @@
-languageCode = "en-us"
+languageCode = "ru"
+defaultContentLanguage = "ru"
 title = "Пока ты спал"
 baseURL = "https://sleeptrip.ru/"
 theme = "hugo-theme-massively"
 googleanalytics = ""
 disqusShortname = ""
-disableKinds = ["taxonomy", "taxonomyTerm", "section"]
+disableKinds = ["taxonomy", "term"]
 
 [params]
   # set below parameter to define a favicon
  favicon = "images/favicon.ico"
   # set to change date format
-  # dateFormat = "2.1.2006"
+ dateFormat = "2 January 2006"
  backgroundPath = "images/DESKTOP_NEW_1.jpg"
 
 # Below parameters can be set to override default post settings

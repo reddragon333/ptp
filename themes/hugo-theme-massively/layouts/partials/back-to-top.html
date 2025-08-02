@@ -1,0 +1,30 @@
+<div id="global-back-to-top" class="back-to-top-btn" onclick="scrollToTop()">
+    ↑
+</div>
+
+<script>
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+window.addEventListener('scroll', function() {
+    const backToTopBtn = document.getElementById('global-back-to-top');
+    
+    // Вычисляем высоту страницы и положение скролла
+    const documentHeight = document.documentElement.scrollHeight;
+    const windowHeight = window.innerHeight;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Показываем кнопку только в последней трети страницы
+    const scrollPercent = (scrollTop + windowHeight) / documentHeight;
+    
+    if (scrollPercent > 0.66) { // Показываем когда прокрутили 66% страницы
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+});
+</script>

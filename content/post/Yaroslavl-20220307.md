@@ -26,5 +26,5 @@ disqus_identifier = '47'
 
 
 {{< rawhtml >}}
-<a href="#">Вернуться в начало страницы</a>
+{{< back-to-top >}}
 {{< /rawhtml >}}

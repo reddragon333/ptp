@@ -116,6 +116,3 @@ slug = 'gallery'
 
 
 
-{{< rawhtml >}}
-<a href="#">Вернуться в начало страницы</a>
-{{< /rawhtml >}}

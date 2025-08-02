@@ -4,13 +4,13 @@
     {{ range .posts.Pages }}
     <article>
         <header>
-            {{ if not .Date.IsZero }}
-            <span class="date">{{ .Date.Format (.Site.Params.DateFormat | default "January 2, 2006") }}</span>
+            {{ if and (not .Date.IsZero) (not .Params.pinned) }}
+            <span class="date">{{ partial "format-date-ru.html" .Date }}</span>
             {{ end }}
             <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
         </header>
         {{ if .Params.image }}
-        <a href="{{ .Permalink }}" class="image fit"><img src="{{ .Params.image | relURL }}" alt="" /></a>
+        <a href="{{ .Permalink }}" class="image main"><img src="{{ .Params.image | relURL }}" alt="" /></a>
         {{ end }}
         {{ if .Description }}
         <p>{{ .Description }}</p>

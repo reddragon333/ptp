@@ -43,25 +43,44 @@
         {{ end }}
         {{ with $data.social }}
         <section>
-            <h3>{{ i18n "MENU_FOOTER" . }}</h3>
-            <ul class="icons alt">
+            <ul class="footer-nav-links">
               {{ with .home}}
-              <li><a href="{{ . }}" class="icon alt fab fa-home"><span class="label">Домой</span></a></li>
+              <li><a href="{{ . }}" class="footer-nav-link">
+                <i class="icon fa-home"></i>
+                <span>Главная</span>
+              </a></li>
               {{ end }}
               {{ with .plan}}
-              <li><a href="{{ . }}" class="icon alt fab fa-calendar"><span class="label">Хочу поехать</span></a></li>
+              <li><a href="{{ . }}" class="footer-nav-link">
+                <i class="icon fa-calendar"></i>
+                <span>Хочу поехать</span>
+              </a></li>
               {{ end }}
               {{ with .map}}
-              <li><a href="{{ . }}" class="icon alt fab fa-map"><span class="label">Маршруты</span></a></li>
+              <li><a href="{{ . }}" class="footer-nav-link">
+                <i class="icon fa-map"></i>
+                <span>Маршруты</span>
+              </a></li>
               {{ end }}
               {{ with .ask}}
-              <li><a href="{{ . }}" class="icon alt fab fa-question"><span class="label">Спросить</span></a></li>
+              <li><a href="{{ . }}" class="footer-nav-link">
+                <i class="icon fa-question"></i>
+                <span>Спросить</span>
+              </a></li>
               {{ end }}
               {{ with .gallery}}
-              <li><a href="{{ . }}" class="icon alt fab fa-image"><span class="label">Галерея</span></a></li>
+              <li><a href="{{ . }}" class="footer-nav-link">
+                <i class="icon fa-image"></i>
+                <span>Галерея</span>
+              </a></li>
               {{ end }}
             </ul>
         </section>
         {{ end }}
     </section>
+    
+    <!-- Seasonal Background Info -->
+    <div style="text-align: center; padding: 10px; font-size: 0.8em; color: rgba(255,255,255,0.5);">
+        {{ partial "current-season.html" . }}
+    </div>
 </footer>

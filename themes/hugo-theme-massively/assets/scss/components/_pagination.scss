@@ -73,6 +73,20 @@
 			.page, .extra {
 				display: none;
 			}
+			
+			.next, .previous {
+				padding: 0 1rem;
+				font-size: 0.7rem;
+				min-width: auto;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			
+			// Добавляем обертку для центрирования
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 0.5rem;
 		}
 	}
 

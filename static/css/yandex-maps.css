@@ -1,0 +1,55 @@
+.yandex-map-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 2rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #f5f5f5;
+}
+
+.yandex-map-container iframe {
+    width: 100% !important;
+    height: 400px !important;
+    border: none;
+    display: block;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .yandex-map-container {
+        margin: 1.5rem -1rem; /* Выходим за границы контейнера на мобильном */
+        border-radius: 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .yandex-map-container iframe {
+        height: 300px !important;
+    }
+}
+
+/* Планшетная версия */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .yandex-map-container {
+        margin: 2rem 0;
+        max-width: 100%;
+    }
+    
+    .yandex-map-container iframe {
+        height: 350px !important;
+    }
+}
+
+/* Десктопная версия */
+@media (min-width: 1025px) {
+    .yandex-map-container {
+        margin: 2.5rem auto;
+        max-width: 800px; /* Ограничиваем максимальную ширину на больших экранах */
+    }
+    
+    .yandex-map-container iframe {
+        height: 450px !important;
+    }
+}
+
+/* Убираем индикатор загрузки, так как он мешает */

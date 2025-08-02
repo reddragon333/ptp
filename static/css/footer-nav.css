@@ -1,0 +1,69 @@
+/* Горизонтальное меню в футере */
+.footer-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    min-width: 80px;
+}
+
+.footer-nav-link:hover {
+    color: #18bfef;
+    background: rgba(24, 191, 239, 0.1);
+    transform: translateY(-3px);
+    text-decoration: none;
+}
+
+.footer-nav-link .icon {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    opacity: 0.9;
+}
+
+.footer-nav-link:hover .icon {
+    opacity: 1;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .footer-nav-links {
+        gap: 1rem;
+    }
+    
+    .footer-nav-link {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+        min-width: 70px;
+    }
+    
+    .footer-nav-link .icon {
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+    }
+}
+
+/* Стиль для заголовка секции */
+#footer h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    font-weight: 600;
+}

@@ -1,0 +1,59 @@
+/* Скрываем номера страниц на мобильных устройствах */
+@media (max-width: 768px) {
+    /* Скрываем все элементы с номерами страниц */
+    .pagination .page-number-item {
+        display: none !important;
+    }
+    
+    /* Дополнительная защита - скрываем по классам */
+    .pagination .page,
+    .pagination .page.active,
+    .pagination .extra {
+        display: none !important;
+    }
+    
+    /* Центрируем оставшиеся кнопки */
+    .pagination {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 1rem !important;
+        margin: 1rem 0 !important;
+    }
+    
+    .pagination ul {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 1rem !important;
+    }
+    
+    /* Стилизуем кнопки Назад/Далее */
+    .pagination .previous,
+    .pagination .next {
+        padding: 0.8rem 1.2rem !important;
+        font-size: 0.9rem !important;
+        min-width: 80px !important;
+        text-align: center !important;
+        border-radius: 4px !important;
+        display: inline-block !important;
+    }
+    
+    /* Показываем только навигационные кнопки */
+    .pagination li:has(.previous),
+    .pagination li:has(.next) {
+        display: block !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .pagination .previous,
+    .pagination .next {
+        padding: 0.7rem 1rem !important;
+        font-size: 0.8rem !important;
+        min-width: 70px !important;
+    }
+}

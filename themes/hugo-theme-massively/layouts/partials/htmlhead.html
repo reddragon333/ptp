@@ -10,7 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!-- CSS -->
-		{{ if .Site.IsServer }}
+		{{ if hugo.IsServer }}
 		{{ $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "main.scss" . | toCSS (dict "targetPath" "assets/css/main.css" "enableSourceMap" true) }}
 		<link rel="stylesheet" href="{{ ($style).RelPermalink }}">
 		{{ else }}
@@ -22,5 +22,16 @@
 		{{ end }}
 		{{ $noscript := resources.Get "scss/noscript.scss" | resources.ExecuteAsTemplate "noscript.scss" . | toCSS (dict "targetPath" "assets/css/noscript.css" "enableSourceMap" false) }}
 		<noscript><link rel="stylesheet" href='{{ $noscript.RelPermalink }}' /></noscript>
+		<link rel="stylesheet" href="/css/yandex-maps.css">
+		<link rel="stylesheet" href="/css/footer-nav.css">
+		<link rel="stylesheet" href="/css/mobile-pagination.css">
+		<link rel="stylesheet" href="/css/back-to-top.css">
+		<link rel="stylesheet" href="/css/typography-improvements.css">
+		<link rel="stylesheet" href="/css/about-site.css">
+		<link rel="stylesheet" href="/css/copyright-visible.css">
+		<link rel="stylesheet" href="/css/nav-background.css">
+		<link rel="stylesheet" href="/css/pagination-info.css">
+		<link rel="stylesheet" href="/css/forms.css">
+		<link rel="stylesheet" href="/css/page-spacing.css">
 		{{ partial "htmlhead.custom.html" }}
 	</head>

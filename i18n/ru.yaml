@@ -1,0 +1,47 @@
+# Русская локализация для Hugo
+- id: dateFormat
+  translation: "2 January 2006"
+
+# Навигация
+- id: NAV_MENU
+  translation: "Меню"
+- id: NAV_CONTACT
+  translation: "Контакты"
+
+# Интро
+- id: INTRO_CONTINUE
+  translation: "Продолжить"
+
+# Меню футера
+- id: MENU_FOOTER
+  translation: "Навигация"
+
+# Контакты
+- id: CONTACT_ADDRESS
+  translation: "Адрес"
+- id: CONTACT_PHONE
+  translation: "Телефон"
+- id: CONTACT_FORM_FIELD_NAME
+  translation: "Имя"
+- id: CONTACT_FORM_FIELD_EMAIL
+  translation: "Email"
+- id: CONTACT_FORM_FIELD_MESSAGE
+  translation: "Сообщение"
+- id: CONTACT_FORM_SUBMIT_SEND_MESSAGE
+  translation: "Отправить сообщение"
+
+# Пагинация
+- id: PAGINATION_FIRST
+  translation: "Первая"
+- id: PAGINATION_LAST
+  translation: "Последняя"
+- id: PAGINATION_NEXT
+  translation: "Далее"
+- id: PAGINATION_PREVIOUS
+  translation: "Назад"
+
+# Копирайт
+- id: COPYRIGHT_MESSAGE_1
+  translation: "sleeptrip.ru 2023-2025"
+- id: COPYRIGHT_MESSAGE_2
+  translation: ""
