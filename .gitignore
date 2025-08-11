@@ -38,3 +38,10 @@ Thumbs.db
 *apikey*
 *token*gitea
 gitea.pub
+
+# Local development folders
+scripts/
+telegram/
+migration-s3/
+INFO/
+forms/
