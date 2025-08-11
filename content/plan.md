@@ -49,6 +49,26 @@ disableComments = true
             messageDiv.textContent = error;
             document.querySelector('.travel-form-container').insertBefore(messageDiv, document.querySelector('.travel-form'));
         }
+
+        // Русские сообщения валидации
+        const inputs = document.querySelectorAll('input[required], select[required], textarea[required]');
+        inputs.forEach(function(input) {
+            input.addEventListener('invalid', function() {
+                if (input.type === 'checkbox') {
+                    input.setCustomValidity('Пожалуйста, отметьте этот пункт для продолжения');
+                } else if (input.type === 'email') {
+                    input.setCustomValidity('Пожалуйста, введите корректный email адрес');
+                } else if (input.tagName === 'SELECT') {
+                    input.setCustomValidity('Пожалуйста, выберите один из вариантов');
+                } else {
+                    input.setCustomValidity('Пожалуйста, заполните это поле');
+                }
+            });
+            
+            input.addEventListener('input', function() {
+                input.setCustomValidity('');
+            });
+        });
     });
 
     </script>
@@ -86,24 +106,31 @@ disableComments = true
             </select>
         </div>
 
-        <div class="form-group">
-            <label style="font-weight: 600; margin-bottom: 1rem; display: block;">Согласие на обработку персональных данных *<sup>1</sup></label>
-            <div style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; background: #fafafa;">
-                <label style="display: flex; align-items: flex-start; font-weight: normal; margin-bottom: 0.75rem; cursor: pointer;">
-                    <span style="font-size: 18px; margin-right: 0.5rem; margin-top: 0.1rem;">✅</span>
-                    <input type="radio" name="consent" value="agree" required style="margin-right: 0.75rem; margin-top: 0.3rem; width: 16px; height: 16px; accent-color: #28a745;">
-                    <span style="line-height: 1.5;">Я согласен на <strong>обработку персональных данных</strong> для оформления заявки и гарантирую, что передаю свои персональные данные</span>
-                </label>
-                <label style="display: flex; align-items: center; font-weight: normal; cursor: pointer;">
-                    <span style="font-size: 18px; margin-right: 0.5rem;">❌</span>
-                    <input type="radio" name="consent" value="disagree" style="margin-right: 0.75rem; width: 16px; height: 16px; accent-color: #dc3545;">
-                    <span><strong>Не согласен</strong> на обработку персональных данных</span>
-                </label>
-            </div>
+        <div class="form-group checkbox-group">
+            <label class="checkbox-container">
+                <input type="checkbox" id="privacy_consent" name="privacy_consent" required>
+                <span class="checkmark"></span>
+                <span class="privacy-text">
+                    Я согласен на обработку персональных данных
+                    <div class="privacy-details">
+                        <p><strong>СОГЛАСИЕ на обработку персональных данных</strong></p>
+                        <p>Заполнение чек-бокса и нажатие кнопки является подтверждением Вашего согласия на обработку персональных данных с целью получения разрешения на полёты БВС и/или организации поездки на сайте sleeptrip.ru.</p>
+                        <p>Предоставленные персональные данные будут обрабатываться в соответствии с положениями Федерального закона РФ №152-ФЗ от 27.07.2006 «О персональных данных».</p>
+                        <p>Я выражаю свое согласие на обработку (включая: сбор, запись, систематизацию, накопление, хранение, уточнение, извлечение, использование, передачу, блокирование, обезличивание, удаление, уничтожение) моих персональных данных Оператором (владельцем сайта sleeptrip.ru) для целей:</p>
+                        <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+                            <li>обеспечения получения разрешения на полёты БВС и направления информационных сообщений о статусе получения разрешения;</li>
+                            <li>организации поездки и направления информации о поездке.</li>
+                        </ul>
+                        <p>Я согласен с тем, что мои персональные данные могут быть переданы третьим лицам – Единой системе организации воздушного движения, сервису "Небосвод" (skyarc.ru) или сервису СППИ (https://sppi.ivprf.ru), а также сотрудникам полиции (при необходимости) для получения разрешения на полёты БВС.</p>
+                        <p>Настоящее Согласие действует до момента достижения целей обработки или отзыва согласия на обработку, но не более 1 (одного) месяца с момента предоставления Согласия.</p>
+                        <p>Заявление об уточнении персональных данных, отзыве настоящего согласия может быть направлено по электронной почте: <a href="mailto:sleep-trip@ya.ru">sleep-trip@ya.ru</a></p>
+                    </div>
+                </span>
+            </label>
         </div>
 
         <div class="form-group">
-            <label style="font-weight: 600; margin-bottom: 1rem; display: block;">Укажите свой возраст *<sup>2</sup></label>
+            <label style="font-weight: 600; margin-bottom: 1rem; display: block;">Укажите свой возраст *</label>
             <div style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; background: #fafafa;">
                 <label style="display: flex; align-items: center; font-weight: normal; margin-bottom: 0.75rem; cursor: pointer;">
                     <span style="font-size: 18px; margin-right: 0.5rem;">✅</span>
@@ -129,11 +156,7 @@ disableComments = true
 
 ### Пояснения к форме:
 
-**<sup>1</sup> Согласие на обработку персональных данных:**
-
-Предоставленные персональные данные будут обрабатываться в соответствии с положениями № 152-ФЗ от 27.07.2006 «О персональных данных». Настоящее согласие предоставляется путем заполнения «чек-бокса» (проставления «галочки»/ «веб-метки» в графе «Я гарантирую, что передаю свои персональные данные, согласен на их обработку для оформления заявки» в форме обратной связи на сайте sleeptrip.ru) и нажатия соответствующей кнопки. Более подробная информация будет направлена на электронную почту.
-
-**<sup>2</sup> Подтверждение совершеннолетия:**
+**Подтверждение совершеннолетия:**
 
 Участие в поездках и мероприятиях разрешено только лицам, достигшим совершеннолетия (18 лет). В случае, если Вам менее 18 лет, для участия в поездке необходимо согласие и личное присутствие законных представителей (родителей, опекунов).
 

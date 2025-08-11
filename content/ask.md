@@ -69,12 +69,39 @@ disableComments = true
 
         <div class="form-group">
             <label for="subject">Тема *</label>
-            <input type="text" id="subject" name="subject" placeholder="Например: Вопрос о поездке в Карелию" required>
+            <select id="subject" name="subject" required>
+                <option value="">Выберите тему...</option>
+                <option value="работа сайта">Работа сайта</option>
+                <option value="запланированные мероприятия">Запланированные мероприятия</option>
+                <option value="пройденные маршруты">Пройденные маршруты</option>
+                <option value="условия участия">Условия участия</option>
+                <option value="условия сотрудничества">Условия сотрудничества</option>
+                <option value="хочу предложить поездку">Хочу предложить поездку</option>
+                <option value="контакты для связи">Контакты для связи</option>
+            </select>
         </div>
 
         <div class="form-group">
             <label for="message">Ваш вопрос *</label>
             <textarea id="message" name="message" placeholder="Задайте ваш вопрос или предложите свою идею для поездки..." required></textarea>
+        </div>
+
+        <div class="form-group checkbox-group">
+            <label class="checkbox-container">
+                <input type="checkbox" id="privacy_consent" name="privacy_consent" required>
+                <span class="checkmark"></span>
+                <span class="privacy-text">
+                    Я согласен на обработку персональных данных
+                    <div class="privacy-details">
+                        <p><strong>СОГЛАСИЕ на обработку персональных данных</strong></p>
+                        <p>Заполнение чек-бокса и нажатие кнопки является подтверждением Вашего согласия на обработку персональных данных с целью ответа на вопрос, заданный на сайте sleeptrip.ru.</p>
+                        <p>Предоставленные персональные данные будут обрабатываться в соответствии с положениями Федерального закона РФ №152-ФЗ от 27.07.2006 «О персональных данных».</p>
+                        <p>Я выражаю свое согласие на обработку (включая: сбор, запись, систематизацию, накопление, хранение, уточнение, извлечение, использование, передачу, блокирование, обезличивание, удаление, уничтожение) моих персональных данных Оператором (владельцем сайта sleeptrip.ru) для цели ответа на вопрос, заданный на сайте.</p>
+                        <p>Настоящее Согласие действует до момента достижения целей обработки или отзыва согласия на обработку, но не более 1 (одного) месяца с момента предоставления Согласия.</p>
+                        <p>Заявление об уточнении персональных данных, отзыве настоящего согласия может быть направлено по электронной почте: <a href="mailto:sleep-trip@ya.ru">sleep-trip@ya.ru</a></p>
+                    </div>
+                </span>
+            </label>
         </div>
 
         <button type="submit" class="submit-btn">

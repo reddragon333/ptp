@@ -270,6 +270,72 @@
     opacity: 1;
 }
 
+/* Стили для согласия на обработку персональных данных */
+.checkbox-group {
+    background: rgba(52, 152, 219, 0.05);
+    border: 1px solid rgba(52, 152, 219, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+    margin-top: 0.2rem;
+    accent-color: #3498db;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.privacy-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.privacy-details {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(52, 152, 219, 0.2);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #555;
+}
+
+.privacy-details p {
+    margin: 0 0 0.75rem 0;
+}
+
+.privacy-details p:last-child {
+    margin-bottom: 0;
+}
+
+.privacy-details strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.privacy-details a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.privacy-details a:hover {
+    text-decoration: underline;
+}
+
 /* Интеграция с темой сайта */
 @media (prefers-color-scheme: dark) {
     .travel-form-container, .contact-form-container {
@@ -292,5 +358,24 @@
     .form-group select:focus,
     .form-group textarea:focus {
         border-color: #4a9eff;
+    }
+    
+    .checkbox-group {
+        background: rgba(52, 152, 219, 0.1);
+        border-color: rgba(52, 152, 219, 0.3);
+    }
+    
+    .privacy-text {
+        color: #e0e0e0;
+    }
+    
+    .privacy-details {
+        background: rgba(40, 40, 40, 0.8);
+        border-color: rgba(52, 152, 219, 0.3);
+        color: #ccc;
+    }
+    
+    .privacy-details strong {
+        color: #e0e0e0;
     }
 }
