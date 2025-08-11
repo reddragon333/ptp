@@ -71,6 +71,22 @@ disableComments = true
                 input.setCustomValidity('');
             });
         });
+
+        // Русификация file input
+        const fileInput = document.getElementById('pdf_file');
+        const fileText = document.getElementById('pdf_file_text');
+        if (fileInput && fileText) {
+            fileInput.addEventListener('change', function() {
+                const fileName = this.files[0] ? this.files[0].name : '';
+                if (fileName) {
+                    fileText.textContent = fileName;
+                    fileText.classList.add('file-selected');
+                } else {
+                    fileText.textContent = 'Выберите PDF файл';
+                    fileText.classList.remove('file-selected');
+                }
+            });
+        }
     });
 
     </script>
@@ -87,12 +103,17 @@ disableComments = true
         </div>
 
         <div class="form-group">
-            <label for="phone">Телефон (необязательно)</label>
+            <label for="phone">Телефон</label>
             <input type="tel" id="phone" name="phone" placeholder="Введите телефон">
         </div>
 
         <div class="form-group">
-            <label for="bvs_number"><strong>Учётный номер БВС</strong> (если уже направляли ранее) или предложите <strong>направление/даты поездки</strong> без БВС (необязательно)</label>
+            <label for="telegram">Ник в Telegram</label>
+            <input type="text" id="telegram" name="telegram" placeholder="@ваш_ник">
+        </div>
+
+        <div class="form-group">
+            <label for="bvs_number"><strong>Учётный номер БВС</strong> (если уже направляли ранее) или предложите <strong>направление/даты поездки</strong> без БВС</label>
             <textarea id="bvs_number" name="bvs_number" placeholder="Свой вариант поездки или учётный номер дрона"></textarea>
         </div>
 
@@ -106,6 +127,17 @@ disableComments = true
                 <option value="Полёты в сентябре 2025 года">Полёты в сентябре 2025 года</option>
                 <option value="Свой вариант без БВС">Свой вариант без БВС</option>
             </select>
+        </div>
+
+        <div class="form-group">
+            <label for="pdf_file">Прикрепить PDF файл</label>
+            <div class="file-input-wrapper" onclick="document.getElementById('pdf_file').click()">
+                <input type="file" id="pdf_file" name="pdf_file" accept=".pdf" class="file-input-hidden">
+                <span class="file-input-text" id="pdf_file_text">Выберите PDF файл</span>
+            </div>
+            <div class="file-info">
+                <small>Максимальный размер файла: 10 МБ</small>
+            </div>
         </div>
 
         <div class="form-group checkbox-group">

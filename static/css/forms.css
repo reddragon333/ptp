@@ -348,6 +348,75 @@
     text-decoration: underline;
 }
 
+/* Стили для кастомного file input */
+.file-input-wrapper {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #e1e5e9;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    background: #fafbfc;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+    color: #7f8c8d;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.file-input-wrapper:hover {
+    border-color: #3498db;
+    background: white;
+    transform: translateY(-1px);
+}
+
+.file-input-wrapper:focus-within {
+    outline: none;
+    border-color: #3498db;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.file-input-hidden {
+    display: none;
+}
+
+.file-input-button {
+    display: none;
+}
+
+.file-input-text {
+    color: #7f8c8d;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.file-input-text.file-selected {
+    color: #2c3e50;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.file-input-wrapper::after {
+    content: "📎";
+    font-size: 1.1rem;
+    color: #95a5a6;
+    margin-left: 0.5rem;
+}
+
+.file-info {
+    margin-top: 0.5rem;
+    text-align: left;
+}
+
+.file-info small {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
 /* Интеграция с темой сайта */
 @media (prefers-color-scheme: dark) {
     .travel-form-container, .contact-form-container {
@@ -389,5 +458,33 @@
     
     .privacy-details strong {
         color: #e0e0e0;
+    }
+    
+    .file-input-wrapper {
+        background: rgba(50, 50, 50, 0.8);
+        border-color: #555;
+        color: #aaa;
+    }
+    
+    .file-input-wrapper:hover {
+        border-color: #4a9eff;
+        background: rgba(50, 50, 50, 0.9);
+    }
+    
+    .file-input-wrapper:focus-within {
+        border-color: #4a9eff;
+        background: rgba(50, 50, 50, 0.9);
+    }
+    
+    .file-input-text {
+        color: #aaa;
+    }
+    
+    .file-input-text.file-selected {
+        color: #5dade2;
+    }
+    
+    .file-info small {
+        color: #aaa;
     }
 }
