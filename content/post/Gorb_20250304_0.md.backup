@@ -1,0 +1,40 @@
++++
+title = 'Горбовская ГЭС'
+slug = 'Gorb'
+image = 'images/Gorb_20250304_1.jpg'
+date = "2024-03-04T00:00:00"
+description = 'рассвет'
+disqus_identifier = '124'
++++
+В это утро пламенел не только рассвет, по пути пришлось остановиться и звонить спасателям. На обратном пути видел, что уже потушили.
+
+![Gorb](/images/Gorb_20250304_2.jpg)
+
+![Gorb](/images/Gorb_20250304_3.jpg)
+
+![Gorb](/images/Gorb_20250304_4.jpg)
+
+![Gorb](/images/Gorb_20250304_5.jpg)
+
+![Gorb](/images/Gorb_20250304_6.jpg)
+
+![Gorb](/images/Gorb_20250304_7.jpg)
+
+![Gorb](/images/Gorb_20250304_8.jpg)
+
+![Gorb](/images/Gorb_20250304_9.jpg)
+
+![Gorb](/images/Gorb_20250304_10.jpg)
+
+{{< youtube id="bycOi4BhiME" >}}
+
+📍 Локация
+{{< rawhtml >}}
+<div class="yandex-map-container">
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A5cfc3365650394e404a7fd48fae90f98f047471532184bba1235cc6ad6b46cca&amp;width=800&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
+{{< /rawhtml >}}
+
+{{< rawhtml >}}
+{{< back-to-top >}}
+{{< /rawhtml >}}

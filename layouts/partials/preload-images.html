@@ -1,0 +1,9 @@
+<!-- Preload critical images for better performance -->
+{{- with .Params.image }}
+<link rel="preload" as="image" href="{{ . }}">
+{{- end }}
+
+{{- if .IsHome }}
+<!-- Preload background image -->
+<link rel="preload" as="image" href="{{ .Site.Params.backgroundPath }}">
+{{- end }}

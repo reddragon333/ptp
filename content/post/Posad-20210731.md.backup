@@ -1,0 +1,32 @@
++++
+title = 'Сергиев Посад'
+slug = 'Posad'
+image = 'images/Posad-20210731-1.jpg'
+date = "2021-07-31T00:00:00"
+description = 'прогулка по Троице-Сергиевой лавре'
+disqus_identifier = '21'
++++
+Довольно часто мы выбираемся в Сергиев Посад. Очень красивый город, можно отлично провести выходной день.
+
+![Posad](/images/Posad-20210731-2.jpg)
+
+![Posad](/images/Posad-20210731-3.jpg)
+
+![Posad](/images/Posad-20210731-4.jpg)
+
+![Posad](/images/Posad-20210731-5.jpg)
+
+![Posad](/images/Posad-20210731-6.jpg)
+
+![Posad](/images/Posad-20210731-7.jpg)
+
+📍 Локация
+{{< rawhtml >}}
+<div class="yandex-map-container">
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2291b653601d76df1a0915b86a830f4ef06059ab7e8f38119f7206cddd266da8&amp;width=800&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
+{{< /rawhtml >}}
+
+{{< rawhtml >}}
+{{< back-to-top >}}
+{{< /rawhtml >}}

@@ -1,28 +1,28 @@
 +++
 title = 'Дронослёт в Калязине'
 slug = 'Sletkalyaz'
-image = 'images/Sletkalyaz_20240810_1.jpg'
+image = "https://s3.regru.cloud/sleeptrip-dev/images/Sletkalyaz_20240810_1.jpg"
 date = "2024-08-10T00:00:00"
 description = 'снова в тумане'
 disqus_identifier = '109'
 +++
 Очередной дронослёт, на этот раз в Тверской области. С музыкальным оформлением полётов - бывший дроновод (ныне диджей) подготовил отличный плейлист и исполнил его.
 
-![Sletkalyaz](/images/Sletkalyaz_20240810_2.jpg)
+![Sletkalyaz](https://s3.regru.cloud/sleeptrip-dev/images/Sletkalyaz_20240810_2.jpg)
 
-![Sletkalyaz](/images/Sletkalyaz_20240810_3.jpg)
+![Sletkalyaz](https://s3.regru.cloud/sleeptrip-dev/images/Sletkalyaz_20240810_3.jpg)
 
-![Sletkalyaz](/images/Sletkalyaz_20240810_4.jpg)
+![Sletkalyaz](https://s3.regru.cloud/sleeptrip-dev/images/Sletkalyaz_20240810_4.jpg)
 
-![Sletkalyaz](/images/Sletkalyaz_20240810_5.jpg)
+![Sletkalyaz](https://s3.regru.cloud/sleeptrip-dev/images/Sletkalyaz_20240810_5.jpg)
 
-![Sletkalyaz](/images/Sletkalyaz_20240810_6.jpg)
+![Sletkalyaz](https://s3.regru.cloud/sleeptrip-dev/images/Sletkalyaz_20240810_6.jpg)
 
-![Sletkalyaz](/images/Sletkalyaz_20240810_7.jpg)
+![Sletkalyaz](https://s3.regru.cloud/sleeptrip-dev/images/Sletkalyaz_20240810_7.jpg)
 
-![Sletkalyaz](/images/Sletkalyaz_20240810_8.jpg)
+![Sletkalyaz](https://s3.regru.cloud/sleeptrip-dev/images/Sletkalyaz_20240810_8.jpg)
 
-![Sletkalyaz](/images/Sletkalyaz_20240810_9.jpg)
+![Sletkalyaz](https://s3.regru.cloud/sleeptrip-dev/images/Sletkalyaz_20240810_9.jpg)
 
 {{< youtube id="acySXXkJ-Co" >}}
 

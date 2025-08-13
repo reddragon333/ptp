@@ -44,5 +44,11 @@ gitea.pub
 !themes/**/scripts/
 telegram/
 migration-s3/
+migration-temp/
+migration-backup/
 INFO/
 forms/
+
+# Debug and test pages - не для продакшена
+static/debug-*.html
+static/test-*.html

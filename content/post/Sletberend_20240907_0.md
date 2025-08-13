@@ -1,7 +1,7 @@
 +++
 title = 'Берендеево царство'
 slug = 'Sletberend'
-image = 'images/Sletberend_20240907_1.jpg'
+image = "https://s3.regru.cloud/sleeptrip-dev/images/Sletberend_20240907_1.jpg"
 date = "2024-09-07T00:00:00"
 description = 'дронослёт'
 disqus_identifier = '111'
@@ -11,21 +11,21 @@ disqus_identifier = '111'
 Видео-статус поездки <a href="https://t.me/whilesleeping/802">- -тут- -</a> 
 {{< /rawhtml >}}
 
-![Sletberend](/images/Sletberend_20240907_2.jpg)
+![Sletberend](https://s3.regru.cloud/sleeptrip-dev/images/Sletberend_20240907_2.jpg)
 
-![Sletberend](/images/Sletberend_20240907_3.jpg)
+![Sletberend](https://s3.regru.cloud/sleeptrip-dev/images/Sletberend_20240907_3.jpg)
 
-![Sletberend](/images/Sletberend_20240907_4.jpg)
+![Sletberend](https://s3.regru.cloud/sleeptrip-dev/images/Sletberend_20240907_4.jpg)
 
-![Sletberend](/images/Sletberend_20240907_5.jpg)
+![Sletberend](https://s3.regru.cloud/sleeptrip-dev/images/Sletberend_20240907_5.jpg)
 
-![Sletberend](/images/Sletberend_20240907_6.jpg)
+![Sletberend](https://s3.regru.cloud/sleeptrip-dev/images/Sletberend_20240907_6.jpg)
 
-![Sletberend](/images/Sletberend_20240907_7.jpg)
+![Sletberend](https://s3.regru.cloud/sleeptrip-dev/images/Sletberend_20240907_7.jpg)
 
-![Sletberend](/images/Sletberend_20240907_8.jpg)
+![Sletberend](https://s3.regru.cloud/sleeptrip-dev/images/Sletberend_20240907_8.jpg)
 
-![Sletberend](/images/Sletberend_20240907_9.jpg)
+![Sletberend](https://s3.regru.cloud/sleeptrip-dev/images/Sletberend_20240907_9.jpg)
 
 📍 Локация
 {{< rawhtml >}}

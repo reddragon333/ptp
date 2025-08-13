@@ -1,0 +1,32 @@
++++
+title = 'Иосифо-Волоцкий монастырь'
+slug = 'Iosifo'
+image = 'images/Iosifo-20220417-1.jpg'
+date = "2022-04-17T00:00:00"
+description = 'ранеей весной'
+disqus_identifier = '48'
++++
+Красивый монастырь в Волоколамском районе Московской области.
+
+![Iosifo](/images/Iosifo-20220417-2.jpg)
+
+![Iosifo](/images/Iosifo-20220417-3.jpg)
+
+![Iosifo](/images/Iosifo-20220417-4.jpg)
+
+![Iosifo](/images/Iosifo-20220417-5.jpg)
+
+![Iosifo](/images/Iosifo-20220417-6.jpg)
+
+{{< youtube id="UVu2YyHAMNw" >}}
+
+📍 Локация
+{{< rawhtml >}}
+<div class="yandex-map-container">
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A4c6d0509c214110ffbc7f6fe507ed4cba78139824115df951a891226267a495b&amp;width=800&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
+{{< /rawhtml >}}
+
+{{< rawhtml >}}
+{{< back-to-top >}}
+{{< /rawhtml >}}

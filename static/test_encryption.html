@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест шифрования файлов</title>
+    <link rel="stylesheet" href="/css/forms.css">
+</head>
+<body>
+    <div class="travel-form-container">
+        <h2>Тест системы шифрования файлов</h2>
+        
+        <form class="contact-form" action="#" method="POST" onsubmit="return false;">
+            <div class="form-group">
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" value="Тестовый пользователь">
+            </div>
+
+            <div class="form-group">
+                <label for="test_file">Тестовый файл для шифрования</label>
+                <div class="file-input-wrapper" onclick="document.getElementById('test_file').click()">
+                    <input type="file" id="test_file" name="test_file" accept=".pdf,.jpg,.png,.txt" class="file-input-hidden">
+                    <span class="file-input-text" id="test_file_text">Выберите файл для тестирования</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="submit-btn">
+                    Тестировать отправку
+                </button>
+            </div>
+        </form>
+        
+        <div id="debug-info" style="margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+            <h3>Отладочная информация:</h3>
+            <pre id="debug-content">Выберите файл для просмотра информации о шифровании</pre>
+        </div>
+    </div>
+
+    <script src="/js/encryption.js"></script>
+    <script>
+        // Дополнительная отладочная информация
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.contact-form');
+            const debugContent = document.getElementById('debug-content');
+            
+            // Перехватываем событие отправки формы для демонстрации
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const formData = new FormData(form);
+                const encryptedField = form.querySelector('input[name="test_file_encrypted"]');
+                const metadataField = form.querySelector('input[name="test_file_metadata"]');
+                
+                let debugInfo = 'Форма готова к отправке:\n\n';
+                
+                for (let [key, value] of formData.entries()) {
+                    if (key !== 'test_file') { // Не показываем оригинальный файл
+                        debugInfo += `${key}: ${typeof value === 'string' ? value.substring(0, 100) + (value.length > 100 ? '...' : '') : '[File]'}\n`;
+                    }
+                }
+                
+                if (encryptedField) {
+                    debugInfo += `\nЗашифрованные данные: ${encryptedField.value.length} символов (Base64)\n`;
+                }
+                
+                if (metadataField) {
+                    try {
+                        const metadata = JSON.parse(metadataField.value);
+                        debugInfo += '\nМетаданные файла:\n';
+                        debugInfo += `- Имя: ${metadata.fileName}\n`;
+                        debugInfo += `- Тип: ${metadata.fileType}\n`;
+                        debugInfo += `- Размер: ${metadata.fileSize} байт\n`;
+                        debugInfo += `- Зашифровано: ${metadata.encryptedAt}\n`;
+                    } catch (e) {
+                        debugInfo += '\nОшибка чтения метаданных\n';
+                    }
+                }
+                
+                debugContent.textContent = debugInfo;
+                
+                alert('Тест завершен! Смотрите отладочную информацию ниже.');
+            });
+            
+            // Отслеживаем изменения в шифровании
+            const fileInput = document.getElementById('test_file');
+            if (fileInput) {
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.type === 'childList') {
+                            const encryptedField = form.querySelector('input[name="test_file_encrypted"]');
+                            if (encryptedField && encryptedField.value) {
+                                debugContent.textContent = 'Файл зашифрован и готов к отправке!\nНажмите "Тестировать отправку" для просмотра деталей.';
+                            }
+                        }
+                    });
+                });
+                
+                observer.observe(form, { childList: true, subtree: true });
+            }
+        });
+    </script>
+</body>
+</html>

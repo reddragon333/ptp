@@ -1,0 +1,46 @@
+/* Image optimization styles for S3 images */
+
+/* Lazy loading fallback */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
+}
+
+/* Improve gallery performance */
+.gallery .img {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    will-change: transform;
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Placeholder while loading */
+.gallery .img::before {
+    content: "";
+    display: block;
+    background: linear-gradient(90deg, #f0f0f0 25%, transparent 25%, transparent 50%, #f0f0f0 50%, #f0f0f0 75%, transparent 75%, transparent);
+    background-size: 20px 20px;
+    animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 0; }
+}
+
+/* Hide placeholder when image loads */
+.gallery .img img {
+    position: relative;
+    z-index: 1;
+}

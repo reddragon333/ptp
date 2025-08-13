@@ -1,0 +1,26 @@
++++
+title = 'Озеро-сердце'
+slug = 'Serdce2'
+image = 'images/Serdce-20210410-1.jpg'
+date = "2021-04-10T00:00:00"
+description = 'озеро красивой формы'
+disqus_identifier = '4'
++++
+Ранней весной в лесу непередаваемая атмосфера. Озеро необычной формы спрятано вдали от глаз, найти можно либо дроном, либо по наводке опытных путешественников.
+
+![Serpuhov](/images/Serdce-20210410-2.jpg)
+
+{{< youtube id="F6bwG_sxeJY" >}}
+
+![Serpuhov](/images/Serdce-20210410-3.jpg)
+
+📍 Локация
+{{< rawhtml >}}
+<div class="yandex-map-container">
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa3445a07a5e69b7653e813f90cf7cf5269e81df11b501c62a9a666676f8d4aa6&amp;width=800&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
+{{< /rawhtml >}}
+
+{{< rawhtml >}}
+{{< back-to-top >}}
+{{< /rawhtml >}}

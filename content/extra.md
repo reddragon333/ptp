@@ -1,7 +1,7 @@
 +++
 title = 'Планирование поездки'
 slug = 'plan'
-# image = 'images/pic02.jpg'
+# image = "https://s3.regru.cloud/sleeptrip-dev/images/pic02.jpg"
 # description = 'здесь можно добавить подпись'
 disableComments = true
 +++

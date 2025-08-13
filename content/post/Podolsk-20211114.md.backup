@@ -1,0 +1,44 @@
++++
+title = 'Пока ты спал. Подольск'
+slug = 'Podolsk poka'
+image = 'images/Podolsk-20211114-1.jpg'
+date = "2021-11-14T00:00:00"
+description = 'проехались по Подольску'
+disqus_identifier = '30'
++++
+Это был первый совместный выезд с известным путешественником.
+Вы наверняка помните его по съёмкам в заброшенном пионерлагере под Дмитровом. Но там у нас было мало времени, а вот по Подольску мы гуляли несколько часов. Обошли всё, что видели по пути.
+Тогда же было придумано и название для моих выездов - "Пока ты спал".
+
+![Podolsk poka](/images/Podolsk-20211114-2.jpg)
+
+![Podolsk poka](/images/Podolsk-20211114-3.jpg)
+
+![Podolsk poka](/images/Podolsk-20211114-4.jpg)
+
+![Podolsk poka](/images/Podolsk-20211114-5.jpg)
+
+![Podolsk poka](/images/Podolsk-20211114-6.jpg)
+
+![Podolsk poka](/images/Podolsk-20211114-7.jpg)
+
+![Podolsk poka](/images/Podolsk-20211114-8.jpg)
+
+![Podolsk poka](/images/Podolsk-20211114-9.jpg)
+
+![Podolsk poka](/images/Podolsk-20211114-10.jpg)
+
+![Podolsk poka](/images/Podolsk-20211114-11.jpg)
+
+{{< youtube id="FSpNdXnud3Q" >}}
+
+📍 Локация
+{{< rawhtml >}}
+<div class="yandex-map-container">
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A942d20e8fc34642dd7465d3424e59f8cc7144c96776f5e09101f5ef770d7424d&amp;width=800&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
+{{< /rawhtml >}}
+
+{{< rawhtml >}}
+{{< back-to-top >}}
+{{< /rawhtml >}}

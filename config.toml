@@ -14,7 +14,7 @@ disableKinds = ["taxonomy", "term"]
 
 [params]
   # set below parameter to define a favicon
- favicon = "images/favicon.ico"
+ favicon = "https://s3.regru.cloud/sleeptrip-dev/images/favicon.ico"
   # set to change date format
  dateFormat = "2 January 2006"
  backgroundPath = "images/DESKTOP_NEW_1.jpg"

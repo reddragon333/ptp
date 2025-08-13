@@ -1,0 +1,31 @@
++++
+title = 'Героям-панфиловцам'
+slug = 'Panfil'
+image = 'images/Panfil-20211113-1.jpg'
+date = "2021-11-13T00:00:00"
+description = 'памятник героям'
+disqus_identifier = '32'
++++
+В Нелидово Волоколамского района Московской области находится этот мемориальный комплекс.
+
+![Panfil](/images/Panfil-20211113-2.jpg)
+
+![Panfil](/images/Panfil-20211113-3.jpg)
+
+![Panfil](/images/Panfil-20211113-4.jpg)
+
+![Panfil](/images/Panfil-20211113-5.jpg)
+
+{{< youtube id="_In5OHiYJ88" >}}
+
+
+📍 Локация
+{{< rawhtml >}}
+<div class="yandex-map-container">
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Afbbf3b9656cd4a7ad6f1fa6dc016383eddcb0ff61672410e16b1540712d7685d&amp;width=800&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
+{{< /rawhtml >}}
+
+{{< rawhtml >}}
+{{< back-to-top >}}
+{{< /rawhtml >}}

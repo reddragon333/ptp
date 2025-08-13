@@ -1,0 +1,32 @@
++++
+title = 'Перемиловская высота'
+slug = 'Peremil'
+image = 'images/Peremil-20211031-1.jpg'
+date = "2021-10-31T00:00:00"
+description = 'памятник героям Великой Отечественной'
+disqus_identifier = '29'
++++
+Очень красивое место на возвышении, с которого открывается захватывающий вид.
+
+![Peremil](/images/Peremil-20211031-2.jpg)
+
+![Peremil](/images/Peremil-20211031-3.jpg)
+
+![Peremil](/images/Peremil-20211031-4.jpg)
+
+![Peremil](/images/Peremil-20211031-5.jpg)
+
+![Peremil](/images/Peremil-20211031-6.jpg)
+
+{{< youtube id="_joEIgGKy-E" >}}
+
+📍 Локация
+{{< rawhtml >}}
+<div class="yandex-map-container">
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2055f1c804c74e8e14382ffc8ffa7099b2e0e7205ec6eaa401c64e249a6d8d77&amp;width=800&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
+{{< /rawhtml >}}
+
+{{< rawhtml >}}
+{{< back-to-top >}}
+{{< /rawhtml >}}

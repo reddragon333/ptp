@@ -1,0 +1,44 @@
++++
+title = 'Владимирская область'
+slug = 'Vladimir'
+image = 'images/Vladimir-20210714-1.jpg'
+date = "2021-07-14T00:00:00"
+description = 'поездка по Владимирской области'
+disqus_identifier = '16'
++++
+Ещё одна семейная поездка - из Москвы во Владимир, а оттуда в Переславль-Залесский. Фото не так много, когда получалось - тогда и делал. Основной целью было отдохнуть и побродить, цель достигнута. Кстати, тогда же мы придумали игру "Король и пешка" - кто вытянул "короля", тот заказывает все блага в поездке, а пешка выполняет задания - ищет локации, оплачивает счета... Но пешка имеет право вернуть одно задание королю, чтобы не было заведомо невыполнимых заданий.
+
+![Vladimir](/images/Vladimir-20210714-2.jpg)
+
+![Vladimir](/images/Vladimir-20210714-3.jpg)
+
+![Vladimir](/images/Vladimir-20210714-4.jpg)
+
+![Vladimir](/images/Vladimir-20210714-5.jpg)
+
+![Vladimir](/images/Vladimir-20210714-6.jpg)
+
+![Vladimir](/images/Vladimir-20210714-7.jpg)
+
+![Vladimir](/images/Vladimir-20210714-8.jpg)
+
+![Vladimir](/images/Vladimir-20210714-9.jpg)
+
+![Vladimir](/images/Vladimir-20210714-10.jpg)
+
+![Vladimir](/images/Vladimir-20210714-11.jpg)
+
+![Vladimir](/images/Vladimir-20210714-12.jpg)
+
+{{< youtube id="66ANyu2WYoE" >}}
+
+📍 Локация
+{{< rawhtml >}}
+<div class="yandex-map-container">
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Abd66761cbd87adab076b9fc69d665f6c048f1a3ed975b5266b35fd2f86cafafa&amp;width=800&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
+{{< /rawhtml >}}
+
+{{< rawhtml >}}
+{{< back-to-top >}}
+{{< /rawhtml >}}

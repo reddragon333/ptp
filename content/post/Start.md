@@ -1,7 +1,7 @@
 +++
 title = 'О чем этот сайт'
 slug = 'Start'
-image = 'images/Kavkaz-20220505-1.jpg'
+image = "https://s3.regru.cloud/sleeptrip-dev/images/Kavkaz-20220505-1.jpg"
 date = "2024-01-01T00:00:00"
 weight = -1
 pinned = true

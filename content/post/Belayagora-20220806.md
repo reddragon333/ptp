@@ -1,7 +1,7 @@
 +++
 title = 'Белая гора'
 slug = 'Belayagora'
-image = 'images/Belayagora-20220806-1.jpg'
+image = "https://s3.regru.cloud/sleeptrip-dev/images/Belayagora-20220806-1.jpg"
 date = "2022-08-06T00:00:00"
 description = 'иллюзия зимы посреди лета'
 disqus_identifier = '58'
@@ -11,19 +11,19 @@ disqus_identifier = '58'
 Несколько раз не удавалось туда доехать.
 Но летом получилось и вышло очень удачно.
 
-![Belayagora](/images/Belayagora-20220806-2.jpg)
+![Belayagora](https://s3.regru.cloud/sleeptrip-dev/images/Belayagora-20220806-2.jpg)
 
-![Belayagora](/images/Belayagora-20220806-3.jpg)
+![Belayagora](https://s3.regru.cloud/sleeptrip-dev/images/Belayagora-20220806-3.jpg)
 
-![Belayagora](/images/Belayagora-20220806-4.jpg)
+![Belayagora](https://s3.regru.cloud/sleeptrip-dev/images/Belayagora-20220806-4.jpg)
 
-![Belayagora](/images/Belayagora-20220806-5.jpg)
+![Belayagora](https://s3.regru.cloud/sleeptrip-dev/images/Belayagora-20220806-5.jpg)
 
-![Belayagora](/images/Belayagora-20220806-6.jpg)
+![Belayagora](https://s3.regru.cloud/sleeptrip-dev/images/Belayagora-20220806-6.jpg)
 
-![Belayagora](/images/Belayagora-20220806-7.jpg)
+![Belayagora](https://s3.regru.cloud/sleeptrip-dev/images/Belayagora-20220806-7.jpg)
 
-![Belayagora](/images/Belayagora-20220806-8.jpg)
+![Belayagora](https://s3.regru.cloud/sleeptrip-dev/images/Belayagora-20220806-8.jpg)
 
 📍 Локация
 {{< rawhtml >}}

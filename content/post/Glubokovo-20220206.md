@@ -1,24 +1,24 @@
 +++
 title = 'Глубоково'
 slug = 'Glubokovo'
-image = 'images/Glubokovo-20220206-1.jpg'
+image = "https://s3.regru.cloud/sleeptrip-dev/images/Glubokovo-20220206-1.jpg"
 date = "2022-02-06T00:00:00"
 description = 'церковь на холме'
 disqus_identifier = '45'
 +++
 Очень красивое место на берегу реки. Сюда я ездил и летом, причём не раз.
 
-![Glubokovo](/images/Glubokovo-20220206-2.jpg)
+![Glubokovo](https://s3.regru.cloud/sleeptrip-dev/images/Glubokovo-20220206-2.jpg)
 
-![Glubokovo](/images/Glubokovo-20220206-3.jpg)
+![Glubokovo](https://s3.regru.cloud/sleeptrip-dev/images/Glubokovo-20220206-3.jpg)
 
-![Glubokovo](/images/Glubokovo-20220206-4.jpg)
+![Glubokovo](https://s3.regru.cloud/sleeptrip-dev/images/Glubokovo-20220206-4.jpg)
 
-![Glubokovo](/images/Glubokovo-20220206-5.jpg)
+![Glubokovo](https://s3.regru.cloud/sleeptrip-dev/images/Glubokovo-20220206-5.jpg)
 
-![Glubokovo](/images/Glubokovo-20220206-6.jpg)
+![Glubokovo](https://s3.regru.cloud/sleeptrip-dev/images/Glubokovo-20220206-6.jpg)
 
-![Glubokovo](/images/Glubokovo-20220206-7.jpg)
+![Glubokovo](https://s3.regru.cloud/sleeptrip-dev/images/Glubokovo-20220206-7.jpg)
 
 {{< youtube id="xrkNfJrPmm0" >}}
 

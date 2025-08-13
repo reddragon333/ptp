@@ -1,7 +1,7 @@
 +++
 title = 'Боголюбово'
 slug = 'Bogolubovo0425'
-image = 'images/Bogolubovo_20250419_1.jpg'
+image = "https://s3.regru.cloud/sleeptrip-dev/images/Bogolubovo_20250419_1.jpg"
 date = "2025-04-19T00:00:00"
 description = 'Покров на Нерли'
 disqus_identifier = '128'
@@ -9,15 +9,15 @@ disqus_identifier = '128'
 В этот раз тоже не без приключений - сразу после рассвета пошёл дождь. 
 Но полёты всё же состоялись.
 
-![Bogolubovo0425](/images/Bogolubovo_20250419_2.jpg)
+![Bogolubovo0425](https://s3.regru.cloud/sleeptrip-dev/images/Bogolubovo_20250419_2.jpg)
 
-![Bogolubovo0425](/images/Bogolubovo_20250419_3.jpg)
+![Bogolubovo0425](https://s3.regru.cloud/sleeptrip-dev/images/Bogolubovo_20250419_3.jpg)
 
-![Bogolubovo0425](/images/Bogolubovo_20250419_4.jpg)
+![Bogolubovo0425](https://s3.regru.cloud/sleeptrip-dev/images/Bogolubovo_20250419_4.jpg)
 
-![Bogolubovo0425](/images/Bogolubovo_20250419_5.jpg)
+![Bogolubovo0425](https://s3.regru.cloud/sleeptrip-dev/images/Bogolubovo_20250419_5.jpg)
 
-![Bogolubovo0425](/images/Bogolubovo_20250419_6.jpg)
+![Bogolubovo0425](https://s3.regru.cloud/sleeptrip-dev/images/Bogolubovo_20250419_6.jpg)
 
 ---
 

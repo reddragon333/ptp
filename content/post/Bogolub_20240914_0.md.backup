@@ -1,0 +1,34 @@
++++
+title = 'Боголюбово'
+slug = 'Bogolub'
+image = 'images/Bogolub_20240914_1.jpg'
+date = "2024-09-14T00:00:00"
+description = 'на рассвете'
+disqus_identifier = '112'
++++
+Здесь тоже был несколько раз, локация ищется в любом навигаторе. Место не перестаёт удивлять частыми туманами, очень красиво на рассвете.
+
+![Bogolub](/images/Bogolub_20240914_2.jpg)
+
+![Bogolub](/images/Bogolub_20240914_3.jpg)
+
+![Bogolub](/images/Bogolub_20240914_4.jpg)
+
+{{< youtube id="Fw4tegpSm1w" >}}
+
+{{< youtube id="pgVZSCxXy9c" >}}
+
+{{< youtube id="jKvWkFck6Qg" >}}
+
+---
+
+📍 Локация
+{{< rawhtml >}}
+<div class="yandex-map-container">
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A077367027456c82c23a26e1ea7b97af0f6394ebb07ac19ed9ac4de61eb5ecb8b&amp;width=800&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
+{{< /rawhtml >}}
+
+{{< rawhtml >}}
+{{< back-to-top >}}
+{{< /rawhtml >}}
