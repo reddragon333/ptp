@@ -1,7 +1,7 @@
 +++
 title = 'Тында летом'
 slug = 'tynda-letom-20250818'
-date = "2025-08-18T17:11:57"
+date = "2025-08-18T14:11:57"
 description = 'Двухдневное приключение'
 image = 'https://s3.regru.cloud/sleeptrip-dev/images/Tynda-20250818-1.jpg'
 +++
