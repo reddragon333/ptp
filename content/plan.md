@@ -116,7 +116,6 @@ disableComments = true
             <label for="trip_period">Выберите поездку</label>
             <select id="trip_period" name="trip_period">
                 <option value=""></option>
-                <option value="Полёты в июле 2025 года">Полёты в июле 2025 года</option>
                 <option value="Полёты в августе 2025 года">Полёты в августе 2025 года</option>
                 <option value="Полёты в сентябре 2025 года">Полёты в сентябре 2025 года</option>
                                 <option value="Свой вариант без БВС">Свой вариант без БВС</option>
