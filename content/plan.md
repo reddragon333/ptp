@@ -118,7 +118,8 @@ disableComments = true
                 <option value=""></option>
                 <option value="Полёты в августе 2025 года">Полёты в августе 2025 года</option>
                 <option value="Полёты в сентябре 2025 года">Полёты в сентябре 2025 года</option>
-                                <option value="Свой вариант без БВС">Свой вариант без БВС</option>
+                                                <option value="Полёты в октябре 2025 года">Полёты в октябре 2025 года</option>
+                <option value="Свой вариант без БВС">Свой вариант без БВС</option>
             </select>
         </div>
 
