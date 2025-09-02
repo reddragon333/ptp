@@ -67,7 +67,7 @@ disableComments = true
     });
     </script>
 
-    <form class="contact-form" action="/send_ask.php" method="POST">
+    <form class="contact-form" action="/api/send_ask.php" method="POST">
         <div class="form-group">
             <label for="name">Ваше имя *</label>
             <input type="text" id="name" name="name" required>
