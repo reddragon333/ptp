@@ -4,11 +4,32 @@
  * Использует forms_helper.php и .env настройки
  */
 
-require_once '../forms/forms_helper.php';
+// Отладочная информация
+error_log("send_plan_simple.php запущен");
+
+// Проверяем существование файлов
+$helper_path = '../forms/forms_helper.php';
+$env_path = '../forms/.env';
+
+if (!file_exists($helper_path)) {
+    http_response_code(500);
+    echo json_encode(['error' => 'forms_helper.php не найден по пути: ' . $helper_path]);
+    exit;
+}
+
+if (!file_exists($env_path)) {
+    http_response_code(500);
+    echo json_encode(['error' => '.env файл не найден по пути: ' . $env_path]);
+    exit;
+}
+
+require_once $helper_path;
 
 // Загружаем настройки из .env
-load_env_file('../forms/.env');
+load_env_file($env_path);
 $settings = get_forms_settings();
+
+error_log("Настройки загружены: " . json_encode($settings));
 
 // CORS заголовки для безопасности
 header('Access-Control-Allow-Origin: *');

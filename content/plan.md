@@ -124,7 +124,20 @@ disableComments = true
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
+        .then(response => {
+            console.log('HTTP статус:', response.status);
+            console.log('Content-Type:', response.headers.get('content-type'));
+            return response.text(); // Сначала получаем как текст
+        })
+        .then(text => {
+            console.log('Ответ сервера:', text);
+            try {
+                const data = JSON.parse(text);
+                return data;
+            } catch (e) {
+                throw new Error('Сервер вернул не JSON: ' + text.substring(0, 100));
+            }
+        })
         .then(data => {
             if (data.success) {
                 // Успех
