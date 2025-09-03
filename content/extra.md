@@ -1,16 +1,18 @@
 +++
-title = 'Планирование поездки'
-slug = 'plan'
+title = 'Планирование поездки (старый)'
+slug = 'plan-old'
 # image = "https://s3.regru.cloud/sleeptrip-dev/images/pic02.jpg"
 # description = 'здесь можно добавить подпись'
 disableComments = true
 +++
 
 {{< rawhtml >}}
-<div data-tockify-component="calendar" data-tockify-calendar="sleeptrip.calendar">
+<!-- Старый Tockify календарь - больше не используется -->
+<!-- Новый календарь теперь в /plan -->
+<div style="text-align: center; padding: 40px; background: #f8f9fa; border-radius: 8px; margin: 20px 0;">
+    <h3>Календарь перенесен</h3>
+    <p>Новый календарь поездок находится на странице <a href="/plan/">/plan</a></p>
 </div>
-<script data-cfasync="false" data-tockify-script="embed" src="https://public.tockify.com/browser/embed.js">
-</script>
 {{< /rawhtml >}}
 
 ## Как забронировать поездку

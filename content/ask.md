@@ -74,13 +74,17 @@ disableComments = true
         </div>
 
         <div class="form-group">
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="ivan@mail.ru">
         </div>
 
         <div class="form-group">
             <label for="telegram">Ник в Telegram</label>
             <input type="text" id="telegram" name="telegram" placeholder="@ваш_ник">
+        </div>
+
+        <div class="form-note">
+            <p>* Укажите email или Telegram ник (одно из двух обязательно)</p>
         </div>
 
         <div class="form-group">
@@ -102,16 +106,6 @@ disableComments = true
             <textarea id="message" name="message" placeholder="Задайте ваш вопрос или предложите свою идею для поездки..." required></textarea>
         </div>
 
-        <div class="form-group">
-            <label for="pdf_file">Прикрепить PDF файл</label>
-            <div class="file-input-wrapper" onclick="document.getElementById('pdf_file').click()">
-                <input type="file" id="pdf_file" name="pdf_file" accept=".pdf" class="file-input-hidden">
-                <span class="file-input-text" id="pdf_file_text">Выберите PDF файл</span>
-            </div>
-            <div class="file-info">
-                <small>Максимальный размер файла: 10 МБ</small>
-            </div>
-        </div>
 
         <div class="form-group checkbox-group">
             <label class="checkbox-container">
