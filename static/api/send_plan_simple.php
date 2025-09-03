@@ -7,19 +7,38 @@
 // Отладочная информация
 error_log("send_plan_simple.php запущен");
 
+// Проверяем текущую директорию и файлы
+$current_dir = __DIR__;
+$available_files = scandir($current_dir);
+
+error_log("Текущая директория: " . $current_dir);
+error_log("Файлы в директории: " . implode(', ', $available_files));
+
 // Проверяем существование файлов (в той же папке /api/)
-$helper_path = './forms_helper.php';
-$env_path = './.env';
+$helper_path = __DIR__ . '/forms_helper.php';
+$env_path = __DIR__ . '/.env';
 
 if (!file_exists($helper_path)) {
+    error_log("ОШИБКА: forms_helper.php не найден: " . $helper_path);
     http_response_code(500);
-    echo json_encode(['error' => 'forms_helper.php не найден по пути: ' . $helper_path]);
+    echo json_encode([
+        'error' => 'forms_helper.php не найден',
+        'path' => $helper_path,
+        'current_dir' => $current_dir,
+        'files' => $available_files
+    ]);
     exit;
 }
 
 if (!file_exists($env_path)) {
+    error_log("ОШИБКА: .env не найден: " . $env_path);
     http_response_code(500);
-    echo json_encode(['error' => '.env файл не найден по пути: ' . $env_path]);
+    echo json_encode([
+        'error' => '.env файл не найден',
+        'path' => $env_path,
+        'current_dir' => $current_dir,
+        'files' => $available_files
+    ]);
     exit;
 }
 
