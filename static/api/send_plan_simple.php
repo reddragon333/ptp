@@ -1,8 +1,14 @@
 <?php
 /**
- * Упрощенная отправка заявки на поездку прямо в Telegram
- * Без файлов, только текст
+ * Упрощенная отправка заявки на поездку через существующую инфраструктуру
+ * Использует forms_helper.php и .env настройки
  */
+
+require_once '../forms/forms_helper.php';
+
+// Загружаем настройки из .env
+load_env_file('../forms/.env');
+$settings = get_forms_settings();
 
 // CORS заголовки для безопасности
 header('Access-Control-Allow-Origin: *');
@@ -16,9 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// Telegram настройки - ЗАМЕНИТЕ НА ВАШИ!
-$telegram_bot_token = 'YOUR_BOT_TOKEN_HERE';
-$telegram_chat_id = 'YOUR_CHAT_ID_HERE';
+// Проверяем настройки Telegram
+if (!$settings['send_telegram']) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Отправка в Telegram отключена']);
+    exit;
+}
 
 // Получаем данные из формы
 $name = trim($_POST['name'] ?? '');
@@ -85,38 +94,12 @@ if (!empty($bvs_number)) {
 
 $message .= "\n⏰ *Время подачи:* " . date('Y-m-d H:i:s');
 
-// Отправляем в Telegram
-$telegram_api_url = "https://api.telegram.org/bot{$telegram_bot_token}/sendMessage";
+// Отправляем в Telegram через готовую функцию
+$telegram_result = send_telegram_message($message, $settings);
 
-$curl = curl_init();
-curl_setopt_array($curl, [
-    CURLOPT_URL => $telegram_api_url,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_POST => true,
-    CURLOPT_POSTFIELDS => http_build_query([
-        'chat_id' => $telegram_chat_id,
-        'text' => $message,
-        'parse_mode' => 'Markdown'
-    ]),
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_SSL_VERIFYPEER => false
-]);
-
-$response = curl_exec($curl);
-$http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-curl_close($curl);
-
-if ($http_code !== 200 || !$response) {
+if (!$telegram_result['success']) {
     http_response_code(500);
-    echo json_encode(['error' => 'Ошибка отправки сообщения']);
-    exit;
-}
-
-$telegram_response = json_decode($response, true);
-
-if (!$telegram_response['ok']) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Telegram API ошибка: ' . $telegram_response['description']]);
+    echo json_encode(['error' => 'Ошибка отправки в Telegram: ' . $telegram_result['error']]);
     exit;
 }
 
