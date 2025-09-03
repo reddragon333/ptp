@@ -7,9 +7,9 @@
 // Отладочная информация
 error_log("send_plan_simple.php запущен");
 
-// Проверяем существование файлов
-$helper_path = '../forms/forms_helper.php';
-$env_path = '../forms/.env';
+// Проверяем существование файлов (в той же папке /api/)
+$helper_path = './forms_helper.php';
+$env_path = './.env';
 
 if (!file_exists($helper_path)) {
     http_response_code(500);
