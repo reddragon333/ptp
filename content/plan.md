@@ -172,7 +172,7 @@ disableComments = true
 
     </script>
 
-    <form class="travel-form" action="/api/send_plan_simple.php" method="POST" onsubmit="return handleFormSubmit(event)">
+    <form class="travel-form" action="/api/send_plan_simple.php" method="POST">
         <div class="form-group">
             <label for="name">Имя *</label>
             <input type="text" id="name" name="name" placeholder="Введите Ваше имя" required>
