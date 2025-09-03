@@ -108,9 +108,58 @@ disableComments = true
         document.head.appendChild(tripScript);
     });
 
+    // Обработчик отправки формы
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        
+        const form = event.target;
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('.submit-btn');
+        
+        // Показываем состояние загрузки
+        submitBtn.textContent = 'Отправляем...';
+        submitBtn.disabled = true;
+        
+        fetch('/api/send_plan_simple.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Успех
+                const successDiv = document.createElement('div');
+                successDiv.className = 'form-message form-success';
+                successDiv.textContent = data.message;
+                form.parentNode.insertBefore(successDiv, form);
+                form.reset();
+            } else {
+                // Ошибка
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'form-message form-error';
+                errorDiv.textContent = data.error;
+                form.parentNode.insertBefore(errorDiv, form);
+            }
+        })
+        .catch(error => {
+            // Ошибка сети
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'form-message form-error';
+            errorDiv.textContent = 'Ошибка отправки формы. Попробуйте еще раз.';
+            form.parentNode.insertBefore(errorDiv, form);
+        })
+        .finally(() => {
+            // Восстанавливаем кнопку
+            submitBtn.textContent = 'Отправить';
+            submitBtn.disabled = false;
+        });
+        
+        return false;
+    }
+
     </script>
 
-    <form class="travel-form" action="/api/send_plan.php" method="POST">
+    <form class="travel-form" action="/api/send_plan_simple.php" method="POST" onsubmit="return handleFormSubmit(event)">
         <div class="form-group">
             <label for="name">Имя *</label>
             <input type="text" id="name" name="name" placeholder="Введите Ваше имя" required>
@@ -148,16 +197,7 @@ disableComments = true
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="pdf_file">Прикрепить PDF файл</label>
-            <div class="file-input-wrapper" onclick="document.getElementById('pdf_file').click()">
-                <input type="file" id="pdf_file" name="pdf_file" accept=".pdf" class="file-input-hidden">
-                <span class="file-input-text" id="pdf_file_text">Выберите PDF файл</span>
-            </div>
-            <div class="file-info">
-                <small>Максимальный размер файла: 10 МБ</small>
-            </div>
-        </div>
+        <!-- Загрузка файлов временно отключена -->
 
         <div class="form-group checkbox-group">
             <label class="checkbox-container">
