@@ -120,7 +120,7 @@ disableComments = true
         submitBtn.textContent = 'Отправляем...';
         submitBtn.disabled = true;
         
-        fetch('/api/send_plan_simple.php', {
+        fetch('/api/test.php', {
             method: 'POST',
             body: formData
         })
