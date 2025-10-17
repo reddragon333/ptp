@@ -1,7 +1,7 @@
 languageCode = "ru"
 defaultContentLanguage = "ru"
 title = "Пока ты спал"
-baseURL = "https://cyberiya.site/"
+baseURL = "https://dev.cyberiya.site/"
 theme = "hugo-theme-massively"
 googleanalytics = ""
 disqusShortname = ""

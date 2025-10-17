@@ -4,17 +4,23 @@ slug = 'plan'
 disableComments = true
 +++
 {{< rawhtml >}}
-<h3 align="center">Выберите поездку</h3>
-{{< /rawhtml >}}
+<h3 align="center">Предстоящие поездки</h3>
 
-{{< rawhtml >}}
-<div data-tockify-component="calendar" data-tockify-calendar="sleeptrip.calendar">
+<!-- Календарь поездок из upcoming-trips.json -->
+<div id="trips-grid" class="trips-calendar">
+    <!-- Карточки поездок будут загружены динамически -->
 </div>
-<script data-cfasync="false" data-tockify-script="embed" src="https://public.tockify.com/browser/embed.js">
-</script>
+
+<!-- Подключаем стили для карточек поездок -->
+<link rel="stylesheet" href="/css/trips-calendar.css">
+
+<!-- Подключаем скрипт загрузки карточек поездок -->
+<script src="/js/upcoming-trips.js"></script>
 {{< /rawhtml >}}
 
-## Как участвовать в поездках
+Желаете отправиться в путешествие? Ознакомьтесь с тем что ниже и заполните форму:
+
+## Условия участия
 
 ### Поездки с полетами дронов
 - **Подача заявки:** минимум за 7 дней до поездки
@@ -22,8 +28,9 @@ disableComments = true
 
 ### Поездки без дронов
 - **Подача заявки:** минимум за 2-3 дня до поездки
-- **Свои варианты:** можете предложить направление, даты и профиль участников
 - **Обсуждение деталей:** [Telegram чат "Пока ты спал"](https://t.me/sleeptrip_rec)
+
+Можете предложить собственное направление, даты и профиль попутчиков.
 
 ### Важная информация
 - **Время выезда:** рано утром (5-6 утра из Москвы) для избежания пробок
@@ -73,28 +80,107 @@ disableComments = true
         });
 
         // Загружаем скрипт шифрования
-        const script = document.createElement('script');
-        script.src = '/js/encryption.js';
-        script.onload = function() {
+        const encryptionScript = document.createElement('script');
+        encryptionScript.src = '/js/encryption.js';
+        encryptionScript.onload = function() {
             console.log('✅ Скрипт шифрования загружен для формы plan');
         };
-        script.onerror = function() {
+        encryptionScript.onerror = function() {
             console.error('❌ Ошибка загрузки скрипта шифрования');
         };
-        document.head.appendChild(script);
+        document.head.appendChild(encryptionScript);
+
+        // Загружаем скрипт динамического заполнения поездок
+        const tripScript = document.createElement('script');
+        tripScript.src = '/js/trip-form-loader.js';
+        tripScript.onload = function() {
+            console.log('✅ Скрипт загрузчика поездок загружен');
+            // Принудительно инициализируем после загрузки скрипта
+            if (typeof TripFormLoader !== 'undefined') {
+                window.tripFormLoader = new TripFormLoader();
+                window.tripFormLoader.populateTripsDropdown();
+                console.log('🔄 Принудительная инициализация загрузчика поездок');
+            }
+        };
+        tripScript.onerror = function() {
+            console.error('❌ Ошибка загрузки скрипта поездок');
+        };
+        document.head.appendChild(tripScript);
     });
+
+    // Обработчик отправки формы
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        
+        const form = event.target;
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('.submit-btn');
+        
+        // Показываем состояние загрузки
+        submitBtn.textContent = 'Отправляем...';
+        submitBtn.disabled = true;
+        
+        fetch('/api/send_plan_simple.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            console.log('HTTP статус:', response.status);
+            console.log('Content-Type:', response.headers.get('content-type'));
+            return response.text(); // Сначала получаем как текст
+        })
+        .then(text => {
+            console.log('Ответ сервера:', text);
+            try {
+                const data = JSON.parse(text);
+                return data;
+            } catch (e) {
+                throw new Error('Сервер вернул не JSON: ' + text.substring(0, 100));
+            }
+        })
+        .then(data => {
+            if (data.success) {
+                // Успех
+                const successDiv = document.createElement('div');
+                successDiv.className = 'form-message form-success';
+                successDiv.textContent = data.message;
+                form.parentNode.insertBefore(successDiv, form);
+                form.reset();
+            } else {
+                // Ошибка
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'form-message form-error';
+                errorDiv.textContent = data.error;
+                form.parentNode.insertBefore(errorDiv, form);
+            }
+        })
+        .catch(error => {
+            // Ошибка сети
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'form-message form-error';
+            errorDiv.textContent = 'Ошибка отправки формы. Попробуйте еще раз.';
+            form.parentNode.insertBefore(errorDiv, form);
+        })
+        .finally(() => {
+            // Восстанавливаем кнопку
+            submitBtn.textContent = 'Отправить';
+            submitBtn.disabled = false;
+        });
+        
+        return false;
+    }
 
     </script>
 
-    <form class="travel-form" action="/send_plan.php" method="POST">
+    <form class="travel-form" action="/api/send_plan_simple.php" method="POST">
         <div class="form-group">
             <label for="name">Имя *</label>
             <input type="text" id="name" name="name" placeholder="Введите Ваше имя" required>
         </div>
 
         <div class="form-group">
-            <label for="email">E-mail *</label>
-            <input type="email" id="email" name="email" placeholder="Введите Ваш email" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="ivan@mail.ru">
         </div>
 
         <div class="form-group">
@@ -107,6 +193,10 @@ disableComments = true
             <input type="text" id="telegram" name="telegram" placeholder="@ваш_ник">
         </div>
 
+        <div class="form-note">
+            <p>* Укажите email или Telegram ник (одно из двух обязательно)</p>
+        </div>
+
         <div class="form-group">
             <label for="bvs_number"><strong>Учётный номер БВС</strong> (если уже направляли ранее) или предложите <strong>направление/даты поездки</strong> без БВС</label>
             <textarea id="bvs_number" name="bvs_number" placeholder="Свой вариант поездки или учётный номер дрона"></textarea>
@@ -116,24 +206,11 @@ disableComments = true
             <label for="trip_period">Выберите поездку</label>
             <select id="trip_period" name="trip_period">
                 <option value=""></option>
-                <option value="Полёты в июне 2025 года">Полёты в июне 2025 года</option>
-                <option value="Полёты в июле 2025 года">Полёты в июле 2025 года</option>
-                <option value="Полёты в августе 2025 года">Полёты в августе 2025 года</option>
-                <option value="Полёты в сентябре 2025 года">Полёты в сентябре 2025 года</option>
-                <option value="Свой вариант без БВС">Свой вариант без БВС</option>
+                <!-- Опции будут загружены динамически из upcoming-trips.json -->
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="pdf_file">Прикрепить PDF файл</label>
-            <div class="file-input-wrapper" onclick="document.getElementById('pdf_file').click()">
-                <input type="file" id="pdf_file" name="pdf_file" accept=".pdf" class="file-input-hidden">
-                <span class="file-input-text" id="pdf_file_text">Выберите PDF файл</span>
-            </div>
-            <div class="file-info">
-                <small>Максимальный размер файла: 10 МБ</small>
-            </div>
-        </div>
+        <!-- Загрузка файлов временно отключена -->
 
         <div class="form-group checkbox-group">
             <label class="checkbox-container">
