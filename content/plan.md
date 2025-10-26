@@ -120,7 +120,7 @@ disableComments = true
         submitBtn.textContent = 'Отправляем...';
         submitBtn.disabled = true;
         
-        fetch('/api/send_plan_simple.php', {
+        fetch('/forms/send_plan.php', {
             method: 'POST',
             body: formData
         })
@@ -172,7 +172,7 @@ disableComments = true
 
     </script>
 
-    <form class="travel-form" action="/api/send_plan_simple.php" method="POST">
+    <form class="travel-form" action="/forms/send_plan.php" method="POST">
         <div class="form-group">
             <label for="name">Имя *</label>
             <input type="text" id="name" name="name" placeholder="Введите Ваше имя" required>
