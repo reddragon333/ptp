@@ -1,0 +1,82 @@
+keepEmptyPriority: true
+code:
+  include_lists:
+    - TODO
+    - DOING
+    - DONE
+    - PLANNING
+    - FIXME
+    - ARCHIVE
+    - HACK
+    - CHANGED
+    - XXX
+    - IDEA
+    - NOTE
+    - REVIEW
+lists:
+  - name: NOTE
+    hidden: false
+    id: ojbrkhmfgw01p1
+  - name: Past Due Reminders
+    hidden: true
+    ignore: false
+    filter: 'remind = /./ and remind < "${now}" and list != DONE -remind'
+    id: ojbrkhmfgw01p2
+  - name: What's Due?
+    hidden: true
+    ignore: false
+    filter: 'dueDate < "${in 15 days}" AND list != DONE +dueDate +order'
+    id: ojbrkhmfgw01p3
+  - name: TODO
+    hidden: false
+    id: ojbrkhmfgw01p4
+  - name: DOING
+    hidden: false
+    id: ojbrkhmfgw01p5
+  - name: DONE
+    hidden: false
+    ignore: true
+    id: ojbrkhmfgw01p6
+  - name: Recently Completed
+    filter: 'completedDate > "${14 days ago}" -completed'
+    hidden: false
+    id: ojbrkhmfgw01p7
+settings:
+  '0': object Object
+  openIn: default
+  openCodeIn: default
+  journalType: New File
+  journalPath: backlog
+  appendNewCardsTo: null
+  newCardSyntax: HASHTAG
+  replaceSpacesWith: '-'
+  plugins: {}
+  journalTemplate: null
+  markdownOnly: false
+  kudosProbability: 0.33
+  views: []
+  name: ptp
+  cards:
+    colors: []
+    template: |
+
+      <!--
+      created:${timestamp}
+      -->
+    trackChanges: false
+    metaNewLine: true
+    addCompletedMeta: true
+    addCheckBoxTasks: false
+    doneList: DONE
+    tokenPrefix: '#'
+    taskPrefix: '##'
+    tagPrefix: '#'
+    metaSep: ':'
+    orderMeta: true
+    maxLines: 6
+    addNewCardsToTop: true
+    showTagsAndMeta: false
+    defaultList: TODO
+    computed: !<tag:yaml.org,2002:js/undefined> ''
+    archiveCompleted: true
+    archiveFolder: backlog/archive

@@ -44,8 +44,6 @@ gitea.pub
 !themes/**/scripts/
 telegram/
 migration-s3/
-migration-temp/
-migration-backup/
 INFO/
 forms/
 
