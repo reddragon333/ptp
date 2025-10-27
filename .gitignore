@@ -44,7 +44,8 @@ gitea.pub
 !themes/**/scripts/
 telegram/
 migration-s3/
-INFO/
+INFO/*
+!INFO/Deployment/
 !INFO/Deployment/*.md
 forms/.env
 
