@@ -65,9 +65,72 @@ disableComments = true
         };
         document.head.appendChild(script);
     });
+
+    // Обработчик отправки формы
+    function handleFormSubmit(event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('.submit-btn');
+
+        // Показываем состояние загрузки
+        submitBtn.textContent = 'Отправляем...';
+        submitBtn.disabled = true;
+
+        fetch('/forms/send_ask.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            console.log('HTTP статус:', response.status);
+            console.log('Content-Type:', response.headers.get('content-type'));
+            return response.text();
+        })
+        .then(text => {
+            console.log('Ответ сервера:', text);
+            try {
+                const data = JSON.parse(text);
+                return data;
+            } catch (e) {
+                throw new Error('Сервер вернул не JSON: ' + text.substring(0, 100));
+            }
+        })
+        .then(data => {
+            if (data.success) {
+                // Успех
+                const successDiv = document.createElement('div');
+                successDiv.className = 'form-message form-success';
+                successDiv.textContent = data.message;
+                form.parentNode.insertBefore(successDiv, form);
+                form.reset();
+            } else {
+                // Ошибка
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'form-message form-error';
+                errorDiv.textContent = data.error;
+                form.parentNode.insertBefore(errorDiv, form);
+            }
+        })
+        .catch(error => {
+            // Ошибка сети
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'form-message form-error';
+            errorDiv.textContent = 'Ошибка отправки формы. Попробуйте еще раз.';
+            form.parentNode.insertBefore(errorDiv, form);
+        })
+        .finally(() => {
+            // Восстанавливаем кнопку
+            submitBtn.textContent = 'Отправить вопрос';
+            submitBtn.disabled = false;
+        });
+
+        return false;
+    }
+
     </script>
 
-    <form class="contact-form" action="/forms/send_ask.php" method="POST">
+    <form class="contact-form" action="/forms/send_ask.php" method="POST" onsubmit="return handleFormSubmit(event)">
         <div class="form-group">
             <label for="name">Ваше имя *</label>
             <input type="text" id="name" name="name" required>

@@ -11,17 +11,28 @@ function load_env_file($file_path = '../.env') {
     if (!file_exists($file_path)) {
         return false;
     }
-    
+
     $lines = file($file_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
+        // Пропускаем комментарии
         if (strpos(trim($line), '#') === 0) {
-            continue; // Пропускаем комментарии
+            continue;
         }
-        
+
+        // Убираем inline комментарии (всё после #)
+        if (strpos($line, '#') !== false) {
+            $line = substr($line, 0, strpos($line, '#'));
+        }
+
+        // Проверяем что есть знак =
+        if (strpos($line, '=') === false) {
+            continue;
+        }
+
         list($name, $value) = explode('=', $line, 2);
         $name = trim($name);
-        $value = trim($value);
-        
+        $value = trim($value);  // ВАЖНО: убирает пробелы до и после значения
+
         if (!array_key_exists($name, $_SERVER) && !array_key_exists($name, $_ENV)) {
             putenv(sprintf('%s=%s', $name, $value));
             $_ENV[$name] = $value;

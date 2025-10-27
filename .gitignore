@@ -45,6 +45,7 @@ gitea.pub
 telegram/
 migration-s3/
 INFO/
+!INFO/Deployment/*.md
 forms/.env
 
 # Debug and test pages - не для продакшена
