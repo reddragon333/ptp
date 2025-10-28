@@ -1,7 +1,7 @@
 languageCode = "ru"
 defaultContentLanguage = "ru"
 title = "Пока ты спал"
-baseURL = "https://dev.saguaro-cactus.ru/"
+baseURL = "https://sleeptrip.ru/"
 theme = "hugo-theme-massively"
 googleanalytics = ""
 disqusShortname = ""
