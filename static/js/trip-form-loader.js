@@ -67,12 +67,6 @@ class TripFormLoader {
             select.appendChild(option);
         });
 
-        // Добавляем опцию "Предложить свое"
-        const customOption = document.createElement('option');
-        customOption.value = 'Предложить свое';
-        customOption.textContent = 'Предложить свое';
-        select.appendChild(customOption);
-
         console.log(`✅ Dropdown формы заполнен: ${activeTrips.length} активных поездок`);
     }
 
