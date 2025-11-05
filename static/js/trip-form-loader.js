@@ -67,12 +67,6 @@ class TripFormLoader {
             select.appendChild(option);
         });
 
-        // Добавляем статичную опцию "Свой вариант без БВС"
-        const customOption = document.createElement('option');
-        customOption.value = 'Свой вариант без БВС';
-        customOption.textContent = 'Свой вариант без БВС';
-        select.appendChild(customOption);
-
         console.log(`✅ Dropdown формы заполнен: ${activeTrips.length} активных поездок`);
     }
 
