@@ -22,8 +22,8 @@ disableComments = true
 
 ## Условия участия
 
-### Поездки с полетами дронов
-- **Подача заявки:** минимум за 7 дней до поездки
+### Дронослёты
+- **Подача заявки:** минимум за 5 дней до даты поездки
 - **Обсуждение деталей:** [Telegram чат "Полёты БВС"](https://t.me/polet_bvs)
 
 ### Поездки без дронов
@@ -32,7 +32,7 @@ disableComments = true
 Можете предложить собственное направление, даты и профиль попутчиков.
 
 ### Важная информация
-- **Время выезда:** рано утром (5-6 утра из Москвы) для избежания пробок
+- **Время выезда:** обычно рано утром, 5-6 утра из Москвы, иногда раньше в зависимости от удалённости локации
 - **Email:** проверьте папку "Нежелательные" - ответ может попасть туда
 
 {{< rawhtml >}}
@@ -171,10 +171,10 @@ disableComments = true
 
     </script>
 
-    <form class="travel-form" action="/forms/send_plan.php" method="POST" onsubmit="return handleFormSubmit(event)">
+    <form class="travel-form" action="/forms/send_plan.php" method="POST" enctype="multipart/form-data" onsubmit="return handleFormSubmit(event)">
         <div class="form-group">
-            <label for="name">Имя *</label>
-            <input type="text" id="name" name="name" placeholder="Введите Ваше имя" required>
+            <label for="name">Фамилия, имя *</label>
+            <input type="text" id="name" name="name" placeholder="Введите Вашу фамилию и имя" required>
         </div>
 
         <div class="form-group">
@@ -183,8 +183,8 @@ disableComments = true
         </div>
 
         <div class="form-group">
-            <label for="phone">Телефон</label>
-            <input type="tel" id="phone" name="phone" placeholder="Введите телефон">
+            <label for="phone">Телефон *</label>
+            <input type="tel" id="phone" name="phone" placeholder="Введите телефон" required>
         </div>
 
         <div class="form-group">
@@ -197,12 +197,17 @@ disableComments = true
         </div>
 
         <div class="form-group">
-            <label for="bvs_number"><strong>Учётный номер БВС</strong> (если уже направляли ранее) или предложите <strong>направление/даты поездки</strong> без БВС</label>
-            <textarea id="bvs_number" name="bvs_number" placeholder="Свой вариант поездки или учётный номер дрона"></textarea>
+            <label for="bvs_number"><strong>Учётный номер для БВС от 0,15 кг или серийный номер для БВС до 0,15 кг</strong></label>
+            <textarea id="bvs_number" name="bvs_number" placeholder="Укажите учётный номер для БВС от 0,15 кг или серийный номер для БВС до 0,15 кг"></textarea>
         </div>
 
         <div class="form-group">
-            <label for="trip_period">Выберите поездку</label>
+            <label for="bvs_file">Загрузите уведомление о постановке на учёт БВС от 0,15 кг, заявки без указанного уведомления не будут рассмотрены. Для БВС до 0,15 кг будут отдельно запрошены фотографии с серийным номером на фюзеляже БВС</label>
+            <input type="file" id="bvs_file" name="bvs_file" accept=".pdf" placeholder="Загрузите PDF документ">
+        </div>
+
+        <div class="form-group">
+            <label for="trip_period">Выберите мероприятие</label>
             <select id="trip_period" name="trip_period">
                 <option value=""></option>
                 <!-- Опции будут загружены динамически из upcoming-trips.json -->
@@ -216,10 +221,10 @@ disableComments = true
                 <input type="checkbox" id="privacy_consent" name="privacy_consent" required>
                 <span class="checkmark"></span>
                 <span class="privacy-text">
-                    Я согласен на обработку персональных данных в соответствии с ФЗ №152 <sup>1</sup>
+                    <div style="text-align: center; font-weight: bold; margin-bottom: 10px;">СОГЛАСИЕ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ</div>
+                    <div>Я выражаю своё согласие на обработку персональных данных</div>
                     <div class="privacy-details">
-                        <p>Данные будут обрабатываться либо для получения разрешения на полёты БВС, либо для организации поездки.</p>
-                        <p>Согласие действует 1 месяц. Отзыв согласия: <a href="mailto:sleep-trip@ya.ru">sleep-trip@ya.ru</a></p>
+                        <p>Персональные данные обрабатываются исключительно для получения разрешения на полёты БВС. Согласие действует 1 месяц. Отзыв согласия – заявление на sleep-trip@ya.ru</p>
                     </div>
                 </span>
             </label>
