@@ -9,7 +9,7 @@
       "meta": [
         "Выезд: рано утром (5-6 утра)"
       ],
-      "active": true,
+      "active": false,
       "order": 1
     },
     {
@@ -17,9 +17,9 @@
       "title": "Полёты в декабре 2025 года",
       "period": "Декабрь 2025",
       "description": "Зимние полёты выходного дня во Владимирской / Московской / Тверской области.",
-      "image": "https://s3.regru.cloud/sleeptrip-dev/images/Klin_20241005_1.jpg",
+      "image": "/static/images/Rassvet_20231202_9.webp",
       "meta": [
-        "Выезд: рано утром (5-6 утра)"
+        "Подача заявки минимум за 5 дней"
       ],
       "active": true,
       "order": 2
