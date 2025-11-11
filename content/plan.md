@@ -227,8 +227,7 @@ disableComments = true
                 <input type="checkbox" id="privacy_consent" name="privacy_consent" required>
                 <span class="checkmark"></span>
                 <span class="privacy-text">
-                    <div style="text-align: center; font-weight: bold; margin-bottom: 10px;">СОГЛАСИЕ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ</div>
-                    <div>Я выражаю своё согласие на обработку персональных данных</div>
+                    Я выражаю своё согласие на обработку персональных данных
                     <div class="privacy-details">
                         <p>Персональные данные обрабатываются исключительно для получения разрешения на полёты БВС. Согласие действует 1 месяц. Отзыв согласия – заявление на sleep-trip@ya.ru</p>
                     </div>
