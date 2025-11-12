@@ -4,9 +4,6 @@
 {{- end }}
 
 {{- if .IsHome }}
-<!-- Preload background images for adaptive loading -->
-<link rel="preload" as="image" href="images/desktop.webp" media="(min-width: 737px)">
-<link rel="preload" as="image" href="images/mobile.webp" media="(max-width: 736px)">
-<!-- Fallback preload -->
-<link rel="preload" as="image" href="{{ .Site.Params.backgroundPath }}">
+<!-- Preload background image (same for all devices) -->
+<link rel="preload" as="image" href="images/desktop.webp">
 {{- end }}
