@@ -1,11 +1,11 @@
 /* Adaptive Background Images for Mobile and Desktop */
 
-/* Mobile devices (max-width: 736px) - Use mobile2.webp */
+/* Mobile devices (max-width: 736px) - Use mobile4.webp */
 @media screen and (max-width: 736px) {
   #wrapper > .bg {
     background-image: url('../../images/overlay.png'),
                       linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-                      url('../../images/mobile2.webp') !important;
+                      url('../../images/mobile4.webp') !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
