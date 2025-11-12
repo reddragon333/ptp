@@ -42,6 +42,11 @@
     opacity: 1;
 }
 
+.footer-nav-link span {
+    color: #ffffff;
+    font-weight: 500;
+}
+
 /* Адаптивность для мобильных */
 @media (max-width: 768px) {
     .footer-nav-links {
