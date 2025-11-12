@@ -3,7 +3,7 @@ title = 'Дронослёт в июле 2025'
 slug = 'dronoslyot-v-iyule-2025-20250709'
 date = "2025-07-09T00:01:00"
 description = 'Тверская область'
-image = 'https://s3.regru.cloud/sleeptrip-dev/images/Knyazhigory-20250925-1.jpg'
+image = 'https://s3.regru.cloud/sleeptrip-dev/images/Knyazhigory-20250925-1.webp'
 +++
 
 Состоялся очередной дронослёт, Тверская область.

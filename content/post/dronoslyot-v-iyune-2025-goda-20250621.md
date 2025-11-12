@@ -3,7 +3,7 @@ title = 'Дронослёт в июне 2025 года'
 slug = 'dronoslyot-v-iyune-2025-goda-20250621'
 date = "2025-06-21T00:01:00"
 description = 'Тверская область'
-image = 'https://s3.regru.cloud/sleeptrip-dev/images/Gurevo-20250912-1.jpg'
+image = 'https://s3.regru.cloud/sleeptrip-dev/images/Gurevo-20250908-1.webp'
 +++
 
 Состоялся очередной дронослёт, летний.  
