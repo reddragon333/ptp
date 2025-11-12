@@ -3,7 +3,7 @@ title = 'Северный ветер'
 slug = 'severnyy-veter-20251006'
 date = "2025-10-06T00:01:00"
 description = 'Тур на плато Путорана'
-image = 'https://s3.regru.cloud/sleeptrip-dev/images/Norilsk-20251006-1.jpg'
+image = 'https://s3.regru.cloud/sleeptrip-dev/images/Norilsk-20251006-1.webp'
 +++
 
 Внутренний туризм нынче удовольствие не из дешёвых.
