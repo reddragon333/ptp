@@ -3,7 +3,7 @@ title = 'Свято-Введенская островная пустынь'
 slug = 'svyato-vvedenskaya-ostrovnaya-pustyn-20250601'
 date = "2025-06-01T00:01:00"
 description = 'монастырь на воде'
-image = 'https://s3.regru.cloud/sleeptrip-dev/images/Pokrov-20250908-1.jpg'
+image = 'https://s3.regru.cloud/sleeptrip-dev/images/Pokrov-20250908-1.webp'
 +++
 
 Я уверен, что эта локация будет очень интересна для посещения не только дроноводами. Несколько раз приезжал сюда, а в этот раз расскажу немного об истории места. 

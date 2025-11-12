@@ -3,7 +3,7 @@ title = 'Заброшенные карьеры'
 slug = 'zabroshennye-karery-20250602'
 date = "2025-06-02T00:01:00"
 description = 'полёты у воды'
-image = 'https://s3.regru.cloud/sleeptrip-dev/images/Vetchi-20250908-1.jpg'
+image = 'https://s3.regru.cloud/sleeptrip-dev/images/Vetchi-20250908-1.webp'
 +++
 
 В общем-то ничего необычного, просто полёты выходного дня.  
