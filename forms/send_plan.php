@@ -16,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $bvs_file = $_FILES['bvs_file'] ?? null;
 
     // Валидация
-    if (empty($name) || empty($consent)) {
-        $error = "Обязательные поля: Фамилия, имя, Согласие на обработку данных.";
+    if (empty($name) || empty($consent) || empty($bvs_number)) {
+        $error = "Обязательные поля: Фамилия, имя, Учётный номер дрона, Согласие на обработку данных.";
     } elseif (empty($phone)) {
         $error = "Обязательное поле: Телефон.";
     } elseif (empty($email) && empty($telegram)) {
@@ -38,6 +38,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!isset($error)) {
+        // Сохраняем загруженный файл во временную папку
+        $uploaded_file_path = null;
+        if ($bvs_file && $bvs_file['error'] === UPLOAD_ERR_OK) {
+            $upload_dir = sys_get_temp_dir() . '/ptp_forms_uploads/';
+            if (!is_dir($upload_dir)) {
+                mkdir($upload_dir, 0700, true);
+            }
+            $uploaded_file_path = $upload_dir . uniqid('bvs_') . '_' . basename($bvs_file['name']);
+            move_uploaded_file($bvs_file['tmp_name'], $uploaded_file_path);
+        }
+
         // Подготавливаем данные заявки
         $form_data = [
             'name' => $name,
@@ -47,7 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'bvs_number' => $bvs_number,
             'trip_period' => $trip_period,
             'consent' => $consent,
-            'bvs_file' => $bvs_file ? $bvs_file['name'] : ''
+            'bvs_file' => $bvs_file ? $bvs_file['name'] : '',
+            'bvs_file_path' => $uploaded_file_path
         ];
         
         $success_messages = [];

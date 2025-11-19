@@ -192,8 +192,8 @@ disableComments = true
         </div>
 
         <div class="form-group">
-            <label for="bvs_number"><strong>Учётный номер для БВС от 0,15 кг или серийный номер для БВС до 0,15 кг</strong></label>
-            <textarea id="bvs_number" name="bvs_number" placeholder="Укажите учётный номер для БВС от 0,15 кг или серийный номер для БВС до 0,15 кг"></textarea>
+            <label for="bvs_number"><strong>Учётный номер для БВС от 0,15 кг или серийный номер для БВС до 0,15 кг *</strong></label>
+            <textarea id="bvs_number" name="bvs_number" placeholder="Укажите учётный номер для БВС от 0,15 кг или серийный номер для БВС до 0,15 кг" required></textarea>
         </div>
 
         <div class="form-group">
