@@ -197,7 +197,7 @@ disableComments = true
         </div>
 
         <div class="form-group">
-            <label for="bvs_file">Загрузите уведомление о постановке на учёт БВС от 0,15 кг, заявки без указанного уведомления не будут рассмотрены. Для БВС до 0,15 кг будут отдельно запрошены фотографии с серийным номером на фюзеляже БВС</label>
+            <label for="bvs_file">Загрузите уведомление в .pdf о постановке на учёт БВС от 0,15 кг, заявки без указанного уведомления не будут рассмотрены. Для БВС до 0,15 кг будут отдельно запрошены фотографии с серийным номером на фюзеляже БВС</label>
             <div style="margin-top: 10px;">
                 <label for="bvs_file" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; border-radius: 4px; cursor: pointer; font-weight: bold;">Выбрать файл</label>
                 <span id="file-name" style="margin-left: 10px; color: #666;"></span>
