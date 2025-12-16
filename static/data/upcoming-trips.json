@@ -13,16 +13,28 @@
       "order": 1
     },
     {
-      "id": "december-2025",
-      "title": "Полёты в декабре 2025 года",
-      "period": "Декабрь 2025",
-      "description": "Зимние полёты выходного дня во Владимирской области <strong>13 декабря</strong>.",
-      "image": "https://s3.regru.cloud/sleeptrip-dev/images/Rassvet_20231202_9.webp",
+      "id": "december-20-21-2025",
+      "title": "Открытка на снегу",
+      "period": "20-21 декабря 2025",
+      "description": "Только для постоянных участников.",
+      "image": "https://s3.regru.cloud/sleeptrip-dev/images/plan/Otkrytka_na_snegu.jpg",
       "meta": [
-        "Подача заявки минимум за 5 дней"
+        "Приём заявок прекращается за 5 дней до полётов"
       ],
       "active": true,
       "order": 2
+    },
+    {
+      "id": "december-27-28-2025",
+      "title": "Закрытие сезона 2025",
+      "period": "27-28 декабря 2025",
+      "description": "Только для постоянных участников.",
+      "image": "https://s3.regru.cloud/sleeptrip-dev/images/plan/Zakrytie_sezona.jpg",
+      "meta": [
+        "Приём заявок прекращается за 5 дней до полётов"
+      ],
+      "active": true,
+      "order": 3
     }
   ],
   "last_updated": "2025-10-29T00:00:00Z"
