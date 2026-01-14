@@ -1,41 +1,18 @@
 {
   "trips": [
     {
-      "id": "november-2025",
-      "title": "Полёты в ноябре 2025 года",
-      "period": "Ноябрь 2025",
+      "id": "january-2026",
+      "title": "Поездка в январе 2026 года",
+      "period": "Январь 2026",
       "description": "Полёты выходного дня во Владимирской области.",
-      "image": "https://s3.regru.cloud/sleeptrip-dev/images/Bursol_20240923_1.jpg",
-      "meta": [
-        "Выезд: рано утром (5-6 утра)"
-      ],
-      "active": false,
-      "order": 1
-    },
-    {
-      "id": "december-20-21-2025",
-      "title": "Открытка на снегу",
-      "period": "20-21 декабря 2025",
-      "description": "Только для постоянных участников.",
-      "image": "https://s3.regru.cloud/sleeptrip-dev/images/plan/Otkrytka_na_snegu.jpg",
-      "meta": [
-        "Приём заявок прекращается за 5 дней до полётов"
-      ],
-      "active": true,
-      "order": 2
-    },
-    {
-      "id": "december-27-28-2025",
-      "title": "Закрытие сезона 2025",
-      "period": "27-28 декабря 2025",
-      "description": "Только для постоянных участников.",
       "image": "https://s3.regru.cloud/sleeptrip-dev/images/plan/Zakrytie_sezona.jpg",
       "meta": [
-        "Приём заявок прекращается за 5 дней до полётов"
+        "Заявки: минимум за 7 дней до полётов",
+        "Выезд: рано утром (5-6 утра)"
       ],
       "active": true,
-      "order": 3
+      "order": 1
     }
   ],
-  "last_updated": "2025-10-29T00:00:00Z"
+  "last_updated": "2026-01-14T00:00:00Z"
 }
