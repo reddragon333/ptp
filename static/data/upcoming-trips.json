@@ -12,7 +12,20 @@
       ],
       "active": true,
       "order": 1
+    },
+    {
+      "id": "trip-20260116-202024",
+      "title": "Test 2026",
+      "period": "12-14 feb 2026",
+      "description": "Test trip 1060",
+      "image": "https://s3.regru.cloud/sleeptrip-dev/images/plan/trip-20260116-202021.PNG",
+      "meta": [
+        "Заявки: минимум за 7 дней до полётов",
+        "Выезд: рано утром (5-6 утра)"
+      ],
+      "active": true,
+      "order": 2
     }
   ],
-  "last_updated": "2026-01-14T00:00:00Z"
+  "last_updated": "2026-01-16T20:20:24.518159"
 }
