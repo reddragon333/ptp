@@ -22,11 +22,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Обязательное поле: Телефон.";
     } elseif (empty($email) && empty($telegram)) {
         $error = "Укажите email или Telegram ник (одно из двух обязательно).";
-    } elseif (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error = "Некорректный email адрес.";
-    } elseif ($consent !== 'agree') {
+    } elseif (!empty($email)) {
+        $email_validation = validate_email_extended($email);
+        if (!$email_validation['valid']) {
+            $error = $email_validation['error'];
+        }
+    }
+
+    // Проверка согласия
+    if (empty($error) && $consent !== 'agree') {
         $error = "Для отправки заявки необходимо согласие на обработку персональных данных.";
-    } elseif (!empty($bvs_file) && $bvs_file['error'] !== UPLOAD_ERR_NO_FILE) {
+    }
+
+    // Проверка загруженного файла
+    if (empty($error) && !empty($bvs_file) && $bvs_file['error'] !== UPLOAD_ERR_NO_FILE) {
         // Проверка загруженного файла
         if ($bvs_file['error'] !== UPLOAD_ERR_OK) {
             $error = "Ошибка при загрузке файла. Попробуйте еще раз.";

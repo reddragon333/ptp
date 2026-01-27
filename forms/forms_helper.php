@@ -52,9 +52,70 @@ function get_forms_settings() {
         'save_json' => getenv('FORMS_SAVE_JSON') === 'true',
         'notifications' => getenv('FORMS_NOTIFICATIONS') === 'true',
         'telegram_bot_token' => getenv('TELEGRAM_BOT_TOKEN'),
-        'telegram_chat_id' => getenv('TELEGRAM_ADMIN_CHAT_ID'),
+        'telegram_chat_ids' => array_filter(array_map('trim', explode(',', getenv('TELEGRAM_ADMIN_CHAT_ID') ?: ''))),
         'encryption_key' => getenv('FORMS_ENCRYPTION_KEY') ?: 'default_key_change_me'
     ];
+}
+
+/**
+ * Проверка email на заблокированные домены
+ *
+ * @param string $email Email адрес для проверки
+ * @return bool true если домен заблокирован, false если разрешён
+ */
+function is_blocked_email_domain($email) {
+    $blocked_domains = [
+        '.ua',      // Украина
+        '.fr',      // Франция (спам)
+        '.cn',      // Китай
+        '.com.cn',
+        '.net.cn',
+        '.org.cn',
+        '.gov.cn',
+        '.edu.cn',
+        '.ac.cn'
+    ];
+
+    $email_parts = explode('@', strtolower($email));
+    if (count($email_parts) !== 2) {
+        return false;
+    }
+
+    $domain = $email_parts[1];
+
+    foreach ($blocked_domains as $blocked) {
+        if ($domain === ltrim($blocked, '.') ||
+            substr($domain, -strlen($blocked)) === $blocked) {
+            error_log("Заблокирован email с доменом: $domain (правило: $blocked) от IP: " . ($_SERVER['REMOTE_ADDR'] ?? 'unknown'));
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Расширенная валидация email
+ *
+ * @param string $email Email для валидации
+ * @return array ['valid' => bool, 'error' => string]
+ */
+function validate_email_extended($email) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return [
+            'valid' => false,
+            'error' => 'Некорректный формат email адреса.'
+        ];
+    }
+
+    if (is_blocked_email_domain($email)) {
+        return [
+            'valid' => false,
+            'error' => 'К сожалению, регистрация с этого домена временно недоступна.'
+        ];
+    }
+
+    return ['valid' => true, 'error' => ''];
 }
 
 /**
@@ -153,22 +214,22 @@ function save_application_to_json($form_data, $form_type) {
  */
 function send_telegram_notification($form_data, $form_type) {
     $settings = get_forms_settings();
-    
+
     if (!$settings['send_telegram'] || !$settings['notifications']) {
         return true; // Отправка отключена
     }
-    
-    if (empty($settings['telegram_bot_token']) || empty($settings['telegram_chat_id'])) {
+
+    if (empty($settings['telegram_bot_token']) || empty($settings['telegram_chat_ids'])) {
         error_log("Telegram настройки не настроены");
         return false;
     }
-    
+
     // Подготавливаем сообщение
     $message = "🔔 *Новая заявка*\n\n";
     $message .= "📝 *Тип:* " . ($form_type === 'plan' ? 'Заявка на поездку' : 'Вопрос') . "\n";
     $message .= "👤 *Имя:* " . $form_data['name'] . "\n";
     $message .= "📧 *Email:* " . $form_data['email'] . "\n";
-    
+
     if ($form_type === 'plan') {
         $message .= "📱 *Телефон:* " . ($form_data['phone'] ?: 'не указан') . "\n";
         $message .= "✈️ *Поездка:* " . ($form_data['trip_period'] ?: 'не выбрана') . "\n";
@@ -183,39 +244,51 @@ function send_telegram_notification($form_data, $form_type) {
         $message .= "💬 *Тема:* " . $form_data['subject'] . "\n";
         $message .= "📝 *Сообщение:* " . substr($form_data['message'], 0, 200) . "...\n";
     }
-    
+
     $message .= "\n⏰ *Время:* " . date('Y-m-d H:i:s');
-    
-    // Отправляем сообщение
+
+    // Отправляем сообщение всем администраторам
     $url = "https://api.telegram.org/bot" . $settings['telegram_bot_token'] . "/sendMessage";
-    $data = [
-        'chat_id' => $settings['telegram_chat_id'],
-        'text' => $message,
-        'parse_mode' => 'Markdown'
-    ];
-    
-    $context = stream_context_create([
-        'http' => [
-            'method' => 'POST',
-            'header' => 'Content-Type: application/x-www-form-urlencoded',
-            'content' => http_build_query($data)
-        ]
-    ]);
-    
-    try {
-        $result = file_get_contents($url, false, $context);
-        $response = json_decode($result, true);
-        
-        if ($response && $response['ok']) {
-            return true;
-        } else {
-            error_log("Ошибка отправки в Telegram: " . $result);
-            return false;
+    $all_sent = true;
+    $sent_count = 0;
+
+    foreach ($settings['telegram_chat_ids'] as $chat_id) {
+        $data = [
+            'chat_id' => $chat_id,
+            'text' => $message,
+            'parse_mode' => 'Markdown'
+        ];
+
+        $context = stream_context_create([
+            'http' => [
+                'method' => 'POST',
+                'header' => 'Content-Type: application/x-www-form-urlencoded',
+                'content' => http_build_query($data)
+            ]
+        ]);
+
+        try {
+            $result = file_get_contents($url, false, $context);
+            $response = json_decode($result, true);
+
+            if ($response && $response['ok']) {
+                $sent_count++;
+            } else {
+                error_log("Ошибка отправки в Telegram (chat_id: $chat_id): " . $result);
+                $all_sent = false;
+            }
+        } catch (Exception $e) {
+            error_log("Исключение при отправке в Telegram (chat_id: $chat_id): " . $e->getMessage());
+            $all_sent = false;
         }
-    } catch (Exception $e) {
-        error_log("Исключение при отправке в Telegram: " . $e->getMessage());
-        return false;
     }
+
+    if ($sent_count > 0) {
+        error_log("Уведомление отправлено $sent_count админам из " . count($settings['telegram_chat_ids']));
+        return true;
+    }
+
+    return false;
 }
 
 /**

@@ -18,9 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Имя, тема и сообщение обязательны для заполнения.";
     } elseif (empty($email) && empty($telegram)) {
         $error = "Укажите email или Telegram ник (одно из двух обязательно).";
-    } elseif (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error = "Некорректный email адрес.";
-    } else {
+    } elseif (!empty($email)) {
+        $email_validation = validate_email_extended($email);
+        if (!$email_validation['valid']) {
+            $error = $email_validation['error'];
+        }
+    }
+
+    if (empty($error)) {
         // Подготавливаем данные заявки
         $form_data = [
             'name' => $name,
@@ -36,28 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // 1. Отправка email (если включено)
         if ($settings['send_email']) {
-            $to = getenv('FORMS_MAIN_EMAIL') ?: "sleeptrip@mail.ru";
-            $email_subject = "Вопрос с сайта: " . $subject;
-            $email_body = "Новый вопрос с сайта:\n\n";
-            $email_body .= "Имя: " . $name . "\n";
-            $email_body .= "Email: " . ($email ?: 'не указан') . "\n";
-            $email_body .= "Telegram: " . ($telegram ?: 'не указан') . "\n";
-            $email_body .= "Телефон: " . ($phone ?: 'не указан') . "\n";
-            $email_body .= "Тема: " . $subject . "\n\n";
-            $email_body .= "Сообщение:\n" . $message . "\n\n";
-            $email_body .= "---\n";
-            $email_body .= "Отправлено с: " . $_SERVER['HTTP_HOST'] . "\n";
-            $email_body .= "Дата: " . date('Y-m-d H:i:s') . "\n";
-            
-            $from_email = getenv('FORMS_FROM_EMAIL') ?: 'noreply@sleeptrip.ru';
-            $headers = "From: " . $from_email . "\r\n";
-            if (!empty($email)) {
-                $headers .= "Reply-To: " . $email . "\r\n";
-            }
-            $headers .= "X-Mailer: PHP/" . phpversion();
-            $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-            
-            if (mail($to, $email_subject, $email_body, $headers)) {
+            $email_sent = send_email_notification($form_data, 'ask');
+            if ($email_sent) {
                 $success_messages[] = "Email отправлен";
             } else {
                 $error_messages[] = "Ошибка отправки email";
