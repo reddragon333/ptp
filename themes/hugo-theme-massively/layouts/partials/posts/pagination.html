@@ -1,74 +1,46 @@
 {{ $paginator := .paginator }}
 {{ $outer := .outer}}
 
-<!-- Thanks to https://glennmccomb.com/articles/how-to-build-custom-hugo-pagination/ -->
-
-<!-- Show first and last link-->
-{{ $show_first_last := $outer.Site.Params.Posts.showFirstLast | default false }}
-
-<!-- Number of links either side of the current page. -->
-{{ $adjacent_links := $outer.Site.Params.Posts.paginationPages | default 2 }}
-
-<!-- $max_links = ($adjacent_links * 2) + 1 -->
-{{ $max_links := (add (mul $adjacent_links 2) 1) }}
-
-<!-- $lower_limit = $adjacent_links + 1 -->
-{{ $lower_limit := (add $adjacent_links 1) }}
-
-<!-- $upper_limit = $paginator.TotalPages - $adjacent_links -->
-{{ $upper_limit := (sub $paginator.TotalPages $adjacent_links) }}
-
 {{ if gt $paginator.TotalPages 1 }}
-<footer>
-    <div class="pagination">
-        <ul class="pagination">
+<nav class="pager" aria-label="Навигация по страницам">
+    <div class="pager-inner">
 
-            <!-- First page. -->
-            {{ if $show_first_last }}
-                {{ if ne $paginator.PageNumber 1 }}
-                <li>
-                    <a href="{{ $paginator.First.URL }}" class="extra first">
-                        {{ i18n "PAGINATION_FIRST" . }}
-                    </a>
-                </li>
-                {{ end }}
-            {{ end }}
-            <!-- Previous page. -->
-            {{ if $paginator.HasPrev }}
-            <li>
-                <a href="{{ $paginator.Prev.URL }}" class="previous">
-                    {{ i18n "PAGINATION_PREVIOUS" . }}
-                </a>
-            </li>
-            {{ end }}
+        {{ if $paginator.HasPrev }}
+        <a href="{{ $paginator.Prev.URL }}" class="pager-btn pager-prev" aria-label="Предыдущая страница">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Назад</span>
+        </a>
+        {{ else }}
+        <span class="pager-btn pager-prev pager-disabled" aria-disabled="true">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Назад</span>
+        </span>
+        {{ end }}
 
-            <!-- Информация о страницах для десктопа -->
-            <li class="page-info desktop-only">
-                <span class="current-page">{{ $paginator.PageNumber }}</span>
-                <span class="separator">из</span>
-                <span class="total-pages">{{ $paginator.TotalPages }}</span>
-            </li>
+        <span class="pager-info" aria-current="page">
+            {{ $paginator.PageNumber }}&thinsp;/&thinsp;{{ $paginator.TotalPages }}
+        </span>
 
-            <!-- Next page. -->
-            {{ if $paginator.HasNext }}
-            <li>
-                <a href="{{ $paginator.Next.URL }}" class="next">
-                    {{ i18n "PAGINATION_NEXT" . }}
-                </a>
-            </li>
-            {{ end }}
+        {{ if $paginator.HasNext }}
+        <a href="{{ $paginator.Next.URL }}" class="pager-btn pager-next" aria-label="Следующая страница">
+            <span>Далее</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+        {{ else }}
+        <span class="pager-btn pager-next pager-disabled" aria-disabled="true">
+            <span>Далее</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </span>
+        {{ end }}
 
-            <!-- Last page. -->
-            {{ if $show_first_last }}
-                {{ if ne $paginator.PageNumber $paginator.TotalPages }}
-                <li>
-                    <a href="{{ $paginator.Last.URL }}" class="extra last">
-                        {{ i18n "PAGINATION_LAST" . }}
-                    </a>
-                </li>
-                {{ end }}
-            {{ end }}
-        </ul>
     </div>
-</footer>
+</nav>
 {{ end }}

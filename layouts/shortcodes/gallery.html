@@ -41,5 +41,5 @@ Documentation and licence at https://github.com/liwenyip/hugo-easy-gallery/
 	{{- end }}
 </div>
 
-<!-- Добавляем кнопку "вернуться в начало" для галереи -->
-{{ partial "back-to-top.html" . }}
+<!-- Ленивая загрузка фонов -->
+<script src="{{ "js/gallery-lazy.js" | relURL }}" defer></script>

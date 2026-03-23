@@ -9,5 +9,5 @@
 {{ $js := slice $jQuery $scrollex $scrolly $browser $breakpoints $util $main | resources.Concat "assets/js/bundle.js" }}
 
 <!-- Scripts -->
-<script src='{{ $js.RelPermalink }}'></script>
+<script src='{{ $js.RelPermalink }}' defer></script>
 

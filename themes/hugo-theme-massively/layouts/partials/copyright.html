@@ -1,4 +1,8 @@
 <!-- Copyright -->
 <div id="copyright">
-    <ul><li>&copy; {{ .Site.Title }}</li><li>{{ i18n "COPYRIGHT_MESSAGE_1" . | markdownify }}</li><li>{{ i18n "COPYRIGHT_MESSAGE_2" . | markdownify }}</li></ul>
+    <ul>
+        <li>&copy; {{ .Site.Title }}</li>
+        {{ with i18n "COPYRIGHT_MESSAGE_1" . }}<li>{{ . | markdownify }}</li>{{ end }}
+        {{ with i18n "COPYRIGHT_MESSAGE_2" . }}<li>{{ . | markdownify }}</li>{{ end }}
+    </ul>
 </div>

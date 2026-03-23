@@ -1,11 +1,7 @@
 +++
-# title = 'Галерея'
+title = 'Галерея'
 slug = 'gallery'
 +++
-{{< rawhtml >}}
-<h3 align="center">Галерея</h3>
-{{< /rawhtml >}}
-
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Radiotele_20250406_1.jpg" >}}
