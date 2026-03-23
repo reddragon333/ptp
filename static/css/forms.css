@@ -1,17 +1,35 @@
-/* Стили для форм обратной связи */
+/* Стили для форм обратной связи — glassmorphism 2025 */
 .travel-form-container, .contact-form-container {
-    max-width: 600px;
-    margin: 2rem auto;
-    background: rgba(255, 255, 255, 0.98);
-    padding: 2.5rem;
+    max-width: 580px;
+    margin: 0 auto 2rem;
+    padding: 2.25rem 2.5rem;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07), 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 .travel-form, .contact-form {
     width: 100%;
+}
+
+/* Снимаем uppercase темы внутри форм */
+.travel-form-container *,
+.contact-form-container * {
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+/* Разделитель секций — только капитализация первой буквы */
+.travel-form-container .form-section-title,
+.contact-form-container .form-section-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #9aa3ad;
+    letter-spacing: 0.05em;
+    text-transform: uppercase; /* намеренно — tiny label */
 }
 
 .form-group {
@@ -20,64 +38,75 @@
 
 .form-group label {
     display: block;
-    margin-bottom: 0.75rem;
-    font-weight: 500;
-    color: #2c3e50;
-    font-size: 0.95rem;
-    line-height: 1.4;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: #1e2d3d;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    letter-spacing: 0.01em;
 }
 
 .form-group input,
-.form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 1rem;
-    border: 1px solid #e1e5e9;
-    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid #b8c4ce;
+    border-radius: 10px;
     font-size: 0.95rem;
-    background: #fafbfc;
-    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
     box-sizing: border-box;
     font-family: inherit;
-    color: #2c3e50;
+    color: #1a252f;
 }
 
+/* Select — полностью самодостаточное правило, без backdrop-filter */
 .form-group select {
     width: 100%;
-    padding: 1.5rem 3.5rem 2.5rem 1rem;
-    border: 1px solid #e1e5e9;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    background: white;
-    color: #333;
+    padding: 0.95rem 2.5rem 1rem 1rem;
+    border: 1.5px solid #b8c4ce;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    background-color: rgba(255, 255, 255, 0.92);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.9rem center;
+    background-repeat: no-repeat;
+    background-size: 1.25rem 1.25rem;
+    color: #1a252f;
     font-family: inherit;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-    background-position: right 0.75rem center;
-    background-repeat: no-repeat;
-    background-size: 1.2em 1.2em;
-    min-height: 5.5rem;
-    line-height: 1.3;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    -webkit-appearance: none;
+    line-height: 1.7;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    min-height: 3rem;
 }
 
 .form-group select option {
-    background: white;
-    color: #333;
-    padding: 0.5rem;
+    background: #ffffff;
+    color: #1a252f;
 }
 
 .form-group input:focus,
-.form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #3498db;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
-    transform: translateY(-1px);
+    border-color: #4a8fc8;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(74, 143, 200, 0.18);
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #4a8fc8;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%234a8fc8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.9rem center;
+    background-repeat: no-repeat;
+    background-size: 1.25rem 1.25rem;
+    box-shadow: 0 0 0 3px rgba(74, 143, 200, 0.18);
 }
 
 .form-group textarea {
@@ -86,15 +115,15 @@
 }
 
 .submit-btn {
-    background: transparent;
-    color: #2c3e50;
-    padding: 1.2rem 2.5rem;
-    border: 2px solid #2c3e50;
-    border-radius: 12px;
+    background: linear-gradient(135deg, #4a8fc8 0%, #3476b5 100%);
+    color: #ffffff;
+    padding: 0.9rem 2rem;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -103,19 +132,20 @@
     font-family: inherit;
     letter-spacing: 0.3px;
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 10px rgba(52, 118, 181, 0.3);
 }
 
 .submit-btn:hover {
-    background: #2c3e50;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
+    opacity: 0.92;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 18px rgba(52, 118, 181, 0.4);
 }
 
 .submit-btn:active {
     transform: translateY(0);
-    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.1);
+    opacity: 1;
+    box-shadow: 0 2px 6px rgba(52, 118, 181, 0.25);
 }
 
 .submit-btn i {
@@ -145,26 +175,51 @@
 /* Мобильная адаптация */
 @media (max-width: 768px) {
     .travel-form-container, .contact-form-container {
-        margin: 1rem;
+        margin: 0;
         padding: 1.5rem;
+        border-radius: 12px;
     }
-    
+
+    .form-group {
+        margin-bottom: 1.1rem;
+    }
+
+    .form-group label {
+        margin-bottom: 0.4rem;
+        font-size: 0.88rem;
+    }
+
     .form-group input,
     .form-group select,
     .form-group textarea {
+        padding: 0.65rem 0.8rem;
         font-size: 16px; /* Предотвращает зум на iOS */
+        border-radius: 8px;
     }
-    
+
     .form-group select {
-        padding: 1.2rem 3rem 2rem 0.8rem;
-        min-height: 4.5rem;
-        font-size: 15px;
-        line-height: 1.2;
+        padding: 0.65rem 2.2rem 0.65rem 0.8rem;
+        font-size: 16px;
     }
-    
+
+    .form-group textarea {
+        min-height: 80px;
+    }
+
+    .checkbox-group {
+        padding: 1rem;
+        margin: 1.2rem 0;
+    }
+
     .submit-btn {
         width: 100%;
         justify-content: center;
+        padding: 0.9rem 1.5rem;
+    }
+
+    .form-subtitle {
+        margin-bottom: 1.2rem;
+        font-size: 0.88rem;
     }
 }
 
@@ -234,60 +289,109 @@
 }
 
 .form-group label:has(input[type="checkbox"]:checked) {
-    background-color: rgba(39, 174, 96, 0.1);
-    border-color: rgba(39, 174, 96, 0.3);
-    color: #27ae60;
+    background-color: rgba(39, 174, 96, 0.07);
+    color: inherit;
 }
 
-.form-group label:has(input[type="checkbox"]:checked)::after,
-.checkbox-label:has(input[type="checkbox"]:checked)::after {
-    content: "✓";
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #27ae60;
-    font-size: 1.4em;
-    font-weight: bold;
-    animation: checkmark-appear 0.3s ease;
+/* Подсказка — инфо-блок между полями */
+.form-note {
+    margin: -0.6rem 0 1.4rem;
+    padding: 0.55rem 0.85rem;
+    background: rgba(91, 155, 213, 0.07);
+    border-left: 2.5px solid rgba(91, 155, 213, 0.45);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.8rem;
+    color: #6b7f94;
+    line-height: 1.45;
 }
 
-@keyframes checkmark-appear {
-    0% {
-        opacity: 0;
-        transform: translateY(-50%) scale(0.5);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(-50%) scale(1);
-    }
+.form-note p {
+    margin: 0;
 }
 
-/* Специфичные стили для checkbox-label */
-.checkbox-label:has(input[type="checkbox"]):hover {
-    background-color: rgba(52, 152, 219, 0.05);
+.form-note p::before {
+    content: "ⓘ ";
+    font-style: normal;
+    color: #5b9bd5;
+    font-size: 0.9em;
 }
 
-.checkbox-label:has(input[type="checkbox"]:checked) {
-    background-color: rgba(39, 174, 96, 0.1) !important;
-    border-color: rgba(39, 174, 96, 0.3) !important;
-    color: #27ae60 !important;
+/* Заголовок формы */
+.form-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a252f;
+    margin-bottom: 0.4rem;
+    text-align: center;
+}
+
+.form-subtitle {
+    font-size: 0.92rem;
+    color: #7f8c8d;
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+/* Подводка под заголовком страницы */
+.page-lead {
+    font-size: 1rem;
+    color: #555c63;
+    font-family: 'Source Sans Pro', Helvetica, sans-serif;
+    line-height: 1.65;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.page-lead a {
+    color: #5b9bd5;
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.page-lead a:hover {
+    color: #4585c2;
+}
+
+/* Разделитель секций */
+.form-section-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #95a5a6;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 /* Плейсхолдеры */
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #95a5a6;
+    color: #8896a0;
     opacity: 1;
+}
+
+/* Select в состоянии placeholder (required:invalid или has disabled:checked) */
+.form-group select:required:invalid,
+.form-group select:has(option[value=""]:checked) {
+    color: #8896a0;
+}
+
+@media (prefers-color-scheme: dark) {
+    .form-group select:required:invalid,
+    .form-group select:has(option[value=""]:checked) {
+        color: rgba(255, 255, 255, 0.32);
+    }
 }
 
 /* Стили для согласия на обработку персональных данных */
 .checkbox-group {
-    background: rgba(52, 152, 219, 0.05);
-    border: 1px solid rgba(52, 152, 219, 0.2);
+    background: rgba(74, 143, 200, 0.07);
+    border: 1.5px solid rgba(74, 143, 200, 0.3);
     border-radius: 12px;
-    padding: 1.5rem;
-    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
 }
 
 .checkbox-container {
@@ -321,9 +425,9 @@
     border: none;
     border-radius: 0;
     font-size: 0.8rem;
-    line-height: 1.3;
+    line-height: 1.4;
     color: #888;
-    font-style: italic;
+    font-style: normal;
 }
 
 .privacy-details p {
@@ -473,74 +577,294 @@
     font-style: italic;
 }
 
-/* Интеграция с темой сайта */
+/* Нумерованные сноски — маленькие круглые бейджи */
+sup.fn {
+    display: inline-block;
+    min-width: 1.4em;
+    height: 1.4em;
+    line-height: 1.4em;
+    text-align: center;
+    background: rgba(91, 155, 213, 0.18);
+    color: #5b9bd5 !important;
+    border-radius: 50%;
+    font-size: 0.58em;
+    font-weight: 700;
+    vertical-align: baseline;
+    position: relative;
+    top: -0.5em;
+    margin-left: 0.25em;
+    text-decoration: none !important;
+    font-style: normal;
+}
+
+/* Сворачиваемый юридический текст — без рамки */
+.legal-details {
+    margin-top: 1.5rem;
+}
+
+.legal-details summary {
+    padding: 0.4rem 0;
+    font-size: 0.8rem;
+    color: #5b9bd5;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    text-decoration: underline;
+    text-decoration-color: rgba(91, 155, 213, 0.4);
+    text-underline-offset: 3px;
+    transition: color 0.2s, text-decoration-color 0.2s;
+    line-height: 1.5;
+}
+
+.legal-details summary sup.fn {
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.legal-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.legal-details summary::after {
+    content: "↓";
+    font-size: 0.85em;
+    transition: transform 0.2s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.legal-details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+.legal-details summary:hover {
+    color: #4585c2;
+    text-decoration-color: rgba(69, 133, 194, 0.6);
+}
+
+.legal-text {
+    padding: 0.75rem 0 0;
+    font-size: 0.79rem;
+    color: #8a9199;
+    line-height: 1.65;
+}
+
+.legal-text p {
+    margin: 0 0 0.7rem;
+}
+
+.legal-text p:last-child {
+    margin-bottom: 0;
+}
+
+.legal-text a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.legal-text a:hover {
+    text-decoration: underline;
+}
+
+.legal-note {
+    font-size: 0.78rem;
+    color: #aaa;
+    margin-top: 0.75rem;
+    line-height: 1.5;
+}
+
+/* Кнопка загрузки файла — единый стиль с формой */
+.file-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1.4rem;
+    background: rgba(91, 155, 213, 0.1);
+    color: #5b9bd5;
+    border: 1.5px solid rgba(91, 155, 213, 0.35);
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    font-family: inherit;
+}
+
+.file-btn:hover {
+    background: rgba(91, 155, 213, 0.18);
+    border-color: #5b9bd5;
+}
+
+.file-name-display {
+    margin-left: 0.75rem;
+    font-size: 0.82rem;
+    color: #7f8c8d;
+}
+
+@media (prefers-color-scheme: dark) {
+    .file-btn {
+        color: #7ab3e0;
+        border-color: rgba(91, 155, 213, 0.3);
+        background: rgba(91, 155, 213, 0.08);
+    }
+    .file-name-display {
+        color: #888;
+    }
+}
+
+/* Тёмная тема — тёмная карточка с достаточным контрастом */
 @media (prefers-color-scheme: dark) {
     .travel-form-container, .contact-form-container {
-        background: rgba(30, 30, 30, 0.95);
+        background: rgba(22, 26, 34, 0.88);
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
+        border-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 1px 6px rgba(0, 0, 0, 0.3);
     }
-    
+
     .form-group label {
-        color: #e0e0e0;
+        color: #dde3ea;
     }
-    
+
     .form-group input,
     .form-group select,
     .form-group textarea {
-        background: rgba(50, 50, 50, 0.8);
-        border-color: #555;
-        color: #e0e0e0;
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.16);
+        color: #e8edf4;
     }
-    
+
+    .form-group select {
+        background-color: rgba(255, 255, 255, 0.07);
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23aab2bb' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.9rem center;
+        background-repeat: no-repeat;
+        background-size: 1.25rem 1.25rem;
+        border-color: rgba(255, 255, 255, 0.16);
+        color: #e8edf4;
+    }
+
+    .form-group select option {
+        background: #1e2533;
+        color: #e8edf4;
+    }
+
+    .form-group select:focus {
+        background-color: rgba(255, 255, 255, 0.11);
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236aaee0' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.9rem center;
+        background-repeat: no-repeat;
+        background-size: 1.25rem 1.25rem;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        color: rgba(255, 255, 255, 0.32);
+    }
+
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-        border-color: #4a9eff;
+        border-color: #6aaee0;
+        background: rgba(255, 255, 255, 0.11);
+        box-shadow: 0 0 0 3px rgba(106, 174, 224, 0.2);
     }
-    
+
+    .submit-btn {
+        background: linear-gradient(135deg, #3d82be 0%, #2d6aa8 100%);
+        box-shadow: 0 2px 10px rgba(45, 106, 168, 0.4);
+    }
+
+    .submit-btn:hover {
+        opacity: 0.9;
+        box-shadow: 0 5px 18px rgba(45, 106, 168, 0.5);
+    }
+
+    .form-note {
+        background: rgba(91, 155, 213, 0.1);
+        border-left-color: rgba(91, 155, 213, 0.5);
+        color: #8ca8c4;
+    }
+
+    .form-note p::before {
+        color: #7ab3e0;
+    }
+
+    .form-subtitle {
+        color: #99a6b0;
+    }
+
     .checkbox-group {
-        background: rgba(52, 152, 219, 0.1);
-        border-color: rgba(52, 152, 219, 0.3);
+        background: rgba(91, 155, 213, 0.1);
+        border-color: rgba(91, 155, 213, 0.3);
     }
-    
+
     .privacy-text {
-        color: #e0e0e0;
+        color: #c8d4de;
     }
-    
+
     .privacy-details {
-        background: rgba(40, 40, 40, 0.8);
-        border-color: rgba(52, 152, 219, 0.3);
-        color: #ccc;
+        color: #8a9baa;
     }
-    
-    .privacy-details strong {
-        color: #e0e0e0;
+
+    .privacy-details a {
+        color: #7ab3e0;
     }
-    
-    .file-input-wrapper {
-        background: rgba(50, 50, 50, 0.8);
-        border-color: #555;
-        color: #aaa;
+
+    .legal-details summary {
+        color: #7ab3e0;
+        text-decoration-color: rgba(122, 179, 224, 0.4);
     }
-    
-    .file-input-wrapper:hover {
-        border-color: #4a9eff;
-        background: rgba(50, 50, 50, 0.9);
+
+    .legal-text {
+        color: #8fa4b8;
     }
-    
-    .file-input-wrapper:focus-within {
-        border-color: #4a9eff;
-        background: rgba(50, 50, 50, 0.9);
+
+    .legal-text a {
+        color: #7ab3e0;
     }
-    
-    .file-input-text {
-        color: #aaa;
+
+    .legal-note {
+        color: #6a7884;
     }
-    
-    .file-input-text.file-selected {
-        color: #5dade2;
+
+    /* Success/error в тёмной теме */
+    .form-success {
+        background: rgba(39, 174, 96, 0.15);
+        color: #6ecf9a;
+        border-color: rgba(39, 174, 96, 0.3);
     }
-    
-    .file-info small {
-        color: #aaa;
+
+    .form-error {
+        background: rgba(231, 76, 60, 0.15);
+        color: #f08080;
+        border-color: rgba(231, 76, 60, 0.3);
+    }
+
+    .form-group label:has(input[type="checkbox"]:checked) {
+        background-color: rgba(39, 174, 96, 0.1);
+    }
+
+    sup.fn {
+        background: rgba(122, 179, 224, 0.2);
+        color: #7ab3e0 !important;
+    }
+
+    .file-btn {
+        background: rgba(91, 155, 213, 0.15);
+        color: #7ab3e0;
+        border-color: rgba(91, 155, 213, 0.35);
+    }
+
+    .file-btn:hover {
+        background: rgba(91, 155, 213, 0.25);
+        border-color: #7ab3e0;
+    }
+
+    .file-name-display {
+        color: #7a8896;
     }
 }

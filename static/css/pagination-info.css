@@ -1,71 +1,81 @@
-/* Фиксируем пагинацию */
-.pagination ul {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    list-style: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    gap: 1rem !important;
+/* Пагинация — новые классы, нет конфликтов с темой */
+
+.pager {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0 3.5rem;
 }
 
-/* Убираем рамки со всех кнопок пагинации */
-.pagination a,
-.pagination .previous,
-.pagination .next,
-.pagination .first,
-.pagination .last {
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    outline: none !important;
+.pager-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-/* Информация о страницах для десктопа */
-.pagination .page-info {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 0.4rem 0.8rem !important;
-    font-size: 0.8rem !important;
-    color: #333 !important;
-    background: none !important;
-    border: none !important;
-    border-radius: 0 !important;
-    text-align: center !important;
-    font-weight: 300 !important;
-    white-space: nowrap !important;
-    min-width: 60px !important;
-    box-sizing: border-box !important;
-    flex-shrink: 0 !important;
-    box-shadow: none !important;
-    outline: none !important;
+/* Кнопки Новее / Старше */
+.pager-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #555c63;
+    background: transparent;
+    border: 1px solid #d0d4d8;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: color 0.18s, border-color 0.18s, background 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
 }
 
-.pagination .page-info .current-page {
-    color: #333 !important;
-    font-weight: 400 !important;
-    font-size: 1em !important;
+.pager-btn:hover {
+    color: #5b9bd5;
+    border-color: #5b9bd5;
+    background: rgba(24, 191, 239, 0.06);
+    text-decoration: none;
 }
 
-.pagination .page-info .separator {
-    margin: 0 0.3rem !important;
-    color: #666 !important;
-    font-size: 0.9em !important;
-    font-weight: 300 !important;
+.pager-btn svg {
+    flex-shrink: 0;
 }
 
-.pagination .page-info .total-pages {
-    color: #333 !important;
-    font-weight: 300 !important;
+/* Заблокированная кнопка */
+.pager-disabled {
+    color: #c0c5ca;
+    border-color: #e8eaec;
+    cursor: default;
+    pointer-events: none;
 }
 
-/* Скрываем информацию о страницах на мобильных */
-@media (max-width: 768px) {
-    .pagination .page-info,
-    .pagination .page-info.desktop-only,
-    .pagination-info,
-    .pagination-status {
-        display: none !important;
+/* Счётчик страниц */
+.pager-info {
+    font-size: 0.78rem;
+    color: #aaa;
+    padding: 0 0.5rem;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    min-width: 3.5rem;
+    text-align: center;
+}
+
+/* Мобильные: уменьшить счётчик, добавить пространство */
+@media (max-width: 736px) {
+    .pager-info {
+        font-size: 0.72rem;
+        min-width: 2.5rem;
+        color: #bbb;
+    }
+
+    /* Больше белого пространства под кнопками — чёткое разделение с футером */
+    #main > nav.pager {
+        padding-bottom: 3rem !important;
+    }
+
+    .pager-btn {
+        padding: 0.6rem 1.4rem;
+        font-size: 0.85rem;
     }
 }

@@ -42,7 +42,7 @@
 }
 
 #main article a:hover {
-    color: #18bfef;
+    color: #5b9bd5;
 }
 
 /* Списки в статьях */
@@ -116,6 +116,73 @@
 #main article h5,
 #main article h6 {
     color: #1a252f;
+}
+
+/* Карточки постов */
+#main > .posts > article {
+    padding: 2rem !important;
+    text-align: left !important;
+    transition: box-shadow 0.2s ease;
+}
+
+#main > .posts > article:hover {
+    box-shadow: inset 0 0 0 1px rgba(24, 191, 239, 0.3);
+}
+
+/* Фиксированная высота хедера — фото на одном уровне в ряду */
+#main > .posts > article header {
+    min-height: 5.5rem;
+}
+
+/* Заголовок карточки */
+#main > .posts > article header h2 {
+    font-size: 1.3rem;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+#main > .posts > article header h2 a {
+    text-decoration: none;
+}
+
+/* Убираем огромный отступ у фото (тема: 4rem 0) */
+#main > .posts > article .image.main {
+    margin: 1rem 0 !important;
+}
+
+/* Описание — обрезаем до 2 строк */
+#main > .posts > article > p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-align: left;
+    font-size: 0.88rem;
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+/* Скрываем кнопку «Подробнее» — карточка и так кликабельна по заголовку */
+#main > .posts > article .actions {
+    display: none !important;
+}
+
+@media screen and (max-width: 980px) {
+    #main > .posts > article {
+        padding: 1.5rem !important;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    #main > .posts > article {
+        text-align: left !important;
+    }
 }
 
 /* Адаптивность для мобильных */

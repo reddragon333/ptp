@@ -7,8 +7,9 @@
                       linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
                       url('../../images/mobile4.webp') !important;
     background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-position: center top;
+    /* iOS Safari не поддерживает background-attachment: fixed нормально */
+    background-attachment: scroll;
   }
 }
 

@@ -1,13 +1,17 @@
 items:
 - title: 'Хочу поехать'
   url: '/plan'
+  icon: 'fa-calendar-o'
 
 - title: 'Маршруты'
   url: '/map'
+  icon: 'fa-map-o'
 
 - title: 'Спросить'
   url: '/ask'
-  
+  icon: 'fa-envelope-o'
+
 - title: 'Галерея'
   url: '/gallery'
+  icon: 'fa-picture-o'
 

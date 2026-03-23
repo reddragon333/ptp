@@ -10,14 +10,64 @@
     }
 }
 
-/* Уменьшение размера заголовков на страницах */
+/* Заголовок страницы — убираем UPPERCASE, нормальный регистр */
 .post header.major h1 {
     font-size: 2.5rem !important;
     line-height: 1.2 !important;
+    text-transform: none !important;
+    letter-spacing: 0.01em !important;
+    font-weight: 900 !important;
+    color: #1a252f !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Описание под заголовком — читаемое, не тонкое */
+.post header.major p {
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    line-height: 1.65 !important;
+    color: #555c63 !important;
+    font-family: 'Source Sans Pro', Helvetica, sans-serif !important;
+    text-align: left !important;
+}
+
+/* Выравнивание заголовка влево */
+.post header.major {
+    text-align: left !important;
 }
 
 @media (max-width: 736px) {
     .post header.major h1 {
-        font-size: 2rem !important;
+        font-size: 1.9rem !important;
+    }
+}
+
+/* Скруглённые углы — изображения в карточках постов */
+a.image.main img,
+a.image.fit img {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+a.image.main,
+a.image.fit {
+    border-radius: 10px;
+    overflow: hidden;
+    display: block;
+}
+
+/* Скруглённые углы — белая подложка #main */
+#main {
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 736px) {
+    #main {
+        border-radius: 14px;
+        margin-top: 0.75rem;
+        margin-bottom: 1rem;
     }
 }
