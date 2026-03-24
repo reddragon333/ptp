@@ -184,27 +184,42 @@
     }
 }
 
-/* Мобильный: первый (закреплённый) пост — центрировать */
+/* Первый (закреплённый) пост — центрировать на всех экранах */
+#main > section.posts:first-of-type article {
+    text-align: center !important;
+}
+
+#main > section.posts:first-of-type article header h2 {
+    text-align: center !important;
+    -webkit-line-clamp: unset !important;
+    overflow: visible !important;
+}
+
+#main > section.posts:first-of-type article header h2 a {
+    color: inherit;
+}
+
+#main > section.posts:first-of-type article .image.main {
+    margin: 1rem auto !important;
+    display: block !important;
+}
+
+#main > section.posts:first-of-type article > p {
+    text-align: center !important;
+}
+
+/* Мобильный: дополнительные корректировки */
 @media screen and (max-width: 736px) {
     #main > section.posts:first-of-type article {
-        text-align: center !important;
         padding: 1.5rem 1.25rem !important;
     }
 
     #main > section.posts:first-of-type article header h2 {
-        text-align: center !important;
         font-size: 1.45rem !important;
-        -webkit-line-clamp: unset !important;
-        overflow: visible !important;
-    }
-
-    #main > section.posts:first-of-type article header h2 a {
-        color: inherit;
     }
 
     #main > section.posts:first-of-type article .image.main {
         margin: 0.75rem auto !important;
-        display: block !important;
     }
 }
 
