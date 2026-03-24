@@ -71,3 +71,9 @@ a.image.fit {
         margin-bottom: 1rem;
     }
 }
+
+/* Убираем декоративные линии по бокам даты в заголовке поста */
+.post header.major .date::before,
+.post header.major .date::after {
+    display: none !important;
+}
