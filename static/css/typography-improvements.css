@@ -121,7 +121,7 @@
 /* Карточки постов */
 #main > .posts > article {
     padding: 2rem !important;
-    text-align: left !important;
+    text-align: center !important;
     transition: box-shadow 0.2s ease;
 }
 
@@ -142,7 +142,7 @@
     -webkit-line-clamp: 2;
     overflow: hidden;
     margin-bottom: 0;
-    text-align: left;
+    text-align: center;
 }
 
 #main > .posts > article header h2 a {
@@ -160,7 +160,7 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
-    text-align: left;
+    text-align: center;
     font-size: 0.88rem;
     color: #666;
     margin-bottom: 1rem;
@@ -175,12 +175,6 @@
 @media screen and (max-width: 980px) {
     #main > .posts > article {
         padding: 1.5rem !important;
-    }
-}
-
-@media screen and (max-width: 736px) {
-    #main > .posts > article {
-        text-align: left !important;
     }
 }
 
