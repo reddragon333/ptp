@@ -4,6 +4,20 @@ slug = 'gallery'
 +++
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Baykal-20260324-1.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Krasnyybogatyr-20260315-1.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Pokrov-20260315-1.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Shirkov-20260315-2.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Elochka-20260109-2.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Vetchi-20260109-1.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Yurevpolskiy-20260109-8.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Panteleevo-20260109-1.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Kositskiyles-20260109-1.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Shirkovo-20260103-1.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Norilsk-20251006-1.webp" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Suzdal-20250925-4.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Gurevo-20250912-2.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Vetchi-20250908-1.webp" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Pokrov-20250908-1.webp" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Petushki_20250517_2.jpg" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Rjev_20251005_1.jpg" >}}
