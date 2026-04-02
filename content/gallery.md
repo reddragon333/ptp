@@ -4,8 +4,13 @@ slug = 'gallery'
 +++
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Marta-20260402-2.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Savelevo-20260402-1.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Zvezda-20260402-2.jpg" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Baykal-20260324-1.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Serdtse-20260401-1.jpg" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Krasnyybogatyr-20260315-1.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Generalasnazina-20260402-1.jpg" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Pokrov-20260315-1.jpg" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Shirkov-20260315-2.jpg" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Elochka-20260109-2.jpg" >}}
