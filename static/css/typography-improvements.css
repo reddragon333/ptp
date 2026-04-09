@@ -1,65 +1,243 @@
-/* Деликатные улучшения типографики только для контента постов */
+/*
+ * PTP Typography — единая система типографики
+ *
+ * Тема использует: body = Georgia (serif), headings = Helvetica (sans-serif)
+ * Проблема: заголовки ALL CAPS + 900 weight + letter-spacing → агрессивно для travel-блога.
+ * Решение: убираем uppercase, снижаем weight, создаём ясную иерархию через размер.
+ */
 
-/* Улучшения только для основного контента статей */
+/* =================================================================
+   1. ГЛОБАЛЬНЫЕ ЗАГОЛОВКИ — убираем uppercase, смягчаем
+   ================================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+    text-transform: none;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+}
+
+/* =================================================================
+   2. INTRO (главный экран "Пока ты спал")
+   ================================================================= */
+
+/* Логотип "Пока ты спал" — скруглённые углы на рамке */
+#header .logo {
+    border-radius: 12px !important;
+}
+
+/* Заголовок intro — оставляем uppercase (это логотип/бренд) */
+#intro h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+/* =================================================================
+   3. НАВИГАЦИЯ — оставляем uppercase (стандарт для nav)
+   ================================================================= */
+
+#nav ul.links a,
+#nav .links a {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    font-size: 0.85rem;
+}
+
+/* =================================================================
+   4. КАРТОЧКИ ПОСТОВ (главная)
+   ================================================================= */
+
+#main > .posts > article {
+    padding: 2rem !important;
+    text-align: center !important;
+    transition: box-shadow 0.2s ease;
+}
+
+/* Header карточки */
+#main > .posts > article header {
+    min-height: 5.5rem;
+    padding-top: 1.2rem;
+}
+
+/* Дата — metadata: маленькая, uppercase, приглушённая */
+#main > .posts > article header .date {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+/* Заголовок карточки — sentence case, не uppercase */
+#main > .posts > article header h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+#main > .posts > article header h2 a {
+    text-decoration: none;
+}
+
+/* Описание под карточкой */
+#main > .posts > article > p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.55;
+    font-weight: 300;
+}
+
+/* Фото карточки */
+#main > .posts > article .image.main {
+    margin: 1rem 0 !important;
+}
+
+#main > .posts > article .image.main img {
+    border-radius: 8px;
+}
+
+/* Скрываем "Подробнее" — карточка кликабельна по заголовку */
+#main > .posts > article .actions {
+    display: none !important;
+}
+
+/* =================================================================
+   5. ПЕРВЫЙ ПОСТ (закреплённый, "О чём этот сайт")
+   ================================================================= */
+
+#main > section.posts:first-of-type article {
+    text-align: center !important;
+}
+
+#main > section.posts:first-of-type article header h2 {
+    text-align: center !important;
+    font-size: 1.5rem;
+    font-weight: 700;
+    -webkit-line-clamp: unset !important;
+    overflow: visible !important;
+}
+
+#main > section.posts:first-of-type article header h2 a {
+    color: inherit;
+}
+
+#main > section.posts:first-of-type article .image.main {
+    margin: 1rem auto !important;
+    display: block !important;
+}
+
+#main > section.posts:first-of-type article > p {
+    text-align: center !important;
+}
+
+/* =================================================================
+   6. ВНУТРИ ПОСТА (single page)
+   ================================================================= */
+
+/* Подзаголовок поста ("на рассвете") — убираем курсив темы */
+#main > .post header.major > p,
+header.major > h1 + p {
+    font-style: normal;
+    opacity: 0.7;
+    font-size: 1.1rem;
+}
+
+/* Дата — metadata стиль */
+#main > .post header.major > .date {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.45;
+    margin-top: -0.5rem;
+    margin-bottom: 1.8rem;
+    font-weight: 400;
+}
+
+/* Контент */
+#main article {
+    max-width: 720px;
+    margin: 0 auto;
+    color: #2c3e50;
+}
+
 #main article p {
-    line-height: 1.7;
+    line-height: 1.75;
     text-align: left;
     margin-bottom: 1.25rem;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 }
 
-/* Заголовки только в статьях */
 #main article h1,
 #main article h2,
-#main article h3 {
+#main article h3,
+#main article h4,
+#main article h5,
+#main article h6 {
+    color: #1a252f;
     text-transform: none;
     font-weight: 700;
-    text-rendering: optimizeLegibility;
+    letter-spacing: 0.01em;
 }
 
 #main article h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     line-height: 1.2;
     margin-bottom: 1.5rem;
 }
 
 #main article h2 {
-    font-size: 2rem;
-    line-height: 1.25;
+    font-size: 1.6rem;
+    line-height: 1.3;
     margin-bottom: 1.25rem;
 }
 
 #main article h3 {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     margin-bottom: 1rem;
 }
 
-/* Ссылки в статьях - только подсветка при наведении */
+/* Ссылки */
 #main article a {
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 #main article a:hover {
-    color: #5b9bd5;
+    color: #18bfef;
 }
 
-/* Списки в статьях */
+/* Списки */
 #main article ul,
 #main article ol {
-    line-height: 1.6;
+    line-height: 1.65;
     margin-bottom: 1.5rem;
 }
 
 #main article li {
-    margin-bottom: 0.4rem;
-    line-height: 1.6;
+    margin-bottom: 0.3rem;
 }
 
-/* Цитаты в статьях */
+/* Цитаты */
 #main article blockquote {
-    line-height: 1.6;
+    line-height: 1.65;
     padding: 1.25rem 1.5rem;
     margin: 1.5rem 0;
     background: rgba(24, 191, 239, 0.03);
@@ -67,7 +245,7 @@
     font-style: italic;
 }
 
-/* Код в статьях */
+/* Код */
 #main article code {
     background: rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -91,146 +269,100 @@
     padding: 0;
 }
 
-/* Улучшения для контента страниц (не меню и карточки) */
+/* Страничный контент (не посты) */
 #main section > p {
     line-height: 1.7;
     text-align: left;
     margin-bottom: 1.25rem;
 }
 
-/* Ограничиваем ширину только для статей */
-#main article {
-    max-width: 720px;
-    margin: 0 auto;
+/* =================================================================
+   7. ФОТО/ВИДЕО — скругление + плавная загрузка
+   ================================================================= */
+
+/* Карточки */
+#main > .posts > article .image.main img {
+    border-radius: 8px;
 }
 
-/* Улучшения контрастности только для контента */
-#main article {
-    color: #2c3e50;
+/* Внутри поста — все img */
+#main .post .image.main img,
+#main .post .image img,
+#main .post p > img,
+#main .post p img,
+section.post img {
+    border-radius: 8px;
 }
 
-#main article h1,
-#main article h2,
-#main article h3,
-#main article h4,
-#main article h5,
-#main article h6 {
-    color: #1a252f;
+#main .post iframe,
+section.post iframe {
+    border-radius: 8px;
 }
 
-/* Карточки постов */
-#main > .posts > article {
-    padding: 2rem !important;
-    text-align: center !important;
-    transition: box-shadow 0.2s ease;
+/* Галерея */
+.gallery .box .img img,
+.gallery .box img,
+.gallery img {
+    border-radius: 6px;
 }
 
-#main > .posts > article:hover {
+/* Фото в теле поста — layout */
+#main > .post p > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1rem auto;
 }
 
-/* Фиксированная высота хедера — фото на одном уровне в ряду */
-#main > .posts > article header {
-    min-height: 5.5rem;
+/* Плавная загрузка */
+@keyframes imgFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-/* Заголовок карточки */
-#main > .posts > article header h2 {
-    font-size: 1.3rem;
-    line-height: 1.35;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    margin-bottom: 0;
-    text-align: center;
+#main img,
+.gallery img {
+    background: #f0f0f0;
 }
 
-#main > .posts > article header h2 a {
-    text-decoration: none;
+img[loading="lazy"] {
+    animation: imgFadeIn 0.5s ease;
 }
 
-/* Убираем огромный отступ у фото (тема: 4rem 0) */
-#main > .posts > article .image.main {
-    margin: 1rem 0 !important;
-}
+/* =================================================================
+   8. МОБИЛЬНАЯ АДАПТАЦИЯ
+   ================================================================= */
 
-/* Описание — обрезаем до 2 строк */
-#main > .posts > article > p {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    text-align: center;
-    font-size: 0.88rem;
-    color: #666;
-    margin-bottom: 1rem;
-    line-height: 1.5;
-}
-
-/* Скрываем кнопку «Подробнее» — карточка и так кликабельна по заголовку */
-#main > .posts > article .actions {
-    display: none !important;
-}
-
-@media screen and (max-width: 980px) {
+@media (max-width: 980px) {
     #main > .posts > article {
         padding: 1.5rem !important;
+        text-align: center !important;
+    }
+
+    #main > .posts > article header,
+    #main > .posts > article header h2,
+    #main > .posts > article > p {
+        text-align: center !important;
     }
 }
 
-/* Первый (закреплённый) пост — центрировать на всех экранах */
-#main > section.posts:first-of-type article {
-    text-align: center !important;
-}
-
-#main > section.posts:first-of-type article header h2 {
-    text-align: center !important;
-    -webkit-line-clamp: unset !important;
-    overflow: visible !important;
-}
-
-#main > section.posts:first-of-type article header h2 a {
-    color: inherit;
-}
-
-#main > section.posts:first-of-type article .image.main {
-    margin: 1rem auto !important;
-    display: block !important;
-}
-
-#main > section.posts:first-of-type article > p {
-    text-align: center !important;
-}
-
-/* Мобильный: дополнительные корректировки */
-@media screen and (max-width: 736px) {
+@media (max-width: 736px) {
     #main > section.posts:first-of-type article {
-        padding: 1.5rem 1.25rem !important;
+        padding: 2rem 1.25rem !important;
     }
 
     #main > section.posts:first-of-type article header h2 {
-        font-size: 1.45rem !important;
+        font-size: 1.4rem !important;
     }
 
     #main > section.posts:first-of-type article .image.main {
-        margin: 0.75rem auto !important;
+        margin: 1rem auto !important;
     }
-}
 
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
-    #main article h1 {
-        font-size: 2rem;
-    }
-    
-    #main article h2 {
-        font-size: 1.7rem;
-    }
-    
-    #main article h3 {
-        font-size: 1.4rem;
-    }
-    
+    #main article h1 { font-size: 1.8rem; }
+    #main article h2 { font-size: 1.4rem; }
+    #main article h3 { font-size: 1.2rem; }
+
     #main article {
         max-width: 95%;
         padding: 0 0.5rem;
