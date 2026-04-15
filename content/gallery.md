@@ -134,7 +134,6 @@ slug = 'gallery'
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Yahroma-20221225-1.jpg" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Yaroslavl-20220307-8.jpg" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Zimni-20211204-1.jpg" >}}
-{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Gallery-20260415-1.jpg" >}}
 {{< /gallery >}}
 
 
