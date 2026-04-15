@@ -12,8 +12,6 @@ image = 'https://s3.regru.cloud/sleeptrip-dev/images/Timiryazevskiy-20260415-1.j
 Сейчас долгая дорога занимает почти всё время на фотоохоту.
 Поэтому иногда буду разбавлять материал вот такими поездками.
 
-Видео тут:
-https://pikabu.ru/story/fotookhota_13851662
 
 ## Фотографии
 
@@ -33,6 +31,7 @@ https://pikabu.ru/story/fotookhota_13851662
 
 ## Видео
 
+[🎬 Смотреть видео на Pikabu](https://pikabu.ru/story/fotookhota_13851662)
 
 {{< rawhtml >}}
 {{< back-to-top >}}
