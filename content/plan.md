@@ -270,3 +270,15 @@ disableComments = true
 
 ![Фото поездки](https://s3.regru.cloud/sleeptrip-dev/images/Marta-20260402-2.jpg)
 
+
+
+---
+
+### 📅 15.04.2026
+
+**[TEST] Поездка 20260415-235703**
+
+Тестовая запись из Smoke test.
+
+![Фото поездки](https://s3.regru.cloud/sleeptrip-dev/images/Marta-20260402-2.jpg)
+
