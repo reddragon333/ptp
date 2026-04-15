@@ -32,7 +32,7 @@ image = 'https://s3.regru.cloud/sleeptrip-dev/images/Timiryazevskiy-20260415-1.j
 ## Видео
 
 {{< rawhtml >}}
-<video controls preload="metadata" style="max-width:100%;border-radius:8px;" poster="https://d.pikabu.ru/cache.php?route=index_image&story_id=13851662">
+<video controls preload="metadata" style="width:100%;height:auto;display:block;border-radius:8px;" poster="https://d.pikabu.ru/cache.php?route=index_image&story_id=13851662">
   <source src="https://cs18.pikabu.ru/s/2026/03/30/00/ng7rdju5_s0f0d60m0_1080x1920.mp4" type="video/mp4">
   <source src="https://cs18.pikabu.ru/s/2026/03/30/00/ng7rdju5_s0f0d60m0_1080x1920.webm" type="video/webm">
   Ваш браузер не поддерживает встроенное видео. <a href="https://pikabu.ru/story/fotookhota_13851662">Смотреть на Pikabu</a>
