@@ -258,3 +258,15 @@ disableComments = true
 </details>
 <p class="legal-note"><sup class="fn">2</sup> Отметка подтверждает, что участнику поездки исполнилось 18 лет.</p>
 {{< /rawhtml >}}
+
+
+---
+
+### 📅 15.04.2026
+
+**[TEST] Поездка 20260415-235416**
+
+Тестовая запись из Smoke test.
+
+![Фото поездки](https://s3.regru.cloud/sleeptrip-dev/images/Marta-20260402-2.jpg)
+
