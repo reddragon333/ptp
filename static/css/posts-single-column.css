@@ -1,52 +1,27 @@
-/* Посты на главной: одна колонка, крупные фото как у featured */
-#main > .posts {
-    display: flex;
-    flex-direction: column;
-    max-width: 900px;
-    margin: 0 auto;
-}
+/* Посты на главной: две колонки, но фото крупнее и единого формата */
 
-#main > .posts > * {
-    width: 100% !important;
-    padding: 2rem 0 !important;
-}
-
-#main > .posts > article {
-    border-left-width: 0 !important;
-    border-top: 1px solid rgba(0,0,0,0.08) !important;
-    text-align: left !important;
-}
-
-#main > .posts > article:first-child {
-    border-top-width: 0 !important;
-}
-
+/* Все фото постов — единый aspect ratio 16:9 с cover */
 #main > .posts > article .image.main img {
-    border-radius: 12px;
+    border-radius: 10px;
     width: 100%;
     height: auto;
     aspect-ratio: 16/9;
     object-fit: cover;
 }
 
-#main > .posts > article h2 {
-    font-size: 1.6em;
-    margin-bottom: 0.5em;
+/* Featured пост сверху — чуть выделить */
+article.post.featured {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding-bottom: 3rem;
+    margin-bottom: 1rem;
 }
 
-#main > .posts > article h2 a {
-    text-decoration: none;
-}
-
-/* Featured пост — тот же стиль, чуть крупнее */
 article.post.featured .image.main img {
     border-radius: 12px;
     aspect-ratio: 16/9;
     object-fit: cover;
 }
 
-@media (max-width: 736px) {
-    #main > .posts > * {
-        padding: 1.5rem 0 !important;
-    }
+article.post.featured header.major h2 {
+    font-size: 1.8em;
 }
