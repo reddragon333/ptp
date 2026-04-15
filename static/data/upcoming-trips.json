@@ -9,7 +9,20 @@
       "meta": [],
       "active": true,
       "order": 1
+    },
+    {
+      "id": "trip-20260415-225149",
+      "title": "Тестовая поездка",
+      "period": "Тестовый 16",
+      "description": "Тест \n\n123 \n\nТест",
+      "image": "https://s3.regru.cloud/sleeptrip-dev/images/plan/trip-20260415-225144.JPG",
+      "meta": [
+        "Заявки: минимум за 7 дней до полётов",
+        "Выезд: рано утром (5-6 утра)"
+      ],
+      "active": true,
+      "order": 2
     }
   ],
-  "last_updated": "2026-03-22T23:40:35.502230"
+  "last_updated": "2026-04-15T22:51:49.670722"
 }
