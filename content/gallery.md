@@ -4,6 +4,8 @@ slug = 'gallery'
 +++
 {{< load-photoswipe >}}
 {{< gallery caption-effect="fade" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Izmaylovskiy-20260506-1.jpg" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Timiryazevskiy-20260415-1.jpg" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Pantelee-20260408-1.jpg" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Marta-20260402-2.jpg" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Savelevo-20260402-1.jpg" >}}
