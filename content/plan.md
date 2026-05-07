@@ -170,12 +170,16 @@ disableComments = true
         <!-- ШАГ 1: Выбор поездки -->
         <div class="form-step active" data-step="1">
         <div class="form-group">
-            <label for="trip_period">Выберите мероприятие</label>
-            <select id="trip_period" name="trip_period" required>
+            <label>Выберите мероприятие</label>
+            <div id="trip-radios" class="trip-radio-group">
+                <!-- Радиокнопки загрузятся из JSON -->
+            </div>
+            <!-- Hidden select для совместимости с формой -->
+            <select id="trip_period" name="trip_period" required style="display:none">
                 <option value="" disabled selected></option>
             </select>
         </div>
-        <div class="form-nav"><button type="button" class="btn-next" onclick="goStep(2)">ДАЛЕЕ</button></div>
+        <div class="form-nav"><button type="button" class="button" onclick="goStep(2)">Далее</button></div>
         </div><!-- /step1 -->
 
         <!-- ШАГ 2: Персональные данные + БВС -->
@@ -217,7 +221,7 @@ disableComments = true
             document.getElementById('file-name').textContent = fileName ? '✓ ' + fileName : '';
         });
         </script>
-        <div class="form-nav"><button type="button" class="btn-prev" onclick="goStep(1)">НАЗАД</button><button type="button" class="btn-next" onclick="goStep(3)">ДАЛЕЕ</button></div>
+        <div class="form-nav"><button type="button" class="button" onclick="goStep(1)">Назад</button><button type="button" class="button" onclick="goStep(3)">Далее</button></div>
         </div><!-- /step2 -->
 
         <!-- ШАГ 3: Согласия + отправка -->
@@ -243,7 +247,7 @@ disableComments = true
                 </span>
             </label>
         </div>
-        <div class="form-nav"><button type="button" class="btn-prev" onclick="goStep(2)">НАЗАД</button></div>
+        <div class="form-nav"><button type="button" class="button" onclick="goStep(2)">Назад</button></div>
         <button type="submit" class="submit-btn">
             Отправить
         </button>
