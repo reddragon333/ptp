@@ -540,3 +540,10 @@
         font-size: 13px;
     }
 }
+
+/* БВС placeholder — мельче */
+.travel-form-container textarea::placeholder {
+    font-size: 0.8em !important;
+    color: rgba(0,0,0,0.35) !important;
+    line-height: 1.5;
+}
