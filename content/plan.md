@@ -16,7 +16,7 @@ disableComments = true
 <script src="/js/upcoming-trips.js"></script>
 {{< /rawhtml >}}
 
-Хотите присоединится к поездке? Ознакомьтесь с условиями участия и заполните форму
+Хотите присоединиться к поездке? Ознакомьтесь с условиями участия и заполните форму
 
 ## Условия участия
 
@@ -30,56 +30,62 @@ disableComments = true
 
 {{< rawhtml >}}
 <div class="travel-form-container">
-    <!-- Сообщения об успехе/ошибке -->
+
+    <!-- Индикатор шагов -->
+    <div class="wizard-steps">
+        <div class="wizard-step active" id="plan-si-1">
+            <div class="step-circle">1</div>
+            <div class="step-label">Поездка</div>
+        </div>
+        <div class="wizard-connector" id="plan-sc-1"></div>
+        <div class="wizard-step" id="plan-si-2">
+            <div class="step-circle">2</div>
+            <div class="step-label">О вас</div>
+        </div>
+        <div class="wizard-connector" id="plan-sc-2"></div>
+        <div class="wizard-step" id="plan-si-3">
+            <div class="step-circle">3</div>
+            <div class="step-label">Согласие</div>
+        </div>
+    </div>
+
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const success = urlParams.get('success');
-        const error = urlParams.get('error');
-        
-        if (success) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'form-message form-success';
-            messageDiv.textContent = success;
-            document.querySelector('.travel-form-container').insertBefore(messageDiv, document.querySelector('.travel-form'));
+        var urlParams = new URLSearchParams(window.location.search);
+        var container = document.querySelector('.travel-form-container');
+        var form = container.querySelector('.travel-form');
+
+        if (urlParams.get('success')) {
+            var m = document.createElement('div');
+            m.className = 'form-message form-success';
+            m.textContent = urlParams.get('success');
+            container.insertBefore(m, form);
         }
-        
-        if (error) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'form-message form-error';
-            messageDiv.textContent = error;
-            document.querySelector('.travel-form-container').insertBefore(messageDiv, document.querySelector('.travel-form'));
+        if (urlParams.get('error')) {
+            var e = document.createElement('div');
+            e.className = 'form-message form-error';
+            e.textContent = urlParams.get('error');
+            container.insertBefore(e, form);
         }
 
         // Русские сообщения валидации
-        const inputs = document.querySelectorAll('input[required], select[required], textarea[required]');
-        inputs.forEach(function(input) {
-            input.addEventListener('invalid', function() {
-                if (input.type === 'checkbox') {
-                    input.setCustomValidity('Пожалуйста, отметьте этот пункт для продолжения');
-                } else if (input.type === 'email') {
-                    input.setCustomValidity('Пожалуйста, введите корректный email адрес');
-                } else if (input.tagName === 'SELECT') {
-                    input.setCustomValidity('Пожалуйста, выберите один из вариантов');
-                } else {
-                    input.setCustomValidity('Пожалуйста, заполните это поле');
-                }
+        container.querySelectorAll('input[required], select[required], textarea[required]').forEach(function(f) {
+            f.addEventListener('invalid', function() {
+                if (f.type === 'checkbox') f.setCustomValidity('Пожалуйста, отметьте этот пункт для продолжения');
+                else if (f.type === 'email') f.setCustomValidity('Пожалуйста, введите корректный email адрес');
+                else if (f.tagName === 'SELECT') f.setCustomValidity('Пожалуйста, выберите один из вариантов');
+                else f.setCustomValidity('Пожалуйста, заполните это поле');
             });
-            
-            input.addEventListener('input', function() {
-                input.setCustomValidity('');
-            });
+            f.addEventListener('input', function() { f.setCustomValidity(''); });
         });
 
-        // Загружаем скрипт шифрования
-        const encryptionScript = document.createElement('script');
-        encryptionScript.src = '/js/encryption.js';
-        encryptionScript.onload = function() {};
-        encryptionScript.onerror = function() {};
-        document.head.appendChild(encryptionScript);
+        // Шифрование
+        var encScript = document.createElement('script');
+        encScript.src = '/js/encryption.js';
+        document.head.appendChild(encScript);
 
-        // Загружаем скрипт динамического заполнения поездок
-        const tripScript = document.createElement('script');
+        // Загрузка поездок в dropdown
+        var tripScript = document.createElement('script');
         tripScript.src = '/js/trip-form-loader.js';
         tripScript.onload = function() {
             if (typeof TripFormLoader !== 'undefined') {
@@ -87,153 +93,225 @@ disableComments = true
                 window.tripFormLoader.populateTripsDropdown();
             }
         };
-        tripScript.onerror = function() {};
         document.head.appendChild(tripScript);
+
+        // Wizard
+        var currentStep = 1;
+
+        function updateWizard(step) {
+            for (var i = 1; i <= 3; i++) {
+                var si = document.getElementById('plan-si-' + i);
+                si.classList.toggle('active', i === step);
+                si.classList.toggle('completed', i < step);
+            }
+            for (var j = 1; j <= 2; j++) {
+                document.getElementById('plan-sc-' + j).classList.toggle('completed', j < step);
+            }
+            form.querySelectorAll('.form-step-panel').forEach(function(p, idx) {
+                p.classList.toggle('active', idx + 1 === step);
+            });
+            currentStep = step;
+        }
+
+        function validatePanel() {
+            var panel = form.querySelector('.form-step-panel.active');
+            var fields = panel.querySelectorAll('input[required], select[required], textarea[required]');
+            var valid = true;
+            fields.forEach(function(f) {
+                if (!f.checkValidity()) {
+                    if (valid) f.reportValidity();
+                    valid = false;
+                }
+            });
+            // Шаг 2: email или telegram обязателен
+            if (currentStep === 2) {
+                var email = form.querySelector('#plan-email').value.trim();
+                var tg = form.querySelector('#plan-telegram').value.trim();
+                if (!email && !tg) {
+                    var tgField = form.querySelector('#plan-telegram');
+                    tgField.setCustomValidity('Укажите email или Telegram ник');
+                    tgField.reportValidity();
+                    valid = false;
+                }
+            }
+            return valid;
+        }
+
+        form.querySelectorAll('.step-next-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                if (validatePanel()) updateWizard(currentStep + 1);
+            });
+        });
+        form.querySelectorAll('.step-back-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() { updateWizard(currentStep - 1); });
+        });
+
+        // Клик по карточке поездки → предвыбор в dropdown + scroll к форме
+        document.querySelectorAll('[data-trip-id]').forEach(function(card) {
+            card.addEventListener('click', function() {
+                var tripId = card.getAttribute('data-trip-id');
+                var select = form.querySelector('#trip_period');
+                if (select && tripId) {
+                    for (var i = 0; i < select.options.length; i++) {
+                        if (select.options[i].value === tripId) {
+                            select.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+                container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        updateWizard(1);
     });
 
-    // Обработчик отправки формы
-    function handleFormSubmit(event) {
+    function handlePlanSubmit(event) {
         event.preventDefault();
-        
-        const form = event.target;
-        const formData = new FormData(form);
-        const submitBtn = form.querySelector('.submit-btn');
-        
-        // Показываем состояние загрузки
+        var form = event.target;
+        var submitBtn = form.querySelector('.submit-btn');
         submitBtn.textContent = 'Отправляем...';
         submitBtn.disabled = true;
-        
-        fetch('/forms/send_plan.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            return response.text();
-        })
-        .then(text => {
-            try {
-                const data = JSON.parse(text);
-                return data;
-            } catch (e) {
-                throw new Error('Сервер вернул не JSON: ' + text.substring(0, 100));
-            }
-        })
-        .then(data => {
-            if (data.success) {
-                // Успех
-                const successDiv = document.createElement('div');
-                successDiv.className = 'form-message form-success';
-                successDiv.textContent = data.message;
-                form.parentNode.insertBefore(successDiv, form);
-                form.reset();
-            } else {
-                // Ошибка
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'form-message form-error';
-                errorDiv.textContent = data.error;
-                form.parentNode.insertBefore(errorDiv, form);
-            }
-        })
-        .catch(error => {
-            // Ошибка сети
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'form-message form-error';
-            errorDiv.textContent = 'Ошибка отправки формы. Попробуйте еще раз.';
-            form.parentNode.insertBefore(errorDiv, form);
-        })
-        .finally(() => {
-            // Восстанавливаем кнопку
-            submitBtn.textContent = 'Отправить';
-            submitBtn.disabled = false;
-        });
-        
+
+        fetch('/forms/send_plan.php', { method: 'POST', body: new FormData(form) })
+            .then(function(r) { return r.text(); })
+            .then(function(text) {
+                try { return JSON.parse(text); } catch(e) { throw new Error('Ошибка сервера'); }
+            })
+            .then(function(data) {
+                form.parentNode.querySelectorAll('.form-message').forEach(function(m) { m.remove(); });
+                var div = document.createElement('div');
+                if (data.success) {
+                    div.className = 'form-message form-success';
+                    div.textContent = data.message;
+                    form.reset();
+                    // Сброс wizard
+                    for (var i = 1; i <= 3; i++) {
+                        var si = document.getElementById('plan-si-' + i);
+                        si.classList.toggle('active', i === 1);
+                        si.classList.remove('completed');
+                    }
+                    for (var j = 1; j <= 2; j++) document.getElementById('plan-sc-' + j).classList.remove('completed');
+                    form.querySelectorAll('.form-step-panel').forEach(function(p, idx) { p.classList.toggle('active', idx === 0); });
+                } else {
+                    div.className = 'form-message form-error';
+                    div.textContent = data.error;
+                }
+                form.parentNode.insertBefore(div, form);
+            })
+            .catch(function() {
+                form.parentNode.querySelectorAll('.form-message').forEach(function(m) { m.remove(); });
+                var div = document.createElement('div');
+                div.className = 'form-message form-error';
+                div.textContent = 'Ошибка отправки формы. Попробуйте ещё раз.';
+                form.parentNode.insertBefore(div, form);
+            })
+            .finally(function() {
+                submitBtn.textContent = 'Отправить';
+                submitBtn.disabled = false;
+            });
         return false;
     }
-
     </script>
 
-    <form class="travel-form" action="/forms/send_plan.php" method="POST" enctype="multipart/form-data" onsubmit="return handleFormSubmit(event)">
-        <div class="form-group">
-            <label for="name">Фамилия, имя *</label>
-            <input type="text" id="name" name="name" placeholder="Введите Вашу фамилию и имя" required>
-        </div>
+    <form class="travel-form" action="/forms/send_plan.php" method="POST" enctype="multipart/form-data" onsubmit="return handlePlanSubmit(event)">
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="ivan@mail.ru">
-        </div>
-
-        <div class="form-group">
-            <label for="phone">Телефон *</label>
-            <input type="tel" id="phone" name="phone" placeholder="Введите телефон" required>
-        </div>
-
-        <div class="form-group">
-            <label for="telegram">Ник в Telegram</label>
-            <input type="text" id="telegram" name="telegram" placeholder="@ваш_ник">
-        </div>
-
-        <div class="form-note">
-            <p>Укажите email или Telegram ник (одно из двух обязательно)</p>
-        </div>
-
-        <div class="form-group">
-            <label for="bvs_number">Учётный номер БВС *</label>
-            <textarea id="bvs_number" name="bvs_number" placeholder="БВС от 0,15 кг — учётный номер, например: 123456789AB&#10;БВС до 0,15 кг — серийный номер с фюзеляжа" required></textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="bvs_file">Уведомление о постановке на учёт (.pdf)<br><small style="font-weight:400; color:#888;">Для БВС от 0,15 кг обязательно. Для БВС до 0,15 кг — фото с серийным номером запросим отдельно</small></label>
-            <div style="margin-top: 10px;">
-                <label for="bvs_file" class="file-btn"><i class="icon fa-arrow-down"></i>&nbsp;&nbsp;Выбрать файл</label>
-                <span id="file-name" class="file-name-display"></span>
+        <!-- Шаг 1: Поездка -->
+        <div class="form-step-panel active" data-panel="1">
+            <div class="form-group">
+                <label for="trip_period">Выберите мероприятие *</label>
+                <select id="trip_period" name="trip_period" required>
+                    <option value="" disabled selected>Выберите поездку из списка</option>
+                    <!-- Опции будут загружены динамически из upcoming-trips.json -->
+                </select>
             </div>
-            <input type="file" id="bvs_file" name="bvs_file" accept=".pdf" style="display: none;">
+            <div class="form-note">
+                <p>Если нужной поездки нет — напишите нам через раздел <a href="/ask/">«Спросить»</a></p>
+            </div>
+            <div class="form-wizard-nav">
+                <button type="button" class="step-next-btn">Далее →</button>
+            </div>
         </div>
 
-        <script>
-        document.getElementById('bvs_file').addEventListener('change', function(e) {
-            const fileName = e.target.files[0]?.name || '';
-            document.getElementById('file-name').textContent = fileName ? '✓ ' + fileName : '';
-        });
-        </script>
-
-        <div class="form-group">
-            <label for="trip_period">Выберите мероприятие</label>
-            <select id="trip_period" name="trip_period">
-                <option value="" disabled selected></option>
-                <!-- Опции будут загружены динамически из upcoming-trips.json -->
-            </select>
+        <!-- Шаг 2: О вас -->
+        <div class="form-step-panel" data-panel="2">
+            <div class="form-group">
+                <label for="name">Имя и фамилия *</label>
+                <input type="text" id="name" name="name" placeholder="Иванов Иван" required>
+            </div>
+            <p class="form-section-title">Контакты</p>
+            <div class="form-group">
+                <label for="phone">Телефон *</label>
+                <input type="tel" id="phone" name="phone" placeholder="+7 900 000-00-00" required>
+            </div>
+            <div class="contact-row">
+                <div class="form-group">
+                    <label for="plan-email">Email</label>
+                    <input type="email" id="plan-email" name="email" placeholder="ivan@mail.ru">
+                </div>
+                <div class="form-group">
+                    <label for="plan-telegram">Telegram</label>
+                    <input type="text" id="plan-telegram" name="telegram" placeholder="@ваш_ник">
+                </div>
+            </div>
+            <div class="form-note">
+                <p>Email или Telegram — нужно хотя бы одно</p>
+            </div>
+            <p class="form-section-title">Дрон (БВС)</p>
+            <div class="form-group">
+                <label for="bvs_number">Номер дрона (БВС) *</label>
+                <textarea id="bvs_number" name="bvs_number" placeholder="БВС от 0,15 кг — учётный номер, например: 123456789AB&#10;БВС до 0,15 кг — серийный номер с фюзеляжа" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="bvs_file">Уведомление о постановке на учёт (.pdf)<br><small style="font-weight:400; color:#888;">Для БВС от 0,15 кг обязательно. Для БВС до 0,15 кг — фото с серийным номером запросим отдельно</small></label>
+                <div style="margin-top: 10px;">
+                    <label for="bvs_file" class="file-btn"><i class="icon fa-arrow-up"></i>&nbsp;&nbsp;Выбрать файл</label>
+                    <span id="file-name" class="file-name-display"></span>
+                </div>
+                <input type="file" id="bvs_file" name="bvs_file" accept=".pdf" style="display: none;">
+            </div>
+            <script>
+            document.getElementById('bvs_file').addEventListener('change', function(e) {
+                var name = e.target.files[0] ? e.target.files[0].name : '';
+                document.getElementById('file-name').textContent = name ? '✓ ' + name : '';
+            });
+            </script>
+            <div class="form-wizard-nav">
+                <button type="button" class="step-back-btn">← Назад</button>
+                <button type="button" class="step-next-btn">Далее →</button>
+            </div>
         </div>
 
-        <!-- Загрузка файлов временно отключена -->
-
-        <div class="form-group checkbox-group">
-            <label class="checkbox-container">
-                <input type="checkbox" id="privacy_consent" name="privacy_consent" required>
-                <span class="checkmark"></span>
-                <span class="privacy-text">
-                    Я выражаю своё согласие на обработку персональных данных <sup class="fn">1</sup>
-                    <div class="privacy-details">
-                        <p>Персональные данные обрабатываются исключительно для получения разрешения на полёты БВС. Согласие действует 1 месяц. Отзыв согласия – заявление на sleep-trip@ya.ru</p>
-                    </div>
-                </span>
-            </label>
+        <!-- Шаг 3: Согласие -->
+        <div class="form-step-panel" data-panel="3">
+            <div class="form-group checkbox-group">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="privacy_consent" name="privacy_consent" required>
+                    <span class="checkmark"></span>
+                    <span class="privacy-text">
+                        Я даю согласие на обработку персональных данных (ФЗ №152) <sup class="fn">1</sup>
+                        <div class="privacy-details">
+                            <p>Данные обрабатываются для получения разрешения на полёты БВС.</p>
+                            <p>Согласие действует 1 месяц. Отзыв согласия: <a href="mailto:sleep-trip@ya.ru">sleep-trip@ya.ru</a></p>
+                        </div>
+                    </span>
+                </label>
+            </div>
+            <div class="form-group checkbox-group">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="age_consent" name="age_consent" required>
+                    <span class="checkmark"></span>
+                    <span class="privacy-text">
+                        Мне исполнилось 18 лет <sup class="fn">2</sup>
+                    </span>
+                </label>
+            </div>
+            <div class="form-wizard-nav">
+                <button type="button" class="step-back-btn">← Назад</button>
+                <button type="submit" class="submit-btn">Отправить заявку</button>
+            </div>
         </div>
 
-        <div class="form-group checkbox-group">
-            <label class="checkbox-container">
-                <input type="checkbox" id="age_consent" name="age_consent" required>
-                <span class="checkmark"></span>
-                <span class="privacy-text">
-                    Мне есть 18 лет <sup class="fn">2</sup>
-                </span>
-            </label>
-        </div>
-
-        <button type="submit" class="submit-btn">
-            Отправить
-        </button>
     </form>
 </div>
 {{< /rawhtml >}}
