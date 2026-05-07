@@ -266,7 +266,7 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-   КНОПКИ НАВИГАЦИИ — harmonized layout
+   КНОПКИ НАВИГАЦИИ — unified with site theme
    ══════════════════════════════════════════════════════════════ */
 .form-nav {
     display: flex;
@@ -276,96 +276,99 @@
     gap: 16px;
 }
 
+/* Base style for all nav buttons — matches theme .button exactly */
 .form-nav .button {
-    font-size: 0.82em !important;
-    padding: 0 2.2em !important;
-    border-radius: 50px !important;
-    height: 3em !important;
-    line-height: 3em !important;
-    font-weight: 600 !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 0;
+    border-radius: 0;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
+    display: inline-block;
+    font-family: "source sans pro", Helvetica, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.075em;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 2rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-/* Кнопка "Назад" — ghost / outline, приглушённая */
+/* "Назад" — ghost / outline (theme default style) */
 .form-nav .button:first-child {
-    border: 1.5px solid rgba(0, 0, 0, 0.15) !important;
-    background: transparent !important;
-    color: #718096 !important;
-    font-size: 0.78em !important;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px #212931;
+    color: #212931 !important;
 }
 
 .form-nav .button:first-child:hover {
-    border-color: rgba(0, 0, 0, 0.25) !important;
-    background: rgba(0, 0, 0, 0.04) !important;
-    color: #4a5568 !important;
+    box-shadow: inset 0 0 0 2px #18bfef;
+    color: #18bfef !important;
 }
 
-/* Кнопка "Далее" — gradient accent */
+/* "Далее" — primary (theme .primary style) */
 .form-nav .button:last-child {
-    border: none !important;
-    background: linear-gradient(135deg, #4299e1 0%, #5a7de8 100%) !important;
-    color: white !important;
-    box-shadow: 0 2px 8px rgba(66, 153, 225, 0.3) !important;
+    background-color: #212931;
+    box-shadow: none;
+    color: #fff !important;
 }
 
 .form-nav .button:last-child:hover {
-    background: linear-gradient(135deg, #3182ce 0%, #4c6fd0 100%) !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 4px 16px rgba(66, 153, 225, 0.4) !important;
+    background-color: #18bfef;
 }
 
-.form-nav .button:last-child:active {
-    transform: translateY(0) !important;
-    box-shadow: 0 2px 6px rgba(66, 153, 225, 0.25) !important;
-}
-
-/* Если кнопка одна (только "Далее" на шаге 1) */
+/* When button is alone (only "Далее" on step 1) — primary */
 .form-nav .button:only-child {
-    margin-left: auto;
-    border: none !important;
-    background: linear-gradient(135deg, #4299e1 0%, #5a7de8 100%) !important;
-    color: white !important;
-    box-shadow: 0 2px 8px rgba(66, 153, 225, 0.3) !important;
+    background-color: #212931;
+    box-shadow: none;
+    color: #fff !important;
 }
 
 .form-nav .button:only-child:hover {
-    background: linear-gradient(135deg, #3182ce 0%, #4c6fd0 100%) !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 4px 16px rgba(66, 153, 225, 0.4) !important;
+    background-color: #18bfef;
 }
 
 /* ══════════════════════════════════════════════════════════════
-   КНОПКА «ОТПРАВИТЬ» — premium gradient, гармония с "Назад"
+   КНОПКА «ОТПРАВИТЬ» — theme .primary.large style
    ══════════════════════════════════════════════════════════════ */
 .travel-form-container .submit-btn {
-    border-radius: 50px !important;
-    background: linear-gradient(135deg, #4299e1 0%, #667eea 100%) !important;
-    color: white !important;
-    border: none !important;
-    height: 3em !important;
-    line-height: 3em !important;
-    padding: 0 2.4em !important;
-    font-size: 0.85em !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.3px !important;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    box-shadow: 0 4px 16px rgba(66, 153, 225, 0.3) !important;
-    margin-top: 0 !important;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 0;
+    border-radius: 0;
     cursor: pointer;
+    display: inline-block;
+    font-family: "source sans pro", Helvetica, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 900;
+    letter-spacing: 0.075em;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    padding: 0 2.75rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+    background-color: #212931;
+    box-shadow: none;
+    color: #fff !important;
+    margin-top: 0;
 }
 
 .travel-form-container .submit-btn:hover {
-    background: linear-gradient(135deg, #3182ce 0%, #5a6abf 100%) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 24px rgba(66, 153, 225, 0.4) !important;
+    background-color: #18bfef;
 }
 
-.travel-form-container .submit-btn:active {
-    transform: translateY(0) !important;
-    box-shadow: 0 2px 8px rgba(66, 153, 225, 0.2) !important;
+.travel-form-container .submit-btn:disabled {
+    pointer-events: none;
+    opacity: 0.25;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -493,10 +496,9 @@
     }
 
     .form-nav .button {
-        font-size: 0.72em !important;
-        padding: 0 1.8em !important;
-        height: 2.6em !important;
-        line-height: 2.6em !important;
+        font-size: 0.9rem;
+        height: 3.25rem;
+        line-height: 3.25rem;
     }
 }
 
