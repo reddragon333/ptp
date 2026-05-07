@@ -20,10 +20,10 @@ disableKinds = ["taxonomy", "term"]
  backgroundPath = "images/desktop.webp"
 
 # Below parameters can be set to override default post settings
-# [params.posts]
-#     folderName = "post"
-    pageSize = "12"
-#     featuredPost = true
+[params.posts]
+    folderName = "post"
+    pagesize = "12"
+    featuredPost = true
 #     paginationPages = 2
 #    showFirstLast = false
  
