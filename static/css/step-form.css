@@ -1,733 +1,181 @@
-/* ================================================================
-   step-form.css — Пошаговая форма заявки (/plan/)
-   Force-overrides forms.css with !important — Variant B warm style
-   ================================================================ */
+/* Пошаговая форма — светлая на тёмном фоне */
 
-/* ── CSS Variables ── */
-:root {
-    --sf-accent: #244f7a;
-    --sf-accent-hover: #1d4166;
-    --sf-accent-light: rgba(36, 79, 122, 0.05);
-    --sf-accent-ring: rgba(36, 79, 122, 0.14);
-    --sf-ink: #1f2320;
-    --sf-muted: #69716b;
-    --sf-line: #ded8cc;
-    --sf-line-light: #ebe5db;
-    --sf-ok: #21765a;
-    --sf-ok-light: #48bb78;
-    --sf-surface: #fffdf8;
-    --sf-radius: 8px;
-    --sf-field-bg: rgba(255, 253, 248, 0.7);
-    --sf-field-border: #cec7bb;
-    --sf-shadow: 0 16px 44px rgba(31, 35, 32, 0.11);
-}
-
-/* ══════════════════════════════════════════════════════════════
-   КОНТЕЙНЕР ФОРМЫ — force override forms.css
-   ══════════════════════════════════════════════════════════════ */
+/* Переопределяем контейнер формы на светлый */
 .travel-form-container {
-    background: rgba(255, 253, 248, 0.82) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border: 1px solid rgba(222, 216, 204, 0.6) !important;
+    background: #f7f8fa !important;
+    backdrop-filter: none !important;
+    border: 1px solid #e2e6ea !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12) !important;
     border-radius: 16px !important;
-    box-shadow: var(--sf-shadow) !important;
     padding: 2rem 2.25rem !important;
-    position: relative;
-    overflow: hidden;
 }
 
-/* Тонкий accent-бордюр сверху */
-.travel-form-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--sf-accent), #3a6fa0, var(--sf-accent));
-    border-radius: 16px 16px 0 0;
-}
-
-/* Снимаем uppercase — force override */
-.travel-form-container *,
+/* Все тексты в форме — тёмные */
+.travel-form-container,
 .travel-form-container label,
 .travel-form-container p,
 .travel-form-container .form-note p {
-    text-transform: none !important;
-    letter-spacing: normal !important;
-    color: var(--sf-ink) !important;
+    color: #2d3748 !important;
 }
 
 .travel-form-container small {
-    color: var(--sf-muted) !important;
+    color: #718096 !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   ЛЕЙБЛЫ — force override forms.css .form-group label
-   ══════════════════════════════════════════════════════════════ */
-.travel-form-container .form-group > label {
-    font-size: 0.88rem !important;
-    font-weight: 600 !important;
-    color: var(--sf-ink) !important;
-    margin-bottom: 0.5rem !important;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   ИНПУТЫ — force override forms.css .form-group input/textarea/select
-   ══════════════════════════════════════════════════════════════ */
-.travel-form-container .form-group input,
-.travel-form-container .form-group textarea,
-.travel-form-container .form-group select,
-.travel-form-container input,
-.travel-form-container textarea,
-.travel-form-container select {
-    background: var(--sf-field-bg) !important;
-    background-color: var(--sf-field-bg) !important;
-    color: var(--sf-ink) !important;
-    border: 1px solid var(--sf-field-border) !important;
-    border-radius: var(--sf-radius) !important;
-    padding: 0.85rem 1rem !important;
-    font-size: 0.95rem !important;
-    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s !important;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-}
-
-/* Select — custom arrow, force override forms.css select */
-.travel-form-container .form-group select,
-.travel-form-container select {
-    padding: 0.85rem 2.5rem 0.85rem 1rem !important;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2369716b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e") !important;
-    background-position: right 0.9rem center !important;
-    background-repeat: no-repeat !important;
-    background-size: 1.25rem 1.25rem !important;
-    appearance: none !important;
-    -webkit-appearance: none !important;
-}
-
-/* Hover — force */
-.travel-form-container .form-group input:hover,
-.travel-form-container .form-group textarea:hover,
-.travel-form-container .form-group select:hover,
-.travel-form-container input:hover,
-.travel-form-container textarea:hover,
-.travel-form-container select:hover {
-    border-color: #b8b0a4 !important;
-    background: rgba(255, 255, 255, 0.85) !important;
-    background-color: rgba(255, 255, 255, 0.85) !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
-}
-
-/* Focus — force override forms.css focus states */
-.travel-form-container .form-group input:focus,
-.travel-form-container .form-group textarea:focus,
-.travel-form-container .form-group select:focus,
-.travel-form-container input:focus,
-.travel-form-container textarea:focus,
-.travel-form-container select:focus {
-    border-color: var(--sf-accent) !important;
-    background: #fff !important;
-    background-color: #fff !important;
-    box-shadow: 0 0 0 3px var(--sf-accent-ring), 0 2px 6px rgba(36, 79, 122, 0.06) !important;
-    outline: none !important;
-}
-
-/* Select focus — keep custom arrow */
-.travel-form-container .form-group select:focus,
-.travel-form-container select:focus {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23244f7a' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e") !important;
-    background-position: right 0.9rem center !important;
-    background-repeat: no-repeat !important;
-    background-size: 1.25rem 1.25rem !important;
-}
-
-/* Placeholder — мягкий */
-.travel-form-container input::placeholder,
-.travel-form-container textarea::placeholder,
-.travel-form-container .form-group input::placeholder,
-.travel-form-container .form-group textarea::placeholder {
-    color: #9fa69b !important;
-    font-size: 0.88em;
-}
-
-/* Radio/checkbox — don't apply text input styles */
-.travel-form-container input[type="radio"],
-.travel-form-container input[type="checkbox"],
-.travel-form-container .form-group input[type="radio"],
-.travel-form-container .form-group input[type="checkbox"] {
-    padding: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
-    background-color: transparent !important;
-    border-radius: 0 !important;
-    min-height: auto !important;
-    width: auto !important;
-    accent-color: var(--sf-accent) !important;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   КНОПКА «ОТПРАВИТЬ» — force override forms.css .submit-btn
-   ══════════════════════════════════════════════════════════════ */
-.travel-form-container .submit-btn {
-    background: var(--sf-accent) !important;
-    color: #fff !important;
-    border: 1px solid var(--sf-accent) !important;
-    border-radius: var(--sf-radius) !important;
-    padding: 0 32px !important;
-    min-height: 50px;
-    font-size: 15px !important;
-    font-weight: 600 !important;
-    box-shadow: none !important;
-    transition: all 0.2s ease !important;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: none !important;
-    letter-spacing: 0 !important;
-    margin-top: 0 !important;
-}
-
-.travel-form-container .submit-btn:hover {
-    background: var(--sf-accent-hover) !important;
-    border-color: var(--sf-accent-hover) !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 4px 14px rgba(36, 79, 122, 0.25) !important;
-    opacity: 1 !important;
-}
-
-.travel-form-container .submit-btn:active {
-    transform: translateY(0) !important;
-    box-shadow: none !important;
-    opacity: 1 !important;
-}
-
-.travel-form-container .submit-btn:disabled {
-    pointer-events: none;
-    opacity: 0.3 !important;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   STEP INDICATOR — числа в кружках (Variant B)
-   ══════════════════════════════════════════════════════════════ */
+/* Step indicator на светлом фоне */
 .form-steps-indicator {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0;
-    margin-bottom: 28px;
-    padding: 0 8px;
-    position: relative;
+    gap: 8px;
+    margin-bottom: 20px;
 }
 
 .step-dot {
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 6px;
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: var(--sf-muted) !important;
-    transition: color 0.35s ease, transform 0.3s ease;
+    font-size: 0.82em;
+    color: #a0aec0;
+    transition: color 0.3s;
     white-space: nowrap;
-    position: relative;
-    z-index: 2;
-    min-width: 72px;
 }
-
-/* Кружок с номером */
+.step-dot.active { color: #2d3748; font-weight: 600; }
+.step-dot.done { color: #38a169; }
 .step-dot::before {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
+    content: ''; width: 9px; height: 9px; border-radius: 50%;
+    background: #e2e8f0; transition: all 0.3s; flex-shrink: 0;
+}
+.step-dot.active::before { background: #4299e1; transform: scale(1.3); }
+.step-dot.done::before { background: #38a169; }
+
+.step-connector { width: 24px; height: 1px; background: #e2e8f0; transition: background 0.3s; }
+.step-connector.done { background: #38a169; }
+
+.form-step { display: none; animation: stepIn 0.2s ease; }
+.form-step.active { display: block; }
+@keyframes stepIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+/* Кнопки навигации — скруглённые, в стиле сайта */
+.form-nav {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: 700;
-    flex-shrink: 0;
-    background: var(--sf-surface);
-    border: 2px solid var(--sf-line);
-    color: var(--sf-muted);
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    justify-content: space-between;
+    margin-top: 24px;
+    gap: 12px;
 }
 
-.step-dot[data-step="1"]::before { content: '1'; }
-.step-dot[data-step="2"]::before { content: '2'; }
-.step-dot[data-step="3"]::before { content: '3'; }
-
-/* Active step */
-.step-dot.active {
-    color: var(--sf-ink) !important;
-    font-weight: 700;
-    transform: translateY(-1px);
+.form-nav .button {
+    font-size: 0.75em !important;
+    padding: 0 2.5em !important;
+    border-radius: 24px !important;
+    height: 2.8em !important;
+    line-height: 2.8em !important;
+    border: 2px solid #2d3748 !important;
+    background: transparent !important;
+    color: #2d3748 !important;
+    font-weight: 600 !important;
+    transition: all 0.2s !important;
 }
 
-.step-dot.active::before {
-    background: var(--sf-accent);
-    border-color: var(--sf-accent);
-    color: #fff;
-    transform: scale(1.12);
-    box-shadow:
-        0 0 0 4px var(--sf-accent-ring),
-        0 4px 12px rgba(36, 79, 122, 0.22);
+.form-nav .button:hover {
+    background: #2d3748 !important;
+    color: white !important;
 }
 
-/* Done step — зелёная галочка */
-.step-dot.done {
-    color: var(--sf-ok) !important;
-    font-weight: 600;
+.form-nav .button:only-child {
+    margin-left: auto;
 }
 
-.step-dot.done::before {
-    content: '✓' !important;
-    background: linear-gradient(135deg, var(--sf-ok-light), #38a169);
-    border-color: transparent;
-    color: #fff;
-    font-size: 15px;
-    box-shadow: 0 2px 8px rgba(72, 187, 120, 0.22);
+/* Кнопка "Отправить" — акцентная */
+.travel-form-container .submit-btn {
+    border-radius: 24px !important;
+    background: #2d3748 !important;
+    color: white !important;
+    border: none !important;
 }
 
-/* Коннектор между шагами */
-.step-connector {
-    flex: 1;
-    height: 2px;
-    background: var(--sf-line);
-    transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    z-index: 1;
-    margin: 0 -4px;
-    margin-bottom: 20px;
+.travel-form-container .submit-btn:hover {
+    background: #1a202c !important;
 }
 
-.step-connector.done {
-    background: linear-gradient(90deg, var(--sf-ok-light), #38a169);
-    box-shadow: 0 0 6px rgba(72, 187, 120, 0.18);
-}
-
-/* ══════════════════════════════════════════════════════════════
-   ШАГ — fade + slide animation
-   ══════════════════════════════════════════════════════════════ */
-.form-step {
-    display: none;
-    animation: sfStepIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.form-step.active {
-    display: block;
-}
-
-@keyframes sfStepIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ══════════════════════════════════════════════════════════════
-   RADIO-КАРТОЧКИ ПОЕЗДОК — Variant B style
-   ══════════════════════════════════════════════════════════════ */
+/* Радиокнопки для поездок */
 .trip-radio-group {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-height: 340px;
+    max-height: 320px;
     overflow-y: auto;
-    padding: 2px;
-    border-radius: var(--sf-radius);
+    border-radius: 10px;
+    transition: outline 0.3s;
 }
 
-.trip-radio-group::-webkit-scrollbar { width: 5px; }
+.trip-radio-group::-webkit-scrollbar { width: 4px; }
 .trip-radio-group::-webkit-scrollbar-track { background: transparent; }
-.trip-radio-group::-webkit-scrollbar-thumb {
-    background: #c4cdd6;
-    border-radius: 3px;
-}
+.trip-radio-group::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 2px; }
 
 .trip-radio-label {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 14px 18px;
-    border: 1px solid var(--sf-line) !important;
-    border-radius: var(--sf-radius) !important;
+    padding: 14px 16px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
-    color: var(--sf-ink) !important;
-    background: var(--sf-field-bg) !important;
+    transition: all 0.2s;
+    color: #4a5568;
 }
 
 .trip-radio-label:hover {
-    border-color: rgba(36, 79, 122, 0.3) !important;
-    background: rgba(255, 255, 255, 0.85) !important;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+    border-color: #a0aec0;
+    background: #edf2f7;
 }
 
-/* Выбранная поездка */
 .trip-radio-label.selected {
-    border-color: var(--sf-accent) !important;
-    background: #edf3f9 !important;
-    box-shadow:
-        0 0 0 3px var(--sf-accent-ring),
-        0 4px 14px rgba(36, 79, 122, 0.1) !important;
+    border-color: #4299e1;
+    background: #ebf8ff;
 }
 
 .trip-radio-label input[type="radio"] {
     flex-shrink: 0;
-    width: 20px !important;
-    height: 20px !important;
-    accent-color: var(--sf-accent) !important;
-    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: #4299e1;
 }
 
 .trip-radio-text strong {
-    color: var(--sf-ink) !important;
+    color: #2d3748;
     font-weight: 600;
-    font-size: 0.95em;
-    display: block;
 }
 
 .trip-radio-text small {
-    color: var(--sf-muted) !important;
-    font-size: 0.82em;
-    display: block;
-    margin-top: 2px;
+    color: #718096;
+    font-size: 0.85em;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   ЗАМЕТКИ — info-блоки
-   ══════════════════════════════════════════════════════════════ */
-.travel-form-container .form-note {
-    background: var(--sf-accent-light) !important;
-    border-left: 3px solid rgba(36, 79, 122, 0.28) !important;
-    border-radius: 0 var(--sf-radius) var(--sf-radius) 0 !important;
-    padding: 0.6rem 0.9rem !important;
+/* Инпуты на светлом фоне */
+.travel-form-container input,
+.travel-form-container textarea,
+.travel-form-container select {
+    background: white !important;
+    color: #2d3748 !important;
+    border-color: #d1d5db !important;
 }
 
-.travel-form-container .form-note p {
-    font-size: 0.82rem !important;
-    color: var(--sf-muted) !important;
-    line-height: 1.5;
+.travel-form-container input:focus,
+.travel-form-container textarea:focus {
+    border-color: #4299e1 !important;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   ЧЕКБОКСЫ — Variant B стиль
-   ══════════════════════════════════════════════════════════════ */
-.travel-form-container .checkbox-group {
-    background: var(--sf-accent-light) !important;
-    border: 1px solid var(--sf-accent-ring) !important;
-    border-radius: var(--sf-radius) !important;
-    transition: all 0.25s ease !important;
+/* Чекбоксы */
+.travel-form-container .checkmark {
+    border-color: #d1d5db !important;
+    background: white !important;
 }
 
-.travel-form-container .checkbox-group:hover {
-    border-color: rgba(36, 79, 122, 0.22) !important;
-    background: rgba(36, 79, 122, 0.06) !important;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   КНОПКИ НАВИГАЦИИ — Variant B btn style
-   ══════════════════════════════════════════════════════════════ */
-.form-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 28px;
-    gap: 14px;
-}
-
-/* Base button */
-.form-nav .button {
-    -webkit-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0;
-    min-height: 46px;
-    line-height: 1;
-    padding: 0 24px;
-    text-align: center;
-    text-decoration: none;
-    text-transform: none;
-    white-space: nowrap;
-    border-radius: var(--sf-radius) !important;
-    border: 1px solid transparent !important;
-    transition: all 0.2s ease;
-}
-
-.form-nav .button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.form-nav .button:active {
-    transform: translateY(0);
-    box-shadow: none;
-}
-
-/* «Назад» — ghost/secondary */
-.form-nav .button:first-child {
-    background: #fff !important;
-    border: 1px solid var(--sf-line) !important;
-    color: var(--sf-ink) !important;
-}
-
-.form-nav .button:first-child:hover {
-    background: #faf8f5 !important;
-    border-color: #c5bfb3 !important;
-    color: var(--sf-ink) !important;
-}
-
-/* «Далее» — primary */
-.form-nav .button:last-child {
-    background: var(--sf-accent) !important;
-    border-color: var(--sf-accent) !important;
-    color: #fff !important;
-}
-
-.form-nav .button:last-child:hover {
-    background: var(--sf-accent-hover) !important;
-    border-color: var(--sf-accent-hover) !important;
-}
-
-/* Единственная кнопка */
-.form-nav .button:only-child {
-    background: var(--sf-accent) !important;
-    border-color: var(--sf-accent) !important;
-    color: #fff !important;
-    margin-left: auto;
-}
-
-.form-nav .button:only-child:hover {
-    background: var(--sf-accent-hover) !important;
-    border-color: var(--sf-accent-hover) !important;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   FILE BUTTON — тёплый стиль
-   ══════════════════════════════════════════════════════════════ */
+/* Кнопка "Выбрать файл" */
 .travel-form-container .file-btn {
-    color: var(--sf-muted) !important;
-    border: 1px solid var(--sf-field-border) !important;
-    background: var(--sf-field-bg) !important;
-    border-radius: var(--sf-radius) !important;
-    transition: all 0.2s ease !important;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
-}
-
-.travel-form-container .file-btn:hover {
-    border-color: rgba(36, 79, 122, 0.35) !important;
-    color: var(--sf-accent) !important;
-    background: rgba(255, 255, 255, 0.85) !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 3px 8px rgba(36, 79, 122, 0.1) !important;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   МОБИЛЬНАЯ АДАПТАЦИЯ
-   ══════════════════════════════════════════════════════════════ */
-@media (max-width: 768px) {
-    .travel-form-container {
-        padding: 1.5rem 1.25rem !important;
-        border-radius: 12px !important;
-    }
-
-    .form-steps-indicator {
-        margin-bottom: 22px;
-        padding: 0 4px;
-    }
-
-    .step-dot {
-        font-size: 0.65rem;
-        min-width: 56px;
-    }
-
-    .step-dot::before {
-        width: 30px;
-        height: 30px;
-        font-size: 12px;
-    }
-
-    .trip-radio-label {
-        padding: 12px 14px;
-        gap: 10px;
-    }
-
-    .form-nav {
-        margin-top: 22px;
-        gap: 12px;
-    }
-
-    .form-nav .button {
-        font-size: 14px;
-        min-height: 44px;
-        padding: 0 20px;
-    }
-
-    .travel-form-container .form-group input,
-    .travel-form-container .form-group select,
-    .travel-form-container .form-group textarea,
-    .travel-form-container input,
-    .travel-form-container select,
-    .travel-form-container textarea {
-        padding: 0.65rem 0.8rem !important;
-        font-size: 16px !important;
-        border-radius: var(--sf-radius) !important;
-    }
-
-    .travel-form-container .form-group select,
-    .travel-form-container select {
-        padding: 0.65rem 2.2rem 0.65rem 0.8rem !important;
-        font-size: 16px !important;
-    }
-}
-
-@media (max-width: 480px) {
-    /* Скрываем текст, оставляем числа в кружках */
-    .step-dot {
-        font-size: 0;
-        min-width: 38px;
-    }
-
-    .step-dot::before {
-        width: 28px;
-        height: 28px;
-    }
-
-    .form-nav {
-        gap: 10px;
-    }
-
-    .form-nav .button {
-        padding: 0 16px;
-        font-size: 13px;
-    }
-
-    .travel-form-container .submit-btn {
-        width: 100% !important;
-        padding: 0 20px !important;
-    }
-}
-
-/* ══════════════════════════════════════════════════════════════
-   ТЁМНАЯ ТЕМА — force overrides
-   ══════════════════════════════════════════════════════════════ */
-@media (prefers-color-scheme: dark) {
-    .travel-form-container {
-        background: rgba(22, 26, 34, 0.88) !important;
-        backdrop-filter: blur(28px) !important;
-        -webkit-backdrop-filter: blur(28px) !important;
-        border-color: rgba(255, 255, 255, 0.1) !important;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 1px 6px rgba(0, 0, 0, 0.3) !important;
-    }
-
-    .travel-form-container .form-group label,
-    .travel-form-container label {
-        color: #dde3ea !important;
-    }
-
-    .travel-form-container .form-group input,
-    .travel-form-container .form-group select,
-    .travel-form-container .form-group textarea,
-    .travel-form-container input,
-    .travel-form-container select,
-    .travel-form-container textarea {
-        background: rgba(255, 255, 255, 0.07) !important;
-        background-color: rgba(255, 255, 255, 0.07) !important;
-        border-color: rgba(255, 255, 255, 0.16) !important;
-        color: #e8edf4 !important;
-    }
-
-    .travel-form-container .form-group input:focus,
-    .travel-form-container .form-group select:focus,
-    .travel-form-container .form-group textarea:focus,
-    .travel-form-container input:focus,
-    .travel-form-container select:focus,
-    .travel-form-container textarea:focus {
-        border-color: #6aaee0 !important;
-        background: rgba(255, 255, 255, 0.11) !important;
-        background-color: rgba(255, 255, 255, 0.11) !important;
-        box-shadow: 0 0 0 3px rgba(106, 174, 224, 0.2) !important;
-    }
-
-    .travel-form-container .submit-btn {
-        background: #2d6aa8 !important;
-        border-color: #2d6aa8 !important;
-        box-shadow: 0 2px 10px rgba(45, 106, 168, 0.4) !important;
-    }
-
-    .travel-form-container .submit-btn:hover {
-        background: #3578b8 !important;
-        box-shadow: 0 5px 18px rgba(45, 106, 168, 0.5) !important;
-    }
-
-    .travel-form-container .form-note {
-        background: rgba(36, 79, 122, 0.15) !important;
-        border-left-color: rgba(106, 174, 224, 0.5) !important;
-    }
-
-    .travel-form-container .form-note p {
-        color: #8ca8c4 !important;
-    }
-
-    .travel-form-container .checkbox-group {
-        background: rgba(36, 79, 122, 0.12) !important;
-        border-color: rgba(106, 174, 224, 0.25) !important;
-    }
-
-    .travel-form-container input[type="radio"],
-    .travel-form-container input[type="checkbox"],
-    .travel-form-container .form-group input[type="radio"],
-    .travel-form-container .form-group input[type="checkbox"] {
-        background: transparent !important;
-        background-color: transparent !important;
-        border: none !important;
-    }
-
-    .step-dot {
-        color: #8a9199 !important;
-    }
-
-    .step-dot.active {
-        color: #dde3ea !important;
-    }
-
-    .step-dot.done {
-        color: var(--sf-ok-light) !important;
-    }
-
-    .trip-radio-label {
-        background: rgba(255, 255, 255, 0.05) !important;
-        border-color: rgba(255, 255, 255, 0.12) !important;
-        color: #e8edf4 !important;
-    }
-
-    .trip-radio-label:hover {
-        background: rgba(255, 255, 255, 0.08) !important;
-        border-color: rgba(106, 174, 224, 0.3) !important;
-    }
-
-    .trip-radio-label.selected {
-        background: rgba(45, 106, 168, 0.15) !important;
-        border-color: #6aaee0 !important;
-    }
-
-    .form-nav .button:first-child {
-        background: rgba(255, 255, 255, 0.07) !important;
-        border-color: rgba(255, 255, 255, 0.16) !important;
-        color: #dde3ea !important;
-    }
-
-    .form-nav .button:last-child,
-    .form-nav .button:only-child {
-        background: #2d6aa8 !important;
-        border-color: #2d6aa8 !important;
-    }
+    color: #2d3748 !important;
+    border-color: #d1d5db !important;
+    background: white !important;
 }

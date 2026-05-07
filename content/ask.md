@@ -9,7 +9,6 @@ disableComments = true
 
 {{< rawhtml >}}
 <link rel="stylesheet" href="/css/step-form.css">
-<link rel="stylesheet" href="/css/ask-form.css">
 <div class="contact-form-container">
     <!-- Сообщения об успехе/ошибке -->
     <script>
