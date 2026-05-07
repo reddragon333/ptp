@@ -1,36 +1,43 @@
 /* ================================================================
    step-form.css — Пошаговая форма заявки
-   Variant B style: warm tones, 8px radius, #244f7a accent
+   Adapted from Variant B prototype: warm neutrals, #244f7a accent
    ================================================================ */
 
 /* ── CSS Variables ── */
 :root {
-    --form-accent: #244f7a;
-    --form-accent-light: rgba(36, 79, 122, 0.04);
-    --form-accent-focus: rgba(36, 79, 122, 0.5);
-    --form-accent-ring: rgba(36, 79, 122, 0.12);
-    --form-ink: #1f2320;
-    --form-muted: #69716b;
-    --form-line: #ded8cc;
-    --form-ok: #21765a;
-    --form-radius: 8px;
-    --form-shadow: 0 16px 44px rgba(31, 35, 32, 0.11);
+    --sf-accent: #244f7a;
+    --sf-accent-hover: #1d4166;
+    --sf-accent-light: rgba(36, 79, 122, 0.05);
+    --sf-accent-ring: rgba(36, 79, 122, 0.14);
+    --sf-ink: #1f2320;
+    --sf-muted: #69716b;
+    --sf-line: #ded8cc;
+    --sf-line-light: #ebe5db;
+    --sf-ok: #21765a;
+    --sf-ok-light: #48bb78;
+    --sf-surface: #fffdf8;
+    --sf-radius: 8px;
+    --sf-field-bg: rgba(255, 253, 248, 0.7);
+    --sf-field-border: #cec7bb;
+    --sf-shadow: 0 16px 44px rgba(31, 35, 32, 0.11);
 }
 
-/* ── Контейнер формы — glassmorphism (сохранён) ── */
+/* ══════════════════════════════════════════════════════════════
+   КОНТЕЙНЕР ФОРМЫ — glassmorphism override
+   ══════════════════════════════════════════════════════════════ */
 .travel-form-container {
     background: rgba(255, 255, 255, 0.85) !important;
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    box-shadow: var(--form-shadow) !important;
-    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--sf-shadow) !important;
     padding: 2rem 2.25rem !important;
     position: relative;
     overflow: hidden;
 }
 
-/* Тонкий акцентный бордюр сверху */
+/* Тонкий accent-бордюр сверху */
 .travel-form-container::before {
     content: '';
     position: absolute;
@@ -38,25 +45,24 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--form-accent), #3a6fa0, var(--form-accent));
-    background-size: 200% 100%;
-    border-radius: 12px 12px 0 0;
+    background: linear-gradient(90deg, var(--sf-accent), #3a6fa0, var(--sf-accent));
+    border-radius: 16px 16px 0 0;
 }
 
-/* Все тексты — тёмные */
+/* Все тексты внутри формы — тёмные */
 .travel-form-container,
 .travel-form-container label,
 .travel-form-container p,
 .travel-form-container .form-note p {
-    color: var(--form-ink) !important;
+    color: var(--sf-ink) !important;
 }
 
 .travel-form-container small {
-    color: var(--form-muted) !important;
+    color: var(--sf-muted) !important;
 }
 
 /* ══════════════════════════════════════════════════════════════
-   ПРОГРЕСС-БАР — stepper
+   STEP INDICATOR — числа в кружках (как в Variant B)
    ══════════════════════════════════════════════════════════════ */
 .form-steps-indicator {
     display: flex;
@@ -73,123 +79,106 @@
     flex-direction: column;
     align-items: center;
     gap: 6px;
-    font-size: 0.72em;
+    font-size: 0.72rem;
     font-weight: 500;
-    color: var(--form-muted);
-    transition: color 0.4s ease, transform 0.3s ease;
+    color: var(--sf-muted);
+    transition: color 0.35s ease, transform 0.3s ease;
     white-space: nowrap;
     position: relative;
     z-index: 2;
-    min-width: 70px;
+    min-width: 72px;
 }
 
+/* Кружок с номером */
 .step-dot::before {
-    content: '';
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.7);
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
-
-.step-dot.active {
-    color: var(--form-ink);
-    font-weight: 700;
-    transform: translateY(-1px);
-}
-
-.step-dot.active::before {
-    background: var(--form-accent);
-    border-color: transparent;
-    transform: scale(1.15);
-    box-shadow:
-        0 0 0 4px var(--form-accent-ring),
-        0 4px 12px rgba(36, 79, 122, 0.25);
-}
-
-.step-dot.done {
-    color: var(--form-ok);
-    font-weight: 600;
-}
-
-.step-dot.done::before {
-    background: linear-gradient(135deg, #48bb78, #38a169);
-    border-color: transparent;
-    box-shadow: 0 2px 8px rgba(72, 187, 120, 0.2);
-}
-
-/* Номер шага внутри кружка */
-.step-dot[data-step="1"]::before { content: '1'; }
-.step-dot[data-step="2"]::before { content: '2'; }
-.step-dot[data-step="3"]::before { content: '3'; }
-
-.step-dot::before {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 13px;
     font-weight: 700;
-    color: var(--form-muted);
+    flex-shrink: 0;
+    background: var(--sf-surface);
+    border: 2px solid var(--sf-line);
+    color: var(--sf-muted);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.step-dot[data-step="1"]::before { content: '1'; }
+.step-dot[data-step="2"]::before { content: '2'; }
+.step-dot[data-step="3"]::before { content: '3'; }
+
+/* Active step */
+.step-dot.active {
+    color: var(--sf-ink);
+    font-weight: 700;
+    transform: translateY(-1px);
 }
 
 .step-dot.active::before {
-    color: white;
+    background: var(--sf-accent);
+    border-color: var(--sf-accent);
+    color: #fff;
+    transform: scale(1.12);
+    box-shadow:
+        0 0 0 4px var(--sf-accent-ring),
+        0 4px 12px rgba(36, 79, 122, 0.22);
+}
+
+/* Done step — зелёная галочка */
+.step-dot.done {
+    color: var(--sf-ok);
+    font-weight: 600;
 }
 
 .step-dot.done::before {
-    content: '✓';
-    color: white;
-    font-size: 14px;
+    content: '✓' !important;
+    background: linear-gradient(135deg, var(--sf-ok-light), #38a169);
+    border-color: transparent;
+    color: #fff;
+    font-size: 15px;
+    box-shadow: 0 2px 8px rgba(72, 187, 120, 0.22);
 }
 
 /* Коннектор между шагами */
 .step-connector {
     flex: 1;
     height: 2px;
-    background: rgba(0, 0, 0, 0.08);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--sf-line);
+    transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 1;
     margin: 0 -4px;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
 .step-connector.done {
-    background: linear-gradient(90deg, #48bb78, #38a169);
-    box-shadow: 0 0 6px rgba(72, 187, 120, 0.2);
+    background: linear-gradient(90deg, var(--sf-ok-light), #38a169);
+    box-shadow: 0 0 6px rgba(72, 187, 120, 0.18);
 }
 
 /* ══════════════════════════════════════════════════════════════
-   ШАГ-ПЕРЕКЛЮЧЕНИЕ — fade + slide
+   ШАГ — fade + slide animation
    ══════════════════════════════════════════════════════════════ */
 .form-step {
     display: none;
-    animation: stepFadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: sfStepIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .form-step.active {
     display: block;
 }
 
-@keyframes stepFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes sfStepIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ══════════════════════════════════════════════════════════════
-   РАДИОКНОПКИ ПОЕЗДОК — карточки Variant B
+   RADIO-КАРТОЧКИ ПОЕЗДОК — Variant B style
    ══════════════════════════════════════════════════════════════ */
 .trip-radio-group {
     display: flex;
@@ -197,9 +186,8 @@
     gap: 10px;
     max-height: 340px;
     overflow-y: auto;
-    border-radius: var(--form-radius);
     padding: 2px;
-    transition: outline 0.3s;
+    border-radius: var(--sf-radius);
 }
 
 .trip-radio-group::-webkit-scrollbar { width: 5px; }
@@ -214,13 +202,12 @@
     align-items: center;
     gap: 14px;
     padding: 14px 18px;
-    border: 1px solid var(--form-line);
-    border-radius: var(--form-radius);
+    border: 1px solid var(--sf-line);
+    border-radius: var(--sf-radius);
     cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    color: var(--form-ink);
-    background: rgba(255, 255, 255, 0.6);
-    position: relative;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--sf-ink);
+    background: var(--sf-field-bg);
 }
 
 .trip-radio-label:hover {
@@ -232,10 +219,10 @@
 
 /* Выбранная поездка */
 .trip-radio-label.selected {
-    border-color: var(--form-accent);
-    background: var(--form-accent-light);
+    border-color: var(--sf-accent);
+    background: #edf3f9;
     box-shadow:
-        0 0 0 3px var(--form-accent-ring),
+        0 0 0 3px var(--sf-accent-ring),
         0 4px 14px rgba(36, 79, 122, 0.1);
 }
 
@@ -243,44 +230,139 @@
     flex-shrink: 0;
     width: 20px;
     height: 20px;
-    accent-color: var(--form-accent);
+    accent-color: var(--sf-accent);
     cursor: pointer;
 }
 
 .trip-radio-text strong {
-    color: var(--form-ink);
+    color: var(--sf-ink);
     font-weight: 600;
     font-size: 0.95em;
+    display: block;
 }
 
 .trip-radio-text small {
-    color: var(--form-muted);
-    font-size: 0.83em;
+    color: var(--sf-muted);
+    font-size: 0.82em;
     display: block;
     margin-top: 2px;
 }
 
 /* ══════════════════════════════════════════════════════════════
-   КНОПКИ НАВИГАЦИИ — Variant B style
+   ИНПУТЫ — тёплые нейтральные тона, мягкий focus
+   ══════════════════════════════════════════════════════════════ */
+.travel-form-container input,
+.travel-form-container textarea,
+.travel-form-container select {
+    background: var(--sf-field-bg) !important;
+    color: var(--sf-ink) !important;
+    border: 1px solid var(--sf-field-border) !important;
+    border-radius: var(--sf-radius) !important;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+}
+
+.travel-form-container input:hover,
+.travel-form-container textarea:hover,
+.travel-form-container select:hover {
+    border-color: #b8b0a4 !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+.travel-form-container input:focus,
+.travel-form-container textarea:focus,
+.travel-form-container select:focus {
+    border-color: var(--sf-accent) !important;
+    background: #fff !important;
+    box-shadow:
+        0 0 0 3px var(--sf-accent-ring),
+        0 2px 6px rgba(36, 79, 122, 0.06) !important;
+    outline: none !important;
+}
+
+/* Placeholder — мягкий */
+.travel-form-container input::placeholder,
+.travel-form-container textarea::placeholder {
+    color: #9fa69b !important;
+    font-size: 0.88em;
+}
+
+.travel-form-container textarea::placeholder {
+    font-size: 0.82em !important;
+    line-height: 1.5;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ЛЕЙБЛЫ — Variant B: 14px, weight 700
+   ══════════════════════════════════════════════════════════════ */
+.travel-form-container .form-group > label {
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    color: var(--sf-ink) !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ЗАМЕТКИ — info-блоки (hint из Variant B)
+   ══════════════════════════════════════════════════════════════ */
+.travel-form-container .form-note {
+    background: var(--sf-accent-light) !important;
+    border-left: 3px solid rgba(36, 79, 122, 0.28) !important;
+    border-radius: 0 var(--sf-radius) var(--sf-radius) 0 !important;
+    padding: 0.6rem 0.9rem !important;
+}
+
+.travel-form-container .form-note p {
+    font-size: 0.82rem !important;
+    color: var(--sf-muted) !important;
+    line-height: 1.5;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ЧЕКБОКСЫ — Variant B стиль
+   ══════════════════════════════════════════════════════════════ */
+.travel-form-container .checkbox-group {
+    background: var(--sf-accent-light) !important;
+    border: 1px solid var(--sf-accent-ring) !important;
+    border-radius: var(--sf-radius) !important;
+    transition: all 0.25s ease !important;
+}
+
+.travel-form-container .checkbox-group:hover {
+    border-color: rgba(36, 79, 122, 0.22) !important;
+    background: rgba(36, 79, 122, 0.06) !important;
+}
+
+.travel-form-container .checkmark {
+    border-color: var(--sf-field-border) !important;
+    background: var(--sf-field-bg) !important;
+}
+
+.travel-form-container input[type="checkbox"] {
+    accent-color: var(--sf-accent) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   КНОПКИ НАВИГАЦИИ — Variant B btn style
    ══════════════════════════════════════════════════════════════ */
 .form-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 28px;
-    gap: 16px;
+    gap: 14px;
 }
 
-/* Base button style — Variant B */
+/* Base button */
 .form-nav .button {
-    -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: "source sans pro", Inter, system-ui, -apple-system, sans-serif;
+    font-family: inherit;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0;
@@ -291,9 +373,9 @@
     text-decoration: none;
     text-transform: none;
     white-space: nowrap;
-    border-radius: var(--form-radius);
+    border-radius: var(--sf-radius);
     border: 1px solid transparent;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease;
 }
 
 .form-nav .button:hover {
@@ -303,58 +385,58 @@
 
 .form-nav .button:active {
     transform: translateY(0);
+    box-shadow: none;
 }
 
-/* "Назад" — secondary */
+/* «Назад» — ghost/secondary */
 .form-nav .button:first-child {
     background: #fff;
-    border: 1px solid var(--form-line);
-    color: var(--form-ink) !important;
+    border: 1px solid var(--sf-line);
+    color: var(--sf-ink) !important;
 }
 
 .form-nav .button:first-child:hover {
     background: #faf8f5;
     border-color: #c5bfb3;
-    color: var(--form-ink) !important;
+    color: var(--sf-ink) !important;
 }
 
-/* "Далее" — primary */
+/* «Далее» — primary */
 .form-nav .button:last-child {
-    background: var(--form-accent);
-    border-color: var(--form-accent);
+    background: var(--sf-accent);
+    border-color: var(--sf-accent);
     color: #fff !important;
 }
 
 .form-nav .button:last-child:hover {
-    background: #1d4166;
-    border-color: #1d4166;
+    background: var(--sf-accent-hover);
+    border-color: var(--sf-accent-hover);
 }
 
-/* When button is alone (only "Далее" on step 1) — primary, align right */
+/* Единственная кнопка (только «Далее» на шаге 1) — primary, вправо */
 .form-nav .button:only-child {
-    background: var(--form-accent);
-    border-color: var(--form-accent);
+    background: var(--sf-accent);
+    border-color: var(--sf-accent);
     color: #fff !important;
     margin-left: auto;
 }
 
 .form-nav .button:only-child:hover {
-    background: #1d4166;
-    border-color: #1d4166;
+    background: var(--sf-accent-hover);
+    border-color: var(--sf-accent-hover);
 }
 
 /* ══════════════════════════════════════════════════════════════
    КНОПКА «ОТПРАВИТЬ» — primary, чуть крупнее
    ══════════════════════════════════════════════════════════════ */
 .travel-form-container .submit-btn {
-    -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: "source sans pro", Inter, system-ui, -apple-system, sans-serif;
+    font-family: inherit;
     font-size: 15px;
     font-weight: 600;
     letter-spacing: 0;
@@ -365,117 +447,49 @@
     text-decoration: none;
     text-transform: none;
     white-space: nowrap;
-    border-radius: var(--form-radius);
-    border: 1px solid var(--form-accent);
-    transition: all 0.2s ease-in-out;
-    background: var(--form-accent);
+    border-radius: var(--sf-radius);
+    border: 1px solid var(--sf-accent);
+    background: var(--sf-accent);
     color: #fff !important;
     margin-top: 0;
+    transition: all 0.2s ease;
 }
 
 .travel-form-container .submit-btn:hover {
-    background: #1d4166;
-    border-color: #1d4166;
+    background: var(--sf-accent-hover);
+    border-color: var(--sf-accent-hover);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 14px rgba(36, 79, 122, 0.25);
 }
 
 .travel-form-container .submit-btn:active {
     transform: translateY(0);
+    box-shadow: none;
 }
 
 .travel-form-container .submit-btn:disabled {
     pointer-events: none;
-    opacity: 0.25;
+    opacity: 0.3;
 }
 
 /* ══════════════════════════════════════════════════════════════
-   ИНПУТЫ — Variant B: 8px radius, warm borders
+   FILE BUTTON — тёплый стиль
    ══════════════════════════════════════════════════════════════ */
-.travel-form-container input,
-.travel-form-container textarea,
-.travel-form-container select {
-    background: rgba(255, 255, 255, 0.7) !important;
-    color: var(--form-ink) !important;
-    border: 1px solid rgba(0, 0, 0, 0.12) !important;
-    border-radius: var(--form-radius) !important;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
-}
-
-.travel-form-container input:hover,
-.travel-form-container textarea:hover,
-.travel-form-container select:hover {
-    border-color: rgba(0, 0, 0, 0.18) !important;
-    background: rgba(255, 255, 255, 0.85) !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
-}
-
-.travel-form-container input:focus,
-.travel-form-container textarea:focus,
-.travel-form-container select:focus {
-    border-color: var(--form-accent) !important;
-    box-shadow:
-        0 0 0 3px var(--form-accent-ring),
-        0 2px 6px rgba(36, 79, 122, 0.06) !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-}
-
-/* Чекбоксы */
-.travel-form-container .checkmark {
-    border-color: rgba(0, 0, 0, 0.15) !important;
-    background: rgba(255, 255, 255, 0.7) !important;
-}
-
-/* Чекбокс-группы */
-.travel-form-container .checkbox-group {
-    background: var(--form-accent-light) !important;
-    border: 1px solid var(--form-accent-ring) !important;
-    border-radius: var(--form-radius) !important;
-    transition: all 0.3s ease !important;
-}
-
-.travel-form-container .checkbox-group:hover {
-    border-color: rgba(36, 79, 122, 0.22) !important;
-    background: rgba(36, 79, 122, 0.06) !important;
-}
-
-/* Кнопка «Выбрать файл» */
 .travel-form-container .file-btn {
-    color: #4a5568 !important;
-    border: 1px solid rgba(0, 0, 0, 0.12) !important;
-    background: rgba(255, 255, 255, 0.6) !important;
-    border-radius: var(--form-radius) !important;
-    transition: all 0.25s ease !important;
+    color: var(--sf-muted) !important;
+    border: 1px solid var(--sf-field-border) !important;
+    background: var(--sf-field-bg) !important;
+    border-radius: var(--sf-radius) !important;
+    transition: all 0.2s ease !important;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
 }
 
 .travel-form-container .file-btn:hover {
-    border-color: rgba(36, 79, 122, 0.4) !important;
-    color: var(--form-accent) !important;
+    border-color: rgba(36, 79, 122, 0.35) !important;
+    color: var(--sf-accent) !important;
     background: rgba(255, 255, 255, 0.85) !important;
     transform: translateY(-1px) !important;
     box-shadow: 0 3px 8px rgba(36, 79, 122, 0.1) !important;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   ЛЕЙБЛЫ
-   ══════════════════════════════════════════════════════════════ */
-.travel-form-container .form-group > label {
-    font-size: 0.88rem !important;
-    font-weight: 600 !important;
-    color: var(--form-ink) !important;
-    margin-bottom: 0.55rem !important;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   ЗАМЕТКИ — info-блоки между полями
-   ══════════════════════════════════════════════════════════════ */
-.travel-form-container .form-note {
-    background: var(--form-accent-light) !important;
-    border-left: 3px solid rgba(36, 79, 122, 0.3) !important;
-    border-radius: 0 var(--form-radius) var(--form-radius) 0 !important;
-    padding: 0.6rem 0.9rem !important;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -493,13 +507,13 @@
     }
 
     .step-dot {
-        font-size: 0.65em;
+        font-size: 0.65rem;
         min-width: 56px;
     }
 
     .step-dot::before {
-        width: 28px;
-        height: 28px;
+        width: 30px;
+        height: 30px;
         font-size: 12px;
     }
 
@@ -509,7 +523,7 @@
     }
 
     .form-nav {
-        margin-top: 20px;
+        margin-top: 22px;
         gap: 12px;
     }
 
@@ -521,14 +535,15 @@
 }
 
 @media (max-width: 480px) {
+    /* Скрываем текст, оставляем числа в кружках */
     .step-dot {
         font-size: 0;
-        min-width: 40px;
+        min-width: 38px;
     }
 
     .step-dot::before {
-        width: 26px;
-        height: 26px;
+        width: 28px;
+        height: 28px;
     }
 
     .form-nav {
@@ -539,11 +554,9 @@
         padding: 0 16px;
         font-size: 13px;
     }
-}
 
-/* БВС placeholder — мельче */
-.travel-form-container textarea::placeholder {
-    font-size: 0.8em !important;
-    color: rgba(0,0,0,0.35) !important;
-    line-height: 1.5;
+    .travel-form-container .submit-btn {
+        width: 100%;
+        padding: 0 20px;
+    }
 }

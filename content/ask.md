@@ -9,6 +9,7 @@ disableComments = true
 
 {{< rawhtml >}}
 <link rel="stylesheet" href="/css/step-form.css">
+<link rel="stylesheet" href="/css/ask-form.css">
 <div class="contact-form-container">
     <!-- Сообщения об успехе/ошибке -->
     <script>
@@ -174,7 +175,7 @@ disableComments = true
             </label>
         </div>
 
-        <button type="submit" class="submit-btn" style="border-radius:8px;background:#244f7a;color:white;min-height:50px;font-weight:600;">
+        <button type="submit" class="submit-btn">
             Отправить вопрос
         </button>
     </form>

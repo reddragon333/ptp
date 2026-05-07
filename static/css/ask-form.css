@@ -1,0 +1,273 @@
+/* ask-form.css — Variant B style for /ask/ page */
+
+/* Container override: glassmorphism card */
+.contact-form-container {
+    max-width: 720px;
+    margin: 0 auto 2rem;
+    padding: 2.25rem 2.5rem;
+    background: rgba(255, 253, 248, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 16px;
+    border: 1px solid rgba(222, 216, 204, 0.6);
+    box-shadow: 0 16px 44px rgba(31, 35, 32, 0.11);
+}
+
+/* Labels — clear, dark, medium weight */
+.contact-form .form-group label {
+    font-weight: 500;
+    color: #1f2320;
+    font-size: 0.9rem;
+    letter-spacing: 0;
+}
+
+/* Inputs — variant B radius and border */
+.contact-form .form-group input[type="text"],
+.contact-form .form-group input[type="email"],
+.contact-form .form-group input[type="tel"] {
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: #fff;
+    padding: 0.75rem 0.85rem;
+    min-height: 44px;
+    font-size: 0.95rem;
+    color: #1f2320;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-form .form-group input[type="text"]:focus,
+.contact-form .form-group input[type="email"]:focus,
+.contact-form .form-group input[type="tel"]:focus {
+    border-color: #244f7a;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(36, 79, 122, 0.12);
+    background: #fff;
+}
+
+/* Select — same style as inputs */
+.contact-form .form-group select {
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background-color: #fff;
+    padding: 0.75rem 2.5rem 0.75rem 0.85rem;
+    min-height: 44px;
+    font-size: 0.95rem;
+    color: #1f2320;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-form .form-group select:focus {
+    border-color: #244f7a;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(36, 79, 122, 0.12);
+    background-color: #fff;
+}
+
+/* Textarea — same style, taller */
+.contact-form .form-group textarea {
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: #fff;
+    padding: 0.75rem 0.85rem;
+    min-height: 120px;
+    font-size: 0.95rem;
+    color: #1f2320;
+    resize: vertical;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-form .form-group textarea:focus {
+    border-color: #244f7a;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(36, 79, 122, 0.12);
+    background: #fff;
+}
+
+/* Submit button — primary variant B style */
+.contact-form .submit-btn {
+    background: #244f7a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    min-height: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0 1.5rem;
+    cursor: pointer;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: none;
+    letter-spacing: 0.3px;
+    margin-top: 0.5rem;
+}
+
+.contact-form .submit-btn:hover {
+    background: #1d4065;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(36, 79, 122, 0.3);
+}
+
+.contact-form .submit-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(36, 79, 122, 0.2);
+}
+
+.contact-form .submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Form note — soft background with accent left border */
+.contact-form-container .form-note {
+    margin: -0.4rem 0 1.4rem;
+    padding: 0.65rem 1rem;
+    background: rgba(36, 79, 122, 0.06);
+    border-left: 3px solid #244f7a;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.82rem;
+    color: #69716b;
+    line-height: 1.5;
+}
+
+.contact-form-container .form-note p::before {
+    color: #244f7a;
+}
+
+/* Page lead — nice typography */
+.page-lead {
+    font-size: 1.05rem;
+    color: #69716b;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+}
+
+.page-lead a {
+    color: #244f7a;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(36, 79, 122, 0.25);
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.page-lead a:hover {
+    color: #1d4065;
+    border-bottom-color: #1d4065;
+}
+
+/* Checkbox group — softer with accent border */
+.contact-form-container .checkbox-group {
+    background: rgba(36, 79, 122, 0.05);
+    border: 1px solid rgba(36, 79, 122, 0.18);
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+    margin: 1.2rem 0;
+}
+
+.contact-form-container .checkbox-group input[type="checkbox"] {
+    accent-color: #244f7a;
+}
+
+/* Form messages — consistent radius */
+.contact-form-container .form-message {
+    border-radius: 8px;
+}
+
+/* Mobile — tighter */
+@media (max-width: 768px) {
+    .contact-form-container {
+        padding: 1.25rem 1.25rem;
+        border-radius: 12px;
+        margin: 0;
+    }
+
+    .contact-form .form-group label {
+        font-size: 0.88rem;
+    }
+
+    .contact-form .form-group input[type="text"],
+    .contact-form .form-group input[type="email"],
+    .contact-form .form-group input[type="tel"],
+    .contact-form .form-group select,
+    .contact-form .form-group textarea {
+        font-size: 16px; /* prevent iOS zoom */
+    }
+
+    .contact-form .form-group textarea {
+        min-height: 100px;
+    }
+
+    .contact-form .submit-btn {
+        min-height: 48px;
+    }
+}
+
+/* Dark theme overrides */
+@media (prefers-color-scheme: dark) {
+    .contact-form-container {
+        background: rgba(22, 26, 34, 0.88);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    .contact-form .form-group label {
+        color: #dde3ea;
+    }
+
+    .contact-form .form-group input[type="text"],
+    .contact-form .form-group input[type="email"],
+    .contact-form .form-group input[type="tel"],
+    .contact-form .form-group select,
+    .contact-form .form-group textarea {
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.16);
+        color: #e8edf4;
+    }
+
+    .contact-form .form-group input[type="text"]:focus,
+    .contact-form .form-group input[type="email"]:focus,
+    .contact-form .form-group input[type="tel"]:focus,
+    .contact-form .form-group select:focus,
+    .contact-form .form-group textarea:focus {
+        border-color: #6aaee0;
+        background: rgba(255, 255, 255, 0.11);
+        box-shadow: 0 0 0 3px rgba(106, 174, 224, 0.2);
+    }
+
+    .contact-form .submit-btn {
+        background: #2d6aa8;
+    }
+
+    .contact-form .submit-btn:hover {
+        background: #3578b8;
+        box-shadow: 0 4px 16px rgba(45, 106, 168, 0.4);
+    }
+
+    .contact-form-container .form-note {
+        background: rgba(36, 79, 122, 0.15);
+        border-left-color: rgba(106, 174, 224, 0.5);
+        color: #8ca8c4;
+    }
+
+    .contact-form-container .form-note p::before {
+        color: #7ab3e0;
+    }
+
+    .page-lead {
+        color: #99a6b0;
+    }
+
+    .page-lead a {
+        color: #7ab3e0;
+        border-bottom-color: rgba(122, 179, 224, 0.3);
+    }
+
+    .contact-form-container .checkbox-group {
+        background: rgba(36, 79, 122, 0.12);
+        border-color: rgba(106, 174, 224, 0.25);
+    }
+}
