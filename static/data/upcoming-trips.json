@@ -15,18 +15,7 @@
       ],
       "active": true,
       "order": 1
-    },
-    {
-      "id": "smoke-test-20260507-170613",
-      "title": "[TEST] Поездка 20260507-170613",
-      "period": "1-2 января 2099",
-      "description": "Тестовая поездка из Smoke test.",
-      "image": "https://s3.regru.cloud/sleeptrip-dev/images/Marta-20260402-2.jpg",
-      "meta": [
-        "Тестовая метаинформация."
-      ],
-      "active": true
     }
   ],
-  "last_updated": "2026-05-07T17:06:14.488093"
+  "last_updated": "2026-05-07T17:06:54.773251"
 }
