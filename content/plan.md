@@ -175,7 +175,7 @@ disableComments = true
                 <!-- Радиокнопки загрузятся из JSON -->
             </div>
             <!-- Hidden select для совместимости с формой -->
-            <select id="trip_period" name="trip_period" required style="display:none">
+            <select id="trip_period" name="trip_period" style="display:none">
                 <option value="" disabled selected></option>
             </select>
         </div>
