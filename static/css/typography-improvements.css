@@ -368,3 +368,28 @@ img[loading="lazy"] {
         padding: 0 0.5rem;
     }
 }
+
+/* Hover-эффект на карточках постов */
+#main > .posts > article {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#main > .posts > article:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Курсор-указатель на фото постов */
+#main > .posts > article .image.main {
+    cursor: pointer;
+}
+
+/* Featured пост — мобильное выделение */
+@media (max-width: 736px) {
+    article.post.featured .image.main img {
+        border-radius: 12px;
+    }
+    article.post.featured header.major h2 {
+        font-size: 1.4em;
+    }
+}

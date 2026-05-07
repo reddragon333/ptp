@@ -119,6 +119,8 @@ disableComments = true
             }
         })
         .then(data => {
+            // Очищаем предыдущие сообщения
+            form.parentNode.querySelectorAll('.form-message').forEach(el => el.remove());
             if (data.success) {
                 // Успех
                 const successDiv = document.createElement('div');

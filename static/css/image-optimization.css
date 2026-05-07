@@ -1,21 +1,11 @@
-/* Image optimization styles for S3 images */
-
-/* Lazy loading fallback */
+/* Image optimization — fade-in без скрытия */
 img[loading="lazy"] {
-    opacity: 0;
-    transition: opacity 0.3s;
+    animation: imgLazyFadeIn 0.4s ease both;
 }
 
-img[loading="lazy"].loaded {
-    opacity: 1;
-}
-
-/* Improve gallery performance */
-.gallery .img {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    will-change: transform;
+@keyframes imgLazyFadeIn {
+    from { opacity: 0.6; }
+    to { opacity: 1; }
 }
 
 /* Responsive images */
@@ -37,10 +27,4 @@ img {
 @keyframes loading {
     0% { background-position: 0 0; }
     100% { background-position: 20px 0; }
-}
-
-/* Hide placeholder when image loads */
-.gallery .img img {
-    position: relative;
-    z-index: 1;
 }

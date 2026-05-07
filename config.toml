@@ -22,7 +22,7 @@ disableKinds = ["taxonomy", "term"]
 # Below parameters can be set to override default post settings
 # [params.posts]
 #     folderName = "post"
-#     pageSize = "6"
+    pageSize = "12"
 #     featuredPost = true
 #     paginationPages = 2
 #    showFirstLast = false
