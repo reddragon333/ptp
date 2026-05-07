@@ -11,6 +11,7 @@ disableComments = true
 
 <!-- Подключаем стили для карточек поездок -->
 <link rel="stylesheet" href="/css/trips-calendar.css">
+<link rel="stylesheet" href="/css/step-form.css">
 
 <!-- Подключаем скрипт загрузки карточек поездок -->
 <script src="/js/upcoming-trips.js"></script>
@@ -154,7 +155,18 @@ disableComments = true
 
     </script>
 
+
+<!-- Шаги формы -->
+<div class="form-steps-indicator">
+    <span class="step-dot active" data-step="1">Данные</span>
+    <span class="step-connector"></span>
+    <span class="step-dot" data-step="2">Поездка</span>
+    <span class="step-connector"></span>
+    <span class="step-dot" data-step="3">Отправка</span>
+</div>
+
     <form class="travel-form" action="/forms/send_plan.php" method="POST" enctype="multipart/form-data" onsubmit="return handleFormSubmit(event)">
+        <div class="form-step active" data-step="1">
         <div class="form-group">
             <label for="name">Фамилия, имя *</label>
             <input type="text" id="name" name="name" placeholder="Введите Вашу фамилию и имя" required>
@@ -175,6 +187,10 @@ disableComments = true
             <input type="text" id="telegram" name="telegram" placeholder="@ваш_ник">
         </div>
 
+        <div class="form-nav"><button type="button" class="btn-next" onclick="goStep(2)">Далее →</button></div>
+        </div><!-- /step1 -->
+
+        <div class="form-step" data-step="2">
         <div class="form-note">
             <p>Укажите email или Telegram ник (одно из двух обязательно)</p>
         </div>
@@ -208,6 +224,10 @@ disableComments = true
             </select>
         </div>
 
+        <div class="form-nav"><button type="button" class="btn-prev" onclick="goStep(1)">← Назад</button><button type="button" class="btn-next" onclick="goStep(3)">Далее →</button></div>
+        </div><!-- /step2 -->
+
+        <div class="form-step" data-step="3">
         <!-- Загрузка файлов временно отключена -->
 
         <div class="form-group checkbox-group">
@@ -233,10 +253,52 @@ disableComments = true
             </label>
         </div>
 
+        <div class="form-nav"><button type="button" class="btn-prev" onclick="goStep(2)">← Назад</button></div>
         <button type="submit" class="submit-btn">
             Отправить
         </button>
+        </div><!-- /step3 -->
     </form>
+
+<script>
+function goStep(n) {
+    // Validate current step before moving forward
+    const currentStep = document.querySelector('.form-step.active');
+    const currentN = parseInt(currentStep.dataset.step);
+
+    if (n > currentN) {
+        // Validate required fields in current step
+        const required = currentStep.querySelectorAll('[required]');
+        let valid = true;
+        required.forEach(input => {
+            if (!input.value.trim()) {
+                input.reportValidity();
+                valid = false;
+            }
+        });
+        if (!valid) return;
+    }
+
+    // Switch steps
+    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+    document.querySelector(`.form-step[data-step="${n}"]`).classList.add('active');
+
+    // Update indicators
+    document.querySelectorAll('.step-dot').forEach(d => {
+        const dn = parseInt(d.dataset.step);
+        d.classList.remove('active', 'done');
+        if (dn === n) d.classList.add('active');
+        else if (dn < n) d.classList.add('done');
+    });
+    document.querySelectorAll('.step-connector').forEach((c, i) => {
+        c.classList.toggle('done', i < n - 1);
+    });
+
+    // Scroll to form top
+    document.querySelector('.form-steps-indicator').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
 </div>
 {{< /rawhtml >}}
 

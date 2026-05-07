@@ -30,7 +30,7 @@ class UpcomingTripsLoader {
         ).join('') : '';
 
         return `
-            <div class="trip-card" data-value="${trip.title}">
+            <div class="trip-card" data-value="${trip.title}" onclick="selectTrip('${trip.title}')" style="cursor:pointer" title="Нажмите чтобы подать заявку">
                 <div class="trip-image">
                     <img src="${trip.image}" alt="${trip.title}" loading="lazy">
                     <div class="trip-overlay">
@@ -121,6 +121,25 @@ document.addEventListener('DOMContentLoaded', function() {
 function refreshUpcomingTrips() {
     if (upcomingTripsLoader) {
         upcomingTripsLoader.refresh();
+    }
+}
+
+// Выбор поездки по клику на карточку
+function selectTrip(tripTitle) {
+    const select = document.getElementById('trip_period');
+    if (select) {
+        // Ищем option с текстом содержащим название поездки
+        for (let opt of select.options) {
+            if (opt.text.includes(tripTitle) || opt.value.includes(tripTitle)) {
+                select.value = opt.value;
+                break;
+            }
+        }
+    }
+    // Scroll к форме
+    const form = document.querySelector('.travel-form-container');
+    if (form) {
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
 

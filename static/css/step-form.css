@@ -1,0 +1,109 @@
+/* Пошаговая форма заявки */
+.form-steps-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    padding: 0 20px;
+}
+
+.step-dot {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82em;
+    color: #a0aec0;
+    transition: color 0.3s;
+}
+
+.step-dot.active {
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.step-dot.done {
+    color: #38a169;
+}
+
+.step-dot::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    transition: background 0.3s, transform 0.3s;
+    flex-shrink: 0;
+}
+
+.step-dot.active::before {
+    background: #4299e1;
+    transform: scale(1.2);
+}
+
+.step-dot.done::before {
+    background: #38a169;
+}
+
+.step-connector {
+    width: 32px;
+    height: 2px;
+    background: #e2e8f0;
+    align-self: center;
+    border-radius: 1px;
+    transition: background 0.3s;
+}
+
+.step-connector.done {
+    background: #38a169;
+}
+
+.form-step {
+    display: none;
+    animation: stepFadeIn 0.3s ease;
+}
+
+.form-step.active {
+    display: block;
+}
+
+@keyframes stepFadeIn {
+    from { opacity: 0; transform: translateX(12px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.form-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 12px;
+}
+
+.form-nav .btn-prev,
+.form-nav .btn-next {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.form-nav .btn-prev {
+    background: #edf2f7;
+    color: #4a5568;
+}
+
+.form-nav .btn-prev:hover {
+    background: #e2e8f0;
+}
+
+.form-nav .btn-next {
+    background: #4299e1;
+    color: white;
+    margin-left: auto;
+}
+
+.form-nav .btn-next:hover {
+    background: #3182ce;
+}
