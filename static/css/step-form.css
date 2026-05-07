@@ -1,18 +1,30 @@
 /* ================================================================
-   step-form.css — Пошаговая форма заявки (redesign 2026-05)
-   Glassmorphism + harmonized buttons
+   step-form.css — Пошаговая форма заявки
+   Variant B style: warm tones, 8px radius, #244f7a accent
    ================================================================ */
 
-/* ── Контейнер формы — glassmorphism ── */
+/* ── CSS Variables ── */
+:root {
+    --form-accent: #244f7a;
+    --form-accent-light: rgba(36, 79, 122, 0.04);
+    --form-accent-focus: rgba(36, 79, 122, 0.5);
+    --form-accent-ring: rgba(36, 79, 122, 0.12);
+    --form-ink: #1f2320;
+    --form-muted: #69716b;
+    --form-line: #ded8cc;
+    --form-ok: #21765a;
+    --form-radius: 8px;
+    --form-shadow: 0 16px 44px rgba(31, 35, 32, 0.11);
+}
+
+/* ── Контейнер формы — glassmorphism (сохранён) ── */
 .travel-form-container {
     background: rgba(255, 255, 255, 0.85) !important;
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    box-shadow:
-        0 4px 24px rgba(0, 0, 0, 0.08),
-        0 1px 3px rgba(0, 0, 0, 0.04) !important;
-    border-radius: 20px !important;
+    box-shadow: var(--form-shadow) !important;
+    border-radius: 12px !important;
     padding: 2rem 2.25rem !important;
     position: relative;
     overflow: hidden;
@@ -26,9 +38,9 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #4299e1, #667eea, #4299e1);
+    background: linear-gradient(90deg, var(--form-accent), #3a6fa0, var(--form-accent));
     background-size: 200% 100%;
-    border-radius: 20px 20px 0 0;
+    border-radius: 12px 12px 0 0;
 }
 
 /* Все тексты — тёмные */
@@ -36,11 +48,11 @@
 .travel-form-container label,
 .travel-form-container p,
 .travel-form-container .form-note p {
-    color: #2d3748 !important;
+    color: var(--form-ink) !important;
 }
 
 .travel-form-container small {
-    color: #718096 !important;
+    color: var(--form-muted) !important;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -63,7 +75,7 @@
     gap: 6px;
     font-size: 0.72em;
     font-weight: 500;
-    color: #a0aec0;
+    color: var(--form-muted);
     transition: color 0.4s ease, transform 0.3s ease;
     white-space: nowrap;
     position: relative;
@@ -87,22 +99,22 @@
 }
 
 .step-dot.active {
-    color: #2d3748;
+    color: var(--form-ink);
     font-weight: 700;
     transform: translateY(-1px);
 }
 
 .step-dot.active::before {
-    background: linear-gradient(135deg, #4299e1, #667eea);
+    background: var(--form-accent);
     border-color: transparent;
     transform: scale(1.15);
     box-shadow:
-        0 0 0 4px rgba(66, 153, 225, 0.15),
-        0 4px 12px rgba(66, 153, 225, 0.25);
+        0 0 0 4px var(--form-accent-ring),
+        0 4px 12px rgba(36, 79, 122, 0.25);
 }
 
 .step-dot.done {
-    color: #2f855a;
+    color: var(--form-ok);
     font-weight: 600;
 }
 
@@ -123,7 +135,7 @@
     justify-content: center;
     font-size: 13px;
     font-weight: 700;
-    color: #a0aec0;
+    color: var(--form-muted);
 }
 
 .step-dot.active::before {
@@ -177,7 +189,7 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-   РАДИОКНОПКИ ПОЕЗДОК — карточки с glassmorphism
+   РАДИОКНОПКИ ПОЕЗДОК — карточки Variant B
    ══════════════════════════════════════════════════════════════ */
 .trip-radio-group {
     display: flex;
@@ -185,7 +197,7 @@
     gap: 10px;
     max-height: 340px;
     overflow-y: auto;
-    border-radius: 12px;
+    border-radius: var(--form-radius);
     padding: 2px;
     transition: outline 0.3s;
 }
@@ -201,169 +213,175 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 16px 18px;
-    border: 1.5px solid rgba(0, 0, 0, 0.08);
-    border-radius: 12px;
+    padding: 14px 18px;
+    border: 1px solid var(--form-line);
+    border-radius: var(--form-radius);
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    color: #4a5568;
+    color: var(--form-ink);
     background: rgba(255, 255, 255, 0.6);
     position: relative;
-    overflow: hidden;
-}
-
-.trip-radio-label::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 0;
-    background: linear-gradient(180deg, #4299e1, #667eea);
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 12px 0 0 12px;
 }
 
 .trip-radio-label:hover {
-    border-color: rgba(66, 153, 225, 0.25);
-    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(36, 79, 122, 0.3);
+    background: rgba(255, 255, 255, 0.85);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-/* Выбранная поездка — яркий акцент */
+/* Выбранная поездка */
 .trip-radio-label.selected {
-    border-color: #4299e1;
-    background: linear-gradient(135deg, rgba(66, 153, 225, 0.12) 0%, rgba(102, 126, 234, 0.08) 100%);
+    border-color: var(--form-accent);
+    background: var(--form-accent-light);
     box-shadow:
-        0 0 0 3px rgba(66, 153, 225, 0.12),
-        0 4px 14px rgba(66, 153, 225, 0.15);
-}
-
-.trip-radio-label.selected::before {
-    width: 4px;
+        0 0 0 3px var(--form-accent-ring),
+        0 4px 14px rgba(36, 79, 122, 0.1);
 }
 
 .trip-radio-label input[type="radio"] {
     flex-shrink: 0;
     width: 20px;
     height: 20px;
-    accent-color: #4299e1;
+    accent-color: var(--form-accent);
     cursor: pointer;
 }
 
 .trip-radio-text strong {
-    color: #1a202c;
+    color: var(--form-ink);
     font-weight: 600;
     font-size: 0.95em;
 }
 
 .trip-radio-text small {
-    color: #718096;
+    color: var(--form-muted);
     font-size: 0.83em;
     display: block;
     margin-top: 2px;
 }
 
 /* ══════════════════════════════════════════════════════════════
-   КНОПКИ НАВИГАЦИИ — unified with site theme
+   КНОПКИ НАВИГАЦИИ — Variant B style
    ══════════════════════════════════════════════════════════════ */
 .form-nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-top: 28px;
     gap: 16px;
 }
 
-/* Base style for all nav buttons — matches theme .button exactly */
+/* Base button style — Variant B */
 .form-nav .button {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    border: 0;
-    border-radius: 0;
     cursor: pointer;
-    display: inline-block;
-    font-family: "source sans pro", Helvetica, sans-serif;
-    font-size: 0.8rem;
-    font-weight: 900;
-    letter-spacing: 0.075em;
-    height: 3rem;
-    line-height: 3rem;
-    padding: 0 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "source sans pro", Inter, system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+    min-height: 46px;
+    line-height: 1;
+    padding: 0 24px;
     text-align: center;
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: none;
     white-space: nowrap;
-    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+    border-radius: var(--form-radius);
+    border: 1px solid transparent;
+    transition: all 0.2s ease-in-out;
 }
 
-/* "Назад" — ghost / outline (theme default style) */
+.form-nav .button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.form-nav .button:active {
+    transform: translateY(0);
+}
+
+/* "Назад" — secondary */
 .form-nav .button:first-child {
-    background-color: transparent;
-    box-shadow: inset 0 0 0 2px #212931;
-    color: #212931 !important;
+    background: #fff;
+    border: 1px solid var(--form-line);
+    color: var(--form-ink) !important;
 }
 
 .form-nav .button:first-child:hover {
-    box-shadow: inset 0 0 0 2px #18bfef;
-    color: #18bfef !important;
+    background: #faf8f5;
+    border-color: #c5bfb3;
+    color: var(--form-ink) !important;
 }
 
-/* "Далее" — primary (theme .primary style) */
+/* "Далее" — primary */
 .form-nav .button:last-child {
-    background-color: #212931;
-    box-shadow: none;
+    background: var(--form-accent);
+    border-color: var(--form-accent);
     color: #fff !important;
 }
 
 .form-nav .button:last-child:hover {
-    background-color: #18bfef;
+    background: #1d4166;
+    border-color: #1d4166;
 }
 
-/* When button is alone (only "Далее" on step 1) — primary */
+/* When button is alone (only "Далее" on step 1) — primary, align right */
 .form-nav .button:only-child {
-    background-color: #212931;
-    box-shadow: none;
+    background: var(--form-accent);
+    border-color: var(--form-accent);
     color: #fff !important;
+    margin-left: auto;
 }
 
 .form-nav .button:only-child:hover {
-    background-color: #18bfef;
+    background: #1d4166;
+    border-color: #1d4166;
 }
 
 /* ══════════════════════════════════════════════════════════════
-   КНОПКА «ОТПРАВИТЬ» — theme .primary.large style
+   КНОПКА «ОТПРАВИТЬ» — primary, чуть крупнее
    ══════════════════════════════════════════════════════════════ */
 .travel-form-container .submit-btn {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    border: 0;
-    border-radius: 0;
     cursor: pointer;
-    display: inline-block;
-    font-family: "source sans pro", Helvetica, sans-serif;
-    font-size: 0.9rem;
-    font-weight: 900;
-    letter-spacing: 0.075em;
-    height: 3.5rem;
-    line-height: 3.5rem;
-    padding: 0 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "source sans pro", Inter, system-ui, -apple-system, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0;
+    min-height: 50px;
+    line-height: 1;
+    padding: 0 32px;
     text-align: center;
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: none;
     white-space: nowrap;
-    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
-    background-color: #212931;
-    box-shadow: none;
+    border-radius: var(--form-radius);
+    border: 1px solid var(--form-accent);
+    transition: all 0.2s ease-in-out;
+    background: var(--form-accent);
     color: #fff !important;
     margin-top: 0;
 }
 
 .travel-form-container .submit-btn:hover {
-    background-color: #18bfef;
+    background: #1d4166;
+    border-color: #1d4166;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.travel-form-container .submit-btn:active {
+    transform: translateY(0);
 }
 
 .travel-form-container .submit-btn:disabled {
@@ -372,15 +390,15 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-   ИНПУТЫ — мягче, полупрозрачные бордеры
+   ИНПУТЫ — Variant B: 8px radius, warm borders
    ══════════════════════════════════════════════════════════════ */
 .travel-form-container input,
 .travel-form-container textarea,
 .travel-form-container select {
     background: rgba(255, 255, 255, 0.7) !important;
-    color: #2d3748 !important;
-    border: 1.5px solid rgba(0, 0, 0, 0.1) !important;
-    border-radius: 10px !important;
+    color: var(--form-ink) !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-radius: var(--form-radius) !important;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
 }
@@ -396,10 +414,10 @@
 .travel-form-container input:focus,
 .travel-form-container textarea:focus,
 .travel-form-container select:focus {
-    border-color: rgba(66, 153, 225, 0.5) !important;
+    border-color: var(--form-accent) !important;
     box-shadow:
-        0 0 0 3px rgba(66, 153, 225, 0.1),
-        0 2px 6px rgba(66, 153, 225, 0.06) !important;
+        0 0 0 3px var(--form-accent-ring),
+        0 2px 6px rgba(36, 79, 122, 0.06) !important;
     background: rgba(255, 255, 255, 0.95) !important;
 }
 
@@ -411,33 +429,33 @@
 
 /* Чекбокс-группы */
 .travel-form-container .checkbox-group {
-    background: rgba(66, 153, 225, 0.05) !important;
-    border: 1.5px solid rgba(66, 153, 225, 0.12) !important;
-    border-radius: 14px !important;
+    background: var(--form-accent-light) !important;
+    border: 1px solid var(--form-accent-ring) !important;
+    border-radius: var(--form-radius) !important;
     transition: all 0.3s ease !important;
 }
 
 .travel-form-container .checkbox-group:hover {
-    border-color: rgba(66, 153, 225, 0.22) !important;
-    background: rgba(66, 153, 225, 0.08) !important;
+    border-color: rgba(36, 79, 122, 0.22) !important;
+    background: rgba(36, 79, 122, 0.06) !important;
 }
 
 /* Кнопка «Выбрать файл» */
 .travel-form-container .file-btn {
     color: #4a5568 !important;
-    border: 1.5px solid rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
     background: rgba(255, 255, 255, 0.6) !important;
-    border-radius: 10px !important;
+    border-radius: var(--form-radius) !important;
     transition: all 0.25s ease !important;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
 }
 
 .travel-form-container .file-btn:hover {
-    border-color: rgba(66, 153, 225, 0.4) !important;
-    color: #4299e1 !important;
+    border-color: rgba(36, 79, 122, 0.4) !important;
+    color: var(--form-accent) !important;
     background: rgba(255, 255, 255, 0.85) !important;
     transform: translateY(-1px) !important;
-    box-shadow: 0 3px 8px rgba(66, 153, 225, 0.1) !important;
+    box-shadow: 0 3px 8px rgba(36, 79, 122, 0.1) !important;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -446,7 +464,7 @@
 .travel-form-container .form-group > label {
     font-size: 0.88rem !important;
     font-weight: 600 !important;
-    color: #1a202c !important;
+    color: var(--form-ink) !important;
     margin-bottom: 0.55rem !important;
 }
 
@@ -454,9 +472,9 @@
    ЗАМЕТКИ — info-блоки между полями
    ══════════════════════════════════════════════════════════════ */
 .travel-form-container .form-note {
-    background: rgba(66, 153, 225, 0.05) !important;
-    border-left: 3px solid rgba(66, 153, 225, 0.3) !important;
-    border-radius: 0 10px 10px 0 !important;
+    background: var(--form-accent-light) !important;
+    border-left: 3px solid rgba(36, 79, 122, 0.3) !important;
+    border-radius: 0 var(--form-radius) var(--form-radius) 0 !important;
     padding: 0.6rem 0.9rem !important;
 }
 
@@ -466,7 +484,7 @@
 @media (max-width: 768px) {
     .travel-form-container {
         padding: 1.5rem 1.25rem !important;
-        border-radius: 16px !important;
+        border-radius: 12px !important;
     }
 
     .form-steps-indicator {
@@ -496,9 +514,9 @@
     }
 
     .form-nav .button {
-        font-size: 0.9rem;
-        height: 3.25rem;
-        line-height: 3.25rem;
+        font-size: 14px;
+        min-height: 44px;
+        padding: 0 20px;
     }
 }
 
@@ -512,8 +530,13 @@
         width: 26px;
         height: 26px;
     }
-    
+
     .form-nav {
         gap: 10px;
+    }
+
+    .form-nav .button {
+        padding: 0 16px;
+        font-size: 13px;
     }
 }
