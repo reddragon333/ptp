@@ -158,39 +158,15 @@ disableComments = true
 
 <!-- Шаги формы -->
 <div class="form-steps-indicator">
-    <span class="step-dot active" data-step="1">Данные</span>
+    <span class="step-dot active" data-step="1">Поездка</span>
     <span class="step-connector"></span>
-    <span class="step-dot" data-step="2">Поездка</span>
+    <span class="step-dot" data-step="2">Данные</span>
     <span class="step-connector"></span>
     <span class="step-dot" data-step="3">Отправка</span>
 </div>
 
     <form class="travel-form" action="/forms/send_plan.php" method="POST" enctype="multipart/form-data" onsubmit="return handleFormSubmit(event)">
         <div class="form-step active" data-step="1">
-        <div class="form-group">
-            <label for="name">Фамилия, имя *</label>
-            <input type="text" id="name" name="name" placeholder="Введите Вашу фамилию и имя" required>
-        </div>
-
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="ivan@mail.ru">
-        </div>
-
-        <div class="form-group">
-            <label for="phone">Телефон *</label>
-            <input type="tel" id="phone" name="phone" placeholder="Введите телефон" required>
-        </div>
-
-        <div class="form-group">
-            <label for="telegram">Ник в Telegram</label>
-            <input type="text" id="telegram" name="telegram" placeholder="@ваш_ник">
-        </div>
-
-        <div class="form-nav"><button type="button" class="btn-next" onclick="goStep(2)">Далее →</button></div>
-        </div><!-- /step1 -->
-
-        <div class="form-step" data-step="2">
         <div class="form-note">
             <p>Укажите email или Telegram ник (одно из двух обязательно)</p>
         </div>
@@ -225,6 +201,30 @@ disableComments = true
         </div>
 
         <div class="form-nav"><button type="button" class="btn-prev" onclick="goStep(1)">← Назад</button><button type="button" class="btn-next" onclick="goStep(3)">Далее →</button></div>
+        </div><!-- /step1 -->
+
+        <div class="form-step" data-step="2">
+        <div class="form-group">
+            <label for="name">Фамилия, имя *</label>
+            <input type="text" id="name" name="name" placeholder="Введите Вашу фамилию и имя" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="ivan@mail.ru">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Телефон *</label>
+            <input type="tel" id="phone" name="phone" placeholder="Введите телефон" required>
+        </div>
+
+        <div class="form-group">
+            <label for="telegram">Ник в Telegram</label>
+            <input type="text" id="telegram" name="telegram" placeholder="@ваш_ник">
+        </div>
+
+        <div class="form-nav"><button type="button" class="btn-next" onclick="goStep(2)">Далее →</button></div>
         </div><!-- /step2 -->
 
         <div class="form-step" data-step="3">
