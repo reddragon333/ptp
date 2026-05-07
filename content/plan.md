@@ -247,10 +247,10 @@ disableComments = true
                 </span>
             </label>
         </div>
-        <div class="form-nav"><button type="button" class="button" onclick="goStep(2)">Назад</button></div>
-        <button type="submit" class="submit-btn">
-            Отправить
-        </button>
+        <div class="form-nav">
+            <button type="button" class="button" onclick="goStep(2)">Назад</button>
+            <button type="submit" class="submit-btn">Отправить</button>
+        </div>
         </div><!-- /step3 -->
     </form>
 
