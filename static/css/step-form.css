@@ -280,8 +280,8 @@
     font-size: 0.82em !important;
     padding: 0 2.2em !important;
     border-radius: 50px !important;
-    height: 2.8em !important;
-    line-height: 2.8em !important;
+    height: 3em !important;
+    line-height: 3em !important;
     font-weight: 600 !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     cursor: pointer;
@@ -345,8 +345,10 @@
     background: linear-gradient(135deg, #4299e1 0%, #667eea 100%) !important;
     color: white !important;
     border: none !important;
-    padding: 0.85rem 2.4rem !important;
-    font-size: 0.95rem !important;
+    height: 3em !important;
+    line-height: 3em !important;
+    padding: 0 2.4em !important;
+    font-size: 0.85em !important;
     font-weight: 600 !important;
     letter-spacing: 0.3px !important;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
