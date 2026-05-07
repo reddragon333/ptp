@@ -200,12 +200,10 @@ disableComments = true
             <label for="telegram">Ник в Telegram</label>
             <input type="text" id="telegram" name="telegram" placeholder="@ваш_ник">
         </div>
-        <div class="form-note">
-            <p>Укажите email или Telegram ник (одно из двух обязательно)</p>
-        </div>
+        <p style="font-size:0.8em;color:#888;margin:4px 0 16px;">* Укажите email или Telegram — одно из двух обязательно</p>
         <div class="form-group">
             <label for="bvs_number">Учётный номер БВС *</label>
-            <textarea id="bvs_number" name="bvs_number" placeholder="БВС от 0,15 кг — учётный номер, например: 123456789AB&#10;БВС до 0,15 кг — серийный номер с фюзеляжа" required></textarea>
+            <textarea id="bvs_number" name="bvs_number" placeholder="БВС от 0,15 кг — учётный номер, например: 123456789AB&#10;БВС до 0,15 кг — серийный номер с фюзеляжа" style="font-size:0.8em;" required></textarea>
         </div>
         <div class="form-group">
             <label for="bvs_file">Уведомление о постановке на учёт (.pdf)<br><small style="font-weight:400; color:#888;">Для БВС от 0,15 кг обязательно. Для БВС до 0,15 кг — фото с серийным номером запросим отдельно</small></label>
