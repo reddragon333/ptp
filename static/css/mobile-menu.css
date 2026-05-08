@@ -21,10 +21,11 @@
         justify-content: space-around;
         align-items: center;
         height: 58px;
-        background: rgba(12, 16, 22, 0.92);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(12, 16, 22, 0.65);
+        backdrop-filter: blur(20px) saturate(1.4);
+        -webkit-backdrop-filter: blur(20px) saturate(1.4);
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.25);
         padding: 0 4px;
         padding-bottom: env(safe-area-inset-bottom, 0);
     }
@@ -68,6 +69,17 @@
         padding-bottom: 58px;
     }
 
+    /* Push back-to-top button above the tab bar */
+    .back-to-top-btn,
+    #back-to-top,
+    #global-back-to-top {
+        bottom: 74px !important;
+        right: 16px !important;
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 1rem !important;
+    }
+
     /* Hide old navPanel content (slide-out) since we use bottom bar now */
     #navPanel {
         display: none !important;
@@ -90,5 +102,13 @@
 
     body {
         padding-bottom: 54px;
+    }
+
+    .back-to-top-btn,
+    #back-to-top,
+    #global-back-to-top {
+        bottom: 68px !important;
+        width: 40px !important;
+        height: 40px !important;
     }
 }
