@@ -1,0 +1,181 @@
+/* Пошаговая форма — светлая на тёмном фоне */
+
+/* Переопределяем контейнер формы на светлый */
+.travel-form-container {
+    background: #f7f8fa !important;
+    backdrop-filter: none !important;
+    border: 1px solid #e2e6ea !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12) !important;
+    border-radius: 16px !important;
+    padding: 2rem 2.25rem !important;
+}
+
+/* Все тексты в форме — тёмные */
+.travel-form-container,
+.travel-form-container label,
+.travel-form-container p,
+.travel-form-container .form-note p {
+    color: #2d3748 !important;
+}
+
+.travel-form-container small {
+    color: #718096 !important;
+}
+
+/* Step indicator на светлом фоне */
+.form-steps-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.step-dot {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82em;
+    color: #a0aec0;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+.step-dot.active { color: #2d3748; font-weight: 600; }
+.step-dot.done { color: #38a169; }
+.step-dot::before {
+    content: ''; width: 9px; height: 9px; border-radius: 50%;
+    background: #e2e8f0; transition: all 0.3s; flex-shrink: 0;
+}
+.step-dot.active::before { background: #4299e1; transform: scale(1.3); }
+.step-dot.done::before { background: #38a169; }
+
+.step-connector { width: 24px; height: 1px; background: #e2e8f0; transition: background 0.3s; }
+.step-connector.done { background: #38a169; }
+
+.form-step { display: none; animation: stepIn 0.2s ease; }
+.form-step.active { display: block; }
+@keyframes stepIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+/* Кнопки навигации — скруглённые, в стиле сайта */
+.form-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    gap: 12px;
+}
+
+.form-nav .button {
+    font-size: 0.75em !important;
+    padding: 0 2.5em !important;
+    border-radius: 24px !important;
+    height: 2.8em !important;
+    line-height: 2.8em !important;
+    border: 2px solid #2d3748 !important;
+    background: transparent !important;
+    color: #2d3748 !important;
+    font-weight: 600 !important;
+    transition: all 0.2s !important;
+}
+
+.form-nav .button:hover {
+    background: #2d3748 !important;
+    color: white !important;
+}
+
+.form-nav .button:only-child {
+    margin-left: auto;
+}
+
+/* Кнопка "Отправить" — акцентная */
+.travel-form-container .submit-btn {
+    border-radius: 24px !important;
+    background: #2d3748 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.travel-form-container .submit-btn:hover {
+    background: #1a202c !important;
+}
+
+/* Радиокнопки для поездок */
+.trip-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 320px;
+    overflow-y: auto;
+    border-radius: 10px;
+    transition: outline 0.3s;
+}
+
+.trip-radio-group::-webkit-scrollbar { width: 4px; }
+.trip-radio-group::-webkit-scrollbar-track { background: transparent; }
+.trip-radio-group::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 2px; }
+
+.trip-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #4a5568;
+}
+
+.trip-radio-label:hover {
+    border-color: #a0aec0;
+    background: #edf2f7;
+}
+
+.trip-radio-label.selected {
+    border-color: #4299e1;
+    background: #ebf8ff;
+}
+
+.trip-radio-label input[type="radio"] {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    accent-color: #4299e1;
+}
+
+.trip-radio-text strong {
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.trip-radio-text small {
+    color: #718096;
+    font-size: 0.85em;
+}
+
+/* Инпуты на светлом фоне */
+.travel-form-container input,
+.travel-form-container textarea,
+.travel-form-container select {
+    background: white !important;
+    color: #2d3748 !important;
+    border-color: #d1d5db !important;
+}
+
+.travel-form-container input:focus,
+.travel-form-container textarea:focus {
+    border-color: #4299e1 !important;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15) !important;
+}
+
+/* Чекбоксы */
+.travel-form-container .checkmark {
+    border-color: #d1d5db !important;
+    background: white !important;
+}
+
+/* Кнопка "Выбрать файл" */
+.travel-form-container .file-btn {
+    color: #2d3748 !important;
+    border-color: #d1d5db !important;
+    background: white !important;
+}

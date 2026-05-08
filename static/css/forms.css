@@ -1,6 +1,6 @@
 /* Стили для форм обратной связи — glassmorphism 2025 */
 .travel-form-container, .contact-form-container {
-    max-width: 580px;
+    max-width: 720px;
     margin: 0 auto 2rem;
     padding: 2.25rem 2.5rem;
     background: rgba(255, 255, 255, 0.92);

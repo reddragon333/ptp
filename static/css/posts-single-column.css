@@ -1,0 +1,27 @@
+/* Посты на главной: две колонки, но фото крупнее и единого формата */
+
+/* Все фото постов — единый aspect ratio 16:9 с cover */
+#main > .posts > article .image.main img {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+/* Featured пост сверху — чуть выделить */
+article.post.featured {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding-bottom: 3rem;
+    margin-bottom: 1rem;
+}
+
+article.post.featured .image.main img {
+    border-radius: 12px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+article.post.featured header.major h2 {
+    font-size: 1.8em;
+}

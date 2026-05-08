@@ -4,10 +4,11 @@ slug = 'ask'
 disableComments = true
 +++
 {{< rawhtml >}}
-<p class="page-lead">Есть вопрос или хотите предложить маршрут — напишите нам. <a href="/plan/">Смотреть календарь поездок →</a></p>
+<p class="page-lead">Есть вопрос, хотите предложить маршрут или узнать условия участия — напишите нам.</p><p class="page-lead" style="font-size:0.9em;margin-top:8px;"><a href="/plan/" style="margin-right:20px;">Календарь поездок →</a> <a href="/gallery/">Галерея →</a></p>
 {{< /rawhtml >}}
 
 {{< rawhtml >}}
+<link rel="stylesheet" href="/css/step-form.css">
 <div class="contact-form-container">
 
     <!-- Индикатор шагов (2 шага) -->

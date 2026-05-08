@@ -1,71 +1,42 @@
-/* Современная кнопка "Вернуться в начало" */
-.back-to-top-btn,
-button.back-to-top-btn,
-.back-to-top-btn.show {
+/* Кнопка «Наверх» — glassmorphism */
+.back-to-top {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: rgba(255, 255, 255, 0.15) !important;
-    background-color: rgba(255, 255, 255, 0.15) !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    width: 56px;
-    height: 56px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     cursor: pointer;
-    font-size: 1.2rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-    visibility: hidden;
-    z-index: 1000;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-    backdrop-filter: blur(10px) !important;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.back-to-top-btn.show {
-    opacity: 1;
-    visibility: visible;
+.back-to-top:hover {
+    background: rgba(0, 0, 0, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-.back-to-top-btn:hover,
-button.back-to-top-btn:hover {
-    background: rgba(255, 255, 255, 0.25) !important;
-    background-color: rgba(255, 255, 255, 0.25) !important;
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
-}
-
-.back-to-top-btn:active {
-    transform: translateY(0) scale(0.95);
-    transition: all 0.1s ease;
+.back-to-top.visible {
+    display: flex;
 }
 
 @media (max-width: 768px) {
-    .back-to-top-btn {
-        bottom: 20px;
-        right: 20px;
-        width: 48px;
-        height: 48px;
-        font-size: 1.1rem;
+    .back-to-top {
+        bottom: 16px;
+        right: 16px;
+        width: 46px;
+        height: 46px;
+        font-size: 18px;
     }
-}
-
-/* Анимация появления */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.back-to-top-btn.show {
-    animation: fadeInUp 0.3s ease-out;
 }

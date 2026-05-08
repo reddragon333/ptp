@@ -2,7 +2,7 @@
 {{ $data := .siteData }}
 <section class="posts">
     {{ range .posts.Pages }}
-    <article>
+    <article onclick="window.location='{{ .Permalink }}'" style="cursor:pointer">
         <header>
             {{ if and (not .Date.IsZero) (not .Params.pinned) }}
             <span class="date">{{ partial "format-date-ru.html" .Date }}</span>
@@ -10,7 +10,7 @@
             <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
         </header>
         {{ if .Params.image }}
-        <a href="{{ .Permalink }}" class="image main"><img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" loading="lazy" /></a>
+        <a href="{{ .Permalink }}" class="image main"><img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" loading="lazy" width="800" height="450" /></a>
         {{ end }}
         {{ if .Description }}
         <p>{{ .Description }}</p>

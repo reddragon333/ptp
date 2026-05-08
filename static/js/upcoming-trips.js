@@ -30,7 +30,7 @@ class UpcomingTripsLoader {
         ).join('') : '';
 
         return `
-            <div class="trip-card" data-value="${trip.title}">
+            <div class="trip-card" data-value="${trip.title}" onclick="selectTrip('${trip.title}')" style="cursor:pointer" title="Нажмите чтобы подать заявку">
                 <div class="trip-image">
                     <img src="${trip.image}" alt="${trip.title}" loading="lazy">
                     <div class="trip-overlay">
@@ -82,6 +82,26 @@ class UpcomingTripsLoader {
         container.innerHTML = tripsHtml;
 
         console.log(`✅ Загружено ${activeTrips.length} активных поездок`);
+
+        // Заполняем радиокнопки для формы
+        const radioContainer = document.getElementById('trip-radios');
+        const hiddenSelect = document.getElementById('trip_period');
+        if (radioContainer && hiddenSelect) {
+            radioContainer.innerHTML = '';
+            hiddenSelect.innerHTML = '<option value="" disabled selected></option>';
+            activeTrips.forEach((trip, i) => {
+                // Radio button
+                const label = document.createElement('label');
+                label.className = 'trip-radio-label';
+                label.innerHTML = `<input type="radio" name="trip_radio" value="${trip.title} (${trip.period})" onchange="document.getElementById('trip_period').value=this.value;this.closest('.trip-radio-group').querySelectorAll('.trip-radio-label').forEach(l=>l.classList.remove('selected'));this.closest('.trip-radio-label').classList.add('selected')"><span class="trip-radio-text"><strong>${trip.title}</strong><br><small>${trip.period}</small></span>`;
+                radioContainer.appendChild(label);
+                // Hidden select option
+                const opt = document.createElement('option');
+                opt.value = `${trip.title} (${trip.period})`;
+                opt.text = `${trip.title} (${trip.period})`;
+                hiddenSelect.appendChild(opt);
+            });
+        }
     }
 
     // Метод для обновления данных (можно вызывать для перезагрузки)
@@ -121,6 +141,25 @@ document.addEventListener('DOMContentLoaded', function() {
 function refreshUpcomingTrips() {
     if (upcomingTripsLoader) {
         upcomingTripsLoader.refresh();
+    }
+}
+
+// Выбор поездки по клику на карточку
+function selectTrip(tripTitle) {
+    const select = document.getElementById('trip_period');
+    if (select) {
+        // Ищем option с текстом содержащим название поездки
+        for (let opt of select.options) {
+            if (opt.text.includes(tripTitle) || opt.value.includes(tripTitle)) {
+                select.value = opt.value;
+                break;
+            }
+        }
+    }
+    // Scroll к форме
+    const form = document.querySelector('.travel-form-container');
+    if (form) {
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
 
