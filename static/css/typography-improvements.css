@@ -384,12 +384,4 @@ img[loading="lazy"] {
     cursor: pointer;
 }
 
-/* Featured пост — мобильное выделение */
-@media (max-width: 736px) {
-    article.post.featured .image.main img {
-        border-radius: 12px;
-    }
-    article.post.featured header.major h2 {
-        font-size: 1.4em;
-    }
-}
+/* Featured пост — мобильные стили вынесены в featured-mobile.css */

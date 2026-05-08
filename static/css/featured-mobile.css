@@ -1,0 +1,87 @@
+/*
+ * featured-mobile.css — визуальное выделение featured поста на мобильных
+ * Применяется к article.post.featured (первый пост главной страницы)
+ */
+
+/* ====================================================
+   Базовые стили featured (все размеры экрана)
+   ==================================================== */
+
+article.post.featured {
+    position: relative;
+}
+
+/* Badge «Новое» над featured постом */
+article.post.featured header.major::before {
+    content: 'Новое';
+    display: inline-block;
+    background: linear-gradient(135deg, #f0c060 0%, #e8a030 100%);
+    color: #1a1a1a;
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25em 0.75em;
+    border-radius: 20px;
+    margin-bottom: 0.9rem;
+    box-shadow: 0 2px 8px rgba(240, 192, 96, 0.35);
+}
+
+/* ====================================================
+   Мобильные стили: ≤ 600px
+   ==================================================== */
+
+@media (max-width: 600px) {
+
+    article.post.featured {
+        /* Лёгкий фоновый акцент — тёмная карточка с градиентом */
+        background: linear-gradient(
+            180deg,
+            rgba(240, 192, 96, 0.08) 0%,
+            rgba(0, 0, 0, 0) 60%
+        ) !important;
+        border-radius: 12px;
+        padding: 1.5rem 1.25rem 1.75rem !important;
+        margin-bottom: 2rem;
+    }
+
+    /* Заголовок крупнее остальных карточек */
+    article.post.featured header.major h2 {
+        font-size: 1.65rem !important;
+        font-weight: 800 !important;
+        line-height: 1.25 !important;
+        letter-spacing: 0.01em !important;
+        text-transform: none !important;
+        -webkit-line-clamp: unset !important;
+        overflow: visible !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    article.post.featured header.major h2 a {
+        color: #ffffff !important;
+        text-decoration: none;
+    }
+
+    /* Описание тоже чуть крупнее и без обрезки */
+    article.post.featured p.featured-description {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        opacity: 0.82;
+        -webkit-line-clamp: unset !important;
+        overflow: visible !important;
+        display: block !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* Фото featured на мобиле — скруглённее и с тенью */
+    article.post.featured .image.main.featured-image img {
+        border-radius: 10px !important;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35) !important;
+    }
+
+    /* Тонкая золотистая рамка слева — маркер featured */
+    article.post.featured {
+        border-left: 3px solid rgba(240, 192, 96, 0.5) !important;
+        padding-left: 1.25rem !important;
+    }
+}

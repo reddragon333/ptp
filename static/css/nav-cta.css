@@ -1,0 +1,70 @@
+/*
+ * nav-cta.css — визуальное выделение CTA-пунктов навигации
+ * «ХОЧУ ПОЕХАТЬ» (/plan/) и «ГАЛЕРЕЯ» (/gallery/)
+ */
+
+/* ====================================================
+   Десктоп: выделение в горизонтальном nav-баре
+   ==================================================== */
+
+/* «Хочу поехать» — главный CTA, тёплый акцент */
+#nav ul.links li a.nav-link[href="/plan/"],
+#nav ul.links li a.nav-link[href="/plan"] {
+    color: #f0c060 !important;
+}
+
+#nav ul.links li a.nav-link[href="/plan/"] .nav-icon,
+#nav ul.links li a.nav-link[href="/plan"] .nav-icon {
+    opacity: 1 !important;
+    color: #f0c060 !important;
+}
+
+#nav ul.links li a.nav-link[href="/plan/"]:hover,
+#nav ul.links li a.nav-link[href="/plan"]:hover {
+    color: #ffe090 !important;
+    background-color: rgba(240, 192, 96, 0.15) !important;
+}
+
+/* «Галерея» — лёгкий голубоватый акцент (фото/визуальный) */
+#nav ul.links li a.nav-link[href="/gallery/"],
+#nav ul.links li a.nav-link[href="/gallery"] {
+    color: #7ecff0 !important;
+}
+
+#nav ul.links li a.nav-link[href="/gallery/"] .nav-icon,
+#nav ul.links li a.nav-link[href="/gallery"] .nav-icon {
+    opacity: 1 !important;
+    color: #7ecff0 !important;
+}
+
+#nav ul.links li a.nav-link[href="/gallery/"]:hover,
+#nav ul.links li a.nav-link[href="/gallery"]:hover {
+    color: #aae4ff !important;
+    background-color: rgba(126, 207, 240, 0.12) !important;
+}
+
+/* ====================================================
+   Мобильный навпанель (#navPanel) — те же акценты
+   ==================================================== */
+
+#navPanel .links li a.nav-link[href="/plan/"],
+#navPanel .links li a.nav-link[href="/plan"] {
+    color: #f0c060 !important;
+}
+
+#navPanel .links li a.nav-link[href="/plan/"] .nav-icon,
+#navPanel .links li a.nav-link[href="/plan"] .nav-icon {
+    color: #f0c060 !important;
+    opacity: 1 !important;
+}
+
+#navPanel .links li a.nav-link[href="/gallery/"],
+#navPanel .links li a.nav-link[href="/gallery"] {
+    color: #7ecff0 !important;
+}
+
+#navPanel .links li a.nav-link[href="/gallery/"] .nav-icon,
+#navPanel .links li a.nav-link[href="/gallery"] .nav-icon {
+    color: #7ecff0 !important;
+    opacity: 1 !important;
+}

@@ -5,19 +5,61 @@ require_once 'forms_helper.php';
 load_env_file(__DIR__ . '/.env');
 $settings = get_forms_settings();
 
+// --- Rate limiting ---
+function check_rate_limit(string $ip, int $max_requests = 3, int $window_seconds = 600): bool {
+    $dir = '/tmp/form_ratelimit';
+    if (!is_dir($dir)) {
+        mkdir($dir, 0700, true);
+    }
+    $file = $dir . '/' . md5($ip) . '.txt';
+    $now = time();
+    $timestamps = [];
+    if (file_exists($file)) {
+        $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach ($lines as $line) {
+            $ts = (int)trim($line);
+            if ($ts > 0 && ($now - $ts) < $window_seconds) {
+                $timestamps[] = $ts;
+            }
+        }
+    }
+    if (count($timestamps) >= $max_requests) {
+        return false; // превышен лимит
+    }
+    $timestamps[] = $now;
+    file_put_contents($file, implode("\n", $timestamps) . "\n", LOCK_EX);
+    return true;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Проверка rate limit
+    $client_ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+    $client_ip = trim(explode(',', $client_ip)[0]);
+    if (!check_rate_limit($client_ip)) {
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode([
+            'success' => false,
+            'error' => 'Слишком много запросов. Попробуйте через несколько минут.'
+        ], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $telegram = trim($_POST['telegram'] ?? '');
     $phone = trim($_POST['phone'] ?? '');
     $subject = trim($_POST['subject'] ?? '');
     $message = trim($_POST['message'] ?? '');
-    
-    // Валидация
-    if (empty($name) || empty($subject) || empty($message)) {
-        $error = "Имя, тема и сообщение обязательны для заполнения.";
+
+    // Серверная валидация обязательных полей
+    if (empty($name)) {
+        $error = "Обязательное поле: Имя.";
     } elseif (empty($email) && empty($telegram)) {
         $error = "Укажите email или Telegram ник (одно из двух обязательно).";
+    } elseif (empty($subject)) {
+        $error = "Обязательное поле: Тема вопроса.";
+    } elseif (empty($message)) {
+        $error = "Обязательное поле: Сообщение.";
     } elseif (!empty($email)) {
         $email_validation = validate_email_extended($email);
         if (!$email_validation['valid']) {

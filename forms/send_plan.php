@@ -5,7 +5,45 @@ require_once 'forms_helper.php';
 load_env_file(__DIR__ . '/.env');
 $settings = get_forms_settings();
 
+// --- Rate limiting ---
+function check_rate_limit(string $ip, int $max_requests = 3, int $window_seconds = 600): bool {
+    $dir = '/tmp/form_ratelimit';
+    if (!is_dir($dir)) {
+        mkdir($dir, 0700, true);
+    }
+    $file = $dir . '/' . md5($ip) . '.txt';
+    $now = time();
+    $timestamps = [];
+    if (file_exists($file)) {
+        $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach ($lines as $line) {
+            $ts = (int)trim($line);
+            if ($ts > 0 && ($now - $ts) < $window_seconds) {
+                $timestamps[] = $ts;
+            }
+        }
+    }
+    if (count($timestamps) >= $max_requests) {
+        return false; // превышен лимит
+    }
+    $timestamps[] = $now;
+    file_put_contents($file, implode("\n", $timestamps) . "\n", LOCK_EX);
+    return true;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Проверка rate limit
+    $client_ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+    $client_ip = trim(explode(',', $client_ip)[0]);
+    if (!check_rate_limit($client_ip)) {
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode([
+            'success' => false,
+            'error' => 'Слишком много запросов. Попробуйте через несколько минут.'
+        ], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $phone = trim($_POST['phone'] ?? '');
@@ -15,13 +53,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $consent = isset($_POST['privacy_consent']) ? 'agree' : '';
     $bvs_file = $_FILES['bvs_file'] ?? null;
 
-    // Валидация
-    if (empty($name) || empty($consent) || empty($bvs_number)) {
-        $error = "Обязательные поля: Фамилия, имя, Учётный номер дрона, Согласие на обработку данных.";
-    } elseif (empty($phone)) {
-        $error = "Обязательное поле: Телефон.";
+    // Серверная валидация обязательных полей
+    if (empty($name)) {
+        $error = "Обязательное поле: Имя и фамилия.";
+    } elseif (empty($trip_period)) {
+        $error = "Обязательное поле: Поездка.";
+    } elseif (empty($bvs_number)) {
+        $error = "Обязательное поле: Номер дрона (БВС).";
     } elseif (empty($email) && empty($telegram)) {
         $error = "Укажите email или Telegram ник (одно из двух обязательно).";
+    } elseif (empty($phone)) {
+        $error = "Обязательное поле: Телефон.";
+    } elseif (empty($consent)) {
+        $error = "Для отправки заявки необходимо согласие на обработку персональных данных.";
     } elseif (!empty($email)) {
         $email_validation = validate_email_extended($email);
         if (!$email_validation['valid']) {
@@ -29,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Проверка согласия
+    // Проверка согласия (дополнительная страховка)
     if (empty($error) && $consent !== 'agree') {
         $error = "Для отправки заявки необходимо согласие на обработку персональных данных.";
     }

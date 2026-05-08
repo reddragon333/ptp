@@ -85,14 +85,59 @@ disableComments = true
         document.head.appendChild(encScript);
 
         // Загрузка поездок в dropdown
+        var tripSelect = document.getElementById('trip_period');
+
+        function showTripFallback() {
+            if (tripSelect.options.length > 1) return; // уже загружено
+            tripSelect.style.display = 'none';
+            tripSelect.removeAttribute('required');
+
+            var hint = document.createElement('p');
+            hint.className = 'form-note-inline';
+            hint.style.cssText = 'color:#c0392b; font-size:0.88em; margin:4px 0 8px;';
+            hint.textContent = 'Не удалось загрузить список — введите название поездки.';
+
+            var fallbackInput = document.createElement('input');
+            fallbackInput.type = 'text';
+            fallbackInput.id = 'trip_period_fallback';
+            fallbackInput.name = 'trip_period';
+            fallbackInput.placeholder = 'Название поездки (напишите вручную)';
+            fallbackInput.required = true;
+
+            var group = tripSelect.closest('.form-group');
+            group.appendChild(hint);
+            group.appendChild(fallbackInput);
+
+            // Привязываем русское сообщение валидации
+            fallbackInput.addEventListener('invalid', function() {
+                fallbackInput.setCustomValidity('Пожалуйста, заполните это поле');
+            });
+            fallbackInput.addEventListener('input', function() {
+                fallbackInput.setCustomValidity('');
+            });
+        }
+
         var tripScript = document.createElement('script');
         tripScript.src = '/js/trip-form-loader.js';
         tripScript.onload = function() {
             if (typeof TripFormLoader !== 'undefined') {
-                window.tripFormLoader = new TripFormLoader();
-                window.tripFormLoader.populateTripsDropdown();
+                try {
+                    window.tripFormLoader = new TripFormLoader();
+                    var result = window.tripFormLoader.populateTripsDropdown();
+                    // Если populateTripsDropdown возвращает Promise — ждём его
+                    if (result && typeof result.then === 'function') {
+                        result.catch(function() { showTripFallback(); });
+                    }
+                } catch(e) {
+                    showTripFallback();
+                }
+            } else {
+                showTripFallback();
             }
+            // Страховочный таймер: если через 3 сек список пуст — показываем fallback
+            setTimeout(showTripFallback, 3000);
         };
+        tripScript.onerror = function() { showTripFallback(); };
         document.head.appendChild(tripScript);
 
         // Wizard
@@ -146,12 +191,17 @@ disableComments = true
             btn.addEventListener('click', function() { updateWizard(currentStep - 1); });
         });
 
-        // Клик по карточке поездки → предвыбор в dropdown + scroll к форме
+        // Клик по карточке поездки → предвыбор в dropdown (или fallback input) + scroll к форме
         document.querySelectorAll('[data-trip-id]').forEach(function(card) {
             card.addEventListener('click', function() {
                 var tripId = card.getAttribute('data-trip-id');
                 var select = form.querySelector('#trip_period');
-                if (select && tripId) {
+                var fallback = form.querySelector('#trip_period_fallback');
+                if (fallback) {
+                    // Fallback режим: вставляем текст карточки в input
+                    var tripLabel = card.querySelector('.trip-title, .trip-name, h3, h2') || card;
+                    fallback.value = tripLabel.textContent.trim() || tripId;
+                } else if (select && tripId) {
                     for (var i = 0; i < select.options.length; i++) {
                         if (select.options[i].value === tripId) {
                             select.selectedIndex = i;
