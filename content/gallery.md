@@ -3,6 +3,59 @@ title = 'Галерея'
 slug = 'gallery'
 +++
 {{< load-photoswipe >}}
+
+{{< rawhtml >}}
+<div class="gallery-filters" id="gallery-filters">
+    <button class="gf-btn active" data-year="all">Все</button>
+    <button class="gf-btn" data-year="2026">2026</button>
+    <button class="gf-btn" data-year="2025">2025</button>
+    <button class="gf-btn" data-year="2024">2024</button>
+    <button class="gf-btn" data-year="2023">2023</button>
+    <button class="gf-btn" data-year="2022">2022</button>
+    <button class="gf-btn" data-year="2021">2021</button>
+</div>
+
+<style>
+.gallery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0 0 1.5rem 0;
+    padding: 0;
+}
+.gf-btn {
+    background: rgba(30, 40, 55, 0.07);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 0.4rem 1.1rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+.gf-btn:hover {
+    background: rgba(30, 40, 55, 0.14);
+    color: #333;
+}
+.gf-btn.active {
+    background: #3a5a7a;
+    color: #fff;
+    border-color: #3a5a7a;
+}
+.gallery .box.gf-hidden {
+    display: none !important;
+}
+@media (max-width: 480px) {
+    .gf-btn {
+        padding: 0.35rem 0.8rem;
+        font-size: 0.75rem;
+    }
+}
+</style>
+{{< /rawhtml >}}
+
 {{< gallery caption-effect="fade" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Izmaylovskiy-20260506-1.jpg" alt="Весенний пейзаж 1" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Timiryazevskiy-20260415-1.jpg" alt="Весенний пейзаж 1" >}}
@@ -139,5 +192,40 @@ slug = 'gallery'
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Gallery-20260417-1.jpg" alt="Весенний пейзаж 1" >}}
 {{< /gallery >}}
 
+{{< rawhtml >}}
+<script>
+(function() {
+    var buttons = document.querySelectorAll('.gf-btn');
+    var boxes = document.querySelectorAll('.gallery .box');
 
+    // Extract year from each box's image URL
+    boxes.forEach(function(box) {
+        var img = box.querySelector('img');
+        if (!img) return;
+        var src = img.getAttribute('src') || img.getAttribute('data-src') || '';
+        var m = src.match(/[_-](20\d{2})\d{4}[_-]/);
+        if (m) box.setAttribute('data-year', m[1]);
+    });
+
+    buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var year = this.getAttribute('data-year');
+
+            // Update active button
+            buttons.forEach(function(b) { b.classList.remove('active'); });
+            this.classList.add('active');
+
+            // Filter boxes
+            boxes.forEach(function(box) {
+                if (year === 'all' || box.getAttribute('data-year') === year) {
+                    box.classList.remove('gf-hidden');
+                } else {
+                    box.classList.add('gf-hidden');
+                }
+            });
+        });
+    });
+})();
+</script>
+{{< /rawhtml >}}
 
