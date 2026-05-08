@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Варианты навигации — превью</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>.ic{font-style:normal;font-size:0.85em;}</style>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -123,9 +123,9 @@ body {
     letter-spacing: 0.04em;
     transition: color 0.2s;
 }
-.nav-a a i { font-size: 0.82rem; opacity: 0.6; }
+.nav-a a .ic { font-size: 0.82rem; opacity: 0.6; }
 .nav-a a:hover { color: #fff; }
-.nav-a a:hover i { opacity: 1; }
+.nav-a a:hover .ic { opacity: 1; }
 .nav-a a.active {
     color: #fff;
 }
@@ -140,7 +140,7 @@ body {
     background: #fff;
     border-radius: 2px;
 }
-.nav-a a.active i { opacity: 1; }
+.nav-a a.active .ic { opacity: 1; }
 .nav-a .social {
     margin-left: auto;
     display: flex;
@@ -180,18 +180,18 @@ body {
     border-radius: 30px;
     transition: all 0.2s;
 }
-.nav-b a i { font-size: 0.8rem; opacity: 0.55; }
+.nav-b a .ic { font-size: 0.8rem; opacity: 0.55; }
 .nav-b a:hover {
     background: rgba(255,255,255,0.1);
     color: rgba(255,255,255,0.92);
 }
-.nav-b a:hover i { opacity: 0.85; }
+.nav-b a:hover .ic { opacity: 0.85; }
 .nav-b a.active {
     background: rgba(255,255,255,0.15);
     color: #fff;
     box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
 }
-.nav-b a.active i { opacity: 1; }
+.nav-b a.active .ic { opacity: 1; }
 .nav-b .social {
     margin-left: auto;
     display: flex;
@@ -235,13 +235,13 @@ body {
     letter-spacing: 0.05em;
     transition: color 0.25s;
 }
-.nav-c a i { font-size: 0.8rem; opacity: 0.5; transition: opacity 0.25s; }
+.nav-c a .ic { font-size: 0.8rem; opacity: 0.5; transition: opacity 0.25s; }
 .nav-c a:hover { color: rgba(255,255,255,0.9); }
-.nav-c a:hover i { opacity: 0.9; }
+.nav-c a:hover .ic { opacity: 0.9; }
 .nav-c a.active {
     color: #7ecff0;
 }
-.nav-c a.active i { opacity: 1; color: #7ecff0; }
+.nav-c a.active .ic { opacity: 1; color: #7ecff0; }
 .nav-c a.active::after {
     content: '';
     position: absolute;
@@ -298,17 +298,17 @@ body {
     transition: all 0.2s;
     min-width: 64px;
 }
-.nav-d a i { font-size: 1rem; opacity: 0.6; transition: all 0.2s; }
+.nav-d a .ic { font-size: 1rem; opacity: 0.6; transition: all 0.2s; }
 .nav-d a:hover {
     background: rgba(255,255,255,0.08);
     color: rgba(255,255,255,0.85);
 }
-.nav-d a:hover i { opacity: 0.9; }
+.nav-d a:hover .ic { opacity: 0.9; }
 .nav-d a.active {
     background: rgba(255,255,255,0.12);
     color: #fff;
 }
-.nav-d a.active i { opacity: 1; color: #7ecff0; }
+.nav-d a.active .ic { opacity: 1; color: #7ecff0; }
 .nav-d .social {
     margin-left: auto;
     display: flex;
@@ -366,14 +366,14 @@ body {
     <div class="variant-label">Текущий вариант — <span>как сейчас</span></div>
     <div class="page-header"><h1>Пока ты спал</h1></div>
     <nav class="nav-current">
-        <a href="#"><i class="fa fa-home"></i> Главная</a>
+        <a href="#"><i class="ic">&#x2302;</i> Главная</a>
         <a href="#">Хочу поехать</a>
         <a href="#">Маршруты</a>
         <a href="#" class="active">Спросить</a>
         <a href="#">Галерея</a>
         <span class="social">
-            <a href="#"><i class="fa fa-telegram"></i></a>
-            <a href="#"><i class="fa fa-youtube"></i></a>
+            <a href="#"><i class="ic">&#x2708;</i></a>
+            <a href="#"><i class="ic">&#x25B6;</i></a>
         </span>
     </nav>
 </div>
@@ -383,14 +383,14 @@ body {
     <div class="variant-label">Вариант A — <span>Minimal Underline</span></div>
     <div class="page-header"><h1>Пока ты спал</h1></div>
     <nav class="nav-a">
-        <a href="#"><i class="fa fa-home"></i> Главная</a>
-        <a href="#"><i class="fa fa-calendar"></i> Хочу поехать</a>
-        <a href="#"><i class="fa fa-map"></i> Маршруты</a>
-        <a href="#" class="active"><i class="fa fa-envelope"></i> Спросить</a>
-        <a href="#"><i class="fa fa-camera"></i> Галерея</a>
+        <a href="#"><i class="ic">&#x2302;</i> Главная</a>
+        <a href="#"><i class="ic">&#x1F4C5;</i> Хочу поехать</a>
+        <a href="#"><i class="ic">&#x1F5FA;</i> Маршруты</a>
+        <a href="#" class="active"><i class="ic">&#x2709;</i> Спросить</a>
+        <a href="#"><i class="ic">&#x1F4F7;</i> Галерея</a>
         <span class="social">
-            <a href="#"><i class="fa fa-telegram"></i></a>
-            <a href="#"><i class="fa fa-youtube"></i></a>
+            <a href="#"><i class="ic">&#x2708;</i></a>
+            <a href="#"><i class="ic">&#x25B6;</i></a>
         </span>
     </nav>
 </div>
@@ -400,14 +400,14 @@ body {
     <div class="variant-label">Вариант B — <span>Pill Items (пилюли)</span></div>
     <div class="page-header"><h1>Пока ты спал</h1></div>
     <nav class="nav-b">
-        <a href="#"><i class="fa fa-home"></i> Главная</a>
-        <a href="#"><i class="fa fa-calendar"></i> Хочу поехать</a>
-        <a href="#"><i class="fa fa-map"></i> Маршруты</a>
-        <a href="#" class="active"><i class="fa fa-envelope"></i> Спросить</a>
-        <a href="#"><i class="fa fa-camera"></i> Галерея</a>
+        <a href="#"><i class="ic">&#x2302;</i> Главная</a>
+        <a href="#"><i class="ic">&#x1F4C5;</i> Хочу поехать</a>
+        <a href="#"><i class="ic">&#x1F5FA;</i> Маршруты</a>
+        <a href="#" class="active"><i class="ic">&#x2709;</i> Спросить</a>
+        <a href="#"><i class="ic">&#x1F4F7;</i> Галерея</a>
         <span class="social">
-            <a href="#"><i class="fa fa-telegram"></i></a>
-            <a href="#"><i class="fa fa-youtube"></i></a>
+            <a href="#"><i class="ic">&#x2708;</i></a>
+            <a href="#"><i class="ic">&#x25B6;</i></a>
         </span>
     </nav>
 </div>
@@ -417,14 +417,14 @@ body {
     <div class="variant-label">Вариант C — <span>Floating Accent (акцентная линия)</span></div>
     <div class="page-header"><h1>Пока ты спал</h1></div>
     <nav class="nav-c">
-        <a href="#"><i class="fa fa-home"></i> Главная</a>
-        <a href="#"><i class="fa fa-calendar"></i> Хочу поехать</a>
-        <a href="#"><i class="fa fa-map"></i> Маршруты</a>
-        <a href="#" class="active"><i class="fa fa-envelope"></i> Спросить</a>
-        <a href="#"><i class="fa fa-camera"></i> Галерея</a>
+        <a href="#"><i class="ic">&#x2302;</i> Главная</a>
+        <a href="#"><i class="ic">&#x1F4C5;</i> Хочу поехать</a>
+        <a href="#"><i class="ic">&#x1F5FA;</i> Маршруты</a>
+        <a href="#" class="active"><i class="ic">&#x2709;</i> Спросить</a>
+        <a href="#"><i class="ic">&#x1F4F7;</i> Галерея</a>
         <span class="social">
-            <a href="#"><i class="fa fa-telegram"></i></a>
-            <a href="#"><i class="fa fa-youtube"></i></a>
+            <a href="#"><i class="ic">&#x2708;</i></a>
+            <a href="#"><i class="ic">&#x25B6;</i></a>
         </span>
     </nav>
 </div>
@@ -434,14 +434,14 @@ body {
     <div class="variant-label">Вариант D — <span>Icon Tabs (иконки + подпись)</span></div>
     <div class="page-header"><h1>Пока ты спал</h1></div>
     <nav class="nav-d">
-        <a href="#"><i class="fa fa-home"></i> <span>Главная</span></a>
-        <a href="#"><i class="fa fa-calendar"></i> <span>Поехать</span></a>
-        <a href="#"><i class="fa fa-map"></i> <span>Маршруты</span></a>
-        <a href="#" class="active"><i class="fa fa-envelope"></i> <span>Спросить</span></a>
-        <a href="#"><i class="fa fa-camera"></i> <span>Галерея</span></a>
+        <a href="#"><i class="ic">&#x2302;</i> <span>Главная</span></a>
+        <a href="#"><i class="ic">&#x1F4C5;</i> <span>Поехать</span></a>
+        <a href="#"><i class="ic">&#x1F5FA;</i> <span>Маршруты</span></a>
+        <a href="#" class="active"><i class="ic">&#x2709;</i> <span>Спросить</span></a>
+        <a href="#"><i class="ic">&#x1F4F7;</i> <span>Галерея</span></a>
         <span class="social">
-            <a href="#"><i class="fa fa-telegram"></i></a>
-            <a href="#"><i class="fa fa-youtube"></i></a>
+            <a href="#"><i class="ic">&#x2708;</i></a>
+            <a href="#"><i class="ic">&#x25B6;</i></a>
         </span>
     </nav>
 </div>
