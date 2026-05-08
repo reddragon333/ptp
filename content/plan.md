@@ -16,17 +16,86 @@ disableComments = true
 <script src="/js/upcoming-trips.js"></script>
 {{< /rawhtml >}}
 
-Хотите присоединиться к поездке? Ознакомьтесь с условиями участия и заполните форму
+{{< rawhtml >}}
+<div class="conditions-card">
+    <h3 class="conditions-title">Хотите присоединиться?</h3>
+    <div class="conditions-grid">
+        <div class="conditions-item">
+            <span class="conditions-icon fa fa-calendar"></span>
+            <div><strong>Заявка</strong> — минимум за 5 дней до поездки</div>
+        </div>
+        <div class="conditions-item">
+            <span class="conditions-icon fa fa-telegram"></span>
+            <div><strong>Детали</strong> — <a href="https://t.me/polet_bvs">чат «Полёты БВС»</a></div>
+        </div>
+        <div class="conditions-item">
+            <span class="conditions-icon fa fa-clock-o"></span>
+            <div><strong>Выезд</strong> — рано утром, зависит от локации</div>
+        </div>
+        <div class="conditions-item">
+            <span class="conditions-icon fa fa-envelope"></span>
+            <div><strong>Email</strong> — проверьте папку «Нежелательные»</div>
+        </div>
+    </div>
+</div>
 
-## Условия участия
-
-### Дронослёты
-- **Подача заявки:** минимум за 5 дней до даты поездки
-- **Обсуждение деталей:** [Telegram чат "Полёты БВС"](https://t.me/polet_bvs)
-
-### Важная информация
-- **Время выезда:** обычно рано утром, в зависимости от удалённости локации
-- **Email:** проверьте папку "Нежелательные" - ответ может попасть туда
+<style>
+.conditions-card {
+    background: rgba(30, 40, 55, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 14px;
+    padding: 1.2rem 1.4rem;
+    margin: 1.5rem 0;
+}
+.conditions-title {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    margin: 0 0 0.8rem 0 !important;
+    padding: 0 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+}
+.conditions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1.2rem;
+}
+.conditions-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: #3a3a3a;
+}
+.conditions-icon {
+    flex-shrink: 0;
+    width: 1.1em;
+    text-align: center;
+    color: #5a7a9a;
+    margin-top: 0.15em;
+    font-size: 0.9rem;
+}
+.conditions-item a {
+    color: #4a7aab;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(74, 122, 171, 0.3);
+}
+.conditions-item a:hover {
+    color: #2a5a8b;
+    border-bottom-color: rgba(42, 90, 139, 0.5);
+}
+@media (max-width: 600px) {
+    .conditions-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    .conditions-card {
+        padding: 1rem 1.1rem;
+    }
+}
+</style>
+{{< /rawhtml >}}
 
 {{< rawhtml >}}
 <div class="travel-form-container">
