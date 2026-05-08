@@ -187,8 +187,12 @@ disableComments = true
                 if (validatePanel()) updateWizard(currentStep + 1);
             });
         });
-        form.querySelectorAll('.step-back-btn').forEach(function(btn) {
-            btn.addEventListener('click', function() { updateWizard(currentStep - 1); });
+
+        // Клик по пройденному шагу — вернуться назад
+        [1, 2, 3].forEach(function(n) {
+            document.getElementById('plan-si-' + n).addEventListener('click', function() {
+                if (n < currentStep) updateWizard(n);
+            });
         });
 
         // Клик по карточке поездки → предвыбор в dropdown (или fallback input) + scroll к форме
@@ -327,7 +331,6 @@ disableComments = true
             });
             </script>
             <div class="form-wizard-nav">
-                <button type="button" class="step-back-btn">← Назад</button>
                 <button type="button" class="step-next-btn">Далее →</button>
             </div>
         </div>
@@ -357,7 +360,6 @@ disableComments = true
                 </label>
             </div>
             <div class="form-wizard-nav">
-                <button type="button" class="step-back-btn">← Назад</button>
                 <button type="submit" class="submit-btn">Отправить заявку</button>
             </div>
         </div>

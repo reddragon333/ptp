@@ -103,8 +103,12 @@ disableComments = true
                 if (validatePanel()) updateWizard(currentStep + 1);
             });
         });
-        form.querySelectorAll('.step-back-btn').forEach(function(btn) {
-            btn.addEventListener('click', function() { updateWizard(currentStep - 1); });
+
+        // Клик по пройденному шагу — вернуться назад
+        [1, 2].forEach(function(n) {
+            document.getElementById('ask-si-' + n).addEventListener('click', function() {
+                if (n < currentStep) updateWizard(n);
+            });
         });
 
         updateWizard(1);
@@ -216,7 +220,6 @@ disableComments = true
                 </label>
             </div>
             <div class="form-wizard-nav">
-                <button type="button" class="step-back-btn">← Назад</button>
                 <button type="submit" class="submit-btn">Отправить вопрос</button>
             </div>
         </div>

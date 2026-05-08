@@ -775,6 +775,16 @@ sup.fn {
     border-color: #27ae60;
 }
 
+.wizard-step.completed {
+    cursor: pointer;
+}
+
+.wizard-step.completed:hover .step-circle {
+    background: #219a52;
+    box-shadow: 0 0 0 4px rgba(39, 174, 96, 0.16);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
 .step-label {
     font-size: 0.68rem;
     font-weight: 500;
