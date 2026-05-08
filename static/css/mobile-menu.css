@@ -1,29 +1,94 @@
-/* Кнопка открытия меню */
+/* ======================== Mobile Bottom Tab Bar ======================== */
+
+/* Hide old hamburger toggle */
 #navPanelToggle {
-    background: rgba(18, 22, 28, 0.75) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    border-radius: 6px !important;
-    color: rgba(255, 255, 255, 0.9) !important;
-    text-shadow: none !important;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4) !important;
-    font-family: 'Source Sans Pro', Helvetica, sans-serif !important;
-    font-weight: 900 !important;
-    letter-spacing: 0.075em !important;
-    text-transform: uppercase !important;
+    display: none !important;
 }
 
-#navPanelToggle:hover {
-    background: rgba(18, 22, 28, 0.92) !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+/* Bottom Tab Bar — hidden on desktop, shown on mobile */
+#navBottomBar {
+    display: none;
 }
 
+@media (max-width: 980px) {
+    #navBottomBar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10000;
+        justify-content: space-around;
+        align-items: center;
+        height: 58px;
+        background: rgba(12, 16, 22, 0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 0 4px;
+        padding-bottom: env(safe-area-inset-bottom, 0);
+    }
 
+    #navBottomBar a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.45);
+        font-weight: 600;
+        padding: 8px 4px 6px;
+        transition: color 0.2s;
+        flex: 1;
+        text-align: center;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    #navBottomBar a .btb-icon {
+        font-size: 1.1rem;
+        line-height: 1;
+    }
+
+    #navBottomBar a .btb-label {
+        font-size: 0.58rem;
+        line-height: 1;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 68px;
+    }
+
+    #navBottomBar a.active {
+        color: #7ecff0;
+    }
+
+    /* Bottom padding so page content isn't hidden behind tab bar */
+    body {
+        padding-bottom: 58px;
+    }
+
+    /* Hide old navPanel content (slide-out) since we use bottom bar now */
+    #navPanel {
+        display: none !important;
+    }
+}
+
+/* Smaller screens — slightly compact */
 @media (max-width: 480px) {
-    #navPanelToggle {
-        font-size: 0.75rem !important;
-        padding: 0.3rem 0.8rem !important;
+    #navBottomBar {
+        height: 54px;
+    }
+
+    #navBottomBar a .btb-icon {
+        font-size: 1rem;
+    }
+
+    #navBottomBar a .btb-label {
+        font-size: 0.52rem;
+    }
+
+    body {
+        padding-bottom: 54px;
     }
 }

@@ -1,65 +1,80 @@
-/* Desktop nav bar */
+/* ======================== Desktop Nav — Pill Items ======================== */
 #nav {
-    background: rgba(0, 0, 0, 0.35) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    border-radius: 100px !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background: rgba(0, 0, 0, 0.28) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-radius: 60px !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.18) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    padding: 0 0.5rem !important;
+    gap: 0.3rem !important;
 }
 
-/* Ссылки с иконкой — flex row */
+/* Nav item links — pill capsules */
+#nav ul.links {
+    gap: 0.25rem !important;
+    align-items: center !important;
+}
+
+#nav ul.links li {
+    border-radius: 30px !important;
+}
+
 #nav ul.links li a.nav-link {
     display: flex !important;
     align-items: center !important;
-    gap: 0.5rem !important;
-    color: rgba(255, 255, 255, 0.82) !important;
+    gap: 0.4rem !important;
+    color: rgba(255, 255, 255, 0.7) !important;
     text-shadow: none !important;
-    padding: 0 1.4rem !important;
-    transition: color 0.2s ease, background 0.2s ease !important;
+    padding: 0.45rem 1.1rem !important;
+    transition: all 0.2s ease !important;
+    font-size: 0.76rem !important;
+    letter-spacing: 0.03em !important;
+    font-weight: 600 !important;
+    border-radius: 30px !important;
+    line-height: 1.4 !important;
     text-transform: uppercase !important;
-    font-size: 0.78rem !important;
-    letter-spacing: 0.07em !important;
-    font-weight: 900 !important;
 }
 
 #nav ul.links li a.nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.12) !important;
-    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.92) !important;
     text-shadow: none !important;
 }
 
-/* Иконки в nav — фиксированная ширина чтобы все выровнялись */
+/* Icon inside nav link */
 #nav ul.links li a .nav-icon {
-    font-size: 0.85rem !important;
-    opacity: 0.75;
+    font-size: 0.78rem !important;
+    opacity: 0.55;
     flex-shrink: 0;
-    line-height: 1 !important;
     width: 1em !important;
     text-align: center !important;
     display: inline-block !important;
+    line-height: 1 !important;
 }
 
 #nav ul.links li a:hover .nav-icon {
-    opacity: 1;
+    opacity: 0.85;
 }
 
-/* Активный пункт */
+/* Active pill — frosted glass highlight */
 #nav ul.links li.active {
-    background-color: rgba(255, 255, 255, 0.15) !important;
+    background-color: transparent !important;
 }
 
-#nav ul.links li.active a {
-    color: #ffffff !important;
+#nav ul.links li.active a.nav-link {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #fff !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12) !important;
 }
 
 #nav ul.links li.active a .nav-icon {
     opacity: 1;
 }
 
-/* Иконки соцсетей */
+/* Social icons (Telegram, YouTube) */
 #nav ul.icons li a {
-    color: rgba(255, 255, 255, 0.75) !important;
+    color: rgba(255, 255, 255, 0.6) !important;
     text-shadow: none !important;
     transition: color 0.2s ease !important;
 }
@@ -68,7 +83,8 @@
     color: #ffffff !important;
 }
 
-/* Мобильная панель — иконки + текст в строку */
+/* ======================== Mobile navPanel overrides ======================== */
+/* Keep navPanel styles for the slide-out panel (legacy, hidden by bottom bar) */
 #navPanel .links li a.nav-link {
     display: flex !important;
     align-items: center !important;

@@ -1,5 +1,6 @@
 items:
 - title: 'Хочу поехать'
+  short: 'Поехать'
   url: '/plan'
   icon: 'fa-calendar'
 
