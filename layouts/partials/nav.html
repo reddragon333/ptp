@@ -3,29 +3,12 @@
 {{ $currentPage := .Page }}
 <nav id="nav">
     <ul class="links">
-        <li class="{{ if eq ($currentPage.RelPermalink) (`/`) }}active{{end}}">
-            <a href='{{ "/" | relLangURL }}' class="nav-link">
-                <i class="icon fa-home nav-icon"></i>
-                <span>Главная</span>
-            </a>
-        </li>
+        <li class="{{ if eq ($currentPage.RelPermalink) (`/`) }}active{{end}}"><a href='{{ "/" | relLangURL }}' class="nav-link"><span class="nav-icon fa fa-home"></span>Главная</a></li>
         {{- with $data.nav.items -}}
             {{- range $i, $e := . -}}
-                <li class="{{ if eq ($currentPage.RelPermalink) (print .url `/`) }}active{{end}}">
-                    <a href='{{ .url | relLangURL }}' class="nav-link">
-                        {{- with .icon -}}<i class="icon {{ . }} nav-icon"></i>{{- end -}}
-                        <span>{{- .title -}}</span>
-                    </a>
-                </li>
+                <li class="{{ if eq ($currentPage.RelPermalink) (print .url `/`) }}active{{end}}"><a href='{{ .url | relLangURL }}' class="nav-link"><span class="nav-icon fa {{ .icon }}"></span>{{- .title -}}</a></li>
             {{- end -}}
         {{- end -}}
-        {{ with $data.contactinfo }}
-        {{ end }}
-        {{ if .IsTranslated }}
-        {{ range .AllTranslations }}
-        <li {{if eq ($.Site.Language) (.Language)}}class="active"{{end}}><a href='{{ .Permalink }}'>{{ .Language.LanguageName }}</a></li>
-        {{ end }}
-        {{ end }}
     </ul>
     {{ with $data.social }}
     <ul class="icons">
@@ -37,4 +20,18 @@
         {{ end }}
     </ul>
     {{ end }}
+</nav>
+
+<!-- Mobile Bottom Tab Bar -->
+<nav id="navBottomBar">
+    <a href='{{ "/" | relLangURL }}' class="{{ if eq ($currentPage.RelPermalink) (`/`) }}active{{end}}">
+        <span class="btb-icon fa fa-home"></span><span class="btb-label">Главная</span>
+    </a>
+    {{- with $data.nav.items -}}
+        {{- range $i, $e := . -}}
+    <a href='{{ .url | relLangURL }}' class="{{ if eq ($currentPage.RelPermalink) (print .url `/`) }}active{{end}}">
+        <span class="btb-icon fa {{ .icon }}"></span><span class="btb-label">{{ .short | default .title }}</span>
+    </a>
+        {{- end -}}
+    {{- end -}}
 </nav>
