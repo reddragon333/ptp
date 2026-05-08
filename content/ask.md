@@ -4,7 +4,7 @@ slug = 'ask'
 disableComments = true
 +++
 {{< rawhtml >}}
-<p class="page-lead">Есть вопрос, хотите предложить маршрут или узнать условия участия — напишите нам.</p><p class="page-lead" style="font-size:0.9em;margin-top:8px;"><a href="/plan/" style="margin-right:20px;">Календарь поездок →</a> <a href="/gallery/">Галерея →</a></p>
+<p class="page-lead">Есть вопрос, хотите предложить маршрут или узнать условия участия — напишите нам.</p>
 {{< /rawhtml >}}
 
 {{< rawhtml >}}
