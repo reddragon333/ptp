@@ -10,6 +10,7 @@ Gallery CSS — responsive grid with aspect-ratio thumbnails
     padding: 0;
     max-width: 1400px;
     margin: 0 auto;
+    isolation: isolate;
 }
 
 /* Контейнер изображения */
@@ -46,6 +47,7 @@ Gallery CSS — responsive grid with aspect-ratio thumbnails
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: #1e2837;
     border-radius: 8px;
     transition: transform 0.3s ease;
 }
