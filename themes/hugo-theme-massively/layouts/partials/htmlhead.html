@@ -43,8 +43,8 @@
 		{{ $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "main.scss" . | toCSS (dict "targetPath" "assets/css/main.css" "enableSourceMap" true) }}
 		<link rel="stylesheet" href="{{ ($style).RelPermalink }}">
 		{{ else }}
-		{{ $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "main.scss" . | toCSS (dict "targetPath" "assets/css/main.css" "enableSourceMap" false) }}
-		<link rel="stylesheet" href="{{ ($style | minify).RelPermalink }}">
+		{{ $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "main.scss" . | toCSS (dict "targetPath" "assets/css/main.css" "enableSourceMap" false) | minify | fingerprint }}
+		<link rel="stylesheet" href="{{ $style.RelPermalink }}">
 		{{ end }}
 		{{ with .Site.Params.favicon }}
 		<link rel="shortcut icon" href="/img/favicon.ico"> 
