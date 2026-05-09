@@ -25,3 +25,23 @@ article.post.featured .image.main img {
 article.post.featured header.major h2 {
     font-size: 1.8em;
 }
+
+/* Hover-эффект для кликабельных карточек */
+.posts article {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border-radius: 12px;
+}
+
+.posts article:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+article.post.featured {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+article.post.featured:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}

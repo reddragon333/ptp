@@ -3,7 +3,7 @@
 {{ range .firstpost }}
 {{ if .Params.pinned }}
 <section class="posts">
-    <article>
+    <article onclick="window.location='{{ .Permalink }}'" style="cursor:pointer">
         <header>
             <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
         </header>
@@ -13,7 +13,7 @@
     </article>
 </section>
 {{ else if not .Params.pinned }}
-<article class="post featured">
+<article class="post featured" onclick="window.location='{{ .Permalink }}'" style="cursor:pointer">
     <header class="major">
         <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
         {{ if .Description }}
