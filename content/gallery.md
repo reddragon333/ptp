@@ -120,7 +120,7 @@ slug = 'gallery'
     box-shadow: 7px 0 0 0 rgba(74,143,200,0.35),
                 0 7px 0 0 rgba(74,143,200,0.35),
                 7px 7px 0 0 rgba(74,143,200,0.35) !important;
-    transform: translate(-2.5px, -2.5px);
+    transform: translate(-2.5px, -6px);
     animation: none !important;
     display: block !important;
 }
