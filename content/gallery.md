@@ -107,6 +107,28 @@ slug = 'gallery'
     0%, 100% { box-shadow: 0 0 8px rgba(74,143,200,0.4), 0 0 16px rgba(74,143,200,0.1); }
     50% { box-shadow: 0 0 14px rgba(74,143,200,0.6), 0 0 28px rgba(74,143,200,0.25); }
 }
+/* Concentric Rings for ВСЕ */
+.gf-btn[data-year="all"]::before {
+    width: 8px;
+    height: 8px;
+    border: 2px solid rgba(74,143,200,0.3);
+    background: #fff;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 4.5px rgba(74,143,200,0.2);
+}
+.gf-btn[data-year="all"]:hover::before {
+    border-color: rgba(74,143,200,0.5);
+    box-shadow: 0 0 0 3px #fff, 0 0 0 4.5px rgba(74,143,200,0.4);
+}
+.gf-btn[data-year="all"].active::before {
+    border-color: #4a8fc8;
+    background: #4a8fc8;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.85), 0 0 0 5px #4a8fc8, 0 0 12px rgba(74,143,200,0.5), 0 0 24px rgba(74,143,200,0.15);
+    animation: gf-pulse-rings 2s ease-in-out infinite;
+}
+@keyframes gf-pulse-rings {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(255,255,255,0.85), 0 0 0 5px #4a8fc8, 0 0 10px rgba(74,143,200,0.4), 0 0 20px rgba(74,143,200,0.1); }
+    50% { box-shadow: 0 0 0 3px rgba(255,255,255,0.85), 0 0 0 5px #4a8fc8, 0 0 16px rgba(74,143,200,0.6), 0 0 32px rgba(74,143,200,0.25); }
+}
 @media (max-width: 480px) {
     .gallery-filters { padding: 0.8rem 0 0.3rem 0; }
     .gf-btn { padding: 0.6rem 0.6rem 0.4rem; font-size: 0.72rem; }
