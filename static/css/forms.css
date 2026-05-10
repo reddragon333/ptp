@@ -89,6 +89,15 @@
 .form-group select option {
     background: #ffffff;
     color: #1a252f;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/* Выбранный вариант — аккуратный overflow */
+.form-group select {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .form-group input:focus,

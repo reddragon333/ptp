@@ -62,10 +62,18 @@ class TripFormLoader {
         // Добавляем активные поездки
         activeTrips.forEach(trip => {
             const option = document.createElement('option');
-            option.value = trip.title;
-            option.textContent = trip.title;
+            const label = trip.period ? `${trip.title} (${trip.period})` : trip.title;
+            option.value = label;
+            option.textContent = label;
             select.appendChild(option);
         });
+
+        // Если только одна активная поездка — автовыбираем
+        if (activeTrips.length === 1) {
+            select.selectedIndex = 1; // 0 = placeholder, 1 = единственная поездка
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+            console.log(`🎯 Единственная поездка автовыбрана: ${activeTrips[0].title}`);
+        }
 
         console.log(`✅ Dropdown формы заполнен: ${activeTrips.length} активных поездок`);
     }

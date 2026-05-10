@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTP Gallery — ВСЕ Button Variants</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f6fa;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 32px 40px;
+            color: #fff;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #8892b0;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+            gap: 24px;
+            padding: 32px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .card-number {
+            font-size: 13px;
+            font-weight: 700;
+            color: #4a8fc8;
+            background: #edf4fa;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            padding: 16px 20px;
+            background: #f5f6fa;
+            border-radius: 12px;
+        }
+
+        .state-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #8892b0;
+            margin-bottom: 8px;
+        }
+
+        .filter-row {
+            margin-bottom: 16px;
+        }
+
+        .filter-row:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Common filter item styles */
+        .filter-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            padding: 0 14px;
+        }
+
+        .filter-item .label {
+            font-size: 10px;
+            font-weight: 600;
+            color: #8892b0;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .filter-item.active .label {
+            color: #4a8fc8;
+        }
+
+        /* Year dot */
+        .year-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d0d5e0;
+            transition: all 0.3s;
+        }
+
+        .filter-item.active .year-dot {
+            background: #4a8fc8;
+            box-shadow: 0 0 8px rgba(74, 143, 200, 0.6);
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { box-shadow: 0 0 6px rgba(74, 143, 200, 0.4); }
+            50% { box-shadow: 0 0 14px rgba(74, 143, 200, 0.8); }
+        }
+
+        /* Separator */
+        .separator {
+            width: 1px;
+            height: 28px;
+            background: #d0d5e0;
+            margin: 0 8px;
+        }
+
+        /* === VARIANT 1: Stacked Ovals === */
+        .vse-stacked-ovals {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            height: 24px;
+            justify-content: center;
+            position: relative;
+        }
+
+        .vse-stacked-ovals .oval {
+            width: 14px;
+            height: 7px;
+            border-radius: 50%;
+            background: #d0d5e0;
+            position: absolute;
+        }
+
+        .vse-stacked-ovals .oval:nth-child(1) { top: 0; }
+        .vse-stacked-ovals .oval:nth-child(2) { top: 6px; }
+        .vse-stacked-ovals .oval:nth-child(3) { top: 12px; }
+
+        .filter-item.active .vse-stacked-ovals .oval {
+            background: #4a8fc8;
+        }
+
+        .filter-item.active .vse-stacked-ovals .oval:nth-child(1) {
+            opacity: 0.5;
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+        .filter-item.active .vse-stacked-ovals .oval:nth-child(2) {
+            opacity: 0.75;
+            animation: glow-pulse 2s ease-in-out infinite 0.2s;
+        }
+        .filter-item.active .vse-stacked-ovals .oval:nth-child(3) {
+            opacity: 1;
+            animation: glow-pulse 2s ease-in-out infinite 0.4s;
+            box-shadow: 0 0 8px rgba(74, 143, 200, 0.6);
+        }
+
+        /* === VARIANT 2: Concentric Rings === */
+        .vse-concentric {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid #d0d5e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .vse-concentric .ring-mid {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 1.5px solid #d0d5e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vse-concentric .ring-inner {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #d0d5e0;
+        }
+
+        .filter-item.active .vse-concentric {
+            border-color: rgba(74, 143, 200, 0.4);
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        .filter-item.active .vse-concentric .ring-mid {
+            border-color: rgba(74, 143, 200, 0.7);
+        }
+
+        .filter-item.active .vse-concentric .ring-inner {
+            background: #4a8fc8;
+            box-shadow: 0 0 6px rgba(74, 143, 200, 0.8);
+        }
+
+        /* === VARIANT 3: Triple Dot Stack === */
+        .vse-triple-dots {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            height: 22px;
+            justify-content: center;
+        }
+
+        .vse-triple-dots .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #d0d5e0;
+        }
+
+        .filter-item.active .vse-triple-dots .dot {
+            background: #4a8fc8;
+        }
+
+        .filter-item.active .vse-triple-dots .dot:nth-child(1) {
+            animation: glow-pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 4px rgba(74, 143, 200, 0.6);
+        }
+        .filter-item.active .vse-triple-dots .dot:nth-child(2) {
+            animation: glow-pulse 2s ease-in-out infinite 0.3s;
+            box-shadow: 0 0 4px rgba(74, 143, 200, 0.6);
+        }
+        .filter-item.active .vse-triple-dots .dot:nth-child(3) {
+            animation: glow-pulse 2s ease-in-out infinite 0.6s;
+            box-shadow: 0 0 4px rgba(74, 143, 200, 0.6);
+        }
+
+        /* === VARIANT 4: Venn Diagram === */
+        .vse-venn {
+            width: 26px;
+            height: 18px;
+            position: relative;
+        }
+
+        .vse-venn .circle {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #d0d5e0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.5);
+        }
+
+        .vse-venn .circle:nth-child(1) { left: 0; }
+        .vse-venn .circle:nth-child(2) { left: 7px; }
+        .vse-venn .circle:nth-child(3) { left: 14px; }
+
+        .filter-item.active .vse-venn .circle {
+            border-color: #4a8fc8;
+            background: rgba(74, 143, 200, 0.1);
+        }
+
+        .filter-item.active .vse-venn {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        /* === VARIANT 5: Layered Cards === */
+        .vse-cards {
+            width: 20px;
+            height: 22px;
+            position: relative;
+        }
+
+        .vse-cards .card-layer {
+            width: 14px;
+            height: 10px;
+            border-radius: 3px;
+            border: 1.5px solid #d0d5e0;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .vse-cards .card-layer:nth-child(1) { top: 0; left: calc(50% - 2px); }
+        .vse-cards .card-layer:nth-child(2) { top: 4px; }
+        .vse-cards .card-layer:nth-child(3) { top: 8px; left: calc(50% + 2px); }
+
+        .filter-item.active .vse-cards .card-layer {
+            border-color: #4a8fc8;
+            background: rgba(74, 143, 200, 0.05);
+        }
+
+        .filter-item.active .vse-cards .card-layer:nth-child(3) {
+            background: rgba(74, 143, 200, 0.15);
+            box-shadow: 0 0 6px rgba(74, 143, 200, 0.5);
+        }
+
+        .filter-item.active .vse-cards {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        /* === VARIANT 6: Infinity/Loop === */
+        .vse-infinity {
+            width: 24px;
+            height: 14px;
+            position: relative;
+        }
+
+        .vse-infinity::before,
+        .vse-infinity::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #d0d5e0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .vse-infinity::before { left: 0; }
+        .vse-infinity::after { right: 0; }
+
+        .filter-item.active .vse-infinity::before,
+        .filter-item.active .vse-infinity::after {
+            border-color: #4a8fc8;
+        }
+
+        .filter-item.active .vse-infinity {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        /* === VARIANT 7: Grid of Mini-Dots === */
+        .vse-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3px;
+            width: 15px;
+            height: 15px;
+        }
+
+        .vse-grid .mini-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #d0d5e0;
+        }
+
+        .filter-item.active .vse-grid .mini-dot {
+            background: #4a8fc8;
+            box-shadow: 0 0 4px rgba(74, 143, 200, 0.5);
+        }
+
+        .filter-item.active .vse-grid .mini-dot:nth-child(1) {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+        .filter-item.active .vse-grid .mini-dot:nth-child(2) {
+            animation: glow-pulse 2s ease-in-out infinite 0.2s;
+        }
+        .filter-item.active .vse-grid .mini-dot:nth-child(3) {
+            animation: glow-pulse 2s ease-in-out infinite 0.4s;
+        }
+        .filter-item.active .vse-grid .mini-dot:nth-child(4) {
+            animation: glow-pulse 2s ease-in-out infinite 0.6s;
+        }
+
+        /* === VARIANT 8: Radiating Dots === */
+        .vse-radiate {
+            width: 22px;
+            height: 22px;
+            position: relative;
+        }
+
+        .vse-radiate .center-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d0d5e0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .vse-radiate .sat-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #d0d5e0;
+            position: absolute;
+        }
+
+        .vse-radiate .sat-dot:nth-child(2) { top: 0; left: 50%; transform: translateX(-50%); }
+        .vse-radiate .sat-dot:nth-child(3) { bottom: 0; left: 50%; transform: translateX(-50%); }
+        .vse-radiate .sat-dot:nth-child(4) { left: 0; top: 50%; transform: translateY(-50%); }
+        .vse-radiate .sat-dot:nth-child(5) { right: 0; top: 50%; transform: translateY(-50%); }
+
+        .filter-item.active .vse-radiate .center-dot {
+            background: #4a8fc8;
+            box-shadow: 0 0 8px rgba(74, 143, 200, 0.7);
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        .filter-item.active .vse-radiate .sat-dot {
+            background: #4a8fc8;
+            box-shadow: 0 0 4px rgba(74, 143, 200, 0.5);
+        }
+
+        @media (max-width: 560px) {
+            .grid {
+                grid-template-columns: 1fr;
+                padding: 16px;
+            }
+            .header {
+                padding: 24px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>PTP Gallery — ВСЕ Button Variants</h1>
+        <p>Creative options for the "ВСЕ" (ALL) filter button. Each variant replaces the single dot with a multi-element indicator that communicates "all years combined." Year buttons remain as single dots.</p>
+    </div>
+
+    <div class="grid">
+
+        <!-- VARIANT 1 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-number">1</div>
+                <div class="card-title">Stacked Ovals</div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Inactive</div>
+                <div class="filter-bar">
+                    <div class="filter-item">
+                        <div class="vse-stacked-ovals">
+                            <div class="oval"></div>
+                            <div class="oval"></div>
+                            <div class="oval"></div>
+                        </div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item active">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Active</div>
+                <div class="filter-bar">
+                    <div class="filter-item active">
+                        <div class="vse-stacked-ovals">
+                            <div class="oval"></div>
+                            <div class="oval"></div>
+                            <div class="oval"></div>
+                        </div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIANT 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-number">2</div>
+                <div class="card-title">Concentric Rings</div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Inactive</div>
+                <div class="filter-bar">
+                    <div class="filter-item">
+                        <div class="vse-concentric">
+                            <div class="ring-mid">
+                                <div class="ring-inner"></div>
+                            </div>
+                        </div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item active">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Active</div>
+                <div class="filter-bar">
+                    <div class="filter-item active">
+                        <div class="vse-concentric">
+                            <div class="ring-mid">
+                                <div class="ring-inner"></div>
+                            </div>
+                        </div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIANT 3 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-number">3</div>
+                <div class="card-title">Triple Dot Stack</div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Inactive</div>
+                <div class="filter-bar">
+                    <div class="filter-item">
+                        <div class="vse-triple-dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item active">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Active</div>
+                <div class="filter-bar">
+                    <div class="filter-item active">
+                        <div class="vse-triple-dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIANT 4 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-number">4</div>
+                <div class="card-title">Venn Diagram</div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Inactive</div>
+                <div class="filter-bar">
+                    <div class="filter-item">
+                        <div class="vse-venn">
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                        </div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item active">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Active</div>
+                <div class="filter-bar">
+                    <div class="filter-item active">
+                        <div class="vse-venn">
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                        </div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIANT 5 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-number">5</div>
+                <div class="card-title">Layered Cards</div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Inactive</div>
+                <div class="filter-bar">
+                    <div class="filter-item">
+                        <div class="vse-cards">
+                            <div class="card-layer"></div>
+                            <div class="card-layer"></div>
+                            <div class="card-layer"></div>
+                        </div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item active">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Active</div>
+                <div class="filter-bar">
+                    <div class="filter-item active">
+                        <div class="vse-cards">
+                            <div class="card-layer"></div>
+                            <div class="card-layer"></div>
+                            <div class="card-layer"></div>
+                        </div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIANT 6 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-number">6</div>
+                <div class="card-title">Infinity / Loop</div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Inactive</div>
+                <div class="filter-bar">
+                    <div class="filter-item">
+                        <div class="vse-infinity"></div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item active">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Active</div>
+                <div class="filter-bar">
+                    <div class="filter-item active">
+                        <div class="vse-infinity"></div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIANT 7 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-number">7</div>
+                <div class="card-title">Grid of Mini-Dots</div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Inactive</div>
+                <div class="filter-bar">
+                    <div class="filter-item">
+                        <div class="vse-grid">
+                            <div class="mini-dot"></div>
+                            <div class="mini-dot"></div>
+                            <div class="mini-dot"></div>
+                            <div class="mini-dot"></div>
+                        </div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item active">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Active</div>
+                <div class="filter-bar">
+                    <div class="filter-item active">
+                        <div class="vse-grid">
+                            <div class="mini-dot"></div>
+                            <div class="mini-dot"></div>
+                            <div class="mini-dot"></div>
+                            <div class="mini-dot"></div>
+                        </div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIANT 8 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-number">8</div>
+                <div class="card-title">Radiating Dots</div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Inactive</div>
+                <div class="filter-bar">
+                    <div class="filter-item">
+                        <div class="vse-radiate">
+                            <div class="center-dot"></div>
+                            <div class="sat-dot"></div>
+                            <div class="sat-dot"></div>
+                            <div class="sat-dot"></div>
+                            <div class="sat-dot"></div>
+                        </div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item active">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-row">
+                <div class="state-label">Active</div>
+                <div class="filter-bar">
+                    <div class="filter-item active">
+                        <div class="vse-radiate">
+                            <div class="center-dot"></div>
+                            <div class="sat-dot"></div>
+                            <div class="sat-dot"></div>
+                            <div class="sat-dot"></div>
+                            <div class="sat-dot"></div>
+                        </div>
+                        <span class="label">Все</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2026</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2025</span>
+                    </div>
+                    <div class="filter-item">
+                        <div class="year-dot"></div>
+                        <span class="label">2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
