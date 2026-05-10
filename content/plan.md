@@ -38,7 +38,22 @@ disableComments = true
 <div id="conditions-block" class="plan-conditions-section">
     <div class="plan-condition-block">
         <div class="plan-condition-header">
-            <i class="fa fa-paper-plane plan-drone-icon"></i>
+            <svg class="plan-drone-svg plan-drone-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- 4 rotors -->
+                <ellipse cx="5" cy="6" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="19" cy="6" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="5" cy="18" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="19" cy="18" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <!-- Arms -->
+                <line x1="8" y1="8" x2="10.5" y2="10.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="16" y1="8" x2="13.5" y2="10.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="8" y1="16" x2="10.5" y2="13.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="16" y1="16" x2="13.5" y2="13.5" stroke="currentColor" stroke-width="1.4"/>
+                <!-- Body -->
+                <rect x="10" y="10" width="4" height="4" rx="1" fill="currentColor"/>
+                <!-- Camera dot -->
+                <circle cx="12" cy="15.8" r="0.8" fill="currentColor"/>
+            </svg>
             <h4>Дронослёты</h4>
         </div>
         <ul class="plan-condition-list">
@@ -100,7 +115,7 @@ function revealConditions() {
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(102, 126, 234, 0.18);
+    border: 1px solid rgba(74, 143, 200, 0.18);
     border-radius: 12px;
     text-decoration: none;
     color: #1a202c;
@@ -108,9 +123,9 @@ function revealConditions() {
     transition: all 0.25s ease;
 }
 .plan-cta-bar:hover {
-    background: rgba(102, 126, 234, 0.08);
-    border-color: rgba(102, 126, 234, 0.35);
-    box-shadow: 0 6px 24px rgba(102, 126, 234, 0.12);
+    background: rgba(74, 143, 200, 0.08);
+    border-color: rgba(74, 143, 200, 0.35);
+    box-shadow: 0 6px 24px rgba(74, 143, 200, 0.12);
     transform: translateY(-1px);
 }
 .plan-cta-bar-text {
@@ -119,7 +134,7 @@ function revealConditions() {
     white-space: nowrap;
 }
 .plan-cta-bar-text i {
-    color: #667eea;
+    color: #4a8fc8;
     margin-right: 0.4rem;
 }
 .plan-cta-bar-hint {
@@ -129,7 +144,7 @@ function revealConditions() {
     text-align: left;
 }
 .plan-cta-bar-arrow {
-    color: #667eea;
+    color: #4a8fc8;
     font-size: 0.8rem;
     transition: transform 0.2s ease;
 }
@@ -146,8 +161,8 @@ function revealConditions() {
     transition: all 0.4s ease;
 }
 .plan-conditions-section.plan-conditions-highlighted .plan-condition-block {
-    border-color: rgba(102, 126, 234, 0.5);
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15), 0 6px 24px rgba(102, 126, 234, 0.12);
+    border-color: rgba(74, 143, 200, 0.5);
+    box-shadow: 0 0 0 3px rgba(74, 143, 200, 0.15), 0 6px 24px rgba(74, 143, 200, 0.12);
 }
 .plan-condition-block {
     background: rgba(255, 255, 255, 0.5);
@@ -167,8 +182,9 @@ function revealConditions() {
     gap: 0.5rem;
     margin-bottom: 0.7rem;
 }
-.plan-condition-header i {
-    color: #667eea;
+.plan-condition-header i,
+.plan-condition-header .plan-drone-svg {
+    color: #4a8fc8;
     font-size: 1rem;
 }
 .plan-condition-header h4 {
@@ -181,10 +197,11 @@ function revealConditions() {
     text-transform: none !important;
 }
 
-/* Animated drone icon (paper-plane used since FA4 has no fa-drone) */
-.plan-drone-icon {
+/* Animated drone SVG icon */
+.plan-drone-svg {
     display: inline-block;
     animation: droneFloat 3s ease-in-out infinite;
+    vertical-align: middle;
 }
 @keyframes droneFloat {
     0%, 100% { transform: translateY(0); }
@@ -209,7 +226,7 @@ function revealConditions() {
     flex-shrink: 0;
     width: 1.1em;
     text-align: center;
-    color: #7a8a9a;
+    color: #4a8fc8;
     margin-top: 0.15em;
     font-size: 0.85rem;
 }
@@ -221,6 +238,11 @@ function revealConditions() {
 .plan-condition-list a:hover {
     color: #2a5a8b;
     border-bottom-color: rgba(42, 90, 139, 0.5);
+}
+
+/* === Form width: match trip cards and condition blocks (full content width) === */
+.travel-form-container {
+    max-width: none;
 }
 
 /* === Mobile responsive === */

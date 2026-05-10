@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery Filters — Design Variants</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #1a2028;
+    color: #fff;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    line-height: 1.5;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    margin-bottom: 3rem;
+    color: rgba(255,255,255,0.85);
+}
+
+.variant-section {
+    max-width: 900px;
+    margin: 0 auto 4rem auto;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 2rem 2rem 1.5rem 2rem;
+}
+
+.variant-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.01em;
+}
+
+.variant-title span {
+    color: rgba(130, 200, 255, 0.9);
+    font-weight: 600;
+}
+
+/* Placeholder gallery grid */
+.demo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+    margin-top: 1.5rem;
+    min-height: 80px;
+}
+
+.demo-item {
+    aspect-ratio: 4/3;
+    border-radius: 8px;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.demo-item::after {
+    content: attr(data-year);
+    position: absolute;
+    bottom: 6px;
+    right: 8px;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.6);
+    font-weight: 500;
+}
+
+.demo-item.gf-hidden {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* Item colors by year */
+.demo-item[data-year="2026"] { background: linear-gradient(135deg, #2d4a6f, #1e3a5f); }
+.demo-item[data-year="2025"] { background: linear-gradient(135deg, #3d5a3f, #2a4a2d); }
+.demo-item[data-year="2024"] { background: linear-gradient(135deg, #5a3d5f, #4a2d4a); }
+.demo-item[data-year="2023"] { background: linear-gradient(135deg, #4a4a2d, #3a3a1e); }
+.demo-item[data-year="2022"] { background: linear-gradient(135deg, #2d4a4a, #1e3a3a); }
+.demo-item[data-year="2021"] { background: linear-gradient(135deg, #4a2d3a, #3a1e2d); }
+
+
+/* ============================================================
+   VARIANT 1 — REDESIGNED TIMELINE (Elegant horizontal timeline)
+   ============================================================ */
+.variant-1 .gallery-filters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin: 0;
+    padding: 2.5rem 1rem 1rem 1rem;
+    position: relative;
+}
+
+/* The main horizontal line */
+.variant-1 .gallery-filters::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(130, 200, 255, 0.15) 10%,
+        rgba(130, 200, 255, 0.25) 50%,
+        rgba(130, 200, 255, 0.15) 90%,
+        transparent
+    );
+    transform: translateY(-50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Subtle glow line behind active segment */
+.variant-1 .gallery-filters::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    right: 2rem;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(130, 200, 255, 0.05) 10%,
+        rgba(130, 200, 255, 0.08) 50%,
+        rgba(130, 200, 255, 0.05) 90%,
+        transparent
+    );
+    transform: translateY(-50%);
+    filter: blur(2px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.variant-1 .gf-btn {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0 1.2rem;
+    font-size: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+}
+
+/* Year label below the dot */
+.variant-1 .gf-btn::after {
+    content: attr(data-year);
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 14px;
+    letter-spacing: 0.03em;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+}
+
+.variant-1 .gf-btn[data-year="all"]::after {
+    content: 'BCE';
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+}
+
+/* The dot marker */
+.variant-1 .gf-btn::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none;
+}
+
+/* Hover state */
+.variant-1 .gf-btn:hover::before {
+    background: rgba(130, 200, 255, 0.5);
+    width: 10px;
+    height: 10px;
+    box-shadow: 0 0 12px rgba(130, 200, 255, 0.3);
+}
+.variant-1 .gf-btn:hover::after {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Active state */
+.variant-1 .gf-btn.active::before {
+    width: 14px;
+    height: 14px;
+    background: rgba(130, 200, 255, 0.9);
+    box-shadow:
+        0 0 16px rgba(130, 200, 255, 0.6),
+        0 0 32px rgba(130, 200, 255, 0.2),
+        inset 0 0 4px rgba(255, 255, 255, 0.3);
+}
+.variant-1 .gf-btn.active::after {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-shadow: 0 0 8px rgba(130, 200, 255, 0.4);
+}
+
+/* "All" button - special ring design */
+.variant-1 .gf-btn[data-year="all"]::before {
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    width: 12px;
+    height: 12px;
+}
+.variant-1 .gf-btn[data-year="all"]:hover::before {
+    border-color: rgba(130, 200, 255, 0.5);
+    background: rgba(130, 200, 255, 0.1);
+}
+.variant-1 .gf-btn[data-year="all"].active::before {
+    border-color: rgba(167, 139, 250, 0.8);
+    background: rgba(167, 139, 250, 0.15);
+    width: 16px;
+    height: 16px;
+    box-shadow:
+        0 0 16px rgba(167, 139, 250, 0.5),
+        0 0 32px rgba(167, 139, 250, 0.15);
+}
+.variant-1 .gf-btn[data-year="all"].active::after {
+    text-shadow: 0 0 8px rgba(167, 139, 250, 0.4);
+}
+
+/* Connector segments between dots */
+.variant-1 .gf-btn + .gf-btn::marker { content: none; }
+
+@media (max-width: 600px) {
+    .variant-1 .gf-btn {
+        margin: 0 0.6rem;
+    }
+    .variant-1 .gf-btn::after {
+        font-size: 0.62rem;
+    }
+    .variant-1 .gallery-filters {
+        padding: 2rem 0.5rem 0.8rem 0.5rem;
+    }
+}
+
+
+/* ============================================================
+   VARIANT 2 — MATERIAL TABS WITH SLIDING UNDERLINE (Polished)
+   ============================================================ */
+.variant-2 .gallery-filters {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.1) transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.variant-2 .gf-btn {
+    position: relative;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 14px 24px 16px 24px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    transition: color 0.3s ease, background 0.3s ease;
+    font-family: inherit;
+    line-height: 1;
+    white-space: nowrap;
+    flex-shrink: 0;
+    letter-spacing: 0.01em;
+}
+
+.variant-2 .gf-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2.5px;
+    background: linear-gradient(90deg, #82c8ff, #a78bfa);
+    border-radius: 2px 2px 0 0;
+    transform: translateX(-50%);
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.variant-2 .gf-btn:hover {
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.03);
+}
+.variant-2 .gf-btn:hover::after {
+    width: 40%;
+}
+
+.variant-2 .gf-btn.active {
+    color: #fff;
+    font-weight: 500;
+}
+.variant-2 .gf-btn.active::after {
+    width: 70%;
+    background: linear-gradient(90deg, #82c8ff, #a78bfa);
+    box-shadow: 0 1px 10px rgba(130, 200, 255, 0.35);
+}
+
+.variant-2 .gf-btn[data-year="all"] {
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+.variant-2 .gf-btn[data-year="all"].active::after {
+    width: 85%;
+    background: linear-gradient(90deg, #a78bfa, #f0abfc);
+    box-shadow: 0 1px 10px rgba(167, 139, 250, 0.35);
+}
+
+@media (max-width: 600px) {
+    .variant-2 .gf-btn {
+        padding: 12px 16px 14px 16px;
+        font-size: 0.78rem;
+    }
+}
+
+
+/* ============================================================
+   VARIANT 3 — GRADIENT CHIPS WITH SEASONAL ICONS (Vibrant)
+   ============================================================ */
+.variant-3 .gallery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+}
+
+.variant-3 .gf-btn {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+    padding: 10px 18px 10px 14px;
+    font-size: 0.82rem;
+    font-weight: 450;
+    color: rgba(255, 255, 255, 0.65);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    line-height: 1;
+    overflow: hidden;
+    isolation: isolate;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.variant-3 .gf-btn::before {
+    margin-right: 6px;
+    font-size: 0.85em;
+}
+
+.variant-3 .gf-btn[data-year="all"]::before { content: '\2728'; }
+.variant-3 .gf-btn[data-year="2026"]::before { content: '\2744\FE0F'; }
+.variant-3 .gf-btn[data-year="2025"]::before { content: '\2600\FE0F'; }
+.variant-3 .gf-btn[data-year="2024"]::before { content: '\1F343'; }
+.variant-3 .gf-btn[data-year="2023"]::before { content: '\1F30A'; }
+.variant-3 .gf-btn[data-year="2022"]::before { content: '\26F0\FE0F'; }
+.variant-3 .gf-btn[data-year="2021"]::before { content: '\1F308'; }
+
+.variant-3 .gf-btn[data-year="all"] {
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.12), rgba(130, 200, 255, 0.1));
+    border-color: rgba(167, 139, 250, 0.25);
+}
+.variant-3 .gf-btn[data-year="2026"] {
+    background: linear-gradient(135deg, rgba(130, 200, 255, 0.1), rgba(200, 230, 255, 0.06));
+    border-color: rgba(130, 200, 255, 0.2);
+}
+.variant-3 .gf-btn[data-year="2025"] {
+    background: linear-gradient(135deg, rgba(255, 200, 50, 0.1), rgba(255, 150, 50, 0.06));
+    border-color: rgba(255, 200, 50, 0.2);
+}
+.variant-3 .gf-btn[data-year="2024"] {
+    background: linear-gradient(135deg, rgba(100, 200, 100, 0.1), rgba(180, 220, 80, 0.06));
+    border-color: rgba(100, 200, 100, 0.2);
+}
+.variant-3 .gf-btn[data-year="2023"] {
+    background: linear-gradient(135deg, rgba(50, 150, 220, 0.1), rgba(80, 200, 200, 0.06));
+    border-color: rgba(50, 150, 220, 0.2);
+}
+.variant-3 .gf-btn[data-year="2022"] {
+    background: linear-gradient(135deg, rgba(180, 130, 100, 0.1), rgba(150, 180, 150, 0.06));
+    border-color: rgba(180, 130, 100, 0.2);
+}
+.variant-3 .gf-btn[data-year="2021"] {
+    background: linear-gradient(135deg, rgba(200, 100, 150, 0.1), rgba(100, 150, 250, 0.06));
+    border-color: rgba(200, 100, 150, 0.2);
+}
+
+.variant-3 .gf-btn:hover {
+    color: rgba(255, 255, 255, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.variant-3 .gf-btn.active {
+    color: #fff;
+    font-weight: 600;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.variant-3 .gf-btn[data-year="all"].active { border-color: rgba(167, 139, 250, 0.7); box-shadow: 0 4px 16px rgba(167, 139, 250, 0.3), inset 0 0 12px rgba(167, 139, 250, 0.1); }
+.variant-3 .gf-btn[data-year="2026"].active { border-color: rgba(130, 200, 255, 0.7); box-shadow: 0 4px 16px rgba(130, 200, 255, 0.3), inset 0 0 12px rgba(130, 200, 255, 0.1); }
+.variant-3 .gf-btn[data-year="2025"].active { border-color: rgba(255, 200, 50, 0.7); box-shadow: 0 4px 16px rgba(255, 200, 50, 0.3), inset 0 0 12px rgba(255, 200, 50, 0.1); }
+.variant-3 .gf-btn[data-year="2024"].active { border-color: rgba(100, 200, 100, 0.7); box-shadow: 0 4px 16px rgba(100, 200, 100, 0.3), inset 0 0 12px rgba(100, 200, 100, 0.1); }
+.variant-3 .gf-btn[data-year="2023"].active { border-color: rgba(50, 150, 220, 0.7); box-shadow: 0 4px 16px rgba(50, 150, 220, 0.3), inset 0 0 12px rgba(50, 150, 220, 0.1); }
+.variant-3 .gf-btn[data-year="2022"].active { border-color: rgba(180, 130, 100, 0.7); box-shadow: 0 4px 16px rgba(180, 130, 100, 0.3), inset 0 0 12px rgba(180, 130, 100, 0.1); }
+.variant-3 .gf-btn[data-year="2021"].active { border-color: rgba(200, 100, 150, 0.7); box-shadow: 0 4px 16px rgba(200, 100, 150, 0.3), inset 0 0 12px rgba(200, 100, 150, 0.1); }
+
+@media (max-width: 600px) {
+    .variant-3 .gf-btn {
+        padding: 8px 14px 8px 10px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Responsive page */
+@media (max-width: 600px) {
+    body { padding: 1rem 0.5rem; }
+    .variant-section { padding: 1.2rem 1rem 1rem 1rem; }
+    .page-title { font-size: 1.2rem; margin-bottom: 2rem; }
+    .demo-gallery { grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 6px; }
+}
+</style>
+</head>
+<body>
+
+<h1 class="page-title">Gallery Filters — Design Variants</h1>
+
+<!-- VARIANT 1 -->
+<section class="variant-section variant-1">
+    <h2 class="variant-title"><span>Вариант 1</span> — Elegant Timeline</h2>
+    <div class="gallery-filters">
+        <button class="gf-btn active" data-year="all">Все</button>
+        <button class="gf-btn" data-year="2026">2026</button>
+        <button class="gf-btn" data-year="2025">2025</button>
+        <button class="gf-btn" data-year="2024">2024</button>
+        <button class="gf-btn" data-year="2023">2023</button>
+        <button class="gf-btn" data-year="2022">2022</button>
+        <button class="gf-btn" data-year="2021">2021</button>
+    </div>
+    <div class="demo-gallery">
+        <div class="demo-item" data-year="2026"></div>
+        <div class="demo-item" data-year="2026"></div>
+        <div class="demo-item" data-year="2025"></div>
+        <div class="demo-item" data-year="2025"></div>
+        <div class="demo-item" data-year="2025"></div>
+        <div class="demo-item" data-year="2024"></div>
+        <div class="demo-item" data-year="2024"></div>
+        <div class="demo-item" data-year="2023"></div>
+        <div class="demo-item" data-year="2023"></div>
+        <div class="demo-item" data-year="2022"></div>
+        <div class="demo-item" data-year="2022"></div>
+        <div class="demo-item" data-year="2021"></div>
+    </div>
+</section>
+
+<!-- VARIANT 2 -->
+<section class="variant-section variant-2">
+    <h2 class="variant-title"><span>Вариант 2</span> — Material Tabs</h2>
+    <div class="gallery-filters">
+        <button class="gf-btn active" data-year="all">ВСЕ</button>
+        <button class="gf-btn" data-year="2026">2026</button>
+        <button class="gf-btn" data-year="2025">2025</button>
+        <button class="gf-btn" data-year="2024">2024</button>
+        <button class="gf-btn" data-year="2023">2023</button>
+        <button class="gf-btn" data-year="2022">2022</button>
+        <button class="gf-btn" data-year="2021">2021</button>
+    </div>
+    <div class="demo-gallery">
+        <div class="demo-item" data-year="2026"></div>
+        <div class="demo-item" data-year="2026"></div>
+        <div class="demo-item" data-year="2025"></div>
+        <div class="demo-item" data-year="2025"></div>
+        <div class="demo-item" data-year="2025"></div>
+        <div class="demo-item" data-year="2024"></div>
+        <div class="demo-item" data-year="2024"></div>
+        <div class="demo-item" data-year="2023"></div>
+        <div class="demo-item" data-year="2023"></div>
+        <div class="demo-item" data-year="2022"></div>
+        <div class="demo-item" data-year="2022"></div>
+        <div class="demo-item" data-year="2021"></div>
+    </div>
+</section>
+
+<!-- VARIANT 3 -->
+<section class="variant-section variant-3">
+    <h2 class="variant-title"><span>Вариант 3</span> — Gradient Chips</h2>
+    <div class="gallery-filters">
+        <button class="gf-btn active" data-year="all">Все</button>
+        <button class="gf-btn" data-year="2026">2026</button>
+        <button class="gf-btn" data-year="2025">2025</button>
+        <button class="gf-btn" data-year="2024">2024</button>
+        <button class="gf-btn" data-year="2023">2023</button>
+        <button class="gf-btn" data-year="2022">2022</button>
+        <button class="gf-btn" data-year="2021">2021</button>
+    </div>
+    <div class="demo-gallery">
+        <div class="demo-item" data-year="2026"></div>
+        <div class="demo-item" data-year="2026"></div>
+        <div class="demo-item" data-year="2025"></div>
+        <div class="demo-item" data-year="2025"></div>
+        <div class="demo-item" data-year="2025"></div>
+        <div class="demo-item" data-year="2024"></div>
+        <div class="demo-item" data-year="2024"></div>
+        <div class="demo-item" data-year="2023"></div>
+        <div class="demo-item" data-year="2023"></div>
+        <div class="demo-item" data-year="2022"></div>
+        <div class="demo-item" data-year="2022"></div>
+        <div class="demo-item" data-year="2021"></div>
+    </div>
+</section>
+
+<script>
+document.querySelectorAll('.variant-section').forEach(function(section) {
+    var buttons = section.querySelectorAll('.gf-btn');
+    var items = section.querySelectorAll('.demo-item');
+
+    buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var year = this.getAttribute('data-year');
+
+            // Update active button
+            buttons.forEach(function(b) { b.classList.remove('active'); });
+            this.classList.add('active');
+
+            // Filter items
+            items.forEach(function(item) {
+                if (year === 'all' || item.getAttribute('data-year') === year) {
+                    item.classList.remove('gf-hidden');
+                } else {
+                    item.classList.add('gf-hidden');
+                }
+            });
+        });
+    });
+});
+</script>
+
+</body>
+</html>
