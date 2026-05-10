@@ -57,8 +57,8 @@ disableComments = true
             <h4>Дронослёты</h4>
         </div>
         <ul class="plan-condition-list">
-            <li><i class="fa fa-calendar-check-o"></i> Заявка — минимум за <strong>7 дней</strong> до поездки</li>
-            <li><i class="fa fa-telegram"></i> Подробности и координация — <a href="https://t.me/polet_bvs">чат «Полёты БВС»</a></li>
+            <li>Заявка — минимум за <strong>7 дней</strong> до поездки</li>
+            <li>Подробности и координация — <a href="https://t.me/polet_bvs">чат «Полёты БВС»</a></li>
         </ul>
     </div>
     <div class="plan-condition-block">
@@ -67,8 +67,8 @@ disableComments = true
             <h4>Важная информация</h4>
         </div>
         <ul class="plan-condition-list">
-            <li><i class="fa fa-clock-o"></i> Выезд рано утром — точное время зависит от локации</li>
-            <li><i class="fa fa-envelope-o"></i> Проверяйте папку «Спам» / «Нежелательные» после отправки заявки</li>
+            <li>Выезд рано утром — точное время зависит от локации</li>
+            <li>Проверяйте папку «Спам» / «Нежелательные» после отправки заявки</li>
         </ul>
     </div>
 </div>

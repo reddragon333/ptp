@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drone Icons — Design Variants</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #1a1f2e;
+    color: #e0e0e0;
+    padding: 2rem;
+    min-height: 100vh;
+}
+h1 {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    color: #fff;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.card:hover {
+    border-color: rgba(74,143,200,0.4);
+    box-shadow: 0 8px 32px rgba(74,143,200,0.15);
+}
+.card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #fff;
+}
+.card .subtitle {
+    font-size: 0.75rem;
+    color: #8a9ab5;
+    margin-bottom: 1.2rem;
+}
+.icon-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    min-height: 80px;
+}
+.icon-display svg {
+    color: #4a8fc8;
+}
+.icon-display .icon-sm { width: 24px; height: 24px; }
+.icon-display .icon-md { width: 36px; height: 36px; }
+.icon-display .icon-lg { width: 56px; height: 56px; }
+
+/* Context preview: how it looks next to the header */
+.context-preview {
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: left;
+}
+.context-preview svg {
+    color: #4a8fc8;
+    flex-shrink: 0;
+}
+.context-preview h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #e0e0e0;
+    margin: 0;
+}
+
+/* Animation */
+@keyframes droneFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+@keyframes droneHover {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-2px) rotate(1deg); }
+    50% { transform: translateY(-4px) rotate(0deg); }
+    75% { transform: translateY(-2px) rotate(-1deg); }
+}
+@keyframes dronePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+.anim-float { animation: droneFloat 3s ease-in-out infinite; display: inline-block; }
+.anim-hover { animation: droneHover 4s ease-in-out infinite; display: inline-block; }
+.anim-pulse { animation: dronePulse 2s ease-in-out infinite; display: inline-block; }
+
+.label {
+    display: inline-block;
+    background: rgba(74,143,200,0.15);
+    color: #7ec4f0;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<h1>Drone Icons — Design Variants</h1>
+
+<div class="grid">
+
+    <!-- Variant 1: Current Quadcopter (reference) -->
+    <div class="card">
+        <h3>1. Quadcopter (current)</h3>
+        <div class="subtitle">Текущая иконка — квадрокоптер с камерой</div>
+        <div class="icon-display">
+            <span class="anim-float">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="5" cy="6" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="19" cy="6" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="5" cy="18" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="19" cy="18" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <line x1="8" y1="8" x2="10.5" y2="10.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="16" y1="8" x2="13.5" y2="10.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="8" y1="16" x2="10.5" y2="13.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="16" y1="16" x2="13.5" y2="13.5" stroke="currentColor" stroke-width="1.4"/>
+                <rect x="10" y="10" width="4" height="4" rx="1" fill="currentColor"/>
+                <circle cx="12" cy="15.8" r="0.8" fill="currentColor"/>
+            </svg>
+            </span>
+            <span class="anim-float">
+            <svg class="icon-md" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="5" cy="6" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="19" cy="6" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="5" cy="18" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="19" cy="18" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <line x1="8" y1="8" x2="10.5" y2="10.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="16" y1="8" x2="13.5" y2="10.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="8" y1="16" x2="10.5" y2="13.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="16" y1="16" x2="13.5" y2="13.5" stroke="currentColor" stroke-width="1.4"/>
+                <rect x="10" y="10" width="4" height="4" rx="1" fill="currentColor"/>
+                <circle cx="12" cy="15.8" r="0.8" fill="currentColor"/>
+            </svg>
+            </span>
+            <span class="anim-float">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="5" cy="6" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="19" cy="6" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="5" cy="18" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="19" cy="18" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <line x1="8" y1="8" x2="10.5" y2="10.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="16" y1="8" x2="13.5" y2="10.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="8" y1="16" x2="10.5" y2="13.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="16" y1="16" x2="13.5" y2="13.5" stroke="currentColor" stroke-width="1.4"/>
+                <rect x="10" y="10" width="4" height="4" rx="1" fill="currentColor"/>
+                <circle cx="12" cy="15.8" r="0.8" fill="currentColor"/>
+            </svg>
+            </span>
+        </div>
+        <div class="context-preview">
+            <span class="anim-float">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="5" cy="6" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="19" cy="6" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="5" cy="18" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <ellipse cx="19" cy="18" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <line x1="8" y1="8" x2="10.5" y2="10.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="16" y1="8" x2="13.5" y2="10.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="8" y1="16" x2="10.5" y2="13.5" stroke="currentColor" stroke-width="1.4"/>
+                <line x1="16" y1="16" x2="13.5" y2="13.5" stroke="currentColor" stroke-width="1.4"/>
+                <rect x="10" y="10" width="4" height="4" rx="1" fill="currentColor"/>
+                <circle cx="12" cy="15.8" r="0.8" fill="currentColor"/>
+            </svg>
+            </span>
+            <h4>Дронослёты</h4>
+        </div>
+        <span class="label">Текущий вариант</span>
+    </div>
+
+    <!-- Variant 2: DJI-style folding drone (side view) -->
+    <div class="card">
+        <h3>2. DJI Folding</h3>
+        <div class="subtitle">Складной дрон в стиле DJI — вид сбоку/сверху</div>
+        <div class="icon-display">
+            <span class="anim-hover">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Body - sleek oval -->
+                <ellipse cx="12" cy="12" rx="4" ry="2.5" fill="currentColor" opacity="0.9"/>
+                <!-- Front arms (forward swept) -->
+                <line x1="9" y1="10.5" x2="3.5" y2="6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="15" y1="10.5" x2="20.5" y2="6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <!-- Rear arms (backward swept) -->
+                <line x1="9.5" y1="13.5" x2="4.5" y2="17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="14.5" y1="13.5" x2="19.5" y2="17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <!-- Rotors - thin arcs -->
+                <ellipse cx="3.5" cy="5.5" rx="2.8" ry="0.8" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <ellipse cx="20.5" cy="5.5" rx="2.8" ry="0.8" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <ellipse cx="4.5" cy="17.5" rx="2.5" ry="0.7" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <ellipse cx="19.5" cy="17.5" rx="2.5" ry="0.7" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <!-- Camera/gimbal -->
+                <circle cx="12" cy="14.8" r="1" fill="currentColor"/>
+                <circle cx="12" cy="14.8" r="0.4" fill="#1a1f2e"/>
+            </svg>
+            </span>
+            <span class="anim-hover">
+            <svg class="icon-md" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="12" cy="12" rx="4" ry="2.5" fill="currentColor" opacity="0.9"/>
+                <line x1="9" y1="10.5" x2="3.5" y2="6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="15" y1="10.5" x2="20.5" y2="6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="9.5" y1="13.5" x2="4.5" y2="17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="14.5" y1="13.5" x2="19.5" y2="17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <ellipse cx="3.5" cy="5.5" rx="2.8" ry="0.8" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <ellipse cx="20.5" cy="5.5" rx="2.8" ry="0.8" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <ellipse cx="4.5" cy="17.5" rx="2.5" ry="0.7" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <ellipse cx="19.5" cy="17.5" rx="2.5" ry="0.7" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <circle cx="12" cy="14.8" r="1" fill="currentColor"/>
+                <circle cx="12" cy="14.8" r="0.4" fill="#1a1f2e"/>
+            </svg>
+            </span>
+            <span class="anim-hover">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="12" cy="12" rx="4" ry="2.5" fill="currentColor" opacity="0.9"/>
+                <line x1="9" y1="10.5" x2="3.5" y2="6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="15" y1="10.5" x2="20.5" y2="6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="9.5" y1="13.5" x2="4.5" y2="17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="14.5" y1="13.5" x2="19.5" y2="17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <ellipse cx="3.5" cy="5.5" rx="2.8" ry="0.8" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <ellipse cx="20.5" cy="5.5" rx="2.8" ry="0.8" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <ellipse cx="4.5" cy="17.5" rx="2.5" ry="0.7" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <ellipse cx="19.5" cy="17.5" rx="2.5" ry="0.7" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <circle cx="12" cy="14.8" r="1" fill="currentColor"/>
+                <circle cx="12" cy="14.8" r="0.4" fill="#1a1f2e"/>
+            </svg>
+            </span>
+        </div>
+        <div class="context-preview">
+            <span class="anim-hover">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="12" cy="12" rx="4" ry="2.5" fill="currentColor" opacity="0.9"/>
+                <line x1="9" y1="10.5" x2="3.5" y2="6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="15" y1="10.5" x2="20.5" y2="6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="9.5" y1="13.5" x2="4.5" y2="17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="14.5" y1="13.5" x2="19.5" y2="17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <ellipse cx="3.5" cy="5.5" rx="2.8" ry="0.8" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <ellipse cx="20.5" cy="5.5" rx="2.8" ry="0.8" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <ellipse cx="4.5" cy="17.5" rx="2.5" ry="0.7" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <ellipse cx="19.5" cy="17.5" rx="2.5" ry="0.7" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+                <circle cx="12" cy="14.8" r="1" fill="currentColor"/>
+                <circle cx="12" cy="14.8" r="0.4" fill="#1a1f2e"/>
+            </svg>
+            </span>
+            <h4>Дронослёты</h4>
+        </div>
+    </div>
+
+    <!-- Variant 3: Racing/FPV drone -->
+    <div class="card">
+        <h3>3. FPV / Racing</h3>
+        <div class="subtitle">Гоночный FPV-дрон — агрессивный, компактный</div>
+        <div class="icon-display">
+            <span class="anim-float">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- X-frame -->
+                <line x1="4" y1="4" x2="10" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="20" y1="4" x2="14" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="4" y1="20" x2="10" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="20" y1="20" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Rotors - circles -->
+                <circle cx="4" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <circle cx="20" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <circle cx="4" cy="20" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <circle cx="20" cy="20" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <!-- Body - diamond -->
+                <rect x="9.5" y="9.5" width="5" height="5" rx="1.5" fill="currentColor" transform="rotate(0 12 12)"/>
+                <!-- Camera lens -->
+                <circle cx="12" cy="10.5" r="0.8" fill="#1a1f2e"/>
+            </svg>
+            </span>
+            <span class="anim-float">
+            <svg class="icon-md" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="4" y1="4" x2="10" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="20" y1="4" x2="14" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="4" y1="20" x2="10" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="20" y1="20" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="4" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <circle cx="20" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <circle cx="4" cy="20" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <circle cx="20" cy="20" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <rect x="9.5" y="9.5" width="5" height="5" rx="1.5" fill="currentColor"/>
+                <circle cx="12" cy="10.5" r="0.8" fill="#1a1f2e"/>
+            </svg>
+            </span>
+            <span class="anim-float">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="4" y1="4" x2="10" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="20" y1="4" x2="14" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="4" y1="20" x2="10" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="20" y1="20" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="4" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <circle cx="20" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <circle cx="4" cy="20" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <circle cx="20" cy="20" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <rect x="9.5" y="9.5" width="5" height="5" rx="1.5" fill="currentColor"/>
+                <circle cx="12" cy="10.5" r="0.8" fill="#1a1f2e"/>
+            </svg>
+            </span>
+        </div>
+        <div class="context-preview">
+            <span class="anim-float">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="4" y1="4" x2="10" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="20" y1="4" x2="14" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="4" y1="20" x2="10" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="20" y1="20" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="4" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <circle cx="20" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <circle cx="4" cy="20" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <circle cx="20" cy="20" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                <rect x="9.5" y="9.5" width="5" height="5" rx="1.5" fill="currentColor"/>
+                <circle cx="12" cy="10.5" r="0.8" fill="#1a1f2e"/>
+            </svg>
+            </span>
+            <h4>Дронослёты</h4>
+        </div>
+    </div>
+
+    <!-- Variant 4: Minimal geometric -->
+    <div class="card">
+        <h3>4. Minimal Geometric</h3>
+        <div class="subtitle">Чистая геометрия — минималистичный символ</div>
+        <div class="icon-display">
+            <span class="anim-pulse">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Simple cross frame -->
+                <line x1="12" y1="3" x2="12" y2="21" stroke="currentColor" stroke-width="1.3" opacity="0.4"/>
+                <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.3" opacity="0.4"/>
+                <!-- 4 prop circles -->
+                <circle cx="12" cy="4" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="12" cy="20" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="4" cy="12" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="20" cy="12" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <!-- Center dot -->
+                <circle cx="12" cy="12" r="2" fill="currentColor"/>
+            </svg>
+            </span>
+            <span class="anim-pulse">
+            <svg class="icon-md" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="12" y1="3" x2="12" y2="21" stroke="currentColor" stroke-width="1.3" opacity="0.4"/>
+                <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.3" opacity="0.4"/>
+                <circle cx="12" cy="4" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="12" cy="20" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="4" cy="12" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="20" cy="12" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="12" cy="12" r="2" fill="currentColor"/>
+            </svg>
+            </span>
+            <span class="anim-pulse">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="12" y1="3" x2="12" y2="21" stroke="currentColor" stroke-width="1.3" opacity="0.4"/>
+                <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.3" opacity="0.4"/>
+                <circle cx="12" cy="4" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="12" cy="20" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="4" cy="12" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="20" cy="12" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="12" cy="12" r="2" fill="currentColor"/>
+            </svg>
+            </span>
+        </div>
+        <div class="context-preview">
+            <span class="anim-pulse">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="12" y1="3" x2="12" y2="21" stroke="currentColor" stroke-width="1.3" opacity="0.4"/>
+                <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.3" opacity="0.4"/>
+                <circle cx="12" cy="4" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="12" cy="20" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="4" cy="12" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="20" cy="12" r="2.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+                <circle cx="12" cy="12" r="2" fill="currentColor"/>
+            </svg>
+            </span>
+            <h4>Дронослёты</h4>
+        </div>
+    </div>
+
+    <!-- Variant 5: Camera drone (3/4 view) -->
+    <div class="card">
+        <h3>5. Camera Drone</h3>
+        <div class="subtitle">Аэросъёмочный дрон — акцент на камеру</div>
+        <div class="icon-display">
+            <span class="anim-hover">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Arms diagonal -->
+                <line x1="5" y1="5" x2="9.5" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="19" y1="5" x2="14.5" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="5" y1="19" x2="9.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="19" y1="19" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Motor pods -->
+                <circle cx="5" cy="5" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="19" cy="5" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="5" cy="19" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="19" cy="19" r="1.2" fill="currentColor" opacity="0.7"/>
+                <!-- Prop arcs -->
+                <path d="M2.5 3.5 A3 3 0 0 1 7.5 3.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <path d="M16.5 3.5 A3 3 0 0 1 21.5 3.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <path d="M2.5 17.5 A3 3 0 0 0 7.5 17.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <path d="M16.5 17.5 A3 3 0 0 0 21.5 17.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <!-- Body -->
+                <rect x="9" y="9" width="6" height="6" rx="2" fill="currentColor"/>
+                <!-- Camera gimbal -->
+                <line x1="12" y1="15" x2="12" y2="17" stroke="currentColor" stroke-width="1.2"/>
+                <circle cx="12" cy="17.8" r="1.3" fill="currentColor"/>
+                <circle cx="12" cy="17.8" r="0.6" fill="#1a1f2e"/>
+            </svg>
+            </span>
+            <span class="anim-hover">
+            <svg class="icon-md" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="5" y1="5" x2="9.5" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="19" y1="5" x2="14.5" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="5" y1="19" x2="9.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="19" y1="19" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="5" cy="5" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="19" cy="5" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="5" cy="19" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="19" cy="19" r="1.2" fill="currentColor" opacity="0.7"/>
+                <path d="M2.5 3.5 A3 3 0 0 1 7.5 3.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <path d="M16.5 3.5 A3 3 0 0 1 21.5 3.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <path d="M2.5 17.5 A3 3 0 0 0 7.5 17.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <path d="M16.5 17.5 A3 3 0 0 0 21.5 17.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <rect x="9" y="9" width="6" height="6" rx="2" fill="currentColor"/>
+                <line x1="12" y1="15" x2="12" y2="17" stroke="currentColor" stroke-width="1.2"/>
+                <circle cx="12" cy="17.8" r="1.3" fill="currentColor"/>
+                <circle cx="12" cy="17.8" r="0.6" fill="#1a1f2e"/>
+            </svg>
+            </span>
+            <span class="anim-hover">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="5" y1="5" x2="9.5" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="19" y1="5" x2="14.5" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="5" y1="19" x2="9.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="19" y1="19" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="5" cy="5" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="19" cy="5" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="5" cy="19" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="19" cy="19" r="1.2" fill="currentColor" opacity="0.7"/>
+                <path d="M2.5 3.5 A3 3 0 0 1 7.5 3.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <path d="M16.5 3.5 A3 3 0 0 1 21.5 3.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <path d="M2.5 17.5 A3 3 0 0 0 7.5 17.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <path d="M16.5 17.5 A3 3 0 0 0 21.5 17.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <rect x="9" y="9" width="6" height="6" rx="2" fill="currentColor"/>
+                <line x1="12" y1="15" x2="12" y2="17" stroke="currentColor" stroke-width="1.2"/>
+                <circle cx="12" cy="17.8" r="1.3" fill="currentColor"/>
+                <circle cx="12" cy="17.8" r="0.6" fill="#1a1f2e"/>
+            </svg>
+            </span>
+        </div>
+        <div class="context-preview">
+            <span class="anim-hover">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="5" y1="5" x2="9.5" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="19" y1="5" x2="14.5" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="5" y1="19" x2="9.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="19" y1="19" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="5" cy="5" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="19" cy="5" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="5" cy="19" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="19" cy="19" r="1.2" fill="currentColor" opacity="0.7"/>
+                <rect x="9" y="9" width="6" height="6" rx="2" fill="currentColor"/>
+                <line x1="12" y1="15" x2="12" y2="17" stroke="currentColor" stroke-width="1.2"/>
+                <circle cx="12" cy="17.8" r="1.3" fill="currentColor"/>
+                <circle cx="12" cy="17.8" r="0.6" fill="#1a1f2e"/>
+            </svg>
+            </span>
+            <h4>Дронослёты</h4>
+        </div>
+    </div>
+
+    <!-- Variant 6: Mavic-style silhouette -->
+    <div class="card">
+        <h3>6. Mavic Silhouette</h3>
+        <div class="subtitle">Силуэт Mavic — узнаваемый профиль</div>
+        <div class="icon-display">
+            <span class="anim-hover">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Sleek body -->
+                <path d="M8 11 L16 11 L17 12.5 L16 14 L8 14 L7 12.5 Z" fill="currentColor" opacity="0.85"/>
+                <!-- Front left arm -->
+                <line x1="9" y1="11" x2="4" y2="5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <!-- Front right arm -->
+                <line x1="15" y1="11" x2="20" y2="5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <!-- Rear left arm (shorter, folded back) -->
+                <line x1="9" y1="14" x2="5.5" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <!-- Rear right arm -->
+                <line x1="15" y1="14" x2="18.5" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <!-- Propeller discs -->
+                <ellipse cx="4" cy="5" rx="3" ry="1" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.45"/>
+                <ellipse cx="20" cy="5" rx="3" ry="1" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.45"/>
+                <ellipse cx="5.5" cy="18.5" rx="2.5" ry="0.8" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.45"/>
+                <ellipse cx="18.5" cy="18.5" rx="2.5" ry="0.8" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.45"/>
+                <!-- Camera -->
+                <circle cx="12" cy="15.5" r="0.9" fill="currentColor"/>
+            </svg>
+            </span>
+            <span class="anim-hover">
+            <svg class="icon-md" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 11 L16 11 L17 12.5 L16 14 L8 14 L7 12.5 Z" fill="currentColor" opacity="0.85"/>
+                <line x1="9" y1="11" x2="4" y2="5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="15" y1="11" x2="20" y2="5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="9" y1="14" x2="5.5" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="15" y1="14" x2="18.5" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <ellipse cx="4" cy="5" rx="3" ry="1" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.45"/>
+                <ellipse cx="20" cy="5" rx="3" ry="1" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.45"/>
+                <ellipse cx="5.5" cy="18.5" rx="2.5" ry="0.8" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.45"/>
+                <ellipse cx="18.5" cy="18.5" rx="2.5" ry="0.8" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.45"/>
+                <circle cx="12" cy="15.5" r="0.9" fill="currentColor"/>
+            </svg>
+            </span>
+            <span class="anim-hover">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 11 L16 11 L17 12.5 L16 14 L8 14 L7 12.5 Z" fill="currentColor" opacity="0.85"/>
+                <line x1="9" y1="11" x2="4" y2="5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="15" y1="11" x2="20" y2="5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="9" y1="14" x2="5.5" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="15" y1="14" x2="18.5" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <ellipse cx="4" cy="5" rx="3" ry="1" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.45"/>
+                <ellipse cx="20" cy="5" rx="3" ry="1" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.45"/>
+                <ellipse cx="5.5" cy="18.5" rx="2.5" ry="0.8" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.45"/>
+                <ellipse cx="18.5" cy="18.5" rx="2.5" ry="0.8" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.45"/>
+                <circle cx="12" cy="15.5" r="0.9" fill="currentColor"/>
+            </svg>
+            </span>
+        </div>
+        <div class="context-preview">
+            <span class="anim-hover">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 11 L16 11 L17 12.5 L16 14 L8 14 L7 12.5 Z" fill="currentColor" opacity="0.85"/>
+                <line x1="9" y1="11" x2="4" y2="5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="15" y1="11" x2="20" y2="5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="9" y1="14" x2="5.5" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="15" y1="14" x2="18.5" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <ellipse cx="4" cy="5" rx="3" ry="1" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.45"/>
+                <ellipse cx="20" cy="5" rx="3" ry="1" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.45"/>
+                <circle cx="12" cy="15.5" r="0.9" fill="currentColor"/>
+            </svg>
+            </span>
+            <h4>Дронослёты</h4>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
