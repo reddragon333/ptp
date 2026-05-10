@@ -111,6 +111,9 @@ slug = 'gallery'
 .gf-btn[data-year="all"]::before {
     width: 5px !important;
     height: 5px !important;
+    min-height: 5px !important;
+    min-width: 5px !important;
+    flex-shrink: 0 !important;
     border-radius: 50% !important;
     border: none !important;
     background: rgba(74,143,200,0.35) !important;
@@ -119,6 +122,7 @@ slug = 'gallery'
                 9px 9px 0 0 rgba(74,143,200,0.35) !important;
     transform: translate(-4px, -4px);
     animation: none !important;
+    display: block !important;
 }
 .gf-btn[data-year="all"]:hover::before {
     background: rgba(74,143,200,0.55);
