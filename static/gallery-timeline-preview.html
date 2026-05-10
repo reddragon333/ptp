@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery Timeline — Creative Variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Onest', -apple-system, sans-serif;
+    background: #1a1f2e;
+    color: #e0e0e0;
+    padding: 1.5rem;
+    min-height: 100vh;
+}
+h1 { text-align: center; font-size: 1.4rem; margin-bottom: 0.3rem; color: #fff; font-weight: 700; }
+.subtitle { text-align: center; font-size: 0.8rem; color: #8a9ab5; margin-bottom: 2rem; }
+
+.variant-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+.variant-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    color: #7ecff0;
+}
+.variant-card .desc {
+    font-size: 0.75rem;
+    color: #8a9ab5;
+    margin-bottom: 1.2rem;
+}
+
+/* Fake gallery grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    margin-top: 1rem;
+}
+.gallery-item {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 6px;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.7);
+    transition: opacity 0.3s, transform 0.3s;
+}
+.gallery-item.hidden { opacity: 0; transform: scale(0.9); height: 0; padding: 0; margin: 0; overflow: hidden; }
+
+/* ==============================
+   VARIANT 1A — Original Timeline (base)
+   ============================== */
+.v1a-filter { text-align: center; padding: 1rem 0; }
+.v1a-track {
+    display: flex; align-items: center; justify-content: center; gap: 0;
+    position: relative;
+}
+.v1a-track::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(126,207,240,0.3), transparent);
+}
+.v1a-btn {
+    background: none; border: none; color: #8a9ab5;
+    font-family: 'Onest', sans-serif; font-size: 0.75rem; font-weight: 500;
+    cursor: pointer; padding: 0.6rem 1rem;
+    position: relative; z-index: 1;
+    transition: all 0.3s;
+}
+.v1a-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 8px; height: 8px; border-radius: 50%;
+    border: 1.5px solid rgba(126,207,240,0.3);
+    background: #1a1f2e;
+    transition: all 0.3s;
+}
+.v1a-btn.active { color: #fff; font-weight: 700; }
+.v1a-btn.active::before {
+    border-color: #7ecff0;
+    background: #7ecff0;
+    box-shadow: 0 0 8px rgba(126,207,240,0.5);
+}
+.v1a-btn:hover { color: #ccc; }
+
+/* ==============================
+   VARIANT 1B — Glowing Pulse Timeline
+   ============================== */
+.v1b-filter { text-align: center; padding: 1rem 0; }
+.v1b-track {
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    padding: 1rem 0;
+}
+.v1b-track::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 8%; right: 8%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(74,143,200,0.2) 20%, rgba(126,207,240,0.35) 50%, rgba(74,143,200,0.2) 80%, transparent);
+}
+.v1b-btn {
+    background: none; border: none;
+    color: #6a7a8a;
+    font-family: 'Onest', sans-serif; font-size: 0.78rem; font-weight: 500;
+    cursor: pointer; padding: 0.8rem 1rem 0.5rem;
+    position: relative; z-index: 1;
+    transition: all 0.35s;
+    display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+}
+.v1b-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    border: 2px solid rgba(126,207,240,0.25);
+    background: #1e2535;
+    transition: all 0.4s;
+    position: relative;
+}
+.v1b-btn.active .v1b-dot {
+    border-color: #7ecff0;
+    background: #7ecff0;
+    box-shadow: 0 0 12px rgba(126,207,240,0.6), 0 0 24px rgba(126,207,240,0.2);
+    animation: v1bPulse 2s ease-in-out infinite;
+}
+@keyframes v1bPulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(126,207,240,0.5), 0 0 16px rgba(126,207,240,0.15); }
+    50% { box-shadow: 0 0 16px rgba(126,207,240,0.7), 0 0 32px rgba(126,207,240,0.3); }
+}
+.v1b-btn.active { color: #fff; font-weight: 700; }
+.v1b-btn:hover .v1b-dot { border-color: rgba(126,207,240,0.5); }
+.v1b-btn:hover { color: #b0c0d0; }
+
+/* ==============================
+   VARIANT 1C — Segment Controller
+   ============================== */
+.v1c-filter { text-align: center; padding: 1rem 0; }
+.v1c-track {
+    display: inline-flex;
+    background: rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 4px;
+    gap: 2px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+.v1c-btn {
+    background: none; border: none;
+    color: #7a8a9a;
+    font-family: 'Onest', sans-serif; font-size: 0.78rem; font-weight: 500;
+    cursor: pointer; padding: 0.45rem 0.9rem;
+    border-radius: 9px;
+    transition: all 0.3s;
+    position: relative;
+}
+.v1c-btn.active {
+    background: rgba(126,207,240,0.15);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(126,207,240,0.15);
+}
+.v1c-btn:hover:not(.active) { background: rgba(255,255,255,0.05); color: #b0c0d0; }
+
+/* ==============================
+   VARIANT 1D — Timeline with Year Count Badges
+   ============================== */
+.v1d-filter { text-align: center; padding: 1rem 0; }
+.v1d-track {
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    padding: 0.5rem 0 1rem;
+}
+.v1d-track::before {
+    content: '';
+    position: absolute;
+    top: calc(50% - 4px); left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(126,207,240,0.25), transparent);
+}
+.v1d-btn {
+    background: none; border: none;
+    color: #6a7a8a;
+    font-family: 'Onest', sans-serif; font-size: 0.75rem; font-weight: 500;
+    cursor: pointer; padding: 0 0.8rem;
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; align-items: center; gap: 0.35rem;
+    transition: all 0.3s;
+}
+.v1d-node {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 1.5px solid rgba(126,207,240,0.2);
+    background: #1e2535;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.55rem; font-weight: 700; color: #5a6a7a;
+    transition: all 0.35s;
+}
+.v1d-btn.active .v1d-node {
+    border-color: #7ecff0;
+    background: rgba(126,207,240,0.15);
+    color: #7ecff0;
+    box-shadow: 0 0 10px rgba(126,207,240,0.3);
+}
+.v1d-btn.active { color: #fff; font-weight: 700; }
+.v1d-btn:hover .v1d-node { border-color: rgba(126,207,240,0.4); }
+.v1d-btn:hover { color: #b0c0d0; }
+
+/* ==============================
+   VARIANT 1E — Scroll Ribbon
+   ============================== */
+.v1e-filter { padding: 1rem 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.v1e-track {
+    display: flex; align-items: stretch; gap: 0;
+    min-width: min-content;
+}
+.v1e-btn {
+    background: none; border: none; border-bottom: 2px solid transparent;
+    color: #5a6a7a;
+    font-family: 'Onest', sans-serif; font-size: 0.8rem; font-weight: 500;
+    cursor: pointer; padding: 0.6rem 1.2rem;
+    white-space: nowrap;
+    transition: all 0.3s;
+    position: relative;
+}
+.v1e-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%; width: 0; height: 2px;
+    background: linear-gradient(90deg, #4a8fc8, #7ecff0);
+    transition: all 0.3s;
+    transform: translateX(-50%);
+    border-radius: 1px;
+}
+.v1e-btn.active {
+    color: #fff; font-weight: 700;
+    border-bottom-color: transparent;
+}
+.v1e-btn.active::after { width: 100%; }
+.v1e-btn:hover { color: #b0c0d0; }
+.v1e-sep {
+    width: 1px;
+    background: rgba(255,255,255,0.06);
+    align-self: stretch;
+    margin: 4px 0;
+}
+
+/* ==============================
+   VARIANT 1F — Floating Pills + Connector
+   ============================== */
+.v1f-filter { text-align: center; padding: 1rem 0; }
+.v1f-track {
+    display: inline-flex; align-items: center; gap: 0;
+    position: relative;
+}
+.v1f-connector {
+    width: 20px; height: 1px;
+    background: rgba(126,207,240,0.2);
+    flex-shrink: 0;
+}
+.v1f-btn {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #7a8a9a;
+    font-family: 'Onest', sans-serif; font-size: 0.72rem; font-weight: 500;
+    cursor: pointer; padding: 0.35rem 0.7rem;
+    border-radius: 20px;
+    transition: all 0.3s;
+    white-space: nowrap;
+    backdrop-filter: blur(8px);
+}
+.v1f-btn.active {
+    background: rgba(126,207,240,0.12);
+    border-color: rgba(126,207,240,0.35);
+    color: #fff; font-weight: 600;
+    box-shadow: 0 2px 12px rgba(126,207,240,0.2);
+}
+.v1f-btn:hover:not(.active) {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.15);
+    color: #c0d0e0;
+}
+
+/* Colors for fake images */
+.c2026a { background: #3a5278; } .c2026b { background: #3a4a6e; }
+.c2025a { background: #4a7a5a; } .c2025b { background: #5a8a5a; } .c2025c { background: #4a7a4a; }
+.c2024a { background: #5a5a6a; } .c2024b { background: #5a5a7a; }
+.c2023a { background: #7a6a5a; } .c2023b { background: #6a5a5a; }
+.c2022a { background: #4a7a7a; } .c2022b { background: #3a6a6a; }
+.c2021  { background: #7a4a5a; }
+
+/* Label */
+.label {
+    display: inline-block;
+    background: rgba(74,143,200,0.15);
+    color: #7ecff0;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    margin-top: 0.6rem;
+}
+</style>
+</head>
+<body>
+
+<h1>Timeline Filter — Creative Variants</h1>
+<p class="subtitle">Вариант 1 (таймлайн) как база + 5 креативных развитий</p>
+
+<!-- 1A: Original -->
+<div class="variant-card">
+    <h3>1A — Original Timeline</h3>
+    <div class="desc">Базовый вариант: точки на линии, без изменений</div>
+    <div class="v1a-filter">
+        <div class="v1a-track">
+            <button class="v1a-btn active" onclick="filterV('v1a',this,'all')">ВСЕ</button>
+            <button class="v1a-btn" onclick="filterV('v1a',this,'2026')">2026</button>
+            <button class="v1a-btn" onclick="filterV('v1a',this,'2025')">2025</button>
+            <button class="v1a-btn" onclick="filterV('v1a',this,'2024')">2024</button>
+            <button class="v1a-btn" onclick="filterV('v1a',this,'2023')">2023</button>
+            <button class="v1a-btn" onclick="filterV('v1a',this,'2022')">2022</button>
+            <button class="v1a-btn" onclick="filterV('v1a',this,'2021')">2021</button>
+        </div>
+    </div>
+    <div class="gallery-grid" id="grid-v1a"></div>
+    <span class="label">Текущий (база)</span>
+</div>
+
+<!-- 1B: Glowing Pulse -->
+<div class="variant-card">
+    <h3>1B — Glowing Pulse</h3>
+    <div class="desc">Активная точка светится и пульсирует. Линия шире с мягким градиентом. Премиальный вид.</div>
+    <div class="v1b-filter">
+        <div class="v1b-track">
+            <button class="v1b-btn active" onclick="filterV('v1b',this,'all')"><span class="v1b-dot"></span>ВСЕ</button>
+            <button class="v1b-btn" onclick="filterV('v1b',this,'2026')"><span class="v1b-dot"></span>2026</button>
+            <button class="v1b-btn" onclick="filterV('v1b',this,'2025')"><span class="v1b-dot"></span>2025</button>
+            <button class="v1b-btn" onclick="filterV('v1b',this,'2024')"><span class="v1b-dot"></span>2024</button>
+            <button class="v1b-btn" onclick="filterV('v1b',this,'2023')"><span class="v1b-dot"></span>2023</button>
+            <button class="v1b-btn" onclick="filterV('v1b',this,'2022')"><span class="v1b-dot"></span>2022</button>
+            <button class="v1b-btn" onclick="filterV('v1b',this,'2021')"><span class="v1b-dot"></span>2021</button>
+        </div>
+    </div>
+    <div class="gallery-grid" id="grid-v1b"></div>
+</div>
+
+<!-- 1C: Segment Controller -->
+<div class="variant-card">
+    <h3>1C — Segment Controller</h3>
+    <div class="desc">iOS-стиль: общая подложка, активная кнопка подсвечена блоком. Компактно, современно.</div>
+    <div class="v1c-filter">
+        <div class="v1c-track">
+            <button class="v1c-btn active" onclick="filterV('v1c',this,'all')">Все</button>
+            <button class="v1c-btn" onclick="filterV('v1c',this,'2026')">2026</button>
+            <button class="v1c-btn" onclick="filterV('v1c',this,'2025')">2025</button>
+            <button class="v1c-btn" onclick="filterV('v1c',this,'2024')">2024</button>
+            <button class="v1c-btn" onclick="filterV('v1c',this,'2023')">2023</button>
+            <button class="v1c-btn" onclick="filterV('v1c',this,'2022')">2022</button>
+            <button class="v1c-btn" onclick="filterV('v1c',this,'2021')">2021</button>
+        </div>
+    </div>
+    <div class="gallery-grid" id="grid-v1c"></div>
+</div>
+
+<!-- 1D: Year Count Badges -->
+<div class="variant-card">
+    <h3>1D — Count Badges</h3>
+    <div class="desc">Точки-ноды с количеством фото внутри. Информативно: видно, где больше контента.</div>
+    <div class="v1d-filter">
+        <div class="v1d-track">
+            <button class="v1d-btn active" onclick="filterV('v1d',this,'all')"><span class="v1d-node">12</span>Все</button>
+            <button class="v1d-btn" onclick="filterV('v1d',this,'2026')"><span class="v1d-node">2</span>2026</button>
+            <button class="v1d-btn" onclick="filterV('v1d',this,'2025')"><span class="v1d-node">3</span>2025</button>
+            <button class="v1d-btn" onclick="filterV('v1d',this,'2024')"><span class="v1d-node">2</span>2024</button>
+            <button class="v1d-btn" onclick="filterV('v1d',this,'2023')"><span class="v1d-node">2</span>2023</button>
+            <button class="v1d-btn" onclick="filterV('v1d',this,'2022')"><span class="v1d-node">2</span>2022</button>
+            <button class="v1d-btn" onclick="filterV('v1d',this,'2021')"><span class="v1d-node">1</span>2021</button>
+        </div>
+    </div>
+    <div class="gallery-grid" id="grid-v1d"></div>
+</div>
+
+<!-- 1E: Scroll Ribbon -->
+<div class="variant-card">
+    <h3>1E — Scroll Ribbon</h3>
+    <div class="desc">Горизонтальная лента с разделителями. Градиентное подчёркивание активного. Хорошо на мобильных — скроллится.</div>
+    <div class="v1e-filter">
+        <div class="v1e-track">
+            <button class="v1e-btn active" onclick="filterV('v1e',this,'all')">Все</button>
+            <span class="v1e-sep"></span>
+            <button class="v1e-btn" onclick="filterV('v1e',this,'2026')">2026</button>
+            <span class="v1e-sep"></span>
+            <button class="v1e-btn" onclick="filterV('v1e',this,'2025')">2025</button>
+            <span class="v1e-sep"></span>
+            <button class="v1e-btn" onclick="filterV('v1e',this,'2024')">2024</button>
+            <span class="v1e-sep"></span>
+            <button class="v1e-btn" onclick="filterV('v1e',this,'2023')">2023</button>
+            <span class="v1e-sep"></span>
+            <button class="v1e-btn" onclick="filterV('v1e',this,'2022')">2022</button>
+            <span class="v1e-sep"></span>
+            <button class="v1e-btn" onclick="filterV('v1e',this,'2021')">2021</button>
+        </div>
+    </div>
+    <div class="gallery-grid" id="grid-v1e"></div>
+</div>
+
+<!-- 1F: Floating Pills + Connector -->
+<div class="variant-card">
+    <h3>1F — Connected Pills</h3>
+    <div class="desc">Glassmorphism-пилюльки соединённые тонкими линиями. Сочетает таймлайн + чипсы. Парит.</div>
+    <div class="v1f-filter">
+        <div class="v1f-track">
+            <button class="v1f-btn active" onclick="filterV('v1f',this,'all')">Все</button>
+            <span class="v1f-connector"></span>
+            <button class="v1f-btn" onclick="filterV('v1f',this,'2026')">2026</button>
+            <span class="v1f-connector"></span>
+            <button class="v1f-btn" onclick="filterV('v1f',this,'2025')">2025</button>
+            <span class="v1f-connector"></span>
+            <button class="v1f-btn" onclick="filterV('v1f',this,'2024')">2024</button>
+            <span class="v1f-connector"></span>
+            <button class="v1f-btn" onclick="filterV('v1f',this,'2023')">2023</button>
+            <span class="v1f-connector"></span>
+            <button class="v1f-btn" onclick="filterV('v1f',this,'2022')">2022</button>
+            <span class="v1f-connector"></span>
+            <button class="v1f-btn" onclick="filterV('v1f',this,'2021')">2021</button>
+        </div>
+    </div>
+    <div class="gallery-grid" id="grid-v1f"></div>
+</div>
+
+<script>
+var items = [
+    {y:'2026',c:'c2026a'},{y:'2026',c:'c2026b'},
+    {y:'2025',c:'c2025a'},{y:'2025',c:'c2025b'},{y:'2025',c:'c2025c'},
+    {y:'2024',c:'c2024a'},{y:'2024',c:'c2024b'},
+    {y:'2023',c:'c2023a'},{y:'2023',c:'c2023b'},
+    {y:'2022',c:'c2022a'},{y:'2022',c:'c2022b'},
+    {y:'2021',c:'c2021'}
+];
+var variants = ['v1a','v1b','v1c','v1d','v1e','v1f'];
+variants.forEach(function(v) {
+    var grid = document.getElementById('grid-' + v);
+    items.forEach(function(it) {
+        var d = document.createElement('div');
+        d.className = 'gallery-item ' + it.c;
+        d.setAttribute('data-year', it.y);
+        d.textContent = it.y;
+        grid.appendChild(d);
+    });
+});
+
+function filterV(variant, btn, year) {
+    // Update active button
+    var card = btn.closest('.variant-card');
+    card.querySelectorAll('button').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    // Filter items
+    var grid = document.getElementById('grid-' + variant);
+    grid.querySelectorAll('.gallery-item').forEach(function(item) {
+        if (year === 'all' || item.getAttribute('data-year') === year) {
+            item.classList.remove('hidden');
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+}
+</script>
+
+</body>
+</html>
