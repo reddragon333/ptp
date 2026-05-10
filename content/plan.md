@@ -39,20 +39,27 @@ disableComments = true
     <div class="plan-condition-block">
         <div class="plan-condition-header">
             <svg class="plan-drone-svg plan-drone-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- 4 rotors -->
-                <ellipse cx="5" cy="6" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
-                <ellipse cx="19" cy="6" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
-                <ellipse cx="5" cy="18" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
-                <ellipse cx="19" cy="18" rx="3.5" ry="1.2" stroke="currentColor" stroke-width="1.3" fill="none"/>
-                <!-- Arms -->
-                <line x1="8" y1="8" x2="10.5" y2="10.5" stroke="currentColor" stroke-width="1.4"/>
-                <line x1="16" y1="8" x2="13.5" y2="10.5" stroke="currentColor" stroke-width="1.4"/>
-                <line x1="8" y1="16" x2="10.5" y2="13.5" stroke="currentColor" stroke-width="1.4"/>
-                <line x1="16" y1="16" x2="13.5" y2="13.5" stroke="currentColor" stroke-width="1.4"/>
+                <!-- Arms diagonal -->
+                <line x1="5" y1="5" x2="9.5" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="19" y1="5" x2="14.5" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="5" y1="19" x2="9.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="19" y1="19" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Motor pods -->
+                <circle cx="5" cy="5" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="19" cy="5" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="5" cy="19" r="1.2" fill="currentColor" opacity="0.7"/>
+                <circle cx="19" cy="19" r="1.2" fill="currentColor" opacity="0.7"/>
+                <!-- Prop arcs -->
+                <path d="M2.5 3.5 A3 3 0 0 1 7.5 3.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <path d="M16.5 3.5 A3 3 0 0 1 21.5 3.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <path d="M2.5 17.5 A3 3 0 0 0 7.5 17.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
+                <path d="M16.5 17.5 A3 3 0 0 0 21.5 17.5" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.4"/>
                 <!-- Body -->
-                <rect x="10" y="10" width="4" height="4" rx="1" fill="currentColor"/>
-                <!-- Camera dot -->
-                <circle cx="12" cy="15.8" r="0.8" fill="currentColor"/>
+                <rect x="9" y="9" width="6" height="6" rx="2" fill="currentColor"/>
+                <!-- Camera gimbal -->
+                <line x1="12" y1="15" x2="12" y2="17" stroke="currentColor" stroke-width="1.2"/>
+                <circle cx="12" cy="17.8" r="1.3" fill="currentColor"/>
+                <circle cx="12" cy="17.8" r="0.6" fill="white"/>
             </svg>
             <h4>Дронослёты</h4>
         </div>
