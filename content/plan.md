@@ -280,16 +280,16 @@ disableComments = true
         }
 
         var tripScript = document.createElement('script');
-        tripScript.src = '/js/trip-form-loader.js';
+        tripScript.src = '/js/trip-form-loader.js?v=' + Date.now();
         tripScript.onload = function() {
             if (typeof TripFormLoader !== 'undefined') {
                 try {
                     window.tripFormLoader = new TripFormLoader();
-                    var result = window.tripFormLoader.populateTripsDropdown();
-                    // Если populateTripsDropdown возвращает Promise — ждём его
-                    if (result && typeof result.then === 'function') {
-                        result.catch(function() { showTripFallback(); });
-                    }
+                    window.tripFormLoader.populateTripsDropdown()
+                        .then(function() {
+                            console.log('✅ Поездки загружены в dropdown');
+                        })
+                        .catch(function() { showTripFallback(); });
                 } catch(e) {
                     showTripFallback();
                 }
