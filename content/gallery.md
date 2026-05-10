@@ -107,27 +107,29 @@ slug = 'gallery'
     0%, 100% { box-shadow: 0 0 8px rgba(74,143,200,0.4), 0 0 16px rgba(74,143,200,0.1); }
     50% { box-shadow: 0 0 14px rgba(74,143,200,0.6), 0 0 28px rgba(74,143,200,0.25); }
 }
-/* Concentric Rings for ВСЕ */
+/* Grid of Mini-Dots for ВСЕ */
 .gf-btn[data-year="all"]::before {
-    width: 8px;
-    height: 8px;
-    border: 2px solid rgba(74,143,200,0.3);
-    background: #fff;
-    box-shadow: 0 0 0 3px #fff, 0 0 0 4.5px rgba(74,143,200,0.2);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(74,143,200,0.3);
+    box-shadow: 8px 0 0 rgba(74,143,200,0.3), 0 8px 0 rgba(74,143,200,0.3), 8px 8px 0 rgba(74,143,200,0.3);
+    margin-right: 4px;
+    margin-bottom: -4px;
 }
 .gf-btn[data-year="all"]:hover::before {
-    border-color: rgba(74,143,200,0.5);
-    box-shadow: 0 0 0 3px #fff, 0 0 0 4.5px rgba(74,143,200,0.4);
+    background: rgba(74,143,200,0.5);
+    box-shadow: 8px 0 0 rgba(74,143,200,0.5), 0 8px 0 rgba(74,143,200,0.5), 8px 8px 0 rgba(74,143,200,0.5);
 }
 .gf-btn[data-year="all"].active::before {
-    border-color: #4a8fc8;
     background: #4a8fc8;
-    box-shadow: 0 0 0 3px rgba(255,255,255,0.85), 0 0 0 5px #4a8fc8, 0 0 12px rgba(74,143,200,0.5), 0 0 24px rgba(74,143,200,0.15);
-    animation: gf-pulse-rings 2s ease-in-out infinite;
+    box-shadow: 8px 0 0 #4a8fc8, 0 8px 0 #4a8fc8, 8px 8px 0 #4a8fc8, 0 0 12px rgba(74,143,200,0.4), 8px 0 12px rgba(74,143,200,0.2), 0 8px 12px rgba(74,143,200,0.2), 8px 8px 12px rgba(74,143,200,0.2);
+    animation: gf-pulse-grid 2s ease-in-out infinite;
 }
-@keyframes gf-pulse-rings {
-    0%, 100% { box-shadow: 0 0 0 3px rgba(255,255,255,0.85), 0 0 0 5px #4a8fc8, 0 0 10px rgba(74,143,200,0.4), 0 0 20px rgba(74,143,200,0.1); }
-    50% { box-shadow: 0 0 0 3px rgba(255,255,255,0.85), 0 0 0 5px #4a8fc8, 0 0 16px rgba(74,143,200,0.6), 0 0 32px rgba(74,143,200,0.25); }
+@keyframes gf-pulse-grid {
+    0%, 100% { background: #4a8fc8; box-shadow: 8px 0 0 #4a8fc8, 0 8px 0 #4a8fc8, 8px 8px 0 #4a8fc8, 0 0 10px rgba(74,143,200,0.35), 8px 0 10px rgba(74,143,200,0.15), 0 8px 10px rgba(74,143,200,0.15), 8px 8px 10px rgba(74,143,200,0.15); }
+    50% { background: #4a8fc8; box-shadow: 8px 0 0 #4a8fc8, 0 8px 0 #4a8fc8, 8px 8px 0 #4a8fc8, 0 0 16px rgba(74,143,200,0.55), 8px 0 16px rgba(74,143,200,0.25), 0 8px 16px rgba(74,143,200,0.25), 8px 8px 16px rgba(74,143,200,0.25); }
 }
 @media (max-width: 480px) {
     .gallery-filters { padding: 0.8rem 0 0.3rem 0; }
