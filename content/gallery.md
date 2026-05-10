@@ -117,34 +117,34 @@ slug = 'gallery'
     border-radius: 50% !important;
     border: none !important;
     background: rgba(74,143,200,0.35) !important;
-    box-shadow: 9px 0 0 0 rgba(74,143,200,0.35),
-                0 9px 0 0 rgba(74,143,200,0.35),
-                9px 9px 0 0 rgba(74,143,200,0.35) !important;
-    transform: translate(-4.5px, -2px);
+    box-shadow: 7px 0 0 0 rgba(74,143,200,0.35),
+                0 7px 0 0 rgba(74,143,200,0.35),
+                7px 7px 0 0 rgba(74,143,200,0.35) !important;
+    transform: translate(-3.5px, -1px);
     animation: none !important;
     display: block !important;
 }
 .gf-btn[data-year="all"]:hover::before {
     background: rgba(74,143,200,0.55);
-    box-shadow: 9px 0 0 0 rgba(74,143,200,0.55),
-                0 9px 0 0 rgba(74,143,200,0.55),
-                9px 9px 0 0 rgba(74,143,200,0.55);
+    box-shadow: 7px 0 0 0 rgba(74,143,200,0.55),
+                0 7px 0 0 rgba(74,143,200,0.55),
+                7px 7px 0 0 rgba(74,143,200,0.55);
     border-color: transparent;
 }
 .gf-btn[data-year="all"].active::before {
     background: #4a8fc8 !important;
-    box-shadow: 9px 0 0 0 #4a8fc8,
-                0 9px 0 0 #4a8fc8,
-                9px 9px 0 0 #4a8fc8,
+    box-shadow: 7px 0 0 0 #4a8fc8,
+                0 7px 0 0 #4a8fc8,
+                7px 7px 0 0 #4a8fc8,
                 0 0 10px rgba(74,143,200,0.4),
-                9px 0 10px rgba(74,143,200,0.2),
-                0 9px 10px rgba(74,143,200,0.2),
-                9px 9px 10px rgba(74,143,200,0.2) !important;
+                7px 0 10px rgba(74,143,200,0.2),
+                0 7px 10px rgba(74,143,200,0.2),
+                7px 7px 10px rgba(74,143,200,0.2) !important;
     animation: gf-pulse-grid 2s ease-in-out infinite !important;
 }
 @keyframes gf-pulse-grid {
-    0%, 100% { box-shadow: 9px 0 0 0 #4a8fc8, 0 9px 0 0 #4a8fc8, 9px 9px 0 0 #4a8fc8, 0 0 8px rgba(74,143,200,0.35), 9px 0 8px rgba(74,143,200,0.15), 0 9px 8px rgba(74,143,200,0.15), 9px 9px 8px rgba(74,143,200,0.15); }
-    50% { box-shadow: 9px 0 0 0 #4a8fc8, 0 9px 0 0 #4a8fc8, 9px 9px 0 0 #4a8fc8, 0 0 14px rgba(74,143,200,0.55), 9px 0 14px rgba(74,143,200,0.25), 0 9px 14px rgba(74,143,200,0.25), 9px 9px 14px rgba(74,143,200,0.25); }
+    0%, 100% { box-shadow: 7px 0 0 0 #4a8fc8, 0 7px 0 0 #4a8fc8, 7px 7px 0 0 #4a8fc8, 0 0 8px rgba(74,143,200,0.35), 7px 0 8px rgba(74,143,200,0.15), 0 7px 8px rgba(74,143,200,0.15), 7px 7px 8px rgba(74,143,200,0.15); }
+    50% { box-shadow: 7px 0 0 0 #4a8fc8, 0 7px 0 0 #4a8fc8, 7px 7px 0 0 #4a8fc8, 0 0 14px rgba(74,143,200,0.55), 7px 0 14px rgba(74,143,200,0.25), 0 7px 14px rgba(74,143,200,0.25), 7px 7px 14px rgba(74,143,200,0.25); }
 }
 @media (max-width: 480px) {
     .gallery-filters { padding: 0.8rem 0 0.3rem 0; }
