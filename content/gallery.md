@@ -107,29 +107,36 @@ slug = 'gallery'
     0%, 100% { box-shadow: 0 0 8px rgba(74,143,200,0.4), 0 0 16px rgba(74,143,200,0.1); }
     50% { box-shadow: 0 0 14px rgba(74,143,200,0.6), 0 0 28px rgba(74,143,200,0.25); }
 }
-/* Grid of Mini-Dots for ВСЕ */
+/* Grid of Mini-Dots (2x2) for ВСЕ */
 .gf-btn[data-year="all"]::before {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    border-radius: 0;
     border: none;
-    background: rgba(74,143,200,0.3);
-    box-shadow: 8px 0 0 rgba(74,143,200,0.3), 0 8px 0 rgba(74,143,200,0.3), 8px 8px 0 rgba(74,143,200,0.3);
-    margin-right: 4px;
-    margin-bottom: -4px;
+    background: radial-gradient(circle 2.5px at 3.5px 3.5px, rgba(74,143,200,0.35) 95%, transparent 100%),
+                radial-gradient(circle 2.5px at 12.5px 3.5px, rgba(74,143,200,0.35) 95%, transparent 100%),
+                radial-gradient(circle 2.5px at 3.5px 12.5px, rgba(74,143,200,0.35) 95%, transparent 100%),
+                radial-gradient(circle 2.5px at 12.5px 12.5px, rgba(74,143,200,0.35) 95%, transparent 100%);
+    box-shadow: none;
 }
 .gf-btn[data-year="all"]:hover::before {
-    background: rgba(74,143,200,0.5);
-    box-shadow: 8px 0 0 rgba(74,143,200,0.5), 0 8px 0 rgba(74,143,200,0.5), 8px 8px 0 rgba(74,143,200,0.5);
+    background: radial-gradient(circle 2.5px at 3.5px 3.5px, rgba(74,143,200,0.55) 95%, transparent 100%),
+                radial-gradient(circle 2.5px at 12.5px 3.5px, rgba(74,143,200,0.55) 95%, transparent 100%),
+                radial-gradient(circle 2.5px at 3.5px 12.5px, rgba(74,143,200,0.55) 95%, transparent 100%),
+                radial-gradient(circle 2.5px at 12.5px 12.5px, rgba(74,143,200,0.55) 95%, transparent 100%);
+    border-color: transparent;
 }
 .gf-btn[data-year="all"].active::before {
-    background: #4a8fc8;
-    box-shadow: 8px 0 0 #4a8fc8, 0 8px 0 #4a8fc8, 8px 8px 0 #4a8fc8, 0 0 12px rgba(74,143,200,0.4), 8px 0 12px rgba(74,143,200,0.2), 0 8px 12px rgba(74,143,200,0.2), 8px 8px 12px rgba(74,143,200,0.2);
+    background: radial-gradient(circle 2.5px at 3.5px 3.5px, #4a8fc8 95%, transparent 100%),
+                radial-gradient(circle 2.5px at 12.5px 3.5px, #4a8fc8 95%, transparent 100%),
+                radial-gradient(circle 2.5px at 3.5px 12.5px, #4a8fc8 95%, transparent 100%),
+                radial-gradient(circle 2.5px at 12.5px 12.5px, #4a8fc8 95%, transparent 100%);
+    box-shadow: 0 0 12px rgba(74,143,200,0.5), 0 0 24px rgba(74,143,200,0.15);
     animation: gf-pulse-grid 2s ease-in-out infinite;
 }
 @keyframes gf-pulse-grid {
-    0%, 100% { background: #4a8fc8; box-shadow: 8px 0 0 #4a8fc8, 0 8px 0 #4a8fc8, 8px 8px 0 #4a8fc8, 0 0 10px rgba(74,143,200,0.35), 8px 0 10px rgba(74,143,200,0.15), 0 8px 10px rgba(74,143,200,0.15), 8px 8px 10px rgba(74,143,200,0.15); }
-    50% { background: #4a8fc8; box-shadow: 8px 0 0 #4a8fc8, 0 8px 0 #4a8fc8, 8px 8px 0 #4a8fc8, 0 0 16px rgba(74,143,200,0.55), 8px 0 16px rgba(74,143,200,0.25), 0 8px 16px rgba(74,143,200,0.25), 8px 8px 16px rgba(74,143,200,0.25); }
+    0%, 100% { box-shadow: 0 0 10px rgba(74,143,200,0.4), 0 0 20px rgba(74,143,200,0.1); }
+    50% { box-shadow: 0 0 16px rgba(74,143,200,0.6), 0 0 30px rgba(74,143,200,0.25); }
 }
 @media (max-width: 480px) {
     .gallery-filters { padding: 0.8rem 0 0.3rem 0; }
