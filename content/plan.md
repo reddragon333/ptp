@@ -17,23 +17,6 @@ disableComments = true
 {{< /rawhtml >}}
 
 {{< rawhtml >}}
-<!-- CTA блок: присоединиться — full-width bars -->
-<div class="plan-cta-section">
-    <h2 class="plan-cta-title">Хотите присоединиться?</h2>
-    <div class="plan-cta-bars">
-        <a href="#conditions-block" class="plan-cta-bar" id="cta-conditions-bar" onclick="event.preventDefault();revealConditions();">
-            <span class="plan-cta-bar-text"><i class="fa fa-list-alt"></i> Условия участия</span>
-            <span class="plan-cta-bar-hint">Требования к заявкам, срокам и оборудованию</span>
-            <i class="fa fa-chevron-down plan-cta-bar-arrow"></i>
-        </a>
-        <a href="#plan-form-anchor" class="plan-cta-bar" onclick="event.preventDefault();document.getElementById('plan-form-anchor').scrollIntoView({behavior:'smooth',block:'start'});">
-            <span class="plan-cta-bar-text"><i class="fa fa-pencil-square-o"></i> Подать заявку</span>
-            <span class="plan-cta-bar-hint">Заполните форму — выберите поездку и укажите данные</span>
-            <i class="fa fa-chevron-down plan-cta-bar-arrow"></i>
-        </a>
-    </div>
-</div>
-
 <!-- Условия участия: два блока -->
 <div id="conditions-block" class="plan-conditions-section">
     <div class="plan-condition-block">
@@ -67,6 +50,9 @@ disableComments = true
             <li>Заявка — минимум за <strong>7 дней</strong> до поездки</li>
             <li>Подробности и координация — <a href="https://t.me/polet_bvs">чат «Полёты БВС»</a></li>
         </ul>
+        <a href="#plan-form-anchor" class="plan-drone-cta" onclick="event.preventDefault();document.getElementById('plan-form-anchor').scrollIntoView({behavior:'smooth',block:'start'});">
+            <i class="fa fa-pencil-square-o"></i> Подать заявку
+        </a>
     </div>
     <div class="plan-condition-block">
         <div class="plan-condition-header">
@@ -82,94 +68,13 @@ disableComments = true
 
 <div id="plan-form-anchor"></div>
 
-<script>
-function revealConditions() {
-    var block = document.getElementById('conditions-block');
-    block.classList.add('plan-conditions-highlighted');
-    block.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setTimeout(function() {
-        block.classList.remove('plan-conditions-highlighted');
-    }, 2000);
-}
-</script>
-
 <style>
-/* === CTA Section — Full-width bars === */
-.plan-cta-section {
-    margin: 2rem 0 1.5rem;
-    text-align: center;
-}
-.plan-cta-title {
-    font-size: 1.3rem !important;
-    font-weight: 700 !important;
-    margin: 0 0 1.2rem 0 !important;
-    padding: 0 !important;
-    letter-spacing: 0 !important;
-    text-transform: none !important;
-    color: #1a202c;
-}
-.plan-cta-bars {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-}
-.plan-cta-bar {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    width: 100%;
-    padding: 1rem 1.4rem;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(74, 143, 200, 0.18);
-    border-radius: 12px;
-    text-decoration: none;
-    color: #1a202c;
-    cursor: pointer;
-    transition: all 0.25s ease;
-}
-.plan-cta-bar:hover {
-    background: rgba(74, 143, 200, 0.08);
-    border-color: rgba(74, 143, 200, 0.35);
-    box-shadow: 0 6px 24px rgba(74, 143, 200, 0.12);
-    transform: translateY(-1px);
-}
-.plan-cta-bar-text {
-    font-size: 0.95rem;
-    font-weight: 700;
-    white-space: nowrap;
-}
-.plan-cta-bar-text i {
-    color: #4a8fc8;
-    margin-right: 0.4rem;
-}
-.plan-cta-bar-hint {
-    flex: 1;
-    font-size: 0.8rem;
-    color: #5a6a7a;
-    text-align: left;
-}
-.plan-cta-bar-arrow {
-    color: #4a8fc8;
-    font-size: 0.8rem;
-    transition: transform 0.2s ease;
-}
-.plan-cta-bar:hover .plan-cta-bar-arrow {
-    transform: translateY(2px);
-}
-
 /* === Conditions Section === */
 .plan-conditions-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     margin: 1.5rem 0;
-    transition: all 0.4s ease;
-}
-.plan-conditions-section.plan-conditions-highlighted .plan-condition-block {
-    border-color: rgba(74, 143, 200, 0.5);
-    box-shadow: 0 0 0 3px rgba(74, 143, 200, 0.15), 0 6px 24px rgba(74, 143, 200, 0.12);
 }
 .plan-condition-block {
     background: rgba(255, 255, 255, 0.5);
@@ -247,6 +152,30 @@ function revealConditions() {
     border-bottom-color: rgba(42, 90, 139, 0.5);
 }
 
+/* === Drone block CTA link === */
+.plan-drone-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.7rem;
+    padding: 0.5rem 1rem;
+    background: rgba(74, 143, 200, 0.1);
+    border: 1px solid rgba(74, 143, 200, 0.25);
+    border-radius: 10px;
+    color: #4a8fc8;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+.plan-drone-cta:hover {
+    background: rgba(74, 143, 200, 0.18);
+    border-color: rgba(74, 143, 200, 0.4);
+    box-shadow: 0 4px 16px rgba(74, 143, 200, 0.15);
+    transform: translateY(-1px);
+}
+
 /* === Form width: match trip cards and condition blocks (full content width) === */
 .travel-form-container {
     max-width: none;
@@ -256,24 +185,6 @@ function revealConditions() {
 @media (max-width: 600px) {
     .plan-conditions-section {
         grid-template-columns: 1fr;
-    }
-    .plan-cta-bar {
-        flex-wrap: wrap;
-        padding: 0.9rem 1rem;
-        gap: 0.4rem;
-    }
-    .plan-cta-bar-text {
-        font-size: 0.9rem;
-    }
-    .plan-cta-bar-hint {
-        width: 100%;
-        order: 3;
-        font-size: 0.75rem;
-        padding-left: 1.4rem;
-    }
-    .plan-cta-bar-arrow {
-        order: 2;
-        margin-left: auto;
     }
 }
 </style>

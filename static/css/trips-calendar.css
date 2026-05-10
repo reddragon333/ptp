@@ -110,11 +110,11 @@
 }
 
 /* Category colors */
-.trips-calendar .trip-chip--deadline i { color: #e53e3e; }
-.trips-calendar .trip-chip--logistics i { color: #3182ce; }
-.trips-calendar .trip-chip--requirements i { color: #d69e2e; }
-.trips-calendar .trip-chip--note i { color: #805ad5; }
-.trips-calendar .trip-chip--info i { color: #718096; }
+.trips-calendar .trip-chip--deadline i,
+.trips-calendar .trip-chip--logistics i,
+.trips-calendar .trip-chip--requirements i,
+.trips-calendar .trip-chip--note i,
+.trips-calendar .trip-chip--info i { color: #4a8fc8; }
 
 .trips-calendar .trip-chip:hover {
     background: rgba(102, 126, 234, 0.06);
