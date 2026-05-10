@@ -16,47 +16,299 @@ slug = 'gallery'
 </div>
 
 <style>
+/* ============================================================
+   VARIANT 1 — TIMELINE SLIDER (ACTIVE)
+   Year buttons as points on a horizontal timeline.
+   Active year = glowing dot. Gives chronological progression feel.
+   ============================================================ */
+.gallery-filters {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 0 0 2rem 0;
+    padding: 1.2rem 0 0.5rem 0;
+    position: relative;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.15) transparent;
+}
+/* The horizontal timeline line */
+.gallery-filters::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.2) 15%, rgba(255,255,255,0.2) 85%, rgba(255,255,255,0.05));
+    transform: translateY(-50%);
+    z-index: 0;
+    pointer-events: none;
+}
+.gf-btn {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    border: none;
+    padding: 22px 14px 8px 14px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    line-height: 1;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+/* Dot marker on the timeline */
+.gf-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: -4px;
+}
+.gf-btn:hover {
+    color: rgba(255, 255, 255, 0.85);
+}
+.gf-btn:hover::before {
+    background: rgba(255, 255, 255, 0.5);
+    width: 13px;
+    height: 13px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+.gf-btn.active {
+    color: #fff;
+    font-weight: 600;
+}
+.gf-btn.active::before {
+    width: 16px;
+    height: 16px;
+    background: rgba(130, 200, 255, 0.9);
+    box-shadow: 0 0 14px rgba(130, 200, 255, 0.7), 0 0 28px rgba(130, 200, 255, 0.3);
+    animation: timeline-pulse 2s ease-in-out infinite;
+}
+/* "Vse" button — slightly different: a ring instead of a dot */
+.gf-btn[data-year="all"]::before {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 14px;
+    height: 14px;
+}
+.gf-btn[data-year="all"].active::before {
+    border-color: rgba(130, 200, 255, 0.9);
+    background: rgba(130, 200, 255, 0.15);
+    width: 18px;
+    height: 18px;
+    box-shadow: 0 0 14px rgba(130, 200, 255, 0.6), 0 0 28px rgba(130, 200, 255, 0.25);
+}
+@keyframes timeline-pulse {
+    0%, 100% { box-shadow: 0 0 14px rgba(130, 200, 255, 0.7), 0 0 28px rgba(130, 200, 255, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(130, 200, 255, 0.9), 0 0 40px rgba(130, 200, 255, 0.4); }
+}
+@media (max-width: 480px) {
+    .gallery-filters {
+        padding: 1rem 0 0.3rem 0;
+    }
+    .gf-btn {
+        padding: 20px 10px 6px 10px;
+        font-size: 0.72rem;
+    }
+}
+
+
+/* ============================================================
+   VARIANT 2 — MATERIAL TABS WITH SLIDING UNDERLINE (COMMENTED OUT)
+   Clean minimal tabs. Active tab has a smooth sliding underline.
+   To activate: uncomment this block and comment out Variant 1 above.
+   ============================================================
+
+.gallery-filters {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 0 0 1.8rem 0;
+    padding: 0;
+    position: relative;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.15) transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.gf-btn {
+    position: relative;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 12px 20px 14px 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-family: inherit;
+    line-height: 1;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.gf-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2.5px;
+    background: linear-gradient(90deg, #82c8ff, #a78bfa);
+    border-radius: 2px;
+    transform: translateX(-50%);
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gf-btn:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+.gf-btn:hover::after {
+    width: 40%;
+}
+.gf-btn.active {
+    color: #fff;
+    font-weight: 600;
+}
+.gf-btn.active::after {
+    width: 70%;
+    background: linear-gradient(90deg, #82c8ff, #a78bfa);
+    box-shadow: 0 1px 8px rgba(130, 200, 255, 0.4);
+}
+.gf-btn[data-year="all"] {
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+.gf-btn[data-year="all"].active::after {
+    width: 85%;
+    background: linear-gradient(90deg, #a78bfa, #f0abfc);
+}
+@media (max-width: 480px) {
+    .gf-btn {
+        padding: 10px 14px 12px 14px;
+        font-size: 0.78rem;
+    }
+}
+
+   END VARIANT 2 */
+
+
+/* ============================================================
+   VARIANT 3 — GRADIENT CHIPS WITH SEASONAL ICONS (COMMENTED OUT)
+   Each year gets a unique color gradient and seasonal emoji.
+   Active chip has a glowing animated border.
+   To activate: uncomment this block and comment out Variant 1 above.
+   ============================================================
+
 .gallery-filters {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 0 0 1.5rem 0;
+    gap: 0.6rem;
+    margin: 0 0 1.8rem 0;
     padding: 0;
 }
 .gf-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 24px;
-    padding: 8px 20px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    padding: 9px 18px 9px 14px;
     font-size: 0.82rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: inherit;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     line-height: 1;
+    overflow: hidden;
+    isolation: isolate;
+}
+.gf-btn::before {
+    margin-right: 5px;
+    font-size: 0.9em;
+}
+.gf-btn[data-year="all"]::before { content: '\2728'; }
+.gf-btn[data-year="2026"]::before { content: '\2744\FE0F'; }
+.gf-btn[data-year="2025"]::before { content: '\2600\FE0F'; }
+.gf-btn[data-year="2024"]::before { content: '\1F343'; }
+.gf-btn[data-year="2023"]::before { content: '\1F30A'; }
+.gf-btn[data-year="2022"]::before { content: '\26F0\FE0F'; }
+.gf-btn[data-year="2021"]::before { content: '\1F308'; }
+.gf-btn[data-year="all"] {
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(130, 200, 255, 0.15));
+    border-color: rgba(167, 139, 250, 0.3);
+}
+.gf-btn[data-year="2026"] {
+    background: linear-gradient(135deg, rgba(130, 200, 255, 0.1), rgba(200, 230, 255, 0.08));
+    border-color: rgba(130, 200, 255, 0.2);
+}
+.gf-btn[data-year="2025"] {
+    background: linear-gradient(135deg, rgba(255, 200, 50, 0.1), rgba(255, 150, 50, 0.08));
+    border-color: rgba(255, 200, 50, 0.2);
+}
+.gf-btn[data-year="2024"] {
+    background: linear-gradient(135deg, rgba(100, 200, 100, 0.1), rgba(180, 220, 80, 0.08));
+    border-color: rgba(100, 200, 100, 0.2);
+}
+.gf-btn[data-year="2023"] {
+    background: linear-gradient(135deg, rgba(50, 150, 220, 0.1), rgba(80, 200, 200, 0.08));
+    border-color: rgba(50, 150, 220, 0.2);
+}
+.gf-btn[data-year="2022"] {
+    background: linear-gradient(135deg, rgba(180, 130, 100, 0.1), rgba(150, 180, 150, 0.08));
+    border-color: rgba(180, 130, 100, 0.2);
+}
+.gf-btn[data-year="2021"] {
+    background: linear-gradient(135deg, rgba(200, 100, 150, 0.1), rgba(100, 150, 250, 0.08));
+    border-color: rgba(200, 100, 150, 0.2);
 }
 .gf-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 .gf-btn.active {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.25);
     color: #fff;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    animation: chip-glow 2.5s ease-in-out infinite;
 }
-.gallery .box.gf-hidden {
-    display: none !important;
+.gf-btn[data-year="all"].active { border-color: rgba(167, 139, 250, 0.7); box-shadow: 0 0 12px rgba(167, 139, 250, 0.4); }
+.gf-btn[data-year="2026"].active { border-color: rgba(130, 200, 255, 0.7); box-shadow: 0 0 12px rgba(130, 200, 255, 0.4); }
+.gf-btn[data-year="2025"].active { border-color: rgba(255, 200, 50, 0.7); box-shadow: 0 0 12px rgba(255, 200, 50, 0.4); }
+.gf-btn[data-year="2024"].active { border-color: rgba(100, 200, 100, 0.7); box-shadow: 0 0 12px rgba(100, 200, 100, 0.4); }
+.gf-btn[data-year="2023"].active { border-color: rgba(50, 150, 220, 0.7); box-shadow: 0 0 12px rgba(50, 150, 220, 0.4); }
+.gf-btn[data-year="2022"].active { border-color: rgba(180, 130, 100, 0.7); box-shadow: 0 0 12px rgba(180, 130, 100, 0.4); }
+.gf-btn[data-year="2021"].active { border-color: rgba(200, 100, 150, 0.7); box-shadow: 0 0 12px rgba(200, 100, 150, 0.4); }
+@keyframes chip-glow {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.15); }
 }
 @media (max-width: 480px) {
     .gf-btn {
-        padding: 6px 16px;
+        padding: 7px 14px 7px 10px;
         font-size: 0.75rem;
     }
+}
+
+   END VARIANT 3 */
+
+
+/* Shared: hidden gallery items */
+.gallery .box.gf-hidden {
+    display: none !important;
 }
 </style>
 {{< /rawhtml >}}

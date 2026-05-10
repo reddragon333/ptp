@@ -121,30 +121,7 @@
     border-color: rgba(102, 126, 234, 0.2);
 }
 
-/* Expandable "more" section */
-.trips-calendar .trip-meta-more {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-}
-.trips-calendar .trip-meta-more.expanded {
-    display: flex;
-}
-
-.trips-calendar .trip-meta-toggle {
-    align-self: flex-start;
-    background: none;
-    border: none;
-    color: #667eea;
-    font-size: 0.78em;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 4px 0;
-    transition: color 0.2s;
-}
-.trips-calendar .trip-meta-toggle:hover {
-    color: #4c63b6;
-}
+/* All chips visible — no expand/collapse needed */
 
 /* Grid на десктопе */
 @media (min-width: 768px) {

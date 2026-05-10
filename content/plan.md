@@ -17,26 +17,20 @@ disableComments = true
 {{< /rawhtml >}}
 
 {{< rawhtml >}}
-<!-- CTA блок: присоединиться -->
+<!-- CTA блок: присоединиться — full-width bars -->
 <div class="plan-cta-section">
     <h2 class="plan-cta-title">Хотите присоединиться?</h2>
-    <div class="plan-cta-cards">
-        <div class="plan-cta-card">
-            <div class="plan-cta-card-icon"><i class="fa fa-list-alt"></i></div>
-            <div class="plan-cta-card-body">
-                <h4>Условия участия</h4>
-                <p>Ознакомьтесь с требованиями к заявкам, срокам и оборудованию</p>
-            </div>
-            <a href="#conditions-block" class="plan-cta-link"><i class="fa fa-arrow-down"></i></a>
-        </div>
-        <div class="plan-cta-card">
-            <div class="plan-cta-card-icon"><i class="fa fa-pencil-square-o"></i></div>
-            <div class="plan-cta-card-body">
-                <h4>Подать заявку</h4>
-                <p>Заполните форму ниже — выберите поездку и укажите данные</p>
-            </div>
-            <a href="#plan-form-anchor" class="plan-cta-link"><i class="fa fa-arrow-down"></i></a>
-        </div>
+    <div class="plan-cta-bars">
+        <a href="#conditions-block" class="plan-cta-bar" id="cta-conditions-bar" onclick="event.preventDefault();revealConditions();">
+            <span class="plan-cta-bar-text"><i class="fa fa-list-alt"></i> Условия участия</span>
+            <span class="plan-cta-bar-hint">Требования к заявкам, срокам и оборудованию</span>
+            <i class="fa fa-chevron-down plan-cta-bar-arrow"></i>
+        </a>
+        <a href="#plan-form-anchor" class="plan-cta-bar" onclick="event.preventDefault();document.getElementById('plan-form-anchor').scrollIntoView({behavior:'smooth',block:'start'});">
+            <span class="plan-cta-bar-text"><i class="fa fa-pencil-square-o"></i> Подать заявку</span>
+            <span class="plan-cta-bar-hint">Заполните форму — выберите поездку и укажите данные</span>
+            <i class="fa fa-chevron-down plan-cta-bar-arrow"></i>
+        </a>
     </div>
 </div>
 
@@ -44,7 +38,7 @@ disableComments = true
 <div id="conditions-block" class="plan-conditions-section">
     <div class="plan-condition-block">
         <div class="plan-condition-header">
-            <i class="fa fa-paper-plane"></i>
+            <i class="fa fa-paper-plane plan-drone-icon"></i>
             <h4>Дронослёты</h4>
         </div>
         <ul class="plan-condition-list">
@@ -66,8 +60,19 @@ disableComments = true
 
 <div id="plan-form-anchor"></div>
 
+<script>
+function revealConditions() {
+    var block = document.getElementById('conditions-block');
+    block.classList.add('plan-conditions-highlighted');
+    block.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(function() {
+        block.classList.remove('plan-conditions-highlighted');
+    }, 2000);
+}
+</script>
+
 <style>
-/* === CTA Section === */
+/* === CTA Section — Full-width bars === */
 .plan-cta-section {
     margin: 2rem 0 1.5rem;
     text-align: center;
@@ -81,75 +86,55 @@ disableComments = true
     text-transform: none !important;
     color: #1a202c;
 }
-.plan-cta-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+.plan-cta-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
 }
-.plan-cta-card {
+.plan-cta-bar {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
-    background: rgba(30, 40, 60, 0.04);
-    border: 1px solid rgba(102, 126, 234, 0.15);
-    border-radius: 14px;
-    padding: 1rem 1.2rem;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 1.4rem;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(102, 126, 234, 0.18);
+    border-radius: 12px;
+    text-decoration: none;
+    color: #1a202c;
+    cursor: pointer;
     transition: all 0.25s ease;
 }
-.plan-cta-card:hover {
-    background: rgba(102, 126, 234, 0.07);
-    border-color: rgba(102, 126, 234, 0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.1);
+.plan-cta-bar:hover {
+    background: rgba(102, 126, 234, 0.08);
+    border-color: rgba(102, 126, 234, 0.35);
+    box-shadow: 0 6px 24px rgba(102, 126, 234, 0.12);
+    transform: translateY(-1px);
 }
-.plan-cta-card-icon {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-radius: 10px;
-    color: #fff;
-    font-size: 1.1rem;
+.plan-cta-bar-text {
+    font-size: 0.95rem;
+    font-weight: 700;
+    white-space: nowrap;
 }
-.plan-cta-card-body {
+.plan-cta-bar-text i {
+    color: #667eea;
+    margin-right: 0.4rem;
+}
+.plan-cta-bar-hint {
     flex: 1;
+    font-size: 0.8rem;
+    color: #5a6a7a;
     text-align: left;
 }
-.plan-cta-card-body h4 {
-    margin: 0 0 0.2rem 0 !important;
-    font-size: 0.92rem !important;
-    font-weight: 700 !important;
-    color: #1a202c;
-    padding: 0 !important;
-    letter-spacing: 0 !important;
-    text-transform: none !important;
-}
-.plan-cta-card-body p {
-    margin: 0;
-    font-size: 0.78rem;
-    color: #5a6a7a;
-    line-height: 1.4;
-}
-.plan-cta-link {
-    flex-shrink: 0;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(102, 126, 234, 0.1);
+.plan-cta-bar-arrow {
     color: #667eea;
-    font-size: 0.85rem;
-    text-decoration: none;
-    transition: all 0.2s ease;
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
 }
-.plan-cta-link:hover {
-    background: #667eea;
-    color: #fff;
+.plan-cta-bar:hover .plan-cta-bar-arrow {
+    transform: translateY(2px);
 }
 
 /* === Conditions Section === */
@@ -158,13 +143,20 @@ disableComments = true
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     margin: 1.5rem 0;
+    transition: all 0.4s ease;
+}
+.plan-conditions-section.plan-conditions-highlighted .plan-condition-block {
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15), 0 6px 24px rgba(102, 126, 234, 0.12);
 }
 .plan-condition-block {
-    background: rgba(30, 40, 60, 0.03);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(0, 0, 0, 0.07);
     border-radius: 14px;
     padding: 1.1rem 1.3rem;
-    transition: box-shadow 0.2s ease;
+    transition: all 0.35s ease;
 }
 .plan-condition-block:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
@@ -188,6 +180,17 @@ disableComments = true
     letter-spacing: 0 !important;
     text-transform: none !important;
 }
+
+/* Animated drone icon (paper-plane used since FA4 has no fa-drone) */
+.plan-drone-icon {
+    display: inline-block;
+    animation: droneFloat 3s ease-in-out infinite;
+}
+@keyframes droneFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
 .plan-condition-list {
     list-style: none;
     padding: 0;
@@ -220,13 +223,28 @@ disableComments = true
     border-bottom-color: rgba(42, 90, 139, 0.5);
 }
 
+/* === Mobile responsive === */
 @media (max-width: 600px) {
-    .plan-cta-cards,
     .plan-conditions-section {
         grid-template-columns: 1fr;
     }
-    .plan-cta-card {
+    .plan-cta-bar {
+        flex-wrap: wrap;
         padding: 0.9rem 1rem;
+        gap: 0.4rem;
+    }
+    .plan-cta-bar-text {
+        font-size: 0.9rem;
+    }
+    .plan-cta-bar-hint {
+        width: 100%;
+        order: 3;
+        font-size: 0.75rem;
+        padding-left: 1.4rem;
+    }
+    .plan-cta-bar-arrow {
+        order: 2;
+        margin-left: auto;
     }
 }
 </style>
