@@ -66,7 +66,7 @@
 /* Select — полностью самодостаточное правило, без backdrop-filter */
 .form-group select {
     width: 100%;
-    padding: 0.95rem 2.5rem 1rem 1rem;
+    padding: 0.85rem 2.5rem 0.85rem 1rem;
     border: 1.5px solid #b8c4ce;
     border-radius: 10px;
     font-size: 0.88rem;
@@ -79,7 +79,7 @@
     font-family: inherit;
     appearance: none;
     -webkit-appearance: none;
-    line-height: 1.7;
+    line-height: 1.4;
     box-sizing: border-box;
     transition: border-color 0.2s, box-shadow 0.2s;
     cursor: pointer;
