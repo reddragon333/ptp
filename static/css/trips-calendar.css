@@ -79,28 +79,71 @@
     font-size: 0.95em;
 }
 
-/* Мета-теги — accent-стиль */
+/* Мета-чипы — компактный стиль с иконками */
 .trips-calendar .trip-meta {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    flex-direction: column;
+    gap: 6px;
     margin-top: 16px;
 }
 
-.trips-calendar .trip-meta span {
-    background: linear-gradient(135deg, #667eea12, #764ba212);
+.trips-calendar .trip-chip {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: rgba(247, 250, 252, 0.8);
     color: #4a5568;
-    padding: 8px 16px;
-    border-radius: 24px;
-    font-size: 0.82em;
-    line-height: 1.4;
-    border: 1px solid rgba(102, 126, 234, 0.15);
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.78em;
+    line-height: 1.45;
+    border: 1px solid rgba(0, 0, 0, 0.06);
     transition: all 0.2s ease;
 }
 
-.trips-calendar .trip-meta span:hover {
-    background: linear-gradient(135deg, #667eea22, #764ba222);
-    border-color: rgba(102, 126, 234, 0.3);
+.trips-calendar .trip-chip i {
+    flex-shrink: 0;
+    width: 14px;
+    text-align: center;
+    margin-top: 1px;
+    font-size: 0.9em;
+}
+
+/* Category colors */
+.trips-calendar .trip-chip--deadline i { color: #e53e3e; }
+.trips-calendar .trip-chip--logistics i { color: #3182ce; }
+.trips-calendar .trip-chip--requirements i { color: #d69e2e; }
+.trips-calendar .trip-chip--note i { color: #805ad5; }
+.trips-calendar .trip-chip--info i { color: #718096; }
+
+.trips-calendar .trip-chip:hover {
+    background: rgba(102, 126, 234, 0.06);
+    border-color: rgba(102, 126, 234, 0.2);
+}
+
+/* Expandable "more" section */
+.trips-calendar .trip-meta-more {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+}
+.trips-calendar .trip-meta-more.expanded {
+    display: flex;
+}
+
+.trips-calendar .trip-meta-toggle {
+    align-self: flex-start;
+    background: none;
+    border: none;
+    color: #667eea;
+    font-size: 0.78em;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 4px 0;
+    transition: color 0.2s;
+}
+.trips-calendar .trip-meta-toggle:hover {
+    color: #4c63b6;
 }
 
 /* Grid на десктопе */

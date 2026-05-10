@@ -19,37 +19,42 @@ slug = 'gallery'
 .gallery-filters {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    gap: 0.5rem;
     margin: 0 0 1.5rem 0;
     padding: 0;
 }
 .gf-btn {
-    background: rgba(30, 40, 55, 0.07);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    padding: 0.4rem 1.1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 8px 20px;
     font-size: 0.82rem;
-    font-weight: 600;
-    color: #555;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
     font-family: inherit;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    line-height: 1;
 }
 .gf-btn:hover {
-    background: rgba(30, 40, 55, 0.14);
-    color: #333;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
 }
 .gf-btn.active {
-    background: #3a5a7a;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
     color: #fff;
-    border-color: #3a5a7a;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 }
 .gallery .box.gf-hidden {
     display: none !important;
 }
 @media (max-width: 480px) {
     .gf-btn {
-        padding: 0.35rem 0.8rem;
+        padding: 6px 16px;
         font-size: 0.75rem;
     }
 }

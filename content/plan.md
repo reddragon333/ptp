@@ -17,81 +17,216 @@ disableComments = true
 {{< /rawhtml >}}
 
 {{< rawhtml >}}
-<div class="conditions-card">
-    <h3 class="conditions-title">Хотите присоединиться?</h3>
-    <div class="conditions-grid">
-        <div class="conditions-item">
-            <span class="conditions-icon fa fa-calendar"></span>
-            <div><strong>Заявка</strong> — минимум за 5 дней до поездки</div>
+<!-- CTA блок: присоединиться -->
+<div class="plan-cta-section">
+    <h2 class="plan-cta-title">Хотите присоединиться?</h2>
+    <div class="plan-cta-cards">
+        <div class="plan-cta-card">
+            <div class="plan-cta-card-icon"><i class="fa fa-list-alt"></i></div>
+            <div class="plan-cta-card-body">
+                <h4>Условия участия</h4>
+                <p>Ознакомьтесь с требованиями к заявкам, срокам и оборудованию</p>
+            </div>
+            <a href="#conditions-block" class="plan-cta-link"><i class="fa fa-arrow-down"></i></a>
         </div>
-        <div class="conditions-item">
-            <span class="conditions-icon fa fa-telegram"></span>
-            <div><strong>Детали</strong> — <a href="https://t.me/polet_bvs">чат «Полёты БВС»</a></div>
-        </div>
-        <div class="conditions-item">
-            <span class="conditions-icon fa fa-clock-o"></span>
-            <div><strong>Выезд</strong> — рано утром, зависит от локации</div>
-        </div>
-        <div class="conditions-item">
-            <span class="conditions-icon fa fa-envelope"></span>
-            <div><strong>Email</strong> — проверьте папку «Нежелательные»</div>
+        <div class="plan-cta-card">
+            <div class="plan-cta-card-icon"><i class="fa fa-pencil-square-o"></i></div>
+            <div class="plan-cta-card-body">
+                <h4>Подать заявку</h4>
+                <p>Заполните форму ниже — выберите поездку и укажите данные</p>
+            </div>
+            <a href="#plan-form-anchor" class="plan-cta-link"><i class="fa fa-arrow-down"></i></a>
         </div>
     </div>
 </div>
 
+<!-- Условия участия: два блока -->
+<div id="conditions-block" class="plan-conditions-section">
+    <div class="plan-condition-block">
+        <div class="plan-condition-header">
+            <i class="fa fa-paper-plane"></i>
+            <h4>Дронослёты</h4>
+        </div>
+        <ul class="plan-condition-list">
+            <li><i class="fa fa-calendar-check-o"></i> Заявка — минимум за <strong>7 дней</strong> до поездки</li>
+            <li><i class="fa fa-telegram"></i> Подробности и координация — <a href="https://t.me/polet_bvs">чат «Полёты БВС»</a></li>
+        </ul>
+    </div>
+    <div class="plan-condition-block">
+        <div class="plan-condition-header">
+            <i class="fa fa-info-circle"></i>
+            <h4>Важная информация</h4>
+        </div>
+        <ul class="plan-condition-list">
+            <li><i class="fa fa-clock-o"></i> Выезд рано утром — точное время зависит от локации</li>
+            <li><i class="fa fa-envelope-o"></i> Проверяйте папку «Спам» / «Нежелательные» после отправки заявки</li>
+        </ul>
+    </div>
+</div>
+
+<div id="plan-form-anchor"></div>
+
 <style>
-.conditions-card {
-    background: rgba(30, 40, 55, 0.06);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 14px;
-    padding: 1.2rem 1.4rem;
-    margin: 1.5rem 0;
+/* === CTA Section === */
+.plan-cta-section {
+    margin: 2rem 0 1.5rem;
+    text-align: center;
 }
-.conditions-title {
-    font-size: 1rem !important;
+.plan-cta-title {
+    font-size: 1.3rem !important;
     font-weight: 700 !important;
-    margin: 0 0 0.8rem 0 !important;
+    margin: 0 0 1.2rem 0 !important;
+    padding: 0 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    color: #1a202c;
+}
+.plan-cta-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.plan-cta-card {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    background: rgba(30, 40, 60, 0.04);
+    border: 1px solid rgba(102, 126, 234, 0.15);
+    border-radius: 14px;
+    padding: 1rem 1.2rem;
+    transition: all 0.25s ease;
+}
+.plan-cta-card:hover {
+    background: rgba(102, 126, 234, 0.07);
+    border-color: rgba(102, 126, 234, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.1);
+}
+.plan-cta-card-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.1rem;
+}
+.plan-cta-card-body {
+    flex: 1;
+    text-align: left;
+}
+.plan-cta-card-body h4 {
+    margin: 0 0 0.2rem 0 !important;
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    color: #1a202c;
     padding: 0 !important;
     letter-spacing: 0 !important;
     text-transform: none !important;
 }
-.conditions-grid {
+.plan-cta-card-body p {
+    margin: 0;
+    font-size: 0.78rem;
+    color: #5a6a7a;
+    line-height: 1.4;
+}
+.plan-cta-link {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.plan-cta-link:hover {
+    background: #667eea;
+    color: #fff;
+}
+
+/* === Conditions Section === */
+.plan-conditions-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.6rem 1.2rem;
+    gap: 1rem;
+    margin: 1.5rem 0;
 }
-.conditions-item {
+.plan-condition-block {
+    background: rgba(30, 40, 60, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: 14px;
+    padding: 1.1rem 1.3rem;
+    transition: box-shadow 0.2s ease;
+}
+.plan-condition-block:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+.plan-condition-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.7rem;
+}
+.plan-condition-header i {
+    color: #667eea;
+    font-size: 1rem;
+}
+.plan-condition-header h4 {
+    margin: 0 !important;
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    color: #1a202c;
+    padding: 0 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+}
+.plan-condition-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.plan-condition-list li {
     display: flex;
     align-items: flex-start;
     gap: 0.5rem;
     font-size: 0.82rem;
-    line-height: 1.4;
-    color: #3a3a3a;
+    line-height: 1.5;
+    color: #3a4a5a;
+    padding: 0.3rem 0;
 }
-.conditions-icon {
+.plan-condition-list li i {
     flex-shrink: 0;
     width: 1.1em;
     text-align: center;
-    color: #5a7a9a;
+    color: #7a8a9a;
     margin-top: 0.15em;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
-.conditions-item a {
+.plan-condition-list a {
     color: #4a7aab;
     text-decoration: none;
     border-bottom: 1px solid rgba(74, 122, 171, 0.3);
 }
-.conditions-item a:hover {
+.plan-condition-list a:hover {
     color: #2a5a8b;
     border-bottom-color: rgba(42, 90, 139, 0.5);
 }
+
 @media (max-width: 600px) {
-    .conditions-grid {
+    .plan-cta-cards,
+    .plan-conditions-section {
         grid-template-columns: 1fr;
-        gap: 0.5rem;
     }
-    .conditions-card {
-        padding: 1rem 1.1rem;
+    .plan-cta-card {
+        padding: 0.9rem 1rem;
     }
 }
 </style>

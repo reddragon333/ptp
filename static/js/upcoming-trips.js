@@ -24,10 +24,48 @@ class UpcomingTripsLoader {
         }
     }
 
+    /**
+     * Categorize a meta string and assign an icon based on keywords.
+     */
+    categorizeMeta(text) {
+        const lower = text.toLowerCase();
+        if (lower.includes('выезд') || lower.includes('утром') || lower.includes('пробок'))
+            return { icon: 'fa-car', category: 'logistics' };
+        if (lower.includes('расстояние') || lower.includes('мкад') || lower.includes('км'))
+            return { icon: 'fa-road', category: 'logistics' };
+        if (lower.includes('заявк') || lower.includes('дней') || lower.includes('не позднее'))
+            return { icon: 'fa-calendar-check-o', category: 'deadline' };
+        if (lower.includes('ограничен') || lower.includes('дрон') || lower.includes('страхов') || lower.includes('учёт'))
+            return { icon: 'fa-shield', category: 'requirements' };
+        if (lower.includes('уточнен') || lower.includes('орвд') || lower.includes('возможн'))
+            return { icon: 'fa-exclamation-circle', category: 'note' };
+        return { icon: 'fa-info-circle', category: 'info' };
+    }
+
     generateTripCard(trip) {
-        const metaHtml = trip.meta ? trip.meta.map(meta => 
-            `<span>${meta}</span>`
-        ).join('') : '';
+        let metaHtml = '';
+        if (trip.meta && trip.meta.length > 0) {
+            const categorized = trip.meta.map(m => ({
+                text: m,
+                ...this.categorizeMeta(m)
+            }));
+
+            // Show first 3 items compactly, rest behind "more"
+            const visible = categorized.slice(0, 3);
+            const hidden = categorized.slice(3);
+
+            metaHtml = visible.map(m =>
+                `<span class="trip-chip trip-chip--${m.category}"><i class="fa ${m.icon}"></i>${m.text}</span>`
+            ).join('');
+
+            if (hidden.length > 0) {
+                const hiddenHtml = hidden.map(m =>
+                    `<span class="trip-chip trip-chip--${m.category}"><i class="fa ${m.icon}"></i>${m.text}</span>`
+                ).join('');
+                metaHtml += `<div class="trip-meta-more">${hiddenHtml}</div>`;
+                metaHtml += `<button type="button" class="trip-meta-toggle" onclick="event.stopPropagation();this.previousElementSibling.classList.toggle('expanded');this.textContent=this.previousElementSibling.classList.contains('expanded')?'Свернуть':'Ещё ${hidden.length}...'">Ещё ${hidden.length}...</button>`;
+            }
+        }
 
         return `
             <div class="trip-card" data-value="${trip.title}" onclick="selectTrip('${trip.title}')" style="cursor:pointer" title="Нажмите чтобы подать заявку">
@@ -45,7 +83,6 @@ class UpcomingTripsLoader {
                             ${metaHtml}
                         </div>
                     </div>
-                    <!-- Кнопка выбора поездки убрана - dropdown заполняется автоматически -->
                 </div>
             </div>
         `;

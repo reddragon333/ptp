@@ -5,10 +5,49 @@
     -webkit-backdrop-filter: blur(20px) !important;
     border-radius: 60px !important;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.18) !important;
-    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border: none !important;
+    border-bottom: none !important;
     padding: 0 0.5rem !important;
     gap: 0.3rem !important;
+    position: relative !important;
 }
+
+/* Gradient separator line below desktop nav — glowing accent in center, fading edges */
+#nav::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(126, 207, 240, 0.15) 20%,
+        rgba(126, 207, 240, 0.4) 50%,
+        rgba(126, 207, 240, 0.15) 80%,
+        transparent 100%
+    ) !important;
+    border-radius: 1px;
+    pointer-events: none;
+}
+
+/*
+ * === VARIANT OPTIONS for desktop nav separator ===
+ *
+ * VARIANT A (current/default) — Subtle glow, accent color #7ecff0:
+ *   background: linear-gradient(90deg, transparent 0%, rgba(126,207,240,0.15) 20%,
+ *     rgba(126,207,240,0.4) 50%, rgba(126,207,240,0.15) 80%, transparent 100%);
+ *
+ * VARIANT B — Brighter glow with white edges:
+ *   background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 15%,
+ *     rgba(126,207,240,0.6) 50%, rgba(255,255,255,0.08) 85%, transparent 100%);
+ *
+ * VARIANT C — Wider and softer, almost invisible:
+ *   left: 5%; right: 5%; height: 1px;
+ *   background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 25%,
+ *     rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.1) 75%, transparent 100%);
+ */
 
 /* Nav item links — pill capsules */
 #nav ul.links {
@@ -34,6 +73,7 @@
     border-radius: 30px !important;
     line-height: 1.4 !important;
     text-transform: uppercase !important;
+    border-bottom: none !important;
 }
 
 #nav ul.links li a.nav-link:hover {
@@ -77,6 +117,7 @@
     color: rgba(255, 255, 255, 0.6) !important;
     text-shadow: none !important;
     transition: color 0.2s ease !important;
+    border-bottom: none !important;
 }
 
 #nav ul.icons li a:hover {
