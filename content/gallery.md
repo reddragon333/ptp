@@ -84,26 +84,42 @@ slug = 'gallery'
     display: none !important;
 }
 
-/* === Focus Mode: Blur + Glow (#3) === */
-/* Elements above gallery get blurred when filter is active */
-.gf-blur-target {
-    transition: filter 0.5s ease, opacity 0.5s ease;
+/* === Focus Mode: Collapse (#2) === */
+/* Header collapses smoothly */
+#header {
+    transition: max-height 0.5s ease, opacity 0.4s ease, margin 0.5s ease, padding 0.5s ease;
+    overflow: hidden;
+    max-height: 500px;
 }
-body.gf-focused .gf-blur-target {
-    filter: blur(4px) brightness(0.7);
-    opacity: 0.4;
+body.gf-focused #header {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
 }
-/* Gallery grid gets subtle scale-up */
-.gallery {
-    transition: transform 0.45s ease;
+/* Nav collapses */
+#nav {
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease;
+    overflow: hidden;
+    max-height: 200px;
 }
-body.gf-focused .gallery {
-    transform: scale(1.01);
+body.gf-focused #nav {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
 }
-/* Filter bar stays sharp */
-.gallery-filters {
-    position: relative;
-    z-index: 2;
+/* Page title shrinks */
+.gf-title-target {
+    transition: font-size 0.4s ease, padding 0.4s ease, opacity 0.4s ease, max-height 0.4s ease;
+    overflow: hidden;
+    max-height: 200px;
+}
+body.gf-focused .gf-title-target {
+    font-size: 0.85rem !important;
+    padding-top: 6px !important;
+    padding-bottom: 2px !important;
+    max-height: 30px;
+    opacity: 0.6;
 }
 </style>
 {{< /rawhtml >}}
@@ -286,36 +302,55 @@ body.gf-focused .gallery {
     // Apply initial fade (ВСЕ is active by default)
     applyFade(buttons[0]);
 
-    // Wrap elements above gallery in blur target
+    // Mark page title for collapse
     var filterEl = document.getElementById('gallery-filters');
-    if (filterEl) {
-        var above = [];
-        var el = filterEl.parentElement;
-        // Walk up to find the main content wrapper, then mark siblings above
-        while (el && !el.classList.contains('gallery')) {
-            el = el.previousElementSibling;
-            if (el) above.push(el);
-        }
-        // Mark page header, nav, and title for blur
-        var header = document.getElementById('header');
-        var nav = document.getElementById('nav');
-        var pageTitle = document.querySelector('.post-title, h1.post-title, header.major h2, .inner > header');
-        if (header) header.classList.add('gf-blur-target');
-        if (nav) nav.classList.add('gf-blur-target');
-        if (pageTitle) pageTitle.classList.add('gf-blur-target');
-        // Also blur any wrapper above the gallery
-        var mainInner = filterEl.closest('.inner') || filterEl.closest('.post') || filterEl.closest('section');
-        if (mainInner) {
-            var children = mainInner.children;
-            for (var i = 0; i < children.length; i++) {
-                if (children[i] === filterEl || children[i].classList.contains('gallery')) break;
-                children[i].classList.add('gf-blur-target');
-            }
-        }
-    }
+    var pageTitle = document.querySelector('h1, header.major h2');
+    if (pageTitle) pageTitle.classList.add('gf-title-target');
 
     // Gallery element for scroll target
     var galleryEl = document.querySelector('.gallery');
+
+    // Track focus state
+    var isFocused = false;
+
+    function enterFocus() {
+        if (isFocused) return;
+        isFocused = true;
+        document.body.classList.add('gf-focused');
+        // Smooth scroll to gallery
+        if (galleryEl && filterEl) {
+            var offset = filterEl.offsetHeight + 16;
+            var top = galleryEl.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+    }
+
+    function exitFocus() {
+        if (!isFocused) return;
+        isFocused = false;
+        document.body.classList.remove('gf-focused');
+    }
+
+    // Scroll up detection — restore collapsed elements
+    var lastScrollY = window.pageYOffset;
+    var scrollUpDistance = 0;
+    window.addEventListener('scroll', function() {
+        var currentY = window.pageYOffset;
+        if (currentY < lastScrollY) {
+            scrollUpDistance += (lastScrollY - currentY);
+            // After scrolling up 80px, restore everything
+            if (scrollUpDistance > 80 && isFocused) {
+                exitFocus();
+            }
+        } else {
+            scrollUpDistance = 0;
+        }
+        // Also restore if scrolled to very top
+        if (currentY < 100 && isFocused) {
+            exitFocus();
+        }
+        lastScrollY = currentY;
+    }, { passive: true });
 
     buttons.forEach(function(btn) {
         btn.addEventListener('click', function() {
@@ -328,23 +363,13 @@ body.gf-focused .gallery {
             // Apply dynamic fade
             applyFade(this);
 
-            // Focus mode: blur above + scroll to gallery
+            // Focus mode: collapse header + scroll to gallery
             if (year !== 'all') {
-                document.body.classList.add('gf-focused');
-                // Smooth scroll to gallery
-                if (galleryEl) {
-                    var offset = filterEl ? filterEl.offsetHeight + 10 : 60;
-                    var top = galleryEl.getBoundingClientRect().top + window.pageYOffset - offset;
-                    window.scrollTo({ top: top, behavior: 'smooth' });
-                }
-                // Auto-remove blur after 2.5s
-                clearTimeout(window._gfBlurTimer);
-                window._gfBlurTimer = setTimeout(function() {
-                    document.body.classList.remove('gf-focused');
-                }, 2500);
+                enterFocus();
             } else {
-                document.body.classList.remove('gf-focused');
-                clearTimeout(window._gfBlurTimer);
+                exitFocus();
+                // Scroll back to top smoothly
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
             // Filter boxes
