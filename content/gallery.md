@@ -314,10 +314,12 @@ body.gf-focused .gf-title-target {
     var isFocused = false;
 
     function enterFocus() {
-        if (isFocused) return;
         isFocused = true;
         document.body.classList.add('gf-focused');
-        // Smooth scroll to gallery
+    }
+
+    // Always scroll to gallery top (used on every year click)
+    function scrollToGallery() {
         if (galleryEl && filterEl) {
             var offset = filterEl.offsetHeight + 16;
             var top = galleryEl.getBoundingClientRect().top + window.pageYOffset - offset;
@@ -363,9 +365,10 @@ body.gf-focused .gf-title-target {
             // Apply dynamic fade
             applyFade(this);
 
-            // Focus mode: collapse header + scroll to gallery
+            // Focus mode: collapse header + scroll to gallery top
             if (year !== 'all') {
                 enterFocus();
+                scrollToGallery();
             } else {
                 exitFocus();
                 // Scroll back to top smoothly
