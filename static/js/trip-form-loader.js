@@ -62,7 +62,7 @@ class TripFormLoader {
         // Добавляем активные поездки
         activeTrips.forEach(trip => {
             const option = document.createElement('option');
-            const label = trip.period ? `${trip.title} (${trip.period})` : trip.title;
+            const label = trip.title;
             option.value = label;
             option.textContent = label;
             select.appendChild(option);

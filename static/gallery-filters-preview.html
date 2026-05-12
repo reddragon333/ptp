@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery Filters — 8 Variants</title>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Onest', sans-serif; background: #f5f5f5; color: #1a202c; padding: 20px; }
+h1 { text-align: center; margin-bottom: 10px; font-size: 1.5rem; }
+p.subtitle { text-align: center; color: #888; margin-bottom: 30px; font-size: 0.85rem; }
+.variant { background: #fff; border-radius: 16px; padding: 30px 20px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.variant h2 { font-size: 0.85rem; color: #888; margin-bottom: 16px; font-weight: 500; }
+.variant h2 span { color: #4a8fc8; font-weight: 700; }
+
+/* === SHARED === */
+.filters { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: nowrap; overflow-x: auto; }
+.filters button { font-family: 'Onest', sans-serif; cursor: pointer; border: none; background: none; transition: all 0.3s ease; white-space: nowrap; }
+
+/* ============================================ */
+/* VARIANT 1: Pill Tabs (Classic)               */
+/* ============================================ */
+.v1 .filters { gap: 6px; }
+.v1 .filters button {
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #6b7b8d;
+    background: rgba(74,143,200,0.06);
+}
+.v1 .filters button:hover { background: rgba(74,143,200,0.12); color: #3a6a9a; }
+.v1 .filters button.active {
+    background: #4a8fc8;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(74,143,200,0.3);
+}
+
+/* ============================================ */
+/* VARIANT 2: Underline Tabs                    */
+/* ============================================ */
+.v2 .filters { gap: 0; border-bottom: 2px solid #e8ecf0; }
+.v2 .filters button {
+    padding: 10px 18px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #8a9aaa;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+}
+.v2 .filters button:hover { color: #4a7a9a; border-bottom-color: rgba(74,143,200,0.3); }
+.v2 .filters button.active {
+    color: #4a8fc8;
+    font-weight: 700;
+    border-bottom-color: #4a8fc8;
+}
+
+/* ============================================ */
+/* VARIANT 3: Chip Tags                         */
+/* ============================================ */
+.v3 .filters { gap: 8px; }
+.v3 .filters button {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #6b7b8d;
+    border: 1.5px solid #dde3ea;
+    background: #fff;
+}
+.v3 .filters button:hover { border-color: #4a8fc8; color: #4a8fc8; }
+.v3 .filters button.active {
+    background: #eef5fb;
+    border-color: #4a8fc8;
+    color: #4a8fc8;
+    font-weight: 600;
+}
+.v3 .filters button[data-v="all"] { font-weight: 600; }
+
+/* ============================================ */
+/* VARIANT 4: Segmented Control (iOS style)     */
+/* ============================================ */
+.v4 .filters {
+    background: #eef1f5;
+    border-radius: 12px;
+    padding: 4px;
+    gap: 0;
+    display: inline-flex;
+}
+.v4 .filter-wrap { display: flex; justify-content: center; }
+.v4 .filters button {
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #6b7b8d;
+}
+.v4 .filters button:hover { color: #3a6a9a; }
+.v4 .filters button.active {
+    background: #fff;
+    color: #1a202c;
+    font-weight: 600;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* ============================================ */
+/* VARIANT 5: Minimal Text Only                 */
+/* ============================================ */
+.v5 .filters { gap: 4px; }
+.v5 .filters button {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #aab5c0;
+    letter-spacing: 0.02em;
+}
+.v5 .filters button:hover { color: #4a6a8a; }
+.v5 .filters button.active {
+    color: #1a202c;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+.v5 .filters .sep {
+    width: 1px;
+    height: 16px;
+    background: #dde3ea;
+    align-self: center;
+    margin: 0 2px;
+}
+
+/* ============================================ */
+/* VARIANT 6: Timeline Slider                   */
+/* ============================================ */
+.v6 .filters {
+    position: relative;
+    gap: 0;
+    padding: 0 20px;
+}
+.v6 .filters::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    right: 5%;
+    height: 3px;
+    background: linear-gradient(90deg, #4a8fc8, #7ec8e3, #b8dff0);
+    border-radius: 3px;
+    transform: translateY(-50%);
+    margin-top: -6px;
+}
+.v6 .filters button {
+    position: relative;
+    z-index: 1;
+    padding: 20px 14px 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #8a9aaa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+.v6 .filters button::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #b8d4e8;
+    position: absolute;
+    top: 2px;
+}
+.v6 .filters button:hover::before { border-color: #4a8fc8; }
+.v6 .filters button.active {
+    color: #1a202c;
+    font-weight: 700;
+}
+.v6 .filters button.active::before {
+    background: #4a8fc8;
+    border-color: #4a8fc8;
+    box-shadow: 0 0 0 4px rgba(74,143,200,0.2);
+}
+
+/* ============================================ */
+/* VARIANT 7: Cards / Buttons Row               */
+/* ============================================ */
+.v7 .filters { gap: 8px; }
+.v7 .filters button {
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #6b7b8d;
+    background: #f7f9fb;
+    border: 1px solid transparent;
+}
+.v7 .filters button:hover {
+    background: #eef3f8;
+    transform: translateY(-1px);
+}
+.v7 .filters button.active {
+    background: #fff;
+    color: #4a8fc8;
+    font-weight: 700;
+    border: 1px solid rgba(74,143,200,0.3);
+    box-shadow: 0 2px 8px rgba(74,143,200,0.12);
+}
+.v7 .filters button[data-v="all"].active {
+    background: #4a8fc8;
+    color: #fff;
+    border-color: #4a8fc8;
+}
+
+/* ============================================ */
+/* VARIANT 8: Horizontal Scroll with Gradient   */
+/* ============================================ */
+.v8-wrap {
+    position: relative;
+    overflow: hidden;
+}
+.v8-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #fff);
+    pointer-events: none;
+    z-index: 2;
+}
+.v8 .filters {
+    gap: 6px;
+    justify-content: flex-start;
+    padding: 8px 40px 8px 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.v8 .filters::-webkit-scrollbar { display: none; }
+.v8 .filters button {
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #6b7b8d;
+    background: #f0f3f6;
+    flex-shrink: 0;
+}
+.v8 .filters button:hover { background: #e4eaf0; }
+.v8 .filters button.active {
+    background: linear-gradient(135deg, #4a8fc8, #6bb3e0);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(74,143,200,0.3);
+}
+
+/* ============================================ */
+/* MOBILE PREVIEW                                */
+/* ============================================ */
+.mobile-frame {
+    max-width: 375px;
+    margin: 0 auto;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    padding: 16px 12px;
+    background: #fff;
+    position: relative;
+}
+.mobile-frame::before {
+    content: 'Mobile 375px';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    padding: 0 10px;
+    font-size: 0.65rem;
+    color: #aaa;
+}
+
+/* Toggle */
+.toggle-row { text-align: center; margin: 20px 0; }
+.toggle-btn {
+    font-family: 'Onest', sans-serif;
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: #555;
+    margin: 0 4px;
+}
+.toggle-btn.on { background: #4a8fc8; color: #fff; border-color: #4a8fc8; }
+</style>
+</head>
+<body>
+
+<h1>Фильтры галереи — 8 вариантов</h1>
+<p class="subtitle">Нажимайте на годы для переключения активного состояния. Контекст: сайт путешествий и аэросъёмки дронами.</p>
+
+<div class="toggle-row">
+    <button class="toggle-btn on" onclick="setView('desktop')">Desktop</button>
+    <button class="toggle-btn" onclick="setView('mobile')">Mobile (375px)</button>
+</div>
+
+<div id="variants-container">
+
+<!-- VARIANT 1 -->
+<div class="variant v1">
+    <h2><span>#1</span> Pill Tabs (Classic)</h2>
+    <div class="filters">
+        <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
+        <button onclick="activate(this)">2026</button>
+        <button onclick="activate(this)">2025</button>
+        <button onclick="activate(this)">2024</button>
+        <button onclick="activate(this)">2023</button>
+        <button onclick="activate(this)">2022</button>
+        <button onclick="activate(this)">2021</button>
+    </div>
+</div>
+
+<!-- VARIANT 2 -->
+<div class="variant v2">
+    <h2><span>#2</span> Underline Tabs</h2>
+    <div class="filters">
+        <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
+        <button onclick="activate(this)">2026</button>
+        <button onclick="activate(this)">2025</button>
+        <button onclick="activate(this)">2024</button>
+        <button onclick="activate(this)">2023</button>
+        <button onclick="activate(this)">2022</button>
+        <button onclick="activate(this)">2021</button>
+    </div>
+</div>
+
+<!-- VARIANT 3 -->
+<div class="variant v3">
+    <h2><span>#3</span> Chip Tags</h2>
+    <div class="filters">
+        <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
+        <button onclick="activate(this)">2026</button>
+        <button onclick="activate(this)">2025</button>
+        <button onclick="activate(this)">2024</button>
+        <button onclick="activate(this)">2023</button>
+        <button onclick="activate(this)">2022</button>
+        <button onclick="activate(this)">2021</button>
+    </div>
+</div>
+
+<!-- VARIANT 4 -->
+<div class="variant v4">
+    <h2><span>#4</span> Segmented Control (iOS)</h2>
+    <div class="filter-wrap">
+        <div class="filters">
+            <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
+            <button onclick="activate(this)">2026</button>
+            <button onclick="activate(this)">2025</button>
+            <button onclick="activate(this)">2024</button>
+            <button onclick="activate(this)">2023</button>
+            <button onclick="activate(this)">2022</button>
+            <button onclick="activate(this)">2021</button>
+        </div>
+    </div>
+</div>
+
+<!-- VARIANT 5 -->
+<div class="variant v5">
+    <h2><span>#5</span> Minimal Text Only</h2>
+    <div class="filters">
+        <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
+        <span class="sep"></span>
+        <button onclick="activate(this)">2026</button>
+        <button onclick="activate(this)">2025</button>
+        <button onclick="activate(this)">2024</button>
+        <button onclick="activate(this)">2023</button>
+        <button onclick="activate(this)">2022</button>
+        <button onclick="activate(this)">2021</button>
+    </div>
+</div>
+
+<!-- VARIANT 6 -->
+<div class="variant v6">
+    <h2><span>#6</span> Timeline Slider (текущий стиль, улучшенный)</h2>
+    <div class="filters">
+        <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
+        <button onclick="activate(this)">2026</button>
+        <button onclick="activate(this)">2025</button>
+        <button onclick="activate(this)">2024</button>
+        <button onclick="activate(this)">2023</button>
+        <button onclick="activate(this)">2022</button>
+        <button onclick="activate(this)">2021</button>
+    </div>
+</div>
+
+<!-- VARIANT 7 -->
+<div class="variant v7">
+    <h2><span>#7</span> Cards Row</h2>
+    <div class="filters">
+        <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
+        <button onclick="activate(this)">2026</button>
+        <button onclick="activate(this)">2025</button>
+        <button onclick="activate(this)">2024</button>
+        <button onclick="activate(this)">2023</button>
+        <button onclick="activate(this)">2022</button>
+        <button onclick="activate(this)">2021</button>
+    </div>
+</div>
+
+<!-- VARIANT 8 -->
+<div class="variant v8">
+    <h2><span>#8</span> Horizontal Scroll + Gradient Pills</h2>
+    <div class="v8-wrap">
+        <div class="filters">
+            <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
+            <button onclick="activate(this)">2026</button>
+            <button onclick="activate(this)">2025</button>
+            <button onclick="activate(this)">2024</button>
+            <button onclick="activate(this)">2023</button>
+            <button onclick="activate(this)">2022</button>
+            <button onclick="activate(this)">2021</button>
+        </div>
+    </div>
+</div>
+
+</div><!-- variants-container -->
+
+<script>
+function activate(btn) {
+    const parent = btn.closest('.filters');
+    parent.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+
+function setView(mode) {
+    const container = document.getElementById('variants-container');
+    const btns = document.querySelectorAll('.toggle-btn');
+    btns.forEach(b => b.classList.remove('on'));
+    event.target.classList.add('on');
+
+    if (mode === 'mobile') {
+        container.querySelectorAll('.variant').forEach(v => {
+            v.classList.add('mobile-frame');
+        });
+    } else {
+        container.querySelectorAll('.variant').forEach(v => {
+            v.classList.remove('mobile-frame');
+        });
+    }
+}
+</script>
+</body>
+</html>
