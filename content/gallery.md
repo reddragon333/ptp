@@ -84,53 +84,6 @@ slug = 'gallery'
     display: none !important;
 }
 
-/* === Focus Mode: Collapse (#2) === */
-/* Header collapses smoothly */
-#header {
-    transition: max-height 0.5s ease, opacity 0.4s ease, margin 0.5s ease, padding 0.5s ease;
-    overflow: hidden;
-    max-height: 500px;
-}
-body.gf-focused #header {
-    max-height: 0;
-    opacity: 0;
-    margin: 0;
-    padding: 0;
-}
-/* Nav collapses */
-#nav {
-    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease;
-    overflow: hidden;
-    max-height: 200px;
-}
-body.gf-focused #nav {
-    max-height: 0;
-    opacity: 0;
-    padding: 0;
-}
-/* Page title shrinks */
-.gf-title-target {
-    transition: font-size 0.4s ease, padding 0.4s ease, opacity 0.4s ease, max-height 0.4s ease;
-    overflow: hidden;
-    max-height: 200px;
-}
-body.gf-focused .gf-title-target {
-    font-size: 0.85rem !important;
-    padding-top: 6px !important;
-    padding-bottom: 2px !important;
-    max-height: 30px;
-    opacity: 0.6;
-}
-
-/* Sticky filter bar in focus mode (especially for mobile) */
-body.gf-focused .gallery-filters {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    padding: 0.8rem 0.5rem;
-}
 </style>
 {{< /rawhtml >}}
 
@@ -312,58 +265,6 @@ body.gf-focused .gallery-filters {
     // Apply initial fade (ВСЕ is active by default)
     applyFade(buttons[0]);
 
-    // Mark page title for collapse
-    var filterEl = document.getElementById('gallery-filters');
-    var pageTitle = document.querySelector('h1, header.major h2');
-    if (pageTitle) pageTitle.classList.add('gf-title-target');
-
-    // Gallery element for scroll target
-    var galleryEl = document.querySelector('.gallery');
-
-    // Track focus state
-    var isFocused = false;
-
-    function enterFocus() {
-        isFocused = true;
-        document.body.classList.add('gf-focused');
-    }
-
-    // Always scroll to gallery top (used on every year click)
-    function scrollToGallery() {
-        if (galleryEl && filterEl) {
-            var offset = filterEl.offsetHeight + 16;
-            var top = galleryEl.getBoundingClientRect().top + window.pageYOffset - offset;
-            window.scrollTo({ top: top, behavior: 'smooth' });
-        }
-    }
-
-    function exitFocus() {
-        if (!isFocused) return;
-        isFocused = false;
-        document.body.classList.remove('gf-focused');
-    }
-
-    // Scroll up detection — restore collapsed elements
-    var lastScrollY = window.pageYOffset;
-    var scrollUpDistance = 0;
-    window.addEventListener('scroll', function() {
-        var currentY = window.pageYOffset;
-        if (currentY < lastScrollY) {
-            scrollUpDistance += (lastScrollY - currentY);
-            // After scrolling up 80px, restore everything
-            if (scrollUpDistance > 80 && isFocused) {
-                exitFocus();
-            }
-        } else {
-            scrollUpDistance = 0;
-        }
-        // Also restore if scrolled to very top
-        if (currentY < 100 && isFocused) {
-            exitFocus();
-        }
-        lastScrollY = currentY;
-    }, { passive: true });
-
     buttons.forEach(function(btn) {
         btn.addEventListener('click', function() {
             var year = this.getAttribute('data-year');
@@ -374,16 +275,6 @@ body.gf-focused .gallery-filters {
 
             // Apply dynamic fade
             applyFade(this);
-
-            // Focus mode: collapse header + scroll to gallery top
-            if (year !== 'all') {
-                enterFocus();
-                scrollToGallery();
-            } else {
-                exitFocus();
-                // Scroll back to top smoothly
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
 
             // Filter boxes
             boxes.forEach(function(box) {
