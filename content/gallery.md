@@ -7,7 +7,6 @@ slug = 'gallery'
 {{< rawhtml >}}
 <div class="gallery-filters" id="gallery-filters">
     <button class="gf-btn active" data-year="all">ВСЕ</button>
-    <span class="gf-separator"></span>
     <button class="gf-btn" data-year="2026">2026</button>
     <button class="gf-btn" data-year="2025">2025</button>
     <button class="gf-btn" data-year="2024">2024</button>
@@ -17,139 +16,67 @@ slug = 'gallery'
 </div>
 
 <style>
-/* === Glowing Pulse Timeline with Vertical Line Separator === */
+/* === Fade Typography Filter === */
 .gallery-filters {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
     gap: 0;
     margin: 0 0 2rem 0;
-    padding: 1rem 0;
-    position: relative;
-    overflow-x: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0,0,0,0.1) transparent;
-}
-/* Horizontal timeline line */
-.gallery-filters::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 8%;
-    right: 8%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(74,143,200,0.18) 20%, rgba(74,143,200,0.3) 50%, rgba(74,143,200,0.18) 80%, transparent);
-    transform: translateY(-50%);
-    margin-top: -4px;
-    z-index: 0;
-    pointer-events: none;
-}
-/* Vertical line separator between ВСЕ and years */
-.gf-separator {
-    width: 1px;
-    height: 24px;
-    background: rgba(74,143,200,0.2);
-    flex-shrink: 0;
-    margin: 0 4px;
-    align-self: center;
-    margin-top: -8px;
-    z-index: 1;
+    padding: 0.6rem 0.5rem;
 }
 .gf-btn {
-    position: relative;
-    z-index: 1;
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    color: #8a9aaa;
     font-family: 'Onest', 'Source Sans Pro', Helvetica, sans-serif;
-    font-size: 0.78rem;
-    font-weight: 500;
+    padding: 8px 9px;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    font-size: 0.82rem;
+    font-weight: 400;
     cursor: pointer;
-    padding: 0.8rem 1rem 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
     transition: all 0.35s ease;
     white-space: nowrap;
-    flex-shrink: 0;
-    text-transform: none;
-    letter-spacing: 0;
-}
-/* Dot above label */
-.gf-btn::before {
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 2px solid rgba(74,143,200,0.25);
-    background: #fff;
-    transition: all 0.4s ease;
-}
-.gf-btn:hover::before {
-    border-color: rgba(74,143,200,0.5);
+    color: #d0d5dc;
 }
 .gf-btn:hover {
-    color: #4a6a8a;
+    color: #6a7a8a !important;
 }
 .gf-btn.active {
-    color: #1a202c;
-    font-weight: 700;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #1a202c !important;
+    padding: 8px 10px;
 }
-.gf-btn.active::before {
-    border-color: #4a8fc8;
-    background: #4a8fc8;
-    box-shadow: 0 0 10px rgba(74,143,200,0.5), 0 0 20px rgba(74,143,200,0.15);
-    animation: gf-pulse 2s ease-in-out infinite;
+/* ВСЕ — компактнее, с разделителем */
+.gf-btn[data-year="all"] {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    margin-right: 4px;
+    padding-right: 12px;
+    border-right: 1px solid #e0e4e8 !important;
 }
-@keyframes gf-pulse {
-    0%, 100% { box-shadow: 0 0 8px rgba(74,143,200,0.4), 0 0 16px rgba(74,143,200,0.1); }
-    50% { box-shadow: 0 0 14px rgba(74,143,200,0.6), 0 0 28px rgba(74,143,200,0.25); }
+.gf-btn[data-year="all"].active {
+    font-size: 0.78rem;
+    font-weight: 800;
 }
-/* Grid of Mini-Dots (2x2) for ВСЕ */
-.gf-btn[data-year="all"]::before {
-    width: 5px !important;
-    height: 5px !important;
-    min-height: 5px !important;
-    min-width: 5px !important;
-    flex-shrink: 0 !important;
-    border-radius: 50% !important;
-    border: none !important;
-    background: rgba(74,143,200,0.35) !important;
-    box-shadow: 7px 0 0 0 rgba(74,143,200,0.35),
-                0 7px 0 0 rgba(74,143,200,0.35),
-                7px 7px 0 0 rgba(74,143,200,0.35) !important;
-    transform: translate(-2.5px, -6px);
-    animation: none !important;
-    display: block !important;
-}
-.gf-btn[data-year="all"]:hover::before {
-    background: rgba(74,143,200,0.55);
-    box-shadow: 7px 0 0 0 rgba(74,143,200,0.55),
-                0 7px 0 0 rgba(74,143,200,0.55),
-                7px 7px 0 0 rgba(74,143,200,0.55);
-    border-color: transparent;
-}
-.gf-btn[data-year="all"].active::before {
-    background: #4a8fc8 !important;
-    box-shadow: 7px 0 0 0 #4a8fc8,
-                0 7px 0 0 #4a8fc8,
-                7px 7px 0 0 #4a8fc8,
-                0 0 10px rgba(74,143,200,0.4),
-                7px 0 10px rgba(74,143,200,0.2),
-                0 7px 10px rgba(74,143,200,0.2),
-                7px 7px 10px rgba(74,143,200,0.2) !important;
-    animation: gf-pulse-grid 2s ease-in-out infinite !important;
-}
-@keyframes gf-pulse-grid {
-    0%, 100% { box-shadow: 7px 0 0 0 #4a8fc8, 0 7px 0 0 #4a8fc8, 7px 7px 0 0 #4a8fc8, 0 0 8px rgba(74,143,200,0.35), 7px 0 8px rgba(74,143,200,0.15), 0 7px 8px rgba(74,143,200,0.15), 7px 7px 8px rgba(74,143,200,0.15); }
-    50% { box-shadow: 7px 0 0 0 #4a8fc8, 0 7px 0 0 #4a8fc8, 7px 7px 0 0 #4a8fc8, 0 0 14px rgba(74,143,200,0.55), 7px 0 14px rgba(74,143,200,0.25), 0 7px 14px rgba(74,143,200,0.25), 7px 7px 14px rgba(74,143,200,0.25); }
-}
+/* Fade levels — applied dynamically via JS */
+.gf-btn.fade-1 { color: #a0abb8; font-size: 0.82rem; font-weight: 450; }
+.gf-btn.fade-2 { color: #b8c0ca; font-size: 0.78rem; font-weight: 400; }
+.gf-btn.fade-3 { color: #cdd3da; font-size: 0.74rem; font-weight: 350; }
+.gf-btn.fade-4 { color: #dde1e6; font-size: 0.70rem; font-weight: 300; }
+.gf-btn.fade-5 { color: #e8ecf0; font-size: 0.66rem; font-weight: 300; }
+
 @media (max-width: 480px) {
-    .gallery-filters { padding: 0.8rem 0 0.3rem 0; }
-    .gf-btn { padding: 0.6rem 0.6rem 0.4rem; font-size: 0.72rem; }
-    .gf-separator { height: 18px; margin: 0 2px; }
+    .gallery-filters { padding: 0.4rem 0; }
+    .gf-btn { padding: 6px 6px; font-size: 0.78rem; }
+    .gf-btn.active { font-size: 1.05rem; padding: 6px 8px; }
+    .gf-btn[data-year="all"] { font-size: 0.62rem; margin-right: 2px; padding-right: 8px; }
+    .gf-btn[data-year="all"].active { font-size: 0.72rem; }
+    .gf-btn.fade-1 { font-size: 0.78rem; }
+    .gf-btn.fade-2 { font-size: 0.74rem; }
+    .gf-btn.fade-3 { font-size: 0.70rem; }
+    .gf-btn.fade-4 { font-size: 0.66rem; }
+    .gf-btn.fade-5 { font-size: 0.62rem; }
 }
 
 /* Hidden gallery items */
@@ -299,6 +226,7 @@ slug = 'gallery'
 <script>
 (function() {
     var buttons = document.querySelectorAll('.gf-btn');
+    var yearButtons = Array.from(buttons).filter(function(b) { return b.getAttribute('data-year') !== 'all'; });
     var boxes = document.querySelectorAll('.gallery .box');
 
     // Extract year from each box's image URL
@@ -310,6 +238,32 @@ slug = 'gallery'
         if (m) box.setAttribute('data-year', m[1]);
     });
 
+    // Dynamic fade: years closer to active are darker, further ones fade out
+    function applyFade(activeBtn) {
+        var activeIdx = yearButtons.indexOf(activeBtn);
+        var isAll = activeBtn.getAttribute('data-year') === 'all';
+        
+        yearButtons.forEach(function(btn, i) {
+            // Remove all fade classes
+            btn.classList.remove('fade-1', 'fade-2', 'fade-3', 'fade-4', 'fade-5');
+            
+            if (btn === activeBtn) return;
+            
+            if (isAll) {
+                // When ВСЕ is active, all years get uniform mid-fade
+                btn.classList.add('fade-2');
+            } else {
+                // Distance-based fade from active year
+                var dist = Math.abs(i - activeIdx);
+                var level = Math.min(dist, 5);
+                if (level > 0) btn.classList.add('fade-' + level);
+            }
+        });
+    }
+
+    // Apply initial fade (ВСЕ is active by default)
+    applyFade(buttons[0]);
+
     buttons.forEach(function(btn) {
         btn.addEventListener('click', function() {
             var year = this.getAttribute('data-year');
@@ -317,6 +271,9 @@ slug = 'gallery'
             // Update active button
             buttons.forEach(function(b) { b.classList.remove('active'); });
             this.classList.add('active');
+
+            // Apply dynamic fade
+            applyFade(this);
 
             // Filter boxes
             boxes.forEach(function(box) {
