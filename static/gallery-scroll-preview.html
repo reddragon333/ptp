@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery Scroll Animation — Variants</title>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Onest', sans-serif; background: #0e1117; color: #e8edf2; }
+
+.intro {
+    max-width: 800px;
+    margin: 40px auto 30px;
+    text-align: center;
+    padding: 0 20px;
+}
+.intro h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+.intro p { font-size: 0.85rem; color: #8a95a8; line-height: 1.5; }
+
+/* Phone frame */
+.phone {
+    width: 375px;
+    margin: 0 auto 60px;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    position: relative;
+    height: 700px;
+}
+
+.variant-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+}
+
+/* Variant label */
+.var-label {
+    background: rgba(74,143,200,0.08);
+    padding: 16px 20px;
+    margin: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+.var-label h2 { font-size: 0.95rem; color: #4a8fc8; margin-bottom: 4px; }
+.var-label p { font-size: 0.75rem; color: #8a95a8; line-height: 1.4; }
+
+/* ===== Common phone internals ===== */
+.ph-header {
+    background: linear-gradient(135deg, #c8d8e8 0%, #a8b8c8 100%);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #2a3a4a;
+    letter-spacing: 2px;
+    position: relative;
+}
+.ph-nav {
+    background: rgba(40,50,65,0.85);
+    padding: 8px 12px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    font-size: 0.55rem;
+    color: #b0bcc8;
+    letter-spacing: 0.3px;
+}
+.ph-nav span.act { color: #fff; font-weight: 600; }
+
+.ph-title {
+    padding: 16px 20px 8px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1a202c;
+}
+
+.ph-filter {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    padding: 8px 8px;
+    gap: 0;
+    position: relative;
+    z-index: 10;
+}
+.ph-filter button {
+    font-family: 'Onest', sans-serif;
+    padding: 6px 7px;
+    border: none;
+    background: transparent;
+    font-size: 0.72rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.35s;
+    color: #b8c0ca;
+}
+.ph-filter button.active {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #1a202c;
+}
+.ph-filter button.all-btn {
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    padding-right: 10px;
+    margin-right: 4px;
+    border-right: 1px solid #e0e4e8;
+    font-weight: 700;
+    color: #1a202c;
+}
+
+/* Photo grid */
+.ph-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    padding: 12px 12px;
+    position: relative;
+    z-index: 5;
+}
+.ph-img {
+    aspect-ratio: 1;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+}
+/* Colored placeholder photos */
+.ph-img:nth-child(1) { background: linear-gradient(135deg, #2a3f5f, #4a6f8f); }
+.ph-img:nth-child(2) { background: linear-gradient(135deg, #3a2f5f, #6a5f8f); }
+.ph-img:nth-child(3) { background: linear-gradient(135deg, #1a4f4f, #3a8f7f); }
+.ph-img:nth-child(4) { background: linear-gradient(135deg, #4a3f2f, #8f6f4f); }
+.ph-img:nth-child(5) { background: linear-gradient(135deg, #2a2f4f, #5a5f9f); }
+.ph-img:nth-child(6) { background: linear-gradient(135deg, #3f4a2a, #6f8f3a); }
+.ph-img:nth-child(7) { background: linear-gradient(135deg, #4f2a3a, #9f4a6a); }
+.ph-img:nth-child(8) { background: linear-gradient(135deg, #2a4a3f, #4a9f7f); }
+.ph-img:nth-child(9) { background: linear-gradient(135deg, #3a3a5f, #7a6a9f); }
+
+/* ============================================ */
+/* VARIANT 1: Smooth Dim — overlay fades in     */
+/* ============================================ */
+.v1 .ph-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 8;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+.v1.focused .ph-overlay {
+    opacity: 1;
+    height: 230px; /* covers header+nav+title */
+}
+.v1 .ph-filter {
+    transition: all 0.4s ease;
+}
+.v1.focused .ph-filter {
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* ============================================ */
+/* VARIANT 2: Collapse — header shrinks away    */
+/* ============================================ */
+.v2 .ph-header {
+    transition: height 0.5s ease, opacity 0.4s ease;
+    overflow: hidden;
+}
+.v2 .ph-nav {
+    transition: height 0.4s ease, opacity 0.3s ease, padding 0.4s ease;
+    overflow: hidden;
+}
+.v2 .ph-title {
+    transition: all 0.4s ease;
+}
+.v2.focused .ph-header {
+    height: 0;
+    opacity: 0;
+}
+.v2.focused .ph-nav {
+    height: 0;
+    opacity: 0;
+    padding: 0;
+}
+.v2.focused .ph-title {
+    padding: 8px 20px 4px;
+    font-size: 0.85rem;
+}
+
+/* ============================================ */
+/* VARIANT 3: Blur + Brightness                */
+/* ============================================ */
+.v3 .ph-above {
+    transition: filter 0.5s ease, opacity 0.5s ease;
+}
+.v3.focused .ph-above {
+    filter: blur(6px) brightness(0.6);
+    opacity: 0.4;
+}
+.v3 .ph-grid {
+    transition: transform 0.5s ease;
+}
+.v3.focused .ph-grid {
+    transform: scale(1.03);
+}
+
+/* ============================================ */
+/* VARIANT 4: Sticky filter + vignette         */
+/* ============================================ */
+.v4-inner {
+    height: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    position: relative;
+}
+.v4 .ph-filter {
+    transition: all 0.4s ease;
+    background: #fff;
+}
+.v4.focused .ph-filter {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #fff;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.1);
+    padding: 12px 8px;
+}
+.v4 .ph-vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 15;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.25) 100%);
+}
+.v4.focused .ph-vignette {
+    opacity: 1;
+}
+
+/* ============================================ */
+/* VARIANT 5: Theater Mode — side curtains     */
+/* ============================================ */
+.v5 .ph-curtain-left,
+.v5 .ph-curtain-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: rgba(10,12,18,0.7);
+    z-index: 12;
+    transition: width 0.5s ease;
+    pointer-events: none;
+}
+.v5 .ph-curtain-left { left: 0; }
+.v5 .ph-curtain-right { right: 0; }
+.v5.focused .ph-curtain-left,
+.v5.focused .ph-curtain-right {
+    width: 8px;
+}
+.v5 .ph-above {
+    transition: opacity 0.5s ease, transform 0.4s ease;
+}
+.v5.focused .ph-above {
+    opacity: 0.3;
+    transform: scale(0.97);
+}
+.v5 .ph-grid {
+    transition: all 0.5s ease;
+}
+.v5.focused .ph-grid {
+    padding: 16px 8px;
+    gap: 2px;
+    box-shadow: 0 -8px 30px rgba(0,0,0,0.08);
+    background: #fff;
+    border-radius: 8px 8px 0 0;
+    margin: 0 4px;
+}
+
+/* ===== Trigger buttons ===== */
+.trigger-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+    padding-bottom: 12px;
+}
+.trigger-btn {
+    font-family: 'Onest', sans-serif;
+    font-size: 0.6rem;
+    padding: 5px 14px;
+    border: 1px solid #e0e4e8;
+    border-radius: 20px;
+    background: #f8f9fa;
+    color: #4a5568;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.trigger-btn:hover {
+    background: #4a8fc8;
+    color: #fff;
+    border-color: #4a8fc8;
+}
+.trigger-btn.reset {
+    background: transparent;
+    border-color: #ccc;
+    color: #999;
+}
+.trigger-btn.reset:hover {
+    background: #666;
+    color: #fff;
+    border-color: #666;
+}
+</style>
+</head>
+<body>
+
+<div class="intro">
+    <h1>Анимация при клике на фильтр галереи</h1>
+    <p>5 вариантов поведения: клик по фильтру &rarr; фокус на фотографии, всё вокруг затемняется. Нажми "Фокус" для демо, "Сброс" чтобы вернуть.</p>
+</div>
+
+<div class="variant-wrap">
+
+<!-- ===== V1: Smooth Dim ===== -->
+<div>
+<div class="var-label">
+    <h2>#1 Smooth Dim</h2>
+    <p>Полупрозрачный тёмный оверлей плавно накрывает шапку и навигацию. Фото остаются яркими.</p>
+</div>
+<div class="phone v1" id="v1">
+    <div class="ph-overlay"></div>
+    <div class="ph-header">ПОКА ТЫ СПАЛ</div>
+    <div class="ph-nav"><span>ГЛАВНАЯ</span><span>МАРШРУТЫ</span><span>СПРОСИТЬ</span><span class="act">ГАЛЕРЕЯ</span></div>
+    <div class="ph-title">Галерея</div>
+    <div class="ph-filter">
+        <button class="all-btn">ВСЕ</button>
+        <button class="active">2026</button>
+        <button>2025</button>
+        <button>2024</button>
+        <button>2023</button>
+    </div>
+    <div class="ph-grid">
+        <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+        <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+        <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+    </div>
+</div>
+<div class="trigger-row">
+    <button class="trigger-btn" onclick="document.getElementById('v1').classList.add('focused')">Фокус</button>
+    <button class="trigger-btn reset" onclick="document.getElementById('v1').classList.remove('focused')">Сброс</button>
+</div>
+</div>
+
+<!-- ===== V2: Collapse ===== -->
+<div>
+<div class="var-label">
+    <h2>#2 Collapse</h2>
+    <p>Шапка и навигация схлопываются вверх, заголовок уменьшается. Больше места для фото.</p>
+</div>
+<div class="phone v2" id="v2">
+    <div class="ph-header">ПОКА ТЫ СПАЛ</div>
+    <div class="ph-nav"><span>ГЛАВНАЯ</span><span>МАРШРУТЫ</span><span>СПРОСИТЬ</span><span class="act">ГАЛЕРЕЯ</span></div>
+    <div class="ph-title">Галерея</div>
+    <div class="ph-filter">
+        <button class="all-btn">ВСЕ</button>
+        <button class="active">2026</button>
+        <button>2025</button>
+        <button>2024</button>
+        <button>2023</button>
+    </div>
+    <div class="ph-grid">
+        <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+        <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+        <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+    </div>
+</div>
+<div class="trigger-row">
+    <button class="trigger-btn" onclick="document.getElementById('v2').classList.add('focused')">Фокус</button>
+    <button class="trigger-btn reset" onclick="document.getElementById('v2').classList.remove('focused')">Сброс</button>
+</div>
+</div>
+
+<!-- ===== V3: Blur + Brightness ===== -->
+<div>
+<div class="var-label">
+    <h2>#3 Blur + Glow</h2>
+    <p>Шапка размывается и тускнеет, фотографии слегка увеличиваются — эффект приближения.</p>
+</div>
+<div class="phone v3" id="v3">
+    <div class="ph-above">
+        <div class="ph-header">ПОКА ТЫ СПАЛ</div>
+        <div class="ph-nav"><span>ГЛАВНАЯ</span><span>МАРШРУТЫ</span><span>СПРОСИТЬ</span><span class="act">ГАЛЕРЕЯ</span></div>
+        <div class="ph-title">Галерея</div>
+    </div>
+    <div class="ph-filter">
+        <button class="all-btn">ВСЕ</button>
+        <button class="active">2026</button>
+        <button>2025</button>
+        <button>2024</button>
+        <button>2023</button>
+    </div>
+    <div class="ph-grid">
+        <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+        <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+        <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+    </div>
+</div>
+<div class="trigger-row">
+    <button class="trigger-btn" onclick="document.getElementById('v3').classList.add('focused')">Фокус</button>
+    <button class="trigger-btn reset" onclick="document.getElementById('v3').classList.remove('focused')">Сброс</button>
+</div>
+</div>
+
+<!-- ===== V4: Sticky + Vignette ===== -->
+<div>
+<div class="var-label">
+    <h2>#4 Sticky + Vignette</h2>
+    <p>Фильтр прилипает сверху, мягкая виньетка по краям фокусирует взгляд на центре.</p>
+</div>
+<div class="phone v4" id="v4">
+    <div class="v4-inner">
+        <div class="ph-header">ПОКА ТЫ СПАЛ</div>
+        <div class="ph-nav"><span>ГЛАВНАЯ</span><span>МАРШРУТЫ</span><span>СПРОСИТЬ</span><span class="act">ГАЛЕРЕЯ</span></div>
+        <div class="ph-title">Галерея</div>
+        <div class="ph-filter">
+            <button class="all-btn">ВСЕ</button>
+            <button class="active">2026</button>
+            <button>2025</button>
+            <button>2024</button>
+            <button>2023</button>
+        </div>
+        <div class="ph-grid">
+            <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+            <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+            <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+        </div>
+    </div>
+    <div class="ph-vignette"></div>
+</div>
+<div class="trigger-row">
+    <button class="trigger-btn" onclick="v4focus()">Фокус</button>
+    <button class="trigger-btn reset" onclick="v4reset()">Сброс</button>
+</div>
+</div>
+
+<!-- ===== V5: Theater Mode ===== -->
+<div>
+<div class="var-label">
+    <h2>#5 Theater Mode</h2>
+    <p>Шапка уходит в тень, фото-сетка получает лёгкую тень и скруглённые углы. Кинотеатр.</p>
+</div>
+<div class="phone v5" id="v5">
+    <div class="ph-curtain-left"></div>
+    <div class="ph-curtain-right"></div>
+    <div class="ph-above">
+        <div class="ph-header">ПОКА ТЫ СПАЛ</div>
+        <div class="ph-nav"><span>ГЛАВНАЯ</span><span>МАРШРУТЫ</span><span>СПРОСИТЬ</span><span class="act">ГАЛЕРЕЯ</span></div>
+        <div class="ph-title">Галерея</div>
+    </div>
+    <div class="ph-filter">
+        <button class="all-btn">ВСЕ</button>
+        <button class="active">2026</button>
+        <button>2025</button>
+        <button>2024</button>
+        <button>2023</button>
+    </div>
+    <div class="ph-grid">
+        <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+        <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+        <div class="ph-img"></div><div class="ph-img"></div><div class="ph-img"></div>
+    </div>
+</div>
+<div class="trigger-row">
+    <button class="trigger-btn" onclick="document.getElementById('v5').classList.add('focused')">Фокус</button>
+    <button class="trigger-btn reset" onclick="document.getElementById('v5').classList.remove('focused')">Сброс</button>
+</div>
+</div>
+
+</div><!-- variant-wrap -->
+
+<script>
+function v4focus() {
+    const el = document.getElementById('v4');
+    el.classList.add('focused');
+    const inner = el.querySelector('.v4-inner');
+    const grid = el.querySelector('.ph-grid');
+    inner.scrollTo({ top: grid.offsetTop - 50, behavior: 'smooth' });
+}
+function v4reset() {
+    const el = document.getElementById('v4');
+    el.classList.remove('focused');
+    el.querySelector('.v4-inner').scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
