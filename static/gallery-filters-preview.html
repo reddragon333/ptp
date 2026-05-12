@@ -3,451 +3,805 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery Filters — 8 Variants</title>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<title>Gallery Filters — Creative Variants</title>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Onest', sans-serif; background: #f5f5f5; color: #1a202c; padding: 20px; }
-h1 { text-align: center; margin-bottom: 10px; font-size: 1.5rem; }
-p.subtitle { text-align: center; color: #888; margin-bottom: 30px; font-size: 0.85rem; }
-.variant { background: #fff; border-radius: 16px; padding: 30px 20px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-.variant h2 { font-size: 0.85rem; color: #888; margin-bottom: 16px; font-weight: 500; }
-.variant h2 span { color: #4a8fc8; font-weight: 700; }
+body { font-family: 'Onest', sans-serif; background: #0e1117; color: #e8edf2; }
 
-/* === SHARED === */
-.filters { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: nowrap; overflow-x: auto; }
-.filters button { font-family: 'Onest', sans-serif; cursor: pointer; border: none; background: none; transition: all 0.3s ease; white-space: nowrap; }
-
-/* ============================================ */
-/* VARIANT 1: Pill Tabs (Classic)               */
-/* ============================================ */
-.v1 .filters { gap: 6px; }
-.v1 .filters button {
-    padding: 8px 18px;
-    border-radius: 100px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: #6b7b8d;
-    background: rgba(74,143,200,0.06);
+/* Phone frame */
+.phone {
+    width: 375px;
+    margin: 0 auto;
+    background: #fff;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
-.v1 .filters button:hover { background: rgba(74,143,200,0.12); color: #3a6a9a; }
-.v1 .filters button.active {
+
+/* Top bar */
+.topbar {
+    background: #1a1f2e;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.topbar h1 { font-size: 0.75rem; color: #8a95a8; font-weight: 400; letter-spacing: 0.5px; }
+.variant-num { font-size: 0.65rem; color: #4a8fc8; font-weight: 600; background: rgba(74,143,200,0.15); padding: 3px 10px; border-radius: 20px; }
+
+/* Navigation dots */
+.nav-dots {
+    position: fixed;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 200;
+}
+.nav-dots a {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: block;
+    transition: all 0.3s;
+}
+.nav-dots a:hover, .nav-dots a.on { background: #4a8fc8; transform: scale(1.4); }
+
+/* Variant section */
+.variant-section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Gallery grid placeholder */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    padding: 2px;
+    flex: 1;
+}
+.gallery-grid .ph {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #1a2030 0%, #2a3545 100%);
+    position: relative;
+    overflow: hidden;
+}
+.gallery-grid .ph::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.3));
+}
+.gallery-grid .ph:nth-child(1) { background: linear-gradient(135deg, #1a3050, #2a5070); }
+.gallery-grid .ph:nth-child(2) { background: linear-gradient(135deg, #2a2040, #3a3555); }
+.gallery-grid .ph:nth-child(3) { background: linear-gradient(135deg, #0a2535, #1a4050); }
+.gallery-grid .ph:nth-child(4) { background: linear-gradient(135deg, #1a1a30, #303050); }
+.gallery-grid .ph:nth-child(5) { background: linear-gradient(135deg, #152535, #253a4a); }
+.gallery-grid .ph:nth-child(6) { background: linear-gradient(135deg, #202535, #354050); }
+.gallery-grid .ph:nth-child(7) { background: linear-gradient(135deg, #0a1a2a, #1a3040); }
+.gallery-grid .ph:nth-child(8) { background: linear-gradient(135deg, #1a2535, #2a3a50); }
+.gallery-grid .ph:nth-child(9) { background: linear-gradient(135deg, #15202f, #253040); }
+
+/* Title bar inside phone */
+.page-title {
+    padding: 16px 16px 8px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a202c;
+    background: #fff;
+}
+
+/* ============================================ */
+/* VARIANT 1: Floating Pill Bar                 */
+/* ============================================ */
+.v1-filter {
+    display: flex;
+    gap: 4px;
+    padding: 6px;
+    margin: 8px 12px 12px;
+    background: #f3f5f8;
+    border-radius: 14px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.v1-filter::-webkit-scrollbar { display: none; }
+.v1-filter button {
+    font-family: 'Onest', sans-serif;
+    padding: 9px 16px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    color: #7a8a9a;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.25s;
+}
+.v1-filter button.active {
+    background: #fff;
+    color: #1a202c;
+    font-weight: 600;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.v1-filter button[data-v="all"].active {
     background: #4a8fc8;
     color: #fff;
-    font-weight: 600;
-    box-shadow: 0 2px 10px rgba(74,143,200,0.3);
 }
 
 /* ============================================ */
-/* VARIANT 2: Underline Tabs                    */
+/* VARIANT 2: Year Ribbon (горизонтальная лента) */
 /* ============================================ */
-.v2 .filters { gap: 0; border-bottom: 2px solid #e8ecf0; }
-.v2 .filters button {
-    padding: 10px 18px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: #8a9aaa;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -2px;
+.v2-filter {
+    display: flex;
+    align-items: stretch;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+    overflow-x: auto;
+    scrollbar-width: none;
 }
-.v2 .filters button:hover { color: #4a7a9a; border-bottom-color: rgba(74,143,200,0.3); }
-.v2 .filters button.active {
+.v2-filter::-webkit-scrollbar { display: none; }
+.v2-filter button {
+    font-family: 'Onest', sans-serif;
+    flex: 1;
+    min-width: 52px;
+    padding: 14px 4px;
+    border: none;
+    background: transparent;
+    color: #b0b8c4;
+    font-size: 0.72rem;
+    font-weight: 400;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+    letter-spacing: 0.02em;
+}
+.v2-filter button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    background: transparent;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+.v2-filter button.active {
+    color: #1a202c;
+    font-weight: 700;
+    font-size: 0.78rem;
+}
+.v2-filter button.active::after {
+    background: #4a8fc8;
+    left: 15%;
+    right: 15%;
+}
+.v2-filter button[data-v="all"] {
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    font-size: 0.68rem;
+}
+
+/* ============================================ */
+/* VARIANT 3: Стопка / Stack (ВСЕ как overlay)  */
+/* ============================================ */
+.v3-wrap {
+    padding: 12px 12px 8px;
+    background: #fff;
+}
+.v3-all-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.v3-all-btn {
+    font-family: 'Onest', sans-serif;
+    padding: 7px 18px;
+    border-radius: 8px;
+    border: 1.5px solid #4a8fc8;
+    background: #4a8fc8;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.v3-all-btn.inactive {
+    background: transparent;
+    color: #4a8fc8;
+}
+.v3-line { flex: 1; height: 1px; background: #e8ecf0; }
+.v3-count {
+    font-size: 0.65rem;
+    color: #aab5c0;
+    font-weight: 400;
+}
+.v3-years {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+}
+.v3-years::-webkit-scrollbar { display: none; }
+.v3-years button {
+    font-family: 'Onest', sans-serif;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid #e0e5ea;
+    background: #fff;
+    color: #7a8a9a;
+    font-size: 0.72rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.25s;
+}
+.v3-years button.active {
+    border-color: #4a8fc8;
+    color: #4a8fc8;
+    background: rgba(74,143,200,0.06);
+    font-weight: 600;
+}
+
+/* ============================================ */
+/* VARIANT 4: Вертикальный боковой список       */
+/* ============================================ */
+.v4-layout { display: flex; background: #fff; }
+.v4-sidebar {
+    width: 54px;
+    background: #f7f9fb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 0;
+    gap: 0;
+    border-right: 1px solid #eef1f5;
+    flex-shrink: 0;
+}
+.v4-sidebar button {
+    font-family: 'Onest', sans-serif;
+    padding: 10px 4px;
+    border: none;
+    background: transparent;
+    color: #a0aab5;
+    font-size: 0.65rem;
+    font-weight: 400;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    transition: all 0.25s;
+    writing-mode: horizontal-tb;
+}
+.v4-sidebar button.active {
     color: #4a8fc8;
     font-weight: 700;
+    background: #fff;
+}
+.v4-sidebar button.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15%;
+    bottom: 15%;
+    width: 3px;
+    background: #4a8fc8;
+    border-radius: 0 3px 3px 0;
+}
+.v4-sidebar button[data-v="all"] {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+}
+.v4-content {
+    flex: 1;
+}
+.v4-content .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* ============================================ */
+/* VARIANT 5: Typed / Эффект печатной машинки    */
+/* ============================================ */
+.v5-filter {
+    padding: 14px 16px 10px;
+    background: #fff;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.v5-label {
+    font-size: 0.7rem;
+    color: #aab5c0;
+    font-weight: 400;
+}
+.v5-active-year {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #1a202c;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    cursor: pointer;
+    position: relative;
+}
+.v5-active-year::after {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background: #4a8fc8;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+}
+@keyframes blink { 50% { opacity: 0; } }
+.v5-years-row {
+    width: 100%;
+    display: flex;
+    gap: 4px;
+    margin-top: 4px;
+}
+.v5-years-row button {
+    font-family: 'Onest', sans-serif;
+    padding: 5px 10px;
+    border: none;
+    background: transparent;
+    color: #b8c4d0;
+    font-size: 0.68rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 1.5px solid transparent;
+}
+.v5-years-row button:hover { color: #4a6a8a; }
+.v5-years-row button.active {
+    color: #1a202c;
+    font-weight: 600;
     border-bottom-color: #4a8fc8;
 }
 
 /* ============================================ */
-/* VARIANT 3: Chip Tags                         */
+/* VARIANT 6: Scrollable chips with photo count */
 /* ============================================ */
-.v3 .filters { gap: 8px; }
-.v3 .filters button {
-    padding: 6px 14px;
-    border-radius: 8px;
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: #6b7b8d;
-    border: 1.5px solid #dde3ea;
+.v6-filter {
+    display: flex;
+    gap: 8px;
+    padding: 10px 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
     background: #fff;
 }
-.v3 .filters button:hover { border-color: #4a8fc8; color: #4a8fc8; }
-.v3 .filters button.active {
-    background: #eef5fb;
-    border-color: #4a8fc8;
-    color: #4a8fc8;
-    font-weight: 600;
-}
-.v3 .filters button[data-v="all"] { font-weight: 600; }
-
-/* ============================================ */
-/* VARIANT 4: Segmented Control (iOS style)     */
-/* ============================================ */
-.v4 .filters {
-    background: #eef1f5;
-    border-radius: 12px;
-    padding: 4px;
-    gap: 0;
-    display: inline-flex;
-}
-.v4 .filter-wrap { display: flex; justify-content: center; }
-.v4 .filters button {
-    padding: 8px 16px;
-    border-radius: 10px;
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: #6b7b8d;
-}
-.v4 .filters button:hover { color: #3a6a9a; }
-.v4 .filters button.active {
-    background: #fff;
-    color: #1a202c;
-    font-weight: 600;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-
-/* ============================================ */
-/* VARIANT 5: Minimal Text Only                 */
-/* ============================================ */
-.v5 .filters { gap: 4px; }
-.v5 .filters button {
-    padding: 8px 12px;
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: #aab5c0;
-    letter-spacing: 0.02em;
-}
-.v5 .filters button:hover { color: #4a6a8a; }
-.v5 .filters button.active {
-    color: #1a202c;
-    font-weight: 700;
-    font-size: 0.95rem;
-}
-.v5 .filters .sep {
-    width: 1px;
-    height: 16px;
-    background: #dde3ea;
-    align-self: center;
-    margin: 0 2px;
-}
-
-/* ============================================ */
-/* VARIANT 6: Timeline Slider                   */
-/* ============================================ */
-.v6 .filters {
-    position: relative;
-    gap: 0;
-    padding: 0 20px;
-}
-.v6 .filters::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    right: 5%;
-    height: 3px;
-    background: linear-gradient(90deg, #4a8fc8, #7ec8e3, #b8dff0);
-    border-radius: 3px;
-    transform: translateY(-50%);
-    margin-top: -6px;
-}
-.v6 .filters button {
-    position: relative;
-    z-index: 1;
-    padding: 20px 14px 6px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: #8a9aaa;
+.v6-filter::-webkit-scrollbar { display: none; }
+.v6-chip {
+    font-family: 'Onest', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
-}
-.v6 .filters button::before {
-    content: '';
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #fff;
-    border: 2px solid #b8d4e8;
-    position: absolute;
-    top: 2px;
-}
-.v6 .filters button:hover::before { border-color: #4a8fc8; }
-.v6 .filters button.active {
-    color: #1a202c;
-    font-weight: 700;
-}
-.v6 .filters button.active::before {
-    background: #4a8fc8;
-    border-color: #4a8fc8;
-    box-shadow: 0 0 0 4px rgba(74,143,200,0.2);
-}
-
-/* ============================================ */
-/* VARIANT 7: Cards / Buttons Row               */
-/* ============================================ */
-.v7 .filters { gap: 8px; }
-.v7 .filters button {
-    padding: 10px 16px;
+    padding: 10px 16px 8px;
     border-radius: 12px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: #6b7b8d;
-    background: #f7f9fb;
-    border: 1px solid transparent;
-}
-.v7 .filters button:hover {
-    background: #eef3f8;
-    transform: translateY(-1px);
-}
-.v7 .filters button.active {
-    background: #fff;
-    color: #4a8fc8;
-    font-weight: 700;
-    border: 1px solid rgba(74,143,200,0.3);
-    box-shadow: 0 2px 8px rgba(74,143,200,0.12);
-}
-.v7 .filters button[data-v="all"].active {
-    background: #4a8fc8;
-    color: #fff;
-    border-color: #4a8fc8;
-}
-
-/* ============================================ */
-/* VARIANT 8: Horizontal Scroll with Gradient   */
-/* ============================================ */
-.v8-wrap {
-    position: relative;
-    overflow: hidden;
-}
-.v8-wrap::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 40px;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, #fff);
-    pointer-events: none;
-    z-index: 2;
-}
-.v8 .filters {
-    gap: 6px;
-    justify-content: flex-start;
-    padding: 8px 40px 8px 8px;
-    overflow-x: auto;
-    scrollbar-width: none;
-}
-.v8 .filters::-webkit-scrollbar { display: none; }
-.v8 .filters button {
-    padding: 8px 16px;
-    border-radius: 100px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: #6b7b8d;
-    background: #f0f3f6;
-    flex-shrink: 0;
-}
-.v8 .filters button:hover { background: #e4eaf0; }
-.v8 .filters button.active {
-    background: linear-gradient(135deg, #4a8fc8, #6bb3e0);
-    color: #fff;
-    font-weight: 600;
-    box-shadow: 0 2px 8px rgba(74,143,200,0.3);
-}
-
-/* ============================================ */
-/* MOBILE PREVIEW                                */
-/* ============================================ */
-.mobile-frame {
-    max-width: 375px;
-    margin: 0 auto;
-    border: 2px solid #ddd;
-    border-radius: 20px;
-    padding: 16px 12px;
-    background: #fff;
-    position: relative;
-}
-.mobile-frame::before {
-    content: 'Mobile 375px';
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #fff;
-    padding: 0 10px;
-    font-size: 0.65rem;
-    color: #aaa;
-}
-
-/* Toggle */
-.toggle-row { text-align: center; margin: 20px 0; }
-.toggle-btn {
-    font-family: 'Onest', sans-serif;
-    padding: 8px 20px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
+    border: 1.5px solid #e8ecf0;
     background: #fff;
     cursor: pointer;
-    font-size: 0.8rem;
-    color: #555;
-    margin: 0 4px;
+    flex-shrink: 0;
+    transition: all 0.25s;
+    gap: 2px;
 }
-.toggle-btn.on { background: #4a8fc8; color: #fff; border-color: #4a8fc8; }
+.v6-chip .yr { font-size: 0.8rem; font-weight: 600; color: #5a6a7a; }
+.v6-chip .cnt { font-size: 0.55rem; color: #b0bac4; font-weight: 400; }
+.v6-chip.active {
+    border-color: #4a8fc8;
+    background: rgba(74,143,200,0.05);
+}
+.v6-chip.active .yr { color: #4a8fc8; }
+.v6-chip.active .cnt { color: #4a8fc8; }
+.v6-chip[data-v="all"].active {
+    background: #4a8fc8;
+    border-color: #4a8fc8;
+}
+.v6-chip[data-v="all"].active .yr,
+.v6-chip[data-v="all"].active .cnt { color: #fff; }
+
+/* ============================================ */
+/* VARIANT 7: Fade typography (шкала яркости)   */
+/* ============================================ */
+.v7-filter {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    padding: 10px 8px;
+    background: #fff;
+    justify-content: center;
+}
+.v7-filter button {
+    font-family: 'Onest', sans-serif;
+    padding: 8px 8px;
+    border: none;
+    background: transparent;
+    font-size: 0.82rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.35s;
+    color: #d0d5dc;
+}
+.v7-filter button:nth-child(2) { color: #c0c8d0; }
+.v7-filter button:nth-child(3) { color: #b0bac5; }
+.v7-filter button:nth-child(4) { color: #a0abb8; }
+.v7-filter button:nth-child(5) { color: #909dab; }
+.v7-filter button:nth-child(6) { color: #808f9e; }
+.v7-filter button.active {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #1a202c !important;
+    padding: 8px 10px;
+}
+.v7-filter button[data-v="all"] {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    margin-right: 4px;
+    padding-right: 12px;
+    border-right: 1px solid #e8ecf0;
+}
+.v7-filter button[data-v="all"].active {
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+/* ============================================ */
+/* VARIANT 8: Mini Calendar Strip               */
+/* ============================================ */
+.v8-filter {
+    display: flex;
+    gap: 6px;
+    padding: 10px 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    background: #fff;
+}
+.v8-filter::-webkit-scrollbar { display: none; }
+.v8-card {
+    font-family: 'Onest', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 52px;
+    padding: 8px 6px 10px;
+    border-radius: 14px;
+    background: #f5f7fa;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.3s;
+    border: 1.5px solid transparent;
+    gap: 4px;
+}
+.v8-card .icon { font-size: 1rem; line-height: 1; }
+.v8-card .yr { font-size: 0.7rem; font-weight: 600; color: #5a6a7a; }
+.v8-card .dots {
+    display: flex;
+    gap: 2px;
+}
+.v8-card .dots span {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #c8d0d8;
+}
+.v8-card.active {
+    background: #fff;
+    border-color: #4a8fc8;
+    box-shadow: 0 2px 8px rgba(74,143,200,0.15);
+}
+.v8-card.active .yr { color: #4a8fc8; }
+.v8-card.active .dots span { background: #4a8fc8; }
+.v8-card[data-v="all"].active {
+    background: #4a8fc8;
+    border-color: #4a8fc8;
+}
+.v8-card[data-v="all"].active .yr { color: #fff; }
+.v8-card[data-v="all"].active .icon { filter: brightness(10); }
+
+/* ============================================ */
+/* Desktop switch                               */
+/* ============================================ */
+.desktop-mode .phone {
+    width: 100%;
+    max-width: 900px;
+}
+.desktop-mode .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+.desktop-mode .v4-content .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Switch */
+.mode-switch {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 300;
+    display: flex;
+    gap: 2px;
+    background: rgba(20,25,35,0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 3px;
+}
+.mode-switch button {
+    font-family: 'Onest', sans-serif;
+    padding: 6px 16px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #8a95a8;
+    font-size: 0.72rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.mode-switch button.on {
+    background: #4a8fc8;
+    color: #fff;
+}
+
+/* Variant label overlay */
+.var-label {
+    position: absolute;
+    top: 52px;
+    left: 12px;
+    right: 12px;
+    z-index: 50;
+}
+.var-label h2 {
+    font-size: 0.7rem;
+    color: #4a8fc8;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+.var-label p {
+    font-size: 0.6rem;
+    color: #8a95a8;
+    font-weight: 400;
+    line-height: 1.4;
+}
 </style>
 </head>
 <body>
 
-<h1>Фильтры галереи — 8 вариантов</h1>
-<p class="subtitle">Нажимайте на годы для переключения активного состояния. Контекст: сайт путешествий и аэросъёмки дронами.</p>
-
-<div class="toggle-row">
-    <button class="toggle-btn on" onclick="setView('desktop')">Desktop</button>
-    <button class="toggle-btn" onclick="setView('mobile')">Mobile (375px)</button>
+<div class="mode-switch">
+    <button class="on" onclick="setMode('mobile',this)">Mobile 375px</button>
+    <button onclick="setMode('desktop',this)">Desktop</button>
 </div>
 
-<div id="variants-container">
+<div id="app" class="phone">
 
-<!-- VARIANT 1 -->
-<div class="variant v1">
-    <h2><span>#1</span> Pill Tabs (Classic)</h2>
-    <div class="filters">
-        <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
-        <button onclick="activate(this)">2026</button>
-        <button onclick="activate(this)">2025</button>
-        <button onclick="activate(this)">2024</button>
-        <button onclick="activate(this)">2023</button>
-        <button onclick="activate(this)">2022</button>
-        <button onclick="activate(this)">2021</button>
+<!-- ===== V1 ===== -->
+<div class="variant-section" id="s1">
+<div class="topbar"><h1>ГАЛЕРЕЯ</h1><span class="variant-num">#1</span></div>
+<div style="position:relative">
+<div class="var-label"><h2>#1 Floating Pill Bar</h2><p>Пилюли в «подложке» — знакомый паттерн Яндекса и iOS. ВСЕ выделена цветом.</p></div>
+</div>
+<div class="page-title" style="padding-top:56px">Галерея</div>
+<div class="v1-filter">
+    <button class="active" data-v="all" onclick="act(this)">ВСЕ</button>
+    <button onclick="act(this)">2026</button>
+    <button onclick="act(this)">2025</button>
+    <button onclick="act(this)">2024</button>
+    <button onclick="act(this)">2023</button>
+    <button onclick="act(this)">2022</button>
+    <button onclick="act(this)">2021</button>
+</div>
+<div class="gallery-grid"><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div></div>
+</div>
+
+<!-- ===== V2 ===== -->
+<div class="variant-section" id="s2">
+<div class="topbar"><h1>ГАЛЕРЕЯ</h1><span class="variant-num">#2</span></div>
+<div style="position:relative">
+<div class="var-label"><h2>#2 Year Ribbon</h2><p>Равномерная лента — каждый год занимает одинаковую ширину. Активный — жирный + underline. Редакционный стиль.</p></div>
+</div>
+<div class="page-title" style="padding-top:56px">Галерея</div>
+<div class="v2-filter">
+    <button class="active" data-v="all" onclick="act(this)">ВСЕ</button>
+    <button onclick="act(this)">2026</button>
+    <button onclick="act(this)">2025</button>
+    <button onclick="act(this)">2024</button>
+    <button onclick="act(this)">2023</button>
+    <button onclick="act(this)">2022</button>
+    <button onclick="act(this)">2021</button>
+</div>
+<div class="gallery-grid"><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div></div>
+</div>
+
+<!-- ===== V3 ===== -->
+<div class="variant-section" id="s3">
+<div class="topbar"><h1>ГАЛЕРЕЯ</h1><span class="variant-num">#3</span></div>
+<div style="position:relative">
+<div class="var-label"><h2>#3 Split: ВСЕ отдельно + годы</h2><p>«ВСЕ» как тоггл сверху, годы — горизонтальный ряд ниже. Два уровня навигации.</p></div>
+</div>
+<div class="page-title" style="padding-top:56px">Галерея</div>
+<div class="v3-wrap">
+    <div class="v3-all-row">
+        <button class="v3-all-btn" onclick="v3toggle(this)">ВСЕ ГОДЫ</button>
+        <div class="v3-line"></div>
+        <span class="v3-count">128 фото</span>
+    </div>
+    <div class="v3-years">
+        <button onclick="v3year(this)">2026</button>
+        <button onclick="v3year(this)">2025</button>
+        <button onclick="v3year(this)">2024</button>
+        <button onclick="v3year(this)">2023</button>
+        <button onclick="v3year(this)">2022</button>
+        <button onclick="v3year(this)">2021</button>
     </div>
 </div>
-
-<!-- VARIANT 2 -->
-<div class="variant v2">
-    <h2><span>#2</span> Underline Tabs</h2>
-    <div class="filters">
-        <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
-        <button onclick="activate(this)">2026</button>
-        <button onclick="activate(this)">2025</button>
-        <button onclick="activate(this)">2024</button>
-        <button onclick="activate(this)">2023</button>
-        <button onclick="activate(this)">2022</button>
-        <button onclick="activate(this)">2021</button>
-    </div>
+<div class="gallery-grid"><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div></div>
 </div>
 
-<!-- VARIANT 3 -->
-<div class="variant v3">
-    <h2><span>#3</span> Chip Tags</h2>
-    <div class="filters">
-        <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
-        <button onclick="activate(this)">2026</button>
-        <button onclick="activate(this)">2025</button>
-        <button onclick="activate(this)">2024</button>
-        <button onclick="activate(this)">2023</button>
-        <button onclick="activate(this)">2022</button>
-        <button onclick="activate(this)">2021</button>
+<!-- ===== V4 ===== -->
+<div class="variant-section" id="s4">
+<div class="topbar"><h1>ГАЛЕРЕЯ</h1><span class="variant-num">#4</span></div>
+<div style="position:relative">
+<div class="var-label"><h2>#4 Vertical Sidebar</h2><p>Годы слева вертикально — как навигация в фотоархиве. Контент справа. Необычный, но интуитивный.</p></div>
+</div>
+<div class="v4-layout">
+    <div class="v4-sidebar">
+        <button class="active" data-v="all" onclick="act(this)" style="padding:12px 4px;font-size:0.58rem;letter-spacing:0.08em">ВСЕ</button>
+        <button class="active" onclick="act(this)">2026</button>
+        <button onclick="act(this)">2025</button>
+        <button onclick="act(this)">2024</button>
+        <button onclick="act(this)">2023</button>
+        <button onclick="act(this)">2022</button>
+        <button onclick="act(this)">2021</button>
+    </div>
+    <div class="v4-content">
+        <div class="gallery-grid"><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div></div>
     </div>
 </div>
-
-<!-- VARIANT 4 -->
-<div class="variant v4">
-    <h2><span>#4</span> Segmented Control (iOS)</h2>
-    <div class="filter-wrap">
-        <div class="filters">
-            <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
-            <button onclick="activate(this)">2026</button>
-            <button onclick="activate(this)">2025</button>
-            <button onclick="activate(this)">2024</button>
-            <button onclick="activate(this)">2023</button>
-            <button onclick="activate(this)">2022</button>
-            <button onclick="activate(this)">2021</button>
-        </div>
-    </div>
 </div>
 
-<!-- VARIANT 5 -->
-<div class="variant v5">
-    <h2><span>#5</span> Minimal Text Only</h2>
-    <div class="filters">
-        <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
-        <span class="sep"></span>
-        <button onclick="activate(this)">2026</button>
-        <button onclick="activate(this)">2025</button>
-        <button onclick="activate(this)">2024</button>
-        <button onclick="activate(this)">2023</button>
-        <button onclick="activate(this)">2022</button>
-        <button onclick="activate(this)">2021</button>
+<!-- ===== V5 ===== -->
+<div class="variant-section" id="s5">
+<div class="topbar"><h1>ГАЛЕРЕЯ</h1><span class="variant-num">#5</span></div>
+<div style="position:relative">
+<div class="var-label"><h2>#5 Hero Year (крупный год)</h2><p>Выбранный год — большой как заголовок. Остальные мелко внизу. Кинематографичный подход.</p></div>
+</div>
+<div class="v5-filter">
+    <span class="v5-label">Показаны фото за</span>
+    <span class="v5-active-year" id="v5display">Все годы</span>
+    <div class="v5-years-row">
+        <button class="active" data-v="all" onclick="v5pick(this,'Все годы')">Все</button>
+        <button onclick="v5pick(this,'2026')">2026</button>
+        <button onclick="v5pick(this,'2025')">2025</button>
+        <button onclick="v5pick(this,'2024')">2024</button>
+        <button onclick="v5pick(this,'2023')">2023</button>
+        <button onclick="v5pick(this,'2022')">2022</button>
+        <button onclick="v5pick(this,'2021')">2021</button>
     </div>
 </div>
-
-<!-- VARIANT 6 -->
-<div class="variant v6">
-    <h2><span>#6</span> Timeline Slider (текущий стиль, улучшенный)</h2>
-    <div class="filters">
-        <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
-        <button onclick="activate(this)">2026</button>
-        <button onclick="activate(this)">2025</button>
-        <button onclick="activate(this)">2024</button>
-        <button onclick="activate(this)">2023</button>
-        <button onclick="activate(this)">2022</button>
-        <button onclick="activate(this)">2021</button>
-    </div>
+<div class="gallery-grid"><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div></div>
 </div>
 
-<!-- VARIANT 7 -->
-<div class="variant v7">
-    <h2><span>#7</span> Cards Row</h2>
-    <div class="filters">
-        <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
-        <button onclick="activate(this)">2026</button>
-        <button onclick="activate(this)">2025</button>
-        <button onclick="activate(this)">2024</button>
-        <button onclick="activate(this)">2023</button>
-        <button onclick="activate(this)">2022</button>
-        <button onclick="activate(this)">2021</button>
-    </div>
+<!-- ===== V6 ===== -->
+<div class="variant-section" id="s6">
+<div class="topbar"><h1>ГАЛЕРЕЯ</h1><span class="variant-num">#6</span></div>
+<div style="position:relative">
+<div class="var-label"><h2>#6 Chips + кол-во фото</h2><p>Каждый чип показывает год и число фото. Сразу видно объём контента.</p></div>
+</div>
+<div class="page-title" style="padding-top:56px">Галерея</div>
+<div class="v6-filter">
+    <div class="v6-chip active" data-v="all" onclick="actChip(this)"><span class="yr">ВСЕ</span><span class="cnt">128</span></div>
+    <div class="v6-chip" onclick="actChip(this)"><span class="yr">2026</span><span class="cnt">14</span></div>
+    <div class="v6-chip" onclick="actChip(this)"><span class="yr">2025</span><span class="cnt">28</span></div>
+    <div class="v6-chip" onclick="actChip(this)"><span class="yr">2024</span><span class="cnt">32</span></div>
+    <div class="v6-chip" onclick="actChip(this)"><span class="yr">2023</span><span class="cnt">24</span></div>
+    <div class="v6-chip" onclick="actChip(this)"><span class="yr">2022</span><span class="cnt">18</span></div>
+    <div class="v6-chip" onclick="actChip(this)"><span class="yr">2021</span><span class="cnt">12</span></div>
+</div>
+<div class="gallery-grid"><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div></div>
 </div>
 
-<!-- VARIANT 8 -->
-<div class="variant v8">
-    <h2><span>#8</span> Horizontal Scroll + Gradient Pills</h2>
-    <div class="v8-wrap">
-        <div class="filters">
-            <button class="active" data-v="all" onclick="activate(this)">ВСЕ</button>
-            <button onclick="activate(this)">2026</button>
-            <button onclick="activate(this)">2025</button>
-            <button onclick="activate(this)">2024</button>
-            <button onclick="activate(this)">2023</button>
-            <button onclick="activate(this)">2022</button>
-            <button onclick="activate(this)">2021</button>
-        </div>
-    </div>
+<!-- ===== V7 ===== -->
+<div class="variant-section" id="s7">
+<div class="topbar"><h1>ГАЛЕРЕЯ</h1><span class="variant-num">#7</span></div>
+<div style="position:relative">
+<div class="var-label"><h2>#7 Fade Typography</h2><p>Активный год крупный и чёрный, остальные затухают к краям. Линейка времени через размер шрифта.</p></div>
+</div>
+<div class="page-title" style="padding-top:56px">Галерея</div>
+<div class="v7-filter">
+    <button data-v="all" onclick="act(this)">ВСЕ</button>
+    <button class="active" onclick="act(this)">2026</button>
+    <button onclick="act(this)">2025</button>
+    <button onclick="act(this)">2024</button>
+    <button onclick="act(this)">2023</button>
+    <button onclick="act(this)">2022</button>
+    <button onclick="act(this)">2021</button>
+</div>
+<div class="gallery-grid"><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div></div>
 </div>
 
-</div><!-- variants-container -->
+<!-- ===== V8 ===== -->
+<div class="variant-section" id="s8">
+<div class="topbar"><h1>ГАЛЕРЕЯ</h1><span class="variant-num">#8</span></div>
+<div style="position:relative">
+<div class="var-label"><h2>#8 Mini Calendar Cards</h2><p>Каждый год — мини-карточка с иконкой сезона и индикатором количества. Игровой подход.</p></div>
+</div>
+<div class="page-title" style="padding-top:56px">Галерея</div>
+<div class="v8-filter">
+    <div class="v8-card active" data-v="all" onclick="actCard(this)"><span class="icon">📷</span><span class="yr">ВСЕ</span><div class="dots"><span></span><span></span><span></span><span></span><span></span></div></div>
+    <div class="v8-card" onclick="actCard(this)"><span class="icon">🌱</span><span class="yr">2026</span><div class="dots"><span></span><span></span></div></div>
+    <div class="v8-card" onclick="actCard(this)"><span class="icon">❄️</span><span class="yr">2025</span><div class="dots"><span></span><span></span><span></span></div></div>
+    <div class="v8-card" onclick="actCard(this)"><span class="icon">🍂</span><span class="yr">2024</span><div class="dots"><span></span><span></span><span></span><span></span></div></div>
+    <div class="v8-card" onclick="actCard(this)"><span class="icon">☀️</span><span class="yr">2023</span><div class="dots"><span></span><span></span><span></span></div></div>
+    <div class="v8-card" onclick="actCard(this)"><span class="icon">🏔</span><span class="yr">2022</span><div class="dots"><span></span><span></span></div></div>
+    <div class="v8-card" onclick="actCard(this)"><span class="icon">🌲</span><span class="yr">2021</span><div class="dots"><span></span></div></div>
+</div>
+<div class="gallery-grid"><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div></div>
+</div>
+
+</div><!-- phone -->
 
 <script>
-function activate(btn) {
-    const parent = btn.closest('.filters');
-    parent.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+function act(btn) {
+    const p = btn.closest('.v1-filter, .v2-filter, .v4-sidebar, .v7-filter');
+    if (!p) return;
+    p.querySelectorAll('button').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 }
-
-function setView(mode) {
-    const container = document.getElementById('variants-container');
-    const btns = document.querySelectorAll('.toggle-btn');
-    btns.forEach(b => b.classList.remove('on'));
-    event.target.classList.add('on');
-
-    if (mode === 'mobile') {
-        container.querySelectorAll('.variant').forEach(v => {
-            v.classList.add('mobile-frame');
-        });
+function actChip(el) {
+    const p = el.closest('.v6-filter');
+    p.querySelectorAll('.v6-chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+}
+function actCard(el) {
+    const p = el.closest('.v8-filter');
+    p.querySelectorAll('.v8-card').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+}
+function v3toggle(btn) {
+    const wrap = btn.closest('.v3-wrap');
+    const years = wrap.querySelectorAll('.v3-years button');
+    if (btn.classList.contains('inactive')) {
+        btn.classList.remove('inactive');
+        years.forEach(y => y.classList.remove('active'));
+    }
+}
+function v3year(btn) {
+    const wrap = btn.closest('.v3-wrap');
+    const allBtn = wrap.querySelector('.v3-all-btn');
+    allBtn.classList.add('inactive');
+    wrap.querySelectorAll('.v3-years button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+function v5pick(btn, text) {
+    const wrap = btn.closest('.v5-filter');
+    wrap.querySelectorAll('.v5-years-row button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('v5display').textContent = text;
+}
+function setMode(mode, btn) {
+    document.querySelectorAll('.mode-switch button').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    if (mode === 'desktop') {
+        document.body.classList.add('desktop-mode');
     } else {
-        container.querySelectorAll('.variant').forEach(v => {
-            v.classList.remove('mobile-frame');
-        });
+        document.body.classList.remove('desktop-mode');
     }
 }
 </script>
