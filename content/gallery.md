@@ -121,6 +121,16 @@ body.gf-focused .gf-title-target {
     max-height: 30px;
     opacity: 0.6;
 }
+
+/* Sticky filter bar in focus mode (especially for mobile) */
+body.gf-focused .gallery-filters {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 0.8rem 0.5rem;
+}
 </style>
 {{< /rawhtml >}}
 
