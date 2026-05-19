@@ -1,11 +1,7 @@
 backend:
-  name: test-repo
-
-# Когда переключим на GitHub:
-# backend:
-#   name: github
-#   repo: reddragon333/ptp
-#   branch: mirror        ← пишет сюда, не в main/прод
+  name: github
+  repo: reddragon333/ptp
+  branch: main
 
 media_folder: static/images/uploads
 public_folder: /images/uploads
