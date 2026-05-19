@@ -1,0 +1,28 @@
+backend:
+  name: test-repo
+
+# Когда переключим на GitHub:
+# backend:
+#   name: github
+#   repo: reddragon333/ptp
+#   branch: mirror        ← пишет сюда, не в main/прод
+
+media_folder: static/images/uploads
+public_folder: /images/uploads
+locale: ru
+
+collections:
+  - name: post
+    label: Посты / Поездки
+    label_singular: Пост
+    folder: content/post
+    create: true
+    format: toml-frontmatter
+    extension: md
+    fields:
+      - { label: Заголовок, name: title, widget: string }
+      - { label: Slug (URL), name: slug, widget: string }
+      - { label: Дата, name: date, widget: datetime, format: 'YYYY-MM-DDTHH:mm:ss', default: '' }
+      - { label: Описание (анонс), name: description, widget: string }
+      - { label: Обложка (URL из S3), name: image, widget: string, required: false }
+      - { label: Контент, name: body, widget: markdown }
