@@ -4,6 +4,7 @@ backend:
   branch: main
   api_root: https://ptp.saguaro-cactus.ru/gitea/api/v1
   base_url: https://ptp.saguaro-cactus.ru/gitea
+  app_id: 64bba744-0afb-4987-b4f4-c2fc7d7485f4
 
 media_folder: static/images/uploads
 public_folder: /images/uploads
