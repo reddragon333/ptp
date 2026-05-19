@@ -1,0 +1,96 @@
+# =============================================================================
+# Sveltia CMS config for PTP (Hugo travel blog)
+# =============================================================================
+#
+# Sveltia CMS uses the SAME config format as Decap CMS.
+# Docs: https://github.com/sveltia/sveltia-cms
+#
+# IMPORTANT — Sveltia frontmatter requirements:
+#   - Only `---` (YAML) delimiters are supported; TOML `+++` will NOT work.
+#   - Quotes must be balanced — no stray or mismatched quotes in frontmatter.
+#   - Do NOT use `---` inside the Markdown body; Sveltia may misparse it.
+#
+# NOTE: Existing posts in content/post/ use TOML frontmatter (`+++`).
+# Sveltia will create new posts with YAML (`---`). Hugo handles both fine,
+# but consider migrating old posts to YAML for consistency if needed.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Backend
+# -----------------------------------------------------------------------------
+# Sveltia supports GitHub backend natively — no git-gateway or Netlify
+# Identity required. Auth happens via GitHub OAuth directly in the browser.
+backend:
+  name: github
+  repo: reddragon333/ptp
+  branch: main
+
+# -----------------------------------------------------------------------------
+# Site URL
+# -----------------------------------------------------------------------------
+site_url: https://ptp.saguaro-cactus.ru
+
+# -----------------------------------------------------------------------------
+# Locale
+# -----------------------------------------------------------------------------
+locale: ru
+
+# -----------------------------------------------------------------------------
+# Media
+# -----------------------------------------------------------------------------
+# Local media folder (for assets committed to the repo).
+# For S3 images, paste the full URL into the "Фото (S3 URL)" field instead.
+#
+# Sveltia also supports external media libraries (e.g. S3/Cloudinary) —
+# see https://github.com/sveltia/sveltia-cms#media for setup details.
+media_folder: static/images
+public_folder: /images
+
+# -----------------------------------------------------------------------------
+# Collections
+# -----------------------------------------------------------------------------
+collections:
+
+  # ---------------------------------------------------------------------------
+  # Posts — folder collection
+  # ---------------------------------------------------------------------------
+  - name: posts
+    label: "Посты"
+    label_singular: "Пост"
+    folder: content/post
+    create: true
+    slug: "{{slug}}-{{year}}{{month}}{{day}}"
+    # Sveltia creates YAML frontmatter by default (---), which is what we want.
+    fields:
+      - { name: title,       label: "Заголовок",      widget: string }
+      - { name: date,        label: "Дата",            widget: datetime }
+      - { name: description, label: "Описание",        widget: string }
+      - { name: image,       label: "Фото (S3 URL)",   widget: string }
+      - { name: body,        label: "Текст",           widget: markdown }
+
+  # ---------------------------------------------------------------------------
+  # Trips — file collection (single JSON file)
+  # ---------------------------------------------------------------------------
+  - name: trips
+    label: "Расписание слётов"
+    files:
+      - name: upcoming_trips
+        label: "Ближайшие слёты"
+        file: static/data/upcoming-trips.json
+        fields:
+          - name: trips
+            label: "Слёты"
+            widget: list
+            fields:
+              - { name: id,          label: "ID",          widget: string }
+              - { name: title,       label: "Название",    widget: string }
+              - { name: period,      label: "Период",      widget: string }
+              - { name: description, label: "Описание",    widget: text }
+              - { name: image,       label: "Картинка",    widget: string }
+              - name: meta
+                label: "Детали"
+                widget: list
+                field: { name: item, label: "Пункт", widget: string }
+              - { name: active,      label: "Активен",     widget: boolean, default: true }
+              - { name: order,       label: "Порядок",     widget: number, value_type: int }
+          - { name: last_updated, label: "Обновлено", widget: string }

@@ -1,0 +1,127 @@
+# =============================================================================
+# Decap CMS configuration for PTP travel blog (Hugo)
+# Docs: https://decapcms.org/docs/
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# Backend — how the CMS authenticates and commits to the repository.
+#
+# Currently set to git-gateway (requires Netlify Identity or a compatible
+# git-gateway server). To switch to direct GitHub OAuth instead, replace
+# the backend block with:
+#
+#   backend:
+#     name: github
+#     repo: reddragon333/ptp
+#     branch: main
+# ---------------------------------------------------------------------------
+backend:
+  name: git-gateway
+  branch: main
+
+# ---------------------------------------------------------------------------
+# Site URL — needed for OAuth redirects and preview links.
+# ---------------------------------------------------------------------------
+site_url: https://ptp.saguaro-cactus.ru
+
+# ---------------------------------------------------------------------------
+# Locale — CMS interface language.
+# ---------------------------------------------------------------------------
+locale: ru
+
+# ---------------------------------------------------------------------------
+# Media — local fallback folder for uploaded images.
+#
+# NOTE: The project primarily uses S3 (s3.regru.cloud/sleeptrip-dev/images/)
+# for media hosting. A Decap S3 media backend can be configured later:
+#   https://decapcms.org/docs/s3/
+# For now, uploads go to static/images and are served from /images.
+# ---------------------------------------------------------------------------
+media_folder: static/images
+public_folder: /images
+
+# ---------------------------------------------------------------------------
+# Hugo uses TOML front matter by default (+++). Tell Decap to produce TOML.
+# ---------------------------------------------------------------------------
+slug:
+  encoding: unicode
+  clean_accents: false
+
+# =============================================================================
+# Collections
+# =============================================================================
+collections:
+
+  # ---------------------------------------------------------------------------
+  # posts — travel blog posts stored as Markdown in content/post/
+  #
+  # Each file gets TOML front matter matching the existing Hugo archetypes:
+  #   title, slug, image, date, description
+  # ---------------------------------------------------------------------------
+  - name: posts
+    label: "Посты"
+    label_singular: "Пост"
+    folder: content/post
+    create: true
+    slug: "{{slug}}-{{year}}{{month}}{{day}}"
+    extension: md
+    format: toml-frontmatter
+    fields:
+      - { label: "Заголовок", name: title, widget: string }
+      - { label: "Дата", name: date, widget: datetime }
+      - { label: "Описание", name: description, widget: string }
+      - label: "Изображение (URL)"
+        name: image
+        widget: string
+        hint: "URL обложки — обычно ссылка на S3 (s3.regru.cloud/sleeptrip-dev/images/...)"
+      - { label: "Текст", name: body, widget: markdown }
+
+  # ---------------------------------------------------------------------------
+  # trips — upcoming trips stored as a single JSON file.
+  #
+  # This is a "file" collection (not folder) because all trips live in one
+  # JSON file: static/data/upcoming-trips.json
+  # Field structure mirrors the existing JSON schema.
+  # ---------------------------------------------------------------------------
+  - name: trips
+    label: "Ближайшие поездки"
+    files:
+      - name: upcoming
+        label: "upcoming-trips.json"
+        file: static/data/upcoming-trips.json
+        fields:
+          # --- trips list ---------------------------------------------------
+          - label: "Поездки"
+            name: trips
+            widget: list
+            fields:
+              - { label: "ID", name: id, widget: string }
+              - { label: "Название", name: title, widget: string }
+              - { label: "Период", name: period, widget: string }
+              - label: "Описание"
+                name: description
+                widget: text
+              - label: "Изображение (URL)"
+                name: image
+                widget: string
+                hint: "URL изображения на S3"
+              - label: "Мета"
+                name: meta
+                widget: list
+                required: false
+                field:
+                  { label: "Значение", name: value, widget: string }
+              - label: "Активна"
+                name: active
+                widget: boolean
+                default: true
+              - label: "Порядок"
+                name: order
+                widget: number
+                value_type: int
+                default: 1
+
+          # --- last_updated timestamp ---------------------------------------
+          - label: "Последнее обновление"
+            name: last_updated
+            widget: datetime
