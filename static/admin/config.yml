@@ -1,6 +1,6 @@
 backend:
   name: gitea
-  repo: ptpadmin/ptp
+  repo: slt-admin/ptp
   branch: main
   api_root: https://ptp.saguaro-cactus.ru/gitea/api/v1
   base_url: https://ptp.saguaro-cactus.ru/gitea
