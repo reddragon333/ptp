@@ -222,7 +222,6 @@ slug = 'gallery'
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Yaroslavl-20220307-8.jpg" alt="Весенний пейзаж 8" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Zimni-20211204-1.jpg" alt="Зимний пейзаж 1" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Gallery-20260417-1.jpg" alt="Весенний пейзаж 1" >}}
-{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/_botsmoke_1782985111.jpg" >}}
 {{< /gallery >}}
 
 {{< rawhtml >}}
