@@ -88,7 +88,7 @@ slug = 'gallery'
 {{< /rawhtml >}}
 
 {{< gallery caption-effect="fade" >}}
-{{< figure src="images/MoscowSh_20260627_1.jpg" alt="Летний пейзаж 11" >}}
+{{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/MoscowSh_20260627_1.jpg" alt="Съёмки самолётов" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Izmaylovskiy-20260506-1.jpg" alt="Весенний пейзаж 1" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Timiryazevskiy-20260415-1.jpg" alt="Весенний пейзаж 1" >}}
 {{< figure src="https://s3.regru.cloud/sleeptrip-dev/images/Pantelee-20260408-1.jpg" alt="Весенний пейзаж 1" >}}
